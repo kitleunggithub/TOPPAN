@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+
+<!-- $Header: PoHeaderToLinesVL.xml 120.8 2006/07/04 00:13:21 atgops1 noship $ -->
+
+<ViewLink
+   Name="PoHeaderToLinesVL" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.38.51" />
+   </DesignTime>
+   <ViewLinkDefEnd
+      Name="PoDetailsFullExpVO"
+      Cardinality="1"
+      Owner="oracle.apps.fnd.framework.toolbox.tutorial.server.PoDetailsFullExpVO"
+      Source="true" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.tutorial.server.PoDetailsFullExpVO.HeaderId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_finderName" Value="PoDetailsFullExpVO" />
+         <Attr Name="_minCardinality" Value="1" />
+         <Attr Name="_isUpdateable" Value="true" />
+      </DesignTime>
+   </ViewLinkDefEnd>
+   <ViewLinkDefEnd
+      Name="PoLinesExpVO"
+      Cardinality="-1"
+      Owner="oracle.apps.fnd.framework.toolbox.tutorial.server.PoLinesExpVO" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.tutorial.server.PoLinesExpVO.HeaderId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_finderName" Value="PoLinesExpVO" />
+         <Attr Name="_accessor" Value="true" />
+         <Attr Name="_isUpdateable" Value="true" />
+      </DesignTime>
+   </ViewLinkDefEnd>
+</ViewLink>

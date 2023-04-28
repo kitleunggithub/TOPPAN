@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dataTemplate name="XXCM_USER_RESP" defaultPackage="" description="XXCM User Responsibility Report">   
+   <properties>      
+      <property name="include_parameters" value="true"/>      
+      <property name="include_null_Element" value="true"/>      
+      <property name="xml_tag_case" value="upper"/>      
+      <property name="db_fetch_size" value="100"/>      
+      <property name="scalable_mode" value="off"/>      
+      <property name="include_rowsettag" value="false"/>      
+      <property name="debug_mode" value="on"/>   
+   </properties>     
+   <parameters>      
+	   <parameter name="p_user_name" dataType="character" include_in_output="true"/>      
+   </parameters>   
+   <lexicals/>   
+   <dataQuery>    
+   <sqlStatement name="Q1" dataSourceRef="">
+      <![CDATA[
+      select distinct
+          fr.responsibility_name,
+          fu.user_name,
+          fu.email_address,
+          fu.description user_description,
+          ppf.full_name
+       from 
+          apps.fnd_user fu, 
+          apps.per_people_f ppf,
+          apps.FND_USER_RESP_GROUPS_DIRECT fur,
+           APPS.FND_RESPONSIBILITY_VL RV,
+          apps.fnd_responsibility_tl fr,
+          apps.fnd_application fa,
+          apps.fnd_application_tl fat
+      where fu.user_id = fur.user_id 
+          and fu.employee_id = ppf.person_id (+)
+          and not (fu.user_name  in ('SYSADMIN','XXCM_SCHEDULER','WIZARD'))
+          and fu.user_name = :p_user_name
+          and fur.responsibility_id = fr.responsibility_id
+          and fur.responsibility_id = RV.responsibility_id
+          AND (RV.END_DATE IS NULL or RV.END_DATE > sysdate)
+          and (fur.END_DATE IS NULL or fur.END_DATE > sysdate)
+          and fr.application_id = fa.application_id
+          and fa.application_id = fat.application_id
+          and fat.language = 'US'
+      order by  fu.user_name,
+         fr.responsibility_name
+      ]]>               
+   </sqlStatement> 
+   </dataQuery>   
+   <dataStructure>  
+   <group name="G_REPORT" source="Q1" groupFilter="">   
+	   <element name="responsibility_name" value="responsibility_name" function=""/>
+	   <element name="user_name" value="user_name" function=""/>
+	   <element name="email_address" value="email_address" function=""/>
+	   <element name="user_description" value="user_description" function=""/>
+	   <element name="full_name" value="full_name" function=""/>	   
+   </group>
+   </dataStructure>
+</dataTemplate>

@@ -1,0 +1,392 @@
+# !/bin/ksh
+#
+# Program:      XXAR_LOCKBOX_PROCESS
+# Purpose:      Lockbox Pre-Processing
+#
+# History:
+# 2/11/2003     Created by Jill Di Leva
+# 5/19/2003     Changed the DATA_FILE value - pick up from bachdata
+# 3/15/2014     Jill DiLeva
+#               Get input file from MoveIt
+#               Call XXAR USBank Lockbox Pre-Processing Report which will email user an output report
+# 8/19/2014     Jill DiLeva....turns out the files that the bank will send will actually be named
+#               k100.merrill.x320* NOT tk100.merrill.x320* as we thought....
+#
+# 4/9/2015      Jill DiLeva...bug fix to put original files in the correct location
+#               not under test directory on bachdata
+#
+# 8/18/2015     Jill DiLeva - Changes for R12
+#               Previously, this script was just for US Bank.  Modify so it
+#               is parameter driven and can work for all lockboxes
+# 01/08/2015    akaplan - Clean up hard-coding
+#
+# 4/20/2016     Jill Dileva - call Oracle's Submit Lockbox process via stored procedure
+# 08/14/2017    akaplan - Enh Req 1866: Modify for auto-apply intercompany payments
+# 12/12/2018    akaplan   Enh Req 2229: Make control file a dynamic value
+# 12/28/2018    akaplan   Make sure .bad file does not exist before loading
+
+this_script_name='XXAR_LOCKBOX'
+
+###############################################################################
+# Main Body
+###############################################################################
+
+#request_id=`echo $1 | cut -d" " -f2 | cut -d"=" -f2`
+#login_str=`echo $1 | cut -d" " -f3 | cut -d"=" -f2 | sed 's/"//g'`
+#PGM_PRM=`echo $1 | cut -d" " -f9 | sed 's/"//g'`
+
+## Source shared functions
+. $XXTM_TOP/bin/xxcm_lib.sh
+
+get_parameters 8 "$@"
+lockbox=${param[1]}
+email_addr=${param[2]}
+login_id=${param[3]}
+user_id=${param[4]}
+resp_name=${param[5]}
+resp_appl_short_name=${param[6]}
+sftp_userid=${param[7]}
+sftp_source_srv=${param[8]}
+#lockbox_base_dir=`get_db_constant LOCKBOX_BASE_DIR`
+
+echo "+--------------------------------------------------------------+"
+echo "Values of parameters:"
+echo "  Lockbox = $lockbox"
+echo "  Email Distribution = $email_addr"
+echo "  user_name = $user_name"
+echo "  login_id = $login_id"
+echo "  resp_name = $resp_name"
+echo "  resp_appl_short_name = $resp_appl_short_name"
+echo "  sftp_userid = $sftp_userid"
+echo "  sftp_source_srv = $sftp_source_srv"
+echo "+--------------------------------------------------------------+"
+
+
+################################################################################
+# Set other variables
+################################################################################
+
+##20210312 Add a tmp_seq to be added to the deposit_date.dat file to avoid override same file name for lockbox to read
+typeset -i tmp_seq=0
+
+##
+
+## Directory on MoveIt where the source files are ##
+ftp_dir=`sqlplus -s $login_str <<-END_OF_SQL
+          SET SERVEROUTPUT ON
+          SET PAGESIZE 0
+          WHENEVER SQLERROR EXIT FAILURE
+          SELECT substr(ffv.description, 1, instrb(ffv.description, '/',-1,1))
+          FROM fnd_flex_value_sets ffvs, fnd_flex_values_vl ffv
+          WHERE ffvs.flex_value_set_name = 'XXAR_LOCKBOX_DIR'
+            AND ffvs.flex_value_set_id=ffv.flex_value_set_id
+            AND ffv.flex_value = '$lockbox';
+          EXIT
+END_OF_SQL`
+
+
+lockbox_base_dir=`sqlplus -s $login_str <<-END_OF_SQL
+          SET SERVEROUTPUT ON
+          SET PAGESIZE 0
+          WHENEVER SQLERROR EXIT FAILURE
+          SELECT substr(ffv.description, 1, instrb(ffv.description, '/',-1,1)-1)
+          FROM fnd_flex_value_sets ffvs, fnd_flex_values_vl ffv
+          WHERE ffvs.flex_value_set_name = 'XXAR_LOCKBOX_DIR'
+            AND ffvs.flex_value_set_id=ffv.flex_value_set_id
+            AND ffv.flex_value = '$lockbox';
+          EXIT
+END_OF_SQL`
+
+## MoveIt file naming convention ##
+moveit_file_name=`sqlplus -s $login_str <<-END_OF_SQL
+          SET SERVEROUTPUT ON
+          SET PAGESIZE 0
+          WHENEVER SQLERROR EXIT FAILURE
+          SELECT substr(ffv.description, instrb(ffv.description, '/',-1,1)+1, 30)
+          FROM fnd_flex_value_sets ffvs, fnd_flex_values_vl ffv
+          WHERE ffvs.flex_value_set_name = 'XXAR_LOCKBOX_DIR'
+            AND ffvs.flex_value_set_id=ffv.flex_value_set_id
+            AND ffv.flex_value = '$lockbox';
+          EXIT
+END_OF_SQL`
+
+#stage_dir=$lockbox_base_dir/$lockbox/stage
+stage_dir=`sqlplus -s $login_str <<-END_OF_SQL
+          SET SERVEROUTPUT ON
+          SET PAGESIZE 0
+          WHENEVER SQLERROR EXIT FAILURE
+          SELECT ffv.description
+          FROM  fnd_flex_value_sets ffvs, fnd_flex_values_vl ffv
+          WHERE ffvs.flex_value_set_name = 'XXAR_LOCKBOX_DIR'
+            AND ffvs.flex_value_set_id=ffv.flex_value_set_id
+            AND ffv.flex_value = '$lockbox';
+          EXIT
+END_OF_SQL`
+
+#done_dir=$lockbox_base_dir/$lockbox/orig
+done_dir=${lockbox_base_dir}/orig
+#log_dir=$lockbox_base_dir/$lockbox/logs
+log_dir=${lockbox_base_dir}/logs
+#time=`date +%H%M%S`
+time=`date +%Y%m%d%H%M%S`
+
+## Location of reformatted file - input for standard lockbox process
+#stage2_dir=$APPL_CUST/loadfiles/lockbox_cashapp/$lockbox
+#stage2_dir=/u02/loadfiles/lockbox_cashapp/$lockbox
+stage2_dir=${lockbox_base_dir}
+
+#CTL_FILE=`get_flex_value XXAR_LOCKBOX_DIR $lockbox CTL_FILE`
+CTL_FILE=$XXTM_TOP/bin/XXAR_001_LOCKBOX_BOA_ASIA.ctl
+
+# if [ -n "$CTL_FILE" ]; then
+   # CTL_FILE="$XXTM_TOP/bin/$CTL_FILE.ctl"
+# ## SQL*Loader spec -- Asia banks have different format from United States banks
+# elif [[ $lockbox = 'BOA_HK' || $lockbox = 'BOA_SG' ]]; then
+   # CTL_FILE=$XXTM_TOP/bin/XXAR_001_LOCKBOX_BOA_ASIA.ctl
+# else
+   # CTL_FILE=$XXTM_TOP/bin/XXAR_001_LOCKBOX_1.ctl
+# fi
+
+echo "+--------------------------------------------------------------+"
+echo "ftp_dir = $ftp_dir"
+echo "moveit_file_name = $moveit_file_name"
+echo "lockbox_base_dir = $lockbox_base_dir"
+echo "stage_dir = $stage_dir"
+echo "done_dir = $done_dir"
+echo "stage2_dir = $stage2_dir"
+echo "ctl_file = $CTL_FILE"
+
+echo ""
+echo "+ Start Move the historical .dat files at $lockbox_base_dir to $done_dir +"
+##20210312 Move the historical .dat files at $lockbox_base_dir to $done_dir to avoid files overriding/crashing before each run of lockbox preprocessing.
+
+cd $lockbox_base_dir
+ls -al *.dat
+
+for dat_files in `ls  *.dat`
+do
+echo "Dat File is : " $dat_files
+#echo "Move file to orig folder as backup with file name appended with sysdatetime."
+echo "mv $dat_files $done_dir/$dat_files.${time}"
+     mv $dat_files $done_dir/$dat_files.${time}
+done
+echo "+ End Move the historical .dat files at $lockbox_base_dir to $done_dir +"
+echo ""
+
+################################################################################
+# 20210309 : Add Sftp to Bank of America site to get the lockbox files.
+# 20210319:  Get only HKDATA* files and do not purge to move to archives folder.
+################################################################################
+echo "+ Start sftp to BOA site get files +"
+sftp $sftp_userid@$sftp_source_srv <<EOF 
+lcd $stage_dir
+cd /outgoing
+ls -al 
+get HKDATA.*
+bye
+EOF
+echo "+ End of Start sftp to BOA site get files +"
+
+################################################################################
+# 20210319:  After Get HKDATA.* files, Loop the files just get from BOA sftp server that placed at $stage_dir folder (ie /home/applsit/OracleApps/BOA_HK/stage)
+#            Check if those files just get from BOA server already exist in folder $done_dir (ie /home/applsit/OracleApps/BOA_HK/orig)
+#            If exists, means that file has been processed previously,  need to remove it from $stage_dir to avoid duplicated processing.
+################################################################################
+cd $stage_dir
+ls -ltr HKDATA*
+
+for tfiles in `ls HKDATA*`
+do
+	echo ${tfiles}
+	
+	cd $stage_dir
+	if [ -f ${tfiles} ] ; then
+	echo "File ${tfiles} exists under $stage_dir folder."
+	fi
+
+	cd $done_dir
+	ls ${tfiles}* > ChkExists.log
+
+	if [ -s ChkExists.log ] ; then
+	  # ChkExists.log file size > 0, mean has that file already.
+	  echo "File ${tfiles} already exist in $done_dir folder. Need to remove it from $stage_dir folder."
+	  echo "cd $stage_dir"
+	  cd $stage_dir
+	  echo "rm ${tfiles}"
+	  rm ${tfiles}
+	else
+	  echo "File ${tfiles} not exist in $done_dir folder. Keep it."
+	fi 
+done
+
+
+
+################################################################################
+# if [ "$ftp_dir" ]; then
+   # echo "+--------------------------------------------------------------+"
+   # echo " Determine MoveIt server, get file, delete file "
+   # cd $stage2_dir
+   # get_ftpserver
+
+   # ftp_get "$ftp_dir" "$moveit_file_name" "$stage_dir"
+
+   # if [ $? != 0 ]
+   # then
+     # echo "**********Error in Transferring Data File from Corpftp***********"
+     # echo "**********Please contact your system admin**********"
+   # fi
+# else
+   # echo "********** MoveIT Directory not setup in XXAR_LOCKBOX_DIR **********"
+# fi
+
+#----------------------------------------------------------
+# Loop through all the files we pulled from MoveIt
+# Or any files that are sitting out there unprocessed...
+INPUT_FILES=`ls -prtdt $stage_dir/*`
+FILES_EXISTS="n"
+
+for DATA_FILE in $INPUT_FILES
+do
+    FILES_EXISTS="y"
+    BASEFILE=`basename $DATA_FILE`
+    badFile=${BASEFILE%.*}.bad  # Strip off extension
+    echo "+--------------------------------------------------------------+"
+    echo " File pulled from MoveIt to bachdata "
+    echo " DATA_FILE is " $DATA_FILE
+    echo " BASEFILE is " $BASEFILE
+
+    # Make sure logging directory exists
+    if [ ! -d $log_dir ]; then
+       mkdir $log_dir
+    fi
+
+    echo "+--------------------------------------------------------------+"
+    echo " SQL Load data into XXAR_PAYMENTS_INTERFACE "
+
+    rm -f $log_dir/${badFile}
+
+    $ORACLE_HOME/bin/sqlldr $login_str control=$CTL_FILE data=$DATA_FILE \
+        log=$log_dir/XXAR_001_LOCKBOX_1.log \
+        bad=$log_dir/${badFile}
+
+    if [ $? -ne 0 ]; then
+       echo "Problem with SQLLOADER...check log files at $log_dir"
+       #exit 1
+    elif [ -s $log_dir/${badFile} ]; then
+       echo "Records rejected from file...check bad/log files at $log_dir"
+       exit 1
+    fi
+
+    echo "+--------------------------------------------------------------+"
+    echo " Find the deposit date of the file "
+        deposit_date=`sqlplus -s $login_str<<-END_OF_SQL
+              SET PAGESIZE 0
+              SET SERVEROUTPUT ON
+              WHENEVER SQLERROR EXIT FAILURE
+              select max(to_char(deposit_date,'DD-MON-YY'))
+              from xxar_payments_interface
+              where record_type = 7;
+              EXIT
+END_OF_SQL`
+    echo " Deposit date =  " $deposit_date
+
+    ## 2nd output file - use deposit date to name file [ will be spool by the sql of XXAR Lockbox Validation (XXAR_001_LOCKBOX) ]
+    tmp_seq=$tmp_seq+1
+   echo "tmp_seq : " $tmp_seq
+    DATA_FILE2=$stage2_dir/$deposit_date'_'$tmp_seq'.dat'
+	BASEFILE2=`basename $DATA_FILE2`
+	
+    echo "+--------------------------------------------------------------+"
+    echo " Call XXAR Lockbox Validation "
+    echo " Output Data File " $DATA_FILE2
+	echo " BASEFILE2 " $BASEFILE2
+
+    ora_error=" "
+    ora_concsub=`CONCSUB $login_str $resp_appl_short_name "$resp_name" \
+                  $user_name WAIT=Y CONCURRENT XXTM XXAR_001_LOCKBOX \
+                  "$lockbox" \
+                  "$DATA_FILE2" `
+
+    check_concsub $? "$ora_concsub"
+
+    if [ "$?" -ne "0" ]; then
+      exit 1
+    fi
+
+    echo "+--------------------------------------------------------------+"
+    echo " Call XXAR Lockbox Pre-Processing Report "
+    echo " Email output report to users "
+    echo " Resp Appl Short Name = " $resp_appl_short_name
+    echo " Resp Name = " $resp_name
+    echo " User Name = " $user_name
+    echo " Email addr = " $email_addr
+
+	#it cannot call the layout by this way to run the report. Change to use XXAR_LOCKBOX_RPT_PKG.GENERATE_REPORT
+    # ora_error=" "
+    # ora_concsub=`CONCSUB $login_str $resp_appl_short_name "$resp_name" \
+                  # $user_name WAIT=Y CONCURRENT XXTM XXAR_LOCKBOX_RPT \
+                  # "$lockbox" \
+                  # "$email_addr" \
+                  # "$deposit_date" `
+
+    # check_concsub $? "$ora_concsub"
+
+
+sqlplus -s $login_str <<EOF
+set serverout on size 1000000
+set linesize 200
+execute XXAR_LOCKBOX_RPT_PKG.GENERATE_REPORT('$user_name', '$resp_name','$lockbox', '$email_addr','$deposit_date');
+EXIT
+END;
+EOF
+
+    if [ "$?" -ne "0" ]; then
+      exit 1
+    else
+
+    echo "+--------------------------------------------------------------+"
+    echo " Call Oracle Submit Lockbox "
+
+    ## Concsub doesn't seem to work here so we're calling a stored procedure
+    ## (XXAR_SUBMIT_LOCKBOX) which uses fnd_request.submit_request to
+    ## submit the concurrent request.
+    ## Not sure, but I think that concsub is failing because the additional
+    ## policy setting and org id are required.  We can set them in the procedure
+
+sqlplus -s $login_str <<EOF
+set serverout on size 1000000
+set linesize 200
+execute XXAR_SUBMIT_LOCKBOX('$user_name', '$resp_name', '$lockbox', '$deposit_date', '$DATA_FILE2');
+EXIT
+END;
+EOF
+fi;
+
+       # Move original input file to done directory
+       #mv $DATA_FILE "$done_dir/${deposit_date}_orig_${time}.txt"
+	   mv $DATA_FILE "$done_dir/${BASEFILE}.${time}"
+	   
+	   #cannot delete here since the XXAR_SUBMIT_LOCKBOX cannot find the file $DATA_FILE2 to process
+	   #mv $DATA_FILE2 "$done_dir/${BASEFILE2}.${time}"
+
+      # ## delete file form MoveIt
+      # ## ftp_del only removes one file at a time -- only attempt if ftp_dir is set (ie: file from moveit originally)
+      # if [ "$ftp_dir" ]; then
+        # if [ $? -eq 0 ]; then
+          # ftp_del $ftp_dir "$BASEFILE"
+        # else
+          # echo "**************************************"
+          # echo " ERROR in Transferring Data File "
+          # echo " Please contact your system admin "
+          # echo "**************************************"
+        # fi
+      # fi
+
+done
+
+
+if [ $FILES_EXISTS != "y" ] ; then
+    echo ""
+	echo ""
+	echo "No file found to be processed!"
+fi

@@ -1,0 +1,4 @@
+The following Synchronization Actions were performed successfully:
+
+Entity :InvoiceEO
+  Create Attribute for column: SEC_BILL_TO_CUSTOMER_ID

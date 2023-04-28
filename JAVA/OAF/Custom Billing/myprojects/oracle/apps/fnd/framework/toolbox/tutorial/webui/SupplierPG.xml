@@ -1,0 +1,38 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory -->
+<page xmlns="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:user="http://xmlns.oracle.com/jrad/user" version="9.0.3.8.6_895" xml:lang="en-US" file-version="$Header: SupplierPG.xml 120.7 2006/05/25 13:18:16 atgops1 noship $">
+   <content>
+      <oa:pageLayout windowTitle="Framework Toolbox Tutorial: Create (Single Step)" helpTargetAppShortName="ak" id="PageLayoutRN" akRegionCode="FWK_TBX_T_LSN4_2PAGE" regionName="Create Supplier Page" amDefName="oracle.apps.fnd.framework.toolbox.tutorial.server.CreateAM" controllerClass="oracle.apps.fnd.framework.toolbox.tutorial.webui.SupplierPageCO" title="Create Supplier" warnAboutChanges="true">
+         <ui:corporateBranding>
+            <oa:image id="corporateBranding" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:productBranding>
+            <oa:image id="productBranding" source="FNDTAPPBRAND.gif" shortDesc="OA Framework Toolbox Tutorial"/>
+         </ui:productBranding>
+         <ui:contents>
+            <oa:pageButtonBar id="PageButtons" regionName="Page-Level Buttons">
+               <ui:contents>
+                  <oa:submitButton use="/oracle/apps/fnd/attributesets/Buttons/Cancel" destination="OA.jsp?OAFunc=FWK_TOOLBOX_SUPPLIER_SEARCH&amp;retainAM=Y" shortDesc="Select to cancel this action." id="Cancel" warnAboutChanges="false" serverUnvalidated="true" unvalidated="true"/>
+                  <oa:submitButton use="/oracle/apps/fnd/attributesets/Buttons/Apply" hAlign="end" shortDesc="Select to save your work." id="Apply"/>
+               </ui:contents>
+            </oa:pageButtonBar>
+            <oa:messageComponentLayout id="MainRN">
+               <ui:contents>
+                  <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSuppliers/SupplierId" viewName="SuppliersVO1" viewAttr="SupplierId" id="SupplierId" styleClass="OraDataText" dataType="NUMBER"/>
+                  <oa:messageTextInput use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSuppliers/SupplierName_Name" readOnly="false" required="yes" rows="1" secret="false" viewName="SuppliersVO1" viewAttr="Name" styleClass="OraFieldText" maximumLength="80" id="SupplierName"/>
+                  <oa:messageChoice use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSuppliers/OnHoldFlag" readOnly="false" required="yes" viewName="SuppliersVO1" viewAttr="OnHoldFlag" styleClass="OraFieldText" pickListViewDef="oracle.apps.fnd.framework.toolbox.poplist.server.YesNoVO" pickListDispAttr="Meaning" pickListValAttr="LookupCode" id="OnHold" defaultValue="N"/>
+                  <oa:messageTextInput use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSuppliers/StartDate" readOnly="false" required="yes" rows="1" secret="false" viewName="SuppliersVO1" viewAttr="StartDate" styleClass="OraFieldText" maximumLength="30" id="StartDate" tipType="dateFormat" dataType="DATE"/>
+               </ui:contents>
+            </oa:messageComponentLayout>
+         </ui:contents>
+         <ui:pageStatus>
+            <oa:flowLayout id="PageStatusRN">
+               <ui:contents>
+                  <oa:staticStyledText styleClass="OraInstructionText" id="PageHelp" messageName="FWK_TBX_T_PAGE_GENERAL" messageAppShortName="AK"/>
+                  <oa:tableLayout id="RequiredKey" extends="/oracle/apps/fnd/framework/webui/OAReqFieldDescRG" hAlign="center" width="100%"/>
+               </ui:contents>
+            </oa:flowLayout>
+         </ui:pageStatus>
+      </oa:pageLayout>
+   </content>
+</page>

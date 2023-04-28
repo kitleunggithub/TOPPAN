@@ -1,0 +1,223 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE JboPackage SYSTEM "jbo_03_01.dtd">
+<!-- $Header: server.xml 120.8.12010000.3 2008/10/14 06:21:01 sette ship $ -->
+
+<JboPackage
+   Name="server"
+   SeparateXMLFiles="true"
+   PackageName="oracle.apps.fnd.framework.toolbox.schema.server" >
+   <DesignTime>
+      <Attr Name="_ejbPackage" Value="false" />
+      <Attr Name="_version" Value="10.1.3.38.51" />
+   </DesignTime>
+   <Containee
+      Name="AddressEO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.AddressEO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="EmployeeEO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.EmployeeEO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="EmployeeVAM"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.EmployeeVAM"
+      ObjectType="AppModule" >
+   </Containee>
+   <Containee
+      Name="EmployeeVVO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.EmployeeVVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="EmpNameForIdVVO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.EmpNameForIdVVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="EmpToMgrAO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.EmpToMgrAO"
+      ObjectType="Association" >
+   </Containee>
+   <Containee
+      Name="IdForEmpNameVVO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.IdForEmpNameVVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="IdForSupplierNameVVO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.IdForSupplierNameVVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="IdForSupplierSiteVVO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.IdForSupplierSiteVVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="ItemEO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.ItemEO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="ItemFlexfieldEO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.ItemFlexfieldEO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="LookupCodeEO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.LookupCodeEO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="LookupCodeTLEO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.LookupCodeTLEO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="LookupCodeToTLAO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.LookupCodeToTLAO"
+      ObjectType="Association" >
+   </Containee>
+   <Containee
+      Name="LookupCodeVVO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.LookupCodeVVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="MaxPoLineVVO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.MaxPoLineVVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="MaxPoShipVVO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.MaxPoShipVVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="OrderTotalVVO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.OrderTotalVVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="PoHeadToPoLineAO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.PoHeadToPoLineAO"
+      ObjectType="Association" >
+   </Containee>
+   <Containee
+      Name="PoLineNumVVO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.PoLineNumVVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="PoLineToPoShipAO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.PoLineToPoShipAO"
+      ObjectType="Association" >
+   </Containee>
+   <Containee
+      Name="PoShipNumVVO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.PoShipNumVVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="PositionVVO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.PositionVVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="PoToBuyerAO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.PoToBuyerAO"
+      ObjectType="Association" >
+   </Containee>
+   <Containee
+      Name="PoToSupplierAO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.PoToSupplierAO"
+      ObjectType="Association" >
+   </Containee>
+   <Containee
+      Name="PoToSupplierSiteAO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.PoToSupplierSiteAO"
+      ObjectType="Association" >
+   </Containee>
+   <Containee
+      Name="PurchaseOrderHeaderEO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderHeaderEO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="PurchaseOrderLineEO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderLineEO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="PurchaseOrderPPREO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderPPREO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="PurchaseOrderShipmentEO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="PurchaseOrderVAM"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderVAM"
+      ObjectType="AppModule" >
+   </Containee>
+   <Containee
+      Name="SiteIdPoVVO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.SiteIdPoVVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="SiteIdVVO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.SiteIdVVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="SiteNameForIdVVO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.SiteNameForIdVVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="SupNameForIdVVO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.SupNameForIdVVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="SupplierEO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.SupplierEO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="SupplierIdPoVVO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.SupplierIdPoVVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="SupplierIdVVO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.SupplierIdVVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="SupplierNameVVO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.SupplierNameVVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="SupplierSiteEO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.SupplierSiteEO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="SupplierToSiteAO"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.SupplierToSiteAO"
+      ObjectType="Association" >
+   </Containee>
+   <Containee
+      Name="SupplierVAM"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.SupplierVAM"
+      ObjectType="AppModule" >
+   </Containee>
+</JboPackage>

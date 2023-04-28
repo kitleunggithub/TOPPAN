@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!-- 
+====================================================================================
+Revision:        1.0  
+XML File Name:   XXFA_GLOBAL_ASSET_RETIREMENTS.xml 
+Author's Name:   Sandeep Akula  
+Date Written:    04-FEB-2016
+Purpose:         XXFA Detailed Global Asset Retirement Report 
+Program Style:   Data Template 
+Called From:
+Calls To:
+Maintenance History:
+Date:          Version                   Name            Remarks
+===========    ================         ==============   ========================
+04-FEB-2016        1.0                  Sandeep Akula     Initial Version
+======================================================================================
+  --> 
+<dataTemplate name="XXFA_GLOBAL_ASSET_RETIREMENTS" description="Detailed Global Asset Retirement Report" defaultPackage="XXFA_ASSET_PKG" version="1.0">
+ <parameters>
+  <parameter name="P_BOOK_CLASS" dataType="VARCHAR2" />
+  <parameter name="P_BOOK_TYPE_CODE" dataType="VARCHAR2" />  
+  <parameter name="P_FROM_PERIOD" dataType="VARCHAR2" /> 
+  <parameter name="P_TO_PERIOD" dataType="VARCHAR2" /> 
+  </parameters>
+ <dataQuery>
+ <sqlStatement name="Q_ASSET_RETIREMENTS">
+ <![CDATA[ 
+select asset_number,
+       asset_description,
+	   asset_book,
+       asset_cost_acct,
+       deprn_reserve_acct,
+	   XXFA_ASSET_PKG.get_cc_segment_value(deprn_expense_account_ccid,'SEGMENT1') le,
+       XXFA_ASSET_PKG.get_cc_segment_value(deprn_expense_account_ccid,'SEGMENT2') pl,
+       XXFA_ASSET_PKG.get_cc_segment_value(deprn_expense_account_ccid,'SEGMENT3') site,
+       XXFA_ASSET_PKG.get_cc_segment_value(deprn_expense_account_ccid,'SEGMENT4') cc,
+       XXFA_ASSET_PKG.get_cc_segment_value(deprn_expense_account_ccid,'SEGMENT5') account,
+       XXFA_ASSET_PKG.get_cc_segment_value(deprn_expense_account_ccid,'SEGMENT6') ic,
+	   date_placed_in_service,
+	   period_effective,
+	   period_entered,
+	   asset_currency,
+	   cost_retired,
+       reserve_retired,
+       net_book_value_retired,
+       proceeds_of_sale,
+       removal_cost,
+       gain_loss,
+	   transaction_header_id,
+       to_char(transaction_date,'MM/DD/RRRR') transaction_date,
+       transaction_type,
+       to_char(exchange_rate) exchange_rate,
+	   cost_retired_usd,
+       reserve_retired_usd,
+       net_book_value_retired_usd,
+       proceeds_of_sale_usd,
+       removal_cost_usd,
+       gain_loss_usd
+from xxfa_global_asset_retirements
+&C_WHERE_CLAUSE1
+order by transaction_type,asset_number
+ ]]> 
+  </sqlStatement>
+ </dataQuery>
+  <dataTrigger name="afterParameterFormTrigger" source="XXFA_ASSET_PKG.ret_afterpform" /> 
+  <dataTrigger name="beforeReportTrigger" source="XXFA_ASSET_PKG.ret_beforereport"/>
+ <dataStructure>
+  <element name="P_REQUEST_ID" dataType="number" value="XXFA_ASSET_PKG.P_REQUEST_ID" /> 
+ <group name="G_HEADER" source="Q_ASSET_RETIREMENTS">
+   <element name="ASSET_NUMBER" dataType="VARCHAR2" value="ASSET_NUMBER" /> 
+   <element name="ASSET_DESCRIPTION" dataType="VARCHAR2" value="ASSET_DESCRIPTION" /> 
+   <element name="ASSET_BOOK" dataType="VARCHAR2" value="ASSET_BOOK" />    
+   <element name="ASSET_COST_ACCT" dataType="VARCHAR2" value="ASSET_COST_ACCT" /> 
+   <element name="DEPRN_RESERVE_ACCT" dataType="VARCHAR2" value="DEPRN_RESERVE_ACCT" /> 
+   <element name="LE" dataType="VARCHAR2" value="LE" /> 
+   <element name="PL" dataType="VARCHAR2" value="PL" /> 
+   <element name="SITE" dataType="VARCHAR2" value="SITE" /> 
+   <element name="CC" dataType="VARCHAR2" value="CC" /> 
+   <element name="ACCOUNT" dataType="VARCHAR2" value="ACCOUNT" /> 
+   <element name="IC" dataType="VARCHAR2" value="IC" /> 
+   <element name="DATE_PLACED_IN_SERVICE" dataType="VARCHAR2" value="DATE_PLACED_IN_SERVICE" /> 
+   <element name="PERIOD_EFFECTIVE" dataType="VARCHAR2" value="PERIOD_EFFECTIVE" /> 
+   <element name="PERIOD_ENTERED" dataType="VARCHAR2" value="PERIOD_ENTERED" /> 
+   <element name="ASSET_CURRENCY" dataType="VARCHAR2" value="ASSET_CURRENCY" /> 
+   <element name="COST_RETIRED" dataType="NUMBER" value="COST_RETIRED" /> 
+   <element name="RESERVE_RETIRED" dataType="NUMBER" value="RESERVE_RETIRED" /> 
+   <element name="NET_BOOK_VALUE_RETIRED" dataType="NUMBER" value="NET_BOOK_VALUE_RETIRED" /> 
+   <element name="PROCEEDS_OF_SALE" dataType="NUMBER" value="PROCEEDS_OF_SALE" /> 
+   <element name="REMOVAL_COST" dataType="NUMBER" value="REMOVAL_COST" /> 
+   <element name="GAIN_LOSS" dataType="NUMBER" value="GAIN_LOSS" /> 
+   <element name="TRANSACTION_HEADER_ID" dataType="NUMBER" value="TRANSACTION_HEADER_ID" /> 
+   <element name="TRANSACTION_DATE" dataType="VARCHAR2" value="TRANSACTION_DATE" />
+   <element name="TRANSACTION_TYPE" dataType="VARCHAR2" value="TRANSACTION_TYPE" /> 
+   <element name="EXCHANGE_RATE" dataType="VARCHAR2" value="EXCHANGE_RATE" /> 
+   <element name="COST_RETIRED_USD" dataType="NUMBER" value="COST_RETIRED_USD" /> 
+   <element name="RESERVE_RETIRED_USD" dataType="NUMBER" value="RESERVE_RETIRED_USD" /> 
+   <element name="NET_BOOK_VALUE_RETIRED_USD" dataType="NUMBER" value="NET_BOOK_VALUE_RETIRED_USD" /> 
+   <element name="PROCEEDS_OF_SALE_USD" dataType="NUMBER" value="PROCEEDS_OF_SALE_USD" /> 
+   <element name="REMOVAL_COST_USD" dataType="NUMBER" value="REMOVAL_COST_USD" /> 
+   <element name="GAIN_LOSS_USD" dataType="NUMBER" value="GAIN_LOSS_USD" />
+ </group>
+  <element name="C_WHERE_CLAUSE1" dataType="varchar2" value="XXFA_ASSET_PKG.C_WHERE_CLAUSE1"/>
+  <element name="GT_COST_RETIRED_USD" function="sum" dataType="number" value="G_HEADER.COST_RETIRED_USD" />
+  <element name="GT_RESERVE_RETIRED_USD" function="sum" dataType="number" value="G_HEADER.RESERVE_RETIRED_USD" />
+  <element name="GT_NET_BOOK_VALUE_RETIRED_USD" function="sum" dataType="number" value="G_HEADER.NET_BOOK_VALUE_RETIRED_USD" />
+  <element name="GT_PROCEEDS_OF_SALE_USD" function="sum" dataType="number" value="G_HEADER.PROCEEDS_OF_SALE_USD" />
+  <element name="GT_REMOVAL_COST_USD" function="sum" dataType="number" value="G_HEADER.REMOVAL_COST_USD" />
+  <element name="GT_GAIN_LOSS_USD" function="sum" dataType="number" value="G_HEADER.GAIN_LOSS_USD" />
+  </dataStructure>
+  <dataTrigger name="afterReportTrigger" source="XXFA_ASSET_PKG.ret_afterreport()" /> 
+</dataTemplate>
+
+ 

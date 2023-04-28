@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oa:listOfValues version="10.1.3_" xml:lang="en-US" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <ui:contents>
+      <oa:table name="GLPeriodNameLovRN" id="GLPeriodNameLovVO1">
+         <ui:contents>
+            <oa:messageStyledText id="ApplicationId" dataType="NUMBER" prompt="ApplicationId" viewName="GLPeriodNameLovVO1" viewAttr="ApplicationId" maximumLength="15" rendered="false"/>
+            <oa:messageStyledText id="SetOfBooksId" dataType="NUMBER" prompt="SetOfBooksId" viewName="GLPeriodNameLovVO1" viewAttr="SetOfBooksId" maximumLength="15" rendered="false" selectiveSearchCriteria="false" queryable="false"/>
+            <oa:messageStyledText id="PeriodName" dataType="VARCHAR2" prompt="Period Name" viewName="GLPeriodNameLovVO1" viewAttr="PeriodName" maximumLength="15" queryable="true"/>
+            <oa:messageStyledText id="PeriodYear" dataType="NUMBER" prompt="Period Year" viewName="GLPeriodNameLovVO1" viewAttr="PeriodYear" maximumLength="15" queryable="true"/>
+            <oa:messageStyledText id="StartDate" dataType="DATE" prompt="Start Date" viewName="GLPeriodNameLovVO1" viewAttr="StartDate" queryable="true"/>
+            <oa:messageStyledText id="EndDate" dataType="DATE" prompt="End Date" viewName="GLPeriodNameLovVO1" viewAttr="EndDate" queryable="true"/>
+            <oa:messageStyledText id="ClosingStatus" dataType="VARCHAR2" prompt="Closing Status" viewName="GLPeriodNameLovVO1" viewAttr="ClosingStatus" maximumLength="1" queryable="true"/>
+         </ui:contents>
+      </oa:table>
+   </ui:contents>
+</oa:listOfValues>

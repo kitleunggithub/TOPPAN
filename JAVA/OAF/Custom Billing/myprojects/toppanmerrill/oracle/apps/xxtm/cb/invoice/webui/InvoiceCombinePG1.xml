@@ -1,0 +1,198 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <content>
+      <oa:pageLayout id="PageLayoutRN" amDefName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SearchInvoiceAM" amStateRequired="false" controllerClass="toppanmerrill.oracle.apps.xxtm.cb.invoice.webui.InvoiceCombineCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:formValue id="ParentTransactionTypeIdFD" viewName="InvoiceCombineReqVO1" viewAttr="CustTrxTypeId" dataType="NUMBER"/>
+            <oa:formValue id="ParentCustomerIdFD" viewName="InvoiceCombineReqVO1" viewAttr="BillToCustomerId" dataType="NUMBER"/>
+            <oa:header id="CombineReqHR" text="Combine Invoice Transaction Request"/>
+            <oa:messageComponentLayout id="CombineReqRN" columns="2">
+               <ui:contents>
+                  <oa:messageStyledText id="CombineReqNumFD" viewName="InvoiceCombineReqVO1" viewAttr="CombineReqNumber" prompt="Combine Request Number"/>
+                  <oa:messageStyledText id="CombineReqStatusFD" viewName="InvoiceCombineReqVO1" viewAttr="Status" prompt="Status"/>
+               </ui:contents>
+            </oa:messageComponentLayout>
+            <oa:advancedTable id="CombineReqParentInvoiceTH" viewName="InvoiceCombineReqVO1" text="Parent Invoice Transaction" width="90%">
+               <ui:contents>
+                  <oa:column id="ParentTransactionNumCN">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="ParentTransactionNumTH" prompt="Transaction Number"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageStyledText id="ParentTransactionNumFD" viewAttr="ArTrxNumber"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="ParentTransactionDateCN">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="ParentTransactionDateTH" prompt="Transaction Date"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageStyledText id="ParentTransactionDateFD" dataType="DATE" viewAttr="TrxDate"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="ParentProjectNumCN">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="ParentProjectNumTH" prompt="Project Num"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageStyledText id="ParentProjectNumFD" viewAttr="ProjectNumber"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="ParentProjectNameCN">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="ParentProjectNameTH" prompt="Project Name"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageStyledText id="ParentProjectNameFD" viewAttr="ProjectName"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="ParentBillToCustomerNameCN">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="ParentBillToCustomerNameTH" prompt="Bill to Customer"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageStyledText id="ParentBillToCustomerNameFD" viewAttr="CustomerName"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="ParentStatusCN">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="ParentStatusTH" prompt="Status"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageStyledText id="ParentStatusFD" viewAttr="CurrentStatusDescription"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="ParentInvoiceClassCN">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="ParentInvoiceClassTH" prompt="Invoice Class"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageStyledText id="ParentInvioceClassFD" viewAttr="InvoiceClassDescription"/>
+                     </ui:contents>
+                  </oa:column>
+               </ui:contents>
+            </oa:advancedTable>
+            <oa:advancedTable id="CombineReqChildInvoiceTH" text="Child Invoice Transaction" viewName="InvoiceCombineReqDtlVO1" width="90%">
+               <ui:contents>
+                  <oa:column id="CombineReqDtlIdCN">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="CombineReqDtlIdTH" prompt="Combine Req Dtl Id"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageStyledText id="CombineReqDtlIdFD" viewAttr="CombineReqDtlId"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="ChildCustomerTrxIdCN">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="ChildCustomerTrxIdTH" prompt="Transaction Id"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageTextInput id="ChildCustomerTrxIdFD" viewAttr="ChildCustomerTrxId"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="ChildTransactionNumCN">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="ChildTransactionNumTH" prompt="Transaction Number"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageLovInput id="ChildTransactionNumFD" viewAttr="ArTrxNumber" externalListOfValues="/toppanmerrill/oracle/apps/xxtm/cb/invoice/webui/SearchInvoiceLovRN" required="yes">
+                           <jrad:lovMappings>
+                              <jrad:lovMap id="lovMap1" lovItem="ArTrxNumber" resultTo="ChildTransactionNumFD" criteriaFrom="ChildTransactionNumFD"/>
+                              <lovMap id="lovMap2" lovItem="CustomerTrxId" resultTo="ChildCustomerTrxIdFD"/>
+                              <lovMap id="lovMap3" lovItem="TrxDate" resultTo="ChildCustomerTrxDateFD"/>
+                              <lovMap id="lovMap4" lovItem="ProjectNumber" resultTo="ChildCustomerTrxProjectNumFD"/>
+                              <lovMap id="lovMap5" lovItem="ProjectName" resultTo="ChildCustomerTrxProjectNameFD"/>
+                              <lovMap id="lovMap6" lovItem="CurrentStatusDescription" resultTo="ChildCustomerTrxStatusFD"/>
+                              <lovMap id="lovMap7" lovItem="InvoiceClassDescription" resultTo="ChildCustomerTrxClassFD"/>
+                              <lovMap id="lovMap8" lovItem="BillToCustomerId" criteriaFrom="ParentCustomerIdFD"/>
+                           </jrad:lovMappings>
+                        </oa:messageLovInput>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="ChildCustomerTrxDateCN">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="ChildCustomerTrxDateTH" prompt="Transaction Date"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageTextInput id="ChildCustomerTrxDateFD" viewAttr="TrxDate" dataType="DATE"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="ChildCustomerTrxProjectNumCN">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="ChildCustomerTrxProjectNumTH" prompt="Project Num"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageTextInput id="ChildCustomerTrxProjectNumFD" viewAttr="ProjectNumber"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="ChildCustomerTrxProjectNameCN">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="ChildCustomerTrxProjectNameTH" prompt="Project Name"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageTextInput id="ChildCustomerTrxProjectNameFD" viewAttr="ProjectName"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="ChildCustomerTrxCustomerCN">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="ChildCustomerTrxCustomerTH" prompt="Customer Name"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageTextInput id="ChildCustomerTrxCustomerFD" viewAttr="CustomerName"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="ChildCustomerTrxStatusCN">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="ChildCustomerTrxStatusTH" prompt="Status"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageTextInput id="ChildCustomerTrxStatusFD" viewAttr="CurrentStatusDescription"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="ChildCustomerTrxClassCN">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="ChildCustomerTrxClassTH" prompt="Invoice Class"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageTextInput id="ChildCustomerTrxClassFD" viewAttr="InvoiceClassDescription"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="CombineReqChildInvoiceDelCN" width="10%">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="CombineReqChildInvoiceDelTH" prompt="Remove"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:image id="CombineReqChildInvoiceDelBN" use="/oracle/apps/fnd/attributesets/Buttons/Delete" source="deleteicon_enabled.gif" prompt="" warnAboutChanges="false">
+                           <ui:primaryClientAction>
+                              <ui:firePartialAction unvalidated="true" event="DeleteCombineReqChildInvoice">
+                                 <ui:parameters>
+                                    <ui:parameter key="CombineReqDtlId" value="${oa.InvoiceCombineReqDtlVO1.CombineReqDtlId}"/>
+                                 </ui:parameters>
+                              </ui:firePartialAction>
+                           </ui:primaryClientAction>
+                        </oa:image>
+                     </ui:contents>
+                  </oa:column>
+               </ui:contents>
+               <ui:tableActions>
+                  <oa:flowLayout id="CombineReqChildInvoiceTA">
+                     <ui:contents>
+                        <oa:submitButton id="CombineReqChildInvoiceAddBN" text="Add Child Invoice" prompt="Add Child Invoice">
+                           <ui:primaryClientAction>
+                              <ui:firePartialAction event="addRows"/>
+                           </ui:primaryClientAction>
+                        </oa:submitButton>
+                     </ui:contents>
+                  </oa:flowLayout>
+               </ui:tableActions>
+            </oa:advancedTable>
+         </ui:contents>
+         <ui:location>
+            <oa:train id="CombineReqDtlTN" extends="/toppanmerrill/oracle/apps/xxtm/cb/invoice/webui/InvoiceCombineTrainRN"/>
+         </ui:location>		 
+      </oa:pageLayout>
+   </content>
+</page>

@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oa:listOfValues version="10.1.3_" xml:lang="en-US" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <ui:contents>
+      <oa:table name="SearchInvoiceLovRN" id="SearchInvoiceLovVO1">
+         <ui:contents>
+            <oa:messageStyledText id="CustomerTrxId" dataType="NUMBER" prompt="CustomerTrxId" viewName="SearchInvoiceLovVO1" viewAttr="CustomerTrxId" maximumLength="15" rendered="false"/>
+            <oa:messageStyledText id="CustTrxTypeId" dataType="NUMBER" prompt="CustTrxTypeId" viewName="SearchInvoiceLovVO1" viewAttr="CustTrxTypeId" maximumLength="15" rendered="false"/>
+            <oa:messageStyledText id="BillToCustomerId" dataType="NUMBER" prompt="BillToCustomerId" viewName="SearchInvoiceLovVO1" viewAttr="BillToCustomerId" maximumLength="15" rendered="false"/>
+            <oa:messageStyledText id="ArTrxNumber" dataType="VARCHAR2" prompt="Transaction Number" viewName="SearchInvoiceLovVO1" viewAttr="ArTrxNumber" maximumLength="20" queryable="true"/>
+            <oa:messageStyledText id="TrxDate" dataType="DATE" prompt="Transaction Date" viewName="SearchInvoiceLovVO1" viewAttr="TrxDate" queryable="true"/>
+            <oa:messageStyledText id="ProjectNumber" dataType="VARCHAR2" prompt="Project Number" viewName="SearchInvoiceLovVO1" viewAttr="ProjectNumber" maximumLength="25" queryable="true"/>
+            <oa:messageStyledText id="ProjectName" dataType="VARCHAR2" prompt="Project Name" viewName="SearchInvoiceLovVO1" viewAttr="ProjectName" maximumLength="240" queryable="true"/>
+            <oa:messageStyledText id="CustomerName" dataType="VARCHAR2" prompt="Customer Name" viewName="SearchInvoiceLovVO1" viewAttr="CustomerName" maximumLength="360"/>
+            <oa:messageStyledText id="CurrentStatusDescription" dataType="VARCHAR2" prompt="Status" viewName="SearchInvoiceLovVO1" viewAttr="CurrentStatusDescription" maximumLength="240"/>
+            <oa:messageStyledText id="InvoiceClassDescription" dataType="VARCHAR2" prompt="Invoice Class" viewName="SearchInvoiceLovVO1" viewAttr="InvoiceClassDescription" maximumLength="240"/>
+            <oa:messageStyledText id="InvoiceAmt" dataType="NUMBER" prompt="Invoice Amount" viewName="SearchInvoiceLovVO1" viewAttr="TotalInvoiceAmt" maximumLength="50"/>
+         </ui:contents>
+      </oa:table>
+   </ui:contents>
+</oa:listOfValues>

@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+
+<!-- $Header: TutorialLOVAM.xml 120.8 2006/07/03 15:12:12 atgops1 noship $ -->
+
+<AppModule
+   Name="TutorialLOVAM"
+   ComponentClass="oracle.apps.fnd.framework.server.OAApplicationModuleImpl"
+   LoadComponentsLazily="true" >
+   <DesignTime>
+      <Attr Name="_version" Value="10.1.3.38.51" />
+      <Attr Name="_deployType" Value="0" />
+   </DesignTime>
+   <ViewUsage
+      Name="ValidBuyersExpVO1"
+      ViewObjectName="oracle.apps.fnd.framework.toolbox.lov.server.ValidBuyersExpVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="AllPOsExpVO1"
+      ViewObjectName="oracle.apps.fnd.framework.toolbox.lov.server.AllPOsExpVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="SuppliersLOVVO1"
+      ViewObjectName="oracle.apps.fnd.framework.toolbox.lov.server.SuppliersLOVVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="SupplierSitesLOVVO1"
+      ViewObjectName="oracle.apps.fnd.framework.toolbox.lov.server.SupplierSitesLOVVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="EmployeesLOVVO1"
+      ViewObjectName="oracle.apps.fnd.framework.toolbox.lov.server.EmployeesLOVVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="IdForSupplierNameVVO1"
+      ViewObjectName="oracle.apps.fnd.framework.toolbox.schema.server.IdForSupplierNameVVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="EmployeeNamesVO1"
+      ViewObjectName="oracle.apps.fnd.framework.toolbox.lov.server.EmployeeNamesVO" >
+   </ViewUsage>
+</AppModule>

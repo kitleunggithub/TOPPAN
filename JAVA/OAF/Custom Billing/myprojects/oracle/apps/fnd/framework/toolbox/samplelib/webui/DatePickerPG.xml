@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath:~PROD:~PATH:~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath:~PROD:mds:directory  -->
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_1346" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <content>
+      <oa:pageLayout id="region1" amDefName="oracle.apps.fnd.framework.toolbox.samplelib.server.SampleBrowserAM" controllerClass="oracle.apps.fnd.framework.toolbox.samplelib.webui.DatePickerCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:defaultSingleColumn id="region2">
+               <ui:contents>
+                  <oa:messageTextInput id="DateItem1" dataType="DATE" viewName="EmployeesVO1" viewAttr="StartDate"/>
+               </ui:contents>
+            </oa:defaultSingleColumn>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>

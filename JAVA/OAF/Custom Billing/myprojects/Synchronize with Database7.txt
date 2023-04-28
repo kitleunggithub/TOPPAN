@@ -1,0 +1,7 @@
+The following Synchronization Actions were performed successfully:
+
+Entity :InvoiceLineEO
+  Remove Key Constraint: SysC00277836
+  Remove Key Constraint: SysC00277834
+  Remove Key Constraint: SysC00277833
+  Create Key for Constraint: XXBS_TRX_LINES2TRX_FK

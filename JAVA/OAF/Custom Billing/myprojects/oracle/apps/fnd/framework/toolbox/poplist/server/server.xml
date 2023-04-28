@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE JboPackage SYSTEM "jbo_03_01.dtd">
+<!-- $Header: server.xml 120.8.12010000.3 2008/10/14 06:19:48 sette ship $ -->
+
+<JboPackage
+   Name="server"
+   SeparateXMLFiles="true"
+   PackageName="oracle.apps.fnd.framework.toolbox.poplist.server" >
+   <DesignTime>
+      <Attr Name="_ejbPackage" Value="false" />
+      <Attr Name="_version" Value="10.1.3.38.51" />
+   </DesignTime>
+   <Containee
+      Name="CarriersVO"
+      FullName="oracle.apps.fnd.framework.toolbox.poplist.server.CarriersVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="CreatedListVO"
+      FullName="oracle.apps.fnd.framework.toolbox.poplist.server.CreatedListVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="CurrencyVO"
+      FullName="oracle.apps.fnd.framework.toolbox.poplist.server.CurrencyVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="HomeSearchObjectsVO"
+      FullName="oracle.apps.fnd.framework.toolbox.poplist.server.HomeSearchObjectsVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="LookupTypesVO"
+      FullName="oracle.apps.fnd.framework.toolbox.poplist.server.LookupTypesVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="OrderStatusesVO"
+      FullName="oracle.apps.fnd.framework.toolbox.poplist.server.OrderStatusesVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="PaymentTermsVO"
+      FullName="oracle.apps.fnd.framework.toolbox.poplist.server.PaymentTermsVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="PositionsVO"
+      FullName="oracle.apps.fnd.framework.toolbox.poplist.server.PositionsVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="StatusListVO"
+      FullName="oracle.apps.fnd.framework.toolbox.poplist.server.StatusListVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="UnitsOfMeasureVO"
+      FullName="oracle.apps.fnd.framework.toolbox.poplist.server.UnitsOfMeasureVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="YesNoVO"
+      FullName="oracle.apps.fnd.framework.toolbox.poplist.server.YesNoVO"
+      ObjectType="ViewObject" >
+   </Containee>
+</JboPackage>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding='windows-1252'?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<!-- $Header: SuppliersExpVO.xml 120.7 2005/07/12 11:13:46 atgops1 noship $ -->
+
+<ViewObject
+   Name="SuppliersExpVO"
+   BindingStyle="Oracle"
+   CustomQuery="true"
+   RowClass="oracle.apps.fnd.framework.toolbox.tutorial.server.SuppliersExpVORowImpl"
+   ComponentClass="oracle.apps.fnd.framework.toolbox.tutorial.server.SuppliersExpVOImpl"
+   MsgBundleClass="oracle.jbo.common.JboResourceBundle"
+   FetchMode="FETCH_AS_NEEDED"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+SELECT SupplierEO.SUPPLIER_ID, 
+       SupplierEO.NAME, 
+       SupplierEO.ON_HOLD_FLAG, 
+       SupplierEO.START_DATE, 
+       SupplierEO.END_DATE,
+       flk.meaning AS ON_HOLD_DISPLAY
+FROM FWK_TBX_SUPPLIERS SupplierEO,
+     fwk_tbx_lookup_codes_vl flk
+where SupplierEO.on_hold_flag = flk.lookup_code 
+and   flk.lookup_type = 'FWK_TBX_YES_NO'
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="9.0.3.10.14" />
+      <Attr Name="_CodeGenFlagNew" Value="36" />
+   </DesignTime>
+   <ViewAttribute
+      Name="SupplierId"
+      IsQueriable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Type="oracle.jbo.domain.Number"
+      AliasName="SUPPLIER_ID"
+      ColumnType="VARCHAR2"
+      Expression="SUPPLIER_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Name"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="80"
+      Type="java.lang.String"
+      AliasName="NAME"
+      ColumnType="VARCHAR2"
+      Expression="NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="OnHoldFlag"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="1"
+      Type="java.lang.String"
+      AliasName="ON_HOLD_FLAG"
+      ColumnType="VARCHAR2"
+      Expression="ON_HOLD_FLAG"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="1" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StartDate"
+      IsQueriable="false"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Date"
+      AliasName="START_DATE"
+      ColumnType="VARCHAR2"
+      Expression="START_DATE"
+      SQLType="DATE" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="EndDate"
+      IsQueriable="false"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Date"
+      AliasName="END_DATE"
+      ColumnType="VARCHAR2"
+      Expression="END_DATE"
+      SQLType="DATE" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="OnHoldDisplay"
+      IsQueriable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="80"
+      Type="java.lang.String"
+      AliasName="ON_HOLD_DISPLAY"
+      ColumnType="VARCHAR2"
+      Expression="ON_HOLD_DISPLAY"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+</ViewObject>

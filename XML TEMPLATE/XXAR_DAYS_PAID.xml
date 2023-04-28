@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+03/23/17 akaplan Enh Req 1853 - Convert to BIP.
+-->
+<dataTemplate name="XXAR_DAYS_PAID" defaultPackage="" description="XXAR Days Paid to Cash Receipt">
+   <properties>
+      <property name="include_parameters" value="true"/>
+      <property name="include_null_Element" value="true"/>
+      <property name="xml_tag_case"       value="upper"/>
+      <property name="db_fetch_size"      value="100"/>
+      <property name="scalable_mode"      value="off"/>
+      <property name="include_rowsettag"  value="false"/>
+      <property name="debug_mode"         value="on"/>
+   </properties>
+   <parameters>
+      <parameter name="p_org_id"          dataType="character" />
+      <parameter name="p_from_cust_name"  dataType="character" />
+      <parameter name="p_to_cust_name"    dataType="character" />
+      <parameter name="p_from_apply_date" dataType="character" />
+      <parameter name="p_to_apply_date"   dataType="character" />
+      <parameter name="p_days_paid"       dataType="character" />
+      <parameter name="p_from_inv_type"   dataType="character" />
+      <parameter name="p_to_inv_type"     dataType="character" />
+      <parameter name="p_from_le"         dataType="character" />
+      <parameter name="p_to_le"           dataType="character" />
+      <parameter name="p_bus_unit"        dataType="character" />
+   </parameters>
+  <lexicals/>
+
+  <dataQuery>
+    <sqlStatement name="Q_HEADER" dataSourceRef="">
+      <![CDATA[
+SELECT to_char(sysdate,'DD-MON-YYYY')        report_run_date
+	 , to_Char(to_date(:p_from_apply_date,'YYYY/MM/DD HH24:MI:SS'),'DD-MON-YYYY') p_from_apply_date_d
+	 , to_Char(to_date(:p_to_apply_date,'YYYY/MM/DD HH24:MI:SS'),'DD-MON-YYYY') p_to_apply_date_d
+     , xxcm_common.get_org_name(:p_org_id)   p_org_name
+     , decode(:p_from_le,NULL,NULL,:p_from_le||' ['||xxcm_common.get_flex_value_field('XXGL_LEGAL_ENTITY', :p_from_le) ||']') p_from_legal_entity
+     , decode(:p_to_le,NULL,NULL,:p_to_le||' ['||xxcm_common.get_flex_value_field('XXGL_LEGAL_ENTITY', :p_to_le) ||']')       p_to_legal_entity
+FROM dual
+]]>
+    </sqlStatement>
+    <sqlStatement name="Q_REPORT" dataSourceRef="">
+      <![CDATA[
+SELECT
+     trx.org_id                              ORG_ID
+   , cust.customer_id                        CUST_ACCOUNT_ID
+   , trx.customer_trx_id                     AR_CUSTOMER_TRX_ID
+   , app.receivable_application_id           RECEIVABLE_APPLICATION_ID
+   , ppa.project_id                          PROJECT_ID
+   , xxcm_common.get_org_name(trx.org_id)    OPERATING_UNIT_NAME
+   , cust.CUSTOMER_NAME                      CUSTOMER_NAME
+   , cust.CUSTOMER_NUMBER               CUSTOMER_NUMBER
+   ,'Business Unit'							 BUSINESS_UNIT
+   --, xxcm_common.get_business_unit(glcc.segment2) BUSINESS_UNIT
+   , glcc.segment1                      LEGAL_ENTITY
+   , xxcm_common.get_flex_value_field('XXGL_LEGAL_ENTITY', glcc.segment1) LEGAL_ENTITY_NAME
+   , trx.trx_number                     INVOICE_NUMBER
+   , to_char(trx.trx_date,'DD-Mon-YYYY')     INVOICE_DATE
+   , trx.invoice_currency_code               INVOICE_CURRENCY_CODE
+   , typ.name                                INVOICE_TYPE
+   , xxbs_trx_pkg.get_salesrep_by_trx(trx.org_id,trx.trx_number,1,1)    PRIMARY_SALESREP
+   , xxbs_trx_pkg.get_salesrep_by_trx(trx.org_id,trx.trx_number,1,2)    PRIMARY_SALESREP_SPLIT
+   , xxbs_trx_pkg.get_salesrep_by_trx(trx.org_id,trx.trx_number,999,1) OTHER_SALESREP_NAME
+   , xxbs_trx_pkg.get_salesrep_by_trx(trx.org_id,trx.trx_number,999,2) OTHER_SALESREP_SPLIT
+   , xxbs_trx_pkg.get_pri_product_type_name(xct.primary_product_type_id) PRIMARY_PRODUCT_TYPE   
+   , pay.amount_due_original                 ORIG_AMOUNT
+   , app.amount_applied                      APPLIED_AMOUNT
+   , pay.amount_due_remaining                OPEN_AMOUNT
+   , app.acctd_amount_applied_to             FUNC_AMOUNT
+   , l.currency_code                         FUNC_CURRENCY_CODE
+   , to_char(app.apply_date,'DD-Mon-YYYY')   APPLIED_DATE
+   , cr.receipt_number                  	 RCPT_NUMBER                      
+   , to_char(cr.receipt_date,'DD-Mon-YYYY')  RCPT_DATE
+   , cr.receipt_date - trx.trx_date          DAYS_PAID
+   , (case when interface_header_context = 'TM CONVERSION' then trx.interface_header_attribute5 else ppa.name end) PROJECT_NAME
+   , to_char(gd.gl_date,'DD-Mon-YYYY')       INVOICE_GL_DATE
+   , to_char(app.gl_date,'DD-Mon-YYYY')      RECEIPT_GL_DATE   
+   , rcpt_bank.REMIT_BANK_NAME               RECEIPT_BANK_NAME
+   , rcpt_bank.REMIT_BANK_ACCOUNT_NUM        RECEIPT_BANK_ACCOUNT_NUMBER   
+FROM ar_payment_schedules         pay
+  JOIN ra_customer_trx            trx ON ( trx.customer_trx_id = pay.customer_trx_id )
+  LEFT JOIN xxbs_customer_trx         xct ON ( trx.trx_number = xct.ar_trx_number and trx.org_id = xct.org_id )
+  JOIN (
+        -- Dash Kit Leung - 05-MAY-2021 - Enhancement - show applied and un-applied history in the report
+        /*
+        select distinct applied_customer_trx_id
+             , cash_receipt_id
+             , code_combination_id
+             , amount_applied
+             , acctd_amount_applied_to
+             , trunc(min(apply_date) over (partition by applied_customer_trx_id, cash_receipt_id
+                                                      , code_combination_id, amount_applied)) apply_date
+        FROM ar_receivable_applications
+        WHERE status IN ('APP','ACC')
+          AND amount_applied > 0
+       */
+        select receivable_application_id
+             , applied_customer_trx_id
+             , cash_receipt_id
+             , code_combination_id
+             , amount_applied amount_applied
+             , acctd_amount_applied_to acctd_amount_applied_to
+             , trunc(apply_date) apply_date
+			 , gl_date gl_date
+        FROM ar_receivable_applications
+        WHERE status IN ('APP','ACC')                    
+       ) app ON ( app.applied_customer_trx_id = trx.customer_trx_id )
+  JOIN ar_cash_receipts            cr ON ( cr.cash_receipt_id = app.cash_receipt_id )
+  JOIN ra_cust_trx_types          typ ON ( typ.cust_trx_type_id = trx.cust_trx_type_id
+                                       AND typ.TYPE = 'INV' )
+  LEFT JOIN pa_projects            ppa ON (ppa.project_id = trx.interface_header_attribute2)
+  JOIN (select * from RA_CUST_TRX_LINE_GL_DIST_ALL gld WHERE gld.account_class = 'REC' AND gld.latest_rec_flag = 'Y') gd ON (trx.customer_trx_id = gd.customer_trx_id)  
+  JOIN ar_customers              cust ON ( cust.customer_id = cr.pay_from_customer )
+  JOIN gl_code_combinations      glcc ON ( glcc.code_combination_id = app.code_combination_id )
+  JOIN gl_ledgers                   l ON ( l.ledger_id = cr.set_of_books_id )
+  JOIN (SELECT 
+            aba.bank_acct_use_id,
+            cb.bank_name REMIT_BANK_NAME,
+            abb.bank_branch_name REMIT_BRANCH_NAME,
+            cba.bank_account_name REMIT_BANK_ACCOUNT_NAME,
+            cba.bank_account_num REMIT_BANK_ACCOUNT_NUM
+        FROM ce_bank_accounts cba, ce_bank_acct_uses aba, ce_banks_v cb, ce_bank_branches_v abb
+        WHERE cba.bank_branch_id = abb.branch_party_id (+)
+        AND cba.bank_id = cb.bank_party_id (+)
+        AND aba.bank_account_id = cba.bank_account_id
+        ) rcpt_bank ON ( cr.remit_bank_acct_use_id = rcpt_bank.bank_acct_use_id )
+/*		
+  LEFT JOIN (SELECT * FROM 
+                ( 
+                SELECT
+                    org_id                                      org_id,
+                    trx_number                                  trx_number,
+                    to_number(interface_header_attribute10)     salesrep_id,
+                    to_number(interface_header_attribute11)     sales_split
+                FROM
+                    ra_customer_trx
+                WHERE
+                    interface_header_context = 'TM CONVERSION'
+                UNION ALL
+                SELECT
+                    xct.org_id,
+                    xct.ar_trx_number       trx_number,
+                    xrs.salesrep_id         salesrep_id,
+                    xrs.split_percentage    sales_split
+                FROM
+                    xxbs_customer_trx  xct,
+                    xxbs_rep_splits    xrs
+                WHERE xct.customer_trx_id = xrs.customer_trx_id
+                AND xrs.primary_flag = 'Y') rep
+                JOIN jtf_rs_resource_extns_tl ext 
+                on ( ext.resource_id = rep.salesrep_id )
+               ) salesrep 
+               ON ( salesrep.trx_number = trx.trx_number
+                    and salesrep.org_id = trx.org_id)
+*/
+--WHERE cr.status = 'APP' -- Dash Kit Leung - 05-MAY-2021 - Enhancement - show applied and un-applied history in the report
+  WHERE 1=1
+  AND (typ.name BETWEEN nvl(:p_from_inv_type, typ.name)
+                    AND nvl(:p_to_inv_type, typ.name))
+  AND (glcc.segment1 BETWEEN nvl(:p_from_le, glcc.segment1)
+                         AND nvl(:p_to_le, glcc.segment1))
+  AND (cust.customer_name BETWEEN nvl(:p_from_cust_name, cust.customer_name)
+                              AND nvl(:p_to_cust_name, cust.customer_name))
+  AND (app.apply_date BETWEEN nvl(to_date(:p_from_apply_date,'YYYY/MM/DD HH24:MI:SS'), app.apply_date)
+                          AND nvl(to_date(:p_to_apply_date,'YYYY/MM/DD HH24:MI:SS'), app.apply_date))
+  AND (:p_org_id IS NULL OR trx.org_id = :p_org_id )
+  AND (:p_bus_unit IS NULL or xxcm_common.get_business_unit(glcc.segment2) = :p_bus_unit )
+  AND (:p_days_paid is null or app.apply_date - trx.trx_date <= :p_days_paid)
+ORDER BY cust.customer_name, glcc.segment1
+]]>
+     </sqlStatement>
+   </dataQuery>
+  <dataStructure>
+    <group name="G_HEADER" source="Q_HEADER" groupFilter="">
+      <element name="report_run_date"      value="report_run_date"     />
+	  <element name="p_from_apply_date_d"  value="p_from_apply_date_d"     />
+	  <element name="p_to_apply_date_d"    value="p_to_apply_date_d"     />
+      <element name="p_org_name"           value="p_org_name"          />
+      <element name="p_from_legal_entity"  value="p_from_legal_entity" />
+      <element name="p_to_legal_entity"    value="p_to_legal_entity"   />
+    </group>
+    <group name="G_REPORT" source="Q_REPORT" groupFilter="">
+      <element name="ORGANIZATION"         value="OPERATING_UNIT_NAME"     />
+      <element name="CUST_NAME"            value="CUSTOMER_NAME"    />
+      <element name="CUST_NUMBER"          value="CUSTOMER_NUMBER"  />
+      <element name="BUSINESS_UNIT"        value="BUSINESS_UNIT"    />
+      <element name="LEGAL_ENTITY"         value="LEGAL_ENTITY"     />
+      <element name="LEGAL_ENTITY_NAME"    value="LEGAL_ENTITY_NAME"     />	  
+      <element name="INV_NUMBER"           value="INVOICE_NUMBER"       />
+      <element name="INV_DATE"             value="INVOICE_DATE"         />
+      <element name="INV_CURR_CODE"        value="INVOICE_CURRENCY_CODE"    />
+      <element name="INV_TYPE"             value="INVOICE_TYPE"         />
+      <element name="PRIMARY_SALESREP"     value="PRIMARY_SALESREP"    />
+      <element name="PRIMARY_SALESREP_SPLIT"	value="PRIMARY_SALESREP_SPLIT"    />
+      <element name="OTHER_SALESREP_NAME"  value="OTHER_SALESREP_NAME"    />
+	  <element name="OTHER_SALESREP_SPLIT"  value="OTHER_SALESREP_SPLIT"    />
+      <element name="PRIMARY_PRODUCT_TYPE" value="PRIMARY_PRODUCT_TYPE"    />	  
+      <element name="ORIG_AMT"             value="ORIG_AMOUNT"         />
+      <element name="APPLIED_AMT"          value="APPLIED_AMOUNT"      />
+      <element name="OPEN_AMT"             value="OPEN_AMOUNT"         />
+      <element name="FUNC_AMOUNT"          value="FUNC_AMOUNT"      />
+      <element name="FUNC_CURR_CODE"       value="FUNC_CURRENCY_CODE"   />
+      <element name="APPLIED_DATE"         value="APPLIED_DATE"     />
+      <element name="RCPT_NBR"             value="RCPT_NUMBER"      />
+      <element name="RCPT_DATE"            value="RCPT_DATE"        />
+      <element name="DAYS_PAID"            value="DAYS_PAID"        />
+      <element name="PROJECT_NAME"         value="PROJECT_NAME"     />
+      <element name="INVOICE_GL_DATE"      value="INVOICE_GL_DATE"      />
+      <element name="RECEIPT_GL_DATE"      value="RECEIPT_GL_DATE"      />	  
+      <element name="RECEIPT_BANK_NAME"    value="RECEIPT_BANK_NAME"        />
+      <element name="RECEIPT_BANK_ACCOUNT_NUMBER"	value="RECEIPT_BANK_ACCOUNT_NUMBER"        />
+    </group>
+  </dataStructure>
+</dataTemplate>
+

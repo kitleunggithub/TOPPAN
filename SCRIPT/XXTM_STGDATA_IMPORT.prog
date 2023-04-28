@@ -1,0 +1,25 @@
+#!/bin/sh
+ 
+echo 'Printing parameters....'
+#echo '0:'$0
+#echo '1:'$1
+#echo '2:'$2
+#echo '3:'$3
+#echo '4:'$4
+echo '5:'$5
+echo '6:'$6
+echo '7:'$7
+echo '8:'$8
+echo '9:'$9
+
+cd $JAVA_TOP/CSV2DB
+#java -cp lib/*:$JAVA_TOP/CSV2DB/bin dash.main.CSV2DB $5 $6 $7 $8 $9
+java -Djava.security.egd=file:/dev/./urandom -Dsecurerandom.source=file:/dev/./urandom -cp lib/*:$JAVA_TOP/CSV2DB/bin dash.main.CSV2DB $5 $6 $7 $8 $9
+
+
+if [ "$?" -ne "0" ]; then
+  echo "Insert to STG Database Failed. Please contact administrator."
+  exit 1
+fi 
+
+#echo 'FCPLOGIN:'$FCP_LOGIN

@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<!-- $Header: LookupTypesVO.xml 120.8 2006/07/03 15:45:38 atgops1 noship $ -->
+
+<ViewObject
+   Name="LookupTypesVO"
+   BindingStyle="Oracle"
+   CustomQuery="true"
+   RowClass="oracle.apps.fnd.framework.toolbox.poplist.server.LookupTypesVORowImpl"
+   ComponentClass="oracle.apps.fnd.framework.server.OAViewObjectImpl"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+select lookup_type, display_name from fwk_tbx_lookup_types_vl
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.38.51" />
+      <Attr Name="_codeGenFlag2" Value="Access" />
+   </DesignTime>
+   <ViewAttribute
+      Name="LookupType"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="LOOKUP_TYPE"
+      Expression="LOOKUP_TYPE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="DisplayName"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="80"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="DISPLAY_NAME"
+      Expression="DISPLAY_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+</ViewObject>

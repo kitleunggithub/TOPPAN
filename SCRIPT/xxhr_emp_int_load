@@ -1,0 +1,173 @@
+# !/bin/ksh
+#
+# Program:     xxhr_emp_int_load
+# Purpose:     Load HR employee demographic data into XXHR_EMPLOYEE_UPLOAD
+# Change History
+# Author      Date     Description
+#
+# Parameters: Database Instance
+#
+# Created 4/10/2017 Jill Dileva
+# Changes -- getting data via a file/MoveIt instead of a database link from Lawson database
+#
+# 7/27/2017 - Workday HCM is source of employee data
+# 
+# 2/21/2019 - no longer encrypting the file 
+#
+# 6/12/2019 - New "File Source" parameter for Hong Kong vs. Workday input files
+#
+# 9/11/2020 - TM Split Instance
+
+this_script_name='xxhr_emp_int_load'
+
+###############################################################################
+# Main Body
+###############################################################################
+echo "BEGIN xxhr_emp_int_load"
+echo "START TIME `date +%d%m%y%H%M`"
+
+## Source shared functions
+
+# TM Splite Instance
+#. $XXCM_TOP/bin/xxcm_lib.sh
+. $XXTM_TOP/bin/xxcm_lib.sh
+
+get_parameters 5 "$@"
+file_source=${param[1]}
+login_id=${param[3]}
+user_id=${param[4]}
+resp_name=${param[5]}
+resp_appl_short_name=${param[6]}
+echo "+--------------------------------------------------------------+"
+echo "Values of parameters:"
+echo "  File Source = $file_source"
+echo "  user_name = $user_name"
+echo "  login_id = $login_id"
+echo "  resp_name = $resp_name"
+echo "  resp_appl_short_name = $resp_appl_short_name"
+echo "+--------------------------------------------------------------+"
+
+################################################################################
+# Set other variables
+################################################################################
+
+## Directory on MoveIt where the source files are ##
+LOCAL_DIR=`sqlplus -s $login_str <<-END_OF_SQL
+          SET SERVEROUTPUT ON
+          SET PAGESIZE 0
+          WHENEVER SQLERROR EXIT FAILURE
+          SELECT ffv.description
+          FROM fnd_flex_value_sets ffvs, fnd_flex_values_vl ffv
+          WHERE ffvs.flex_value_set_name = 'XXHR_EMPLOYEE_SOURCE'
+            AND ffvs.flex_value_set_id=ffv.flex_value_set_id
+            AND ffv.flex_value = '$file_source';
+          EXIT
+END_OF_SQL`  
+  
+FILE_NAME=employee_extract.txt
+# TM Split Instance
+#LOCAL_DIR=$APPL_CUST/loadfiles/empload
+#LOCAL_DIR=$REMOTE_DIR
+REMOTE_DIR=/employeehk_in/
+
+echo "  MoveIt Remote Directory = $REMOTE_DIR"
+echo "  MoveIt File Name = $FILE_NAME"
+echo "+--------------------------------------------------------------+"
+
+# TM Split Instance
+#CTLDIR=$XXCM_TOP/bin
+#SQLDIR=$XXCM_TOP/sql
+CTLDIR=$XXTM_TOP/bin
+SQLDIR=$XXTM_TOP/sql
+
+pwd
+echo "LOCAL_DIR setting is  " $LOCAL_DIR 
+cd $LOCAL_DIR
+pwd
+
+## determine which MoveIt server we should use
+# TM Split Instance
+#get_ftpserver
+
+ftpserver=`sqlplus -s $login_str <<-END_OF_SQL
+          SET SERVEROUTPUT ON
+          SET PAGESIZE 0
+          WHENEVER SQLERROR EXIT FAILURE
+          select FND_PROFILE.VALUE('XXTM_DSO_SFTP_SERVER') from dual;
+          EXIT
+END_OF_SQL`  
+
+ftpuser=`sqlplus -s $login_str <<-END_OF_SQL
+          SET SERVEROUTPUT ON
+          SET PAGESIZE 0
+          WHENEVER SQLERROR EXIT FAILURE
+          select FND_PROFILE.VALUE('XXTM_DSO_SFTP_USER') from dual;
+          EXIT
+END_OF_SQL`  
+
+echo "  ftpserver = $ftpserver"
+echo "  ftpuser = $ftpuser"
+echo "+--------------------------------------------------------------+"
+
+
+## get file
+# TM Split Instance
+
+echo "scp $ftpuser@$ftpserver:$REMOTE_DIR$FILE_NAME $LOCAL_DIR"
+
+scp $ftpuser@$ftpserver:$REMOTE_DIR$FILE_NAME $LOCAL_DIR
+
+if [ $? -eq 0 ]; then
+    echo "**************************************"
+    echo " Transferring Data File Success"
+    echo "**************************************"    
+else
+    echo "**************************************"
+    echo " ERROR in Transferring Data File "
+    echo " Please contact your system admin "
+    echo "**************************************"    
+fi
+
+#ftp_get $REMOTE_DIR $FILE_NAME $LOCAL_DIR
+
+## delete file form MoveIt
+###if [ $? -eq 0 ]; then
+###    ftp_del $REMOTE_DIR $FILE_NAME
+###else
+###    echo "**************************************"
+###    echo " ERROR in Transferring Data File "
+###    echo " Please contact your system admin "
+###    echo "**************************************"    
+###fi
+
+#####################################################################
+INPUT_FILES=`ls -prtdt $LOCAL_DIR/$FILE_NAME`
+echo $INPUT_FILES
+
+## SQL*Load data file into temp table
+if [ -f $LOCAL_DIR/$FILE_NAME ];
+then
+      echo "Input File to process: " $INPUT_FILES 
+      a=`wc -c $LOCAL_DIR/$FILE_NAME`
+      echo "Total file size " $a
+
+       sqlldr $login_str data=$LOCAL_DIR/$FILE_NAME errors=7000 control=$CTLDIR/xxhr_emp_upload.ctl log=$LOCAL_DIR/xxhr_emp_upload.log bad=$LOCAL_DIR/xxhr_emp_upload.bad
+       if [ $? != 0 ];
+           then
+           echo "**************************************"
+           echo " ERRORR in loading file "
+           echo "**************************************"
+           exit 1
+       else
+           echo "**************************************"
+           echo " Successfully loaded file  "
+           echo "**************************************"
+           ## delete file
+		   rm -f $LOCAL_DIR/$FILE_NAME
+        fi      
+else
+    echo "**************************************"
+    echo " ERRORR -- no file to load"
+    echo " Verify HR process worked correctly"
+    echo "**************************************"
+fi

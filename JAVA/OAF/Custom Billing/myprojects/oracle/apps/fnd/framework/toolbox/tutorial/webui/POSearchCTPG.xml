@@ -1,0 +1,66 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- +======================================================================+ -->
+<!-- |    Copyright (c) 2005, 2014 Oracle and/or its affiliates.           | -->
+<!-- |                         All rights reserved.                         | -->
+<!-- |                           Version 12.0.0                             | -->
+<!-- +======================================================================+ -->
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory -->
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header: POSearchCTPG.xml 120.0.12020000.2 2014/09/16 08:16:24 spunam noship $">
+   <content>
+      <oa:pageLayout id="region1" controllerClass="oracle.apps.fnd.framework.toolbox.tutorial.webui.POSearchCTCO" amDefName="oracle.apps.fnd.framework.toolbox.tutorial.server.SearchAM" windowTitle="Purchase Orders" title="">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:messageComponentLayout id="SearchRN" width="75%" promptWidth="25%" fieldWidth="75%">
+               <ui:contents>
+                  <oa:messageLovInput externalListOfValues="/oracle/apps/fnd/framework/toolbox/lov/webui/PurchaseOrdersLovRN" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderId" readOnly="false" text="Purchase Order" rows="1" styleClass="OraFieldText" maximumLength="15" id="SearchOrder" styleLabelClass="OraPromptText" tipType="none" tipMessageAppShortName="AK" textTranslationExpansion="none" promptTranslationExpansion="none" tipMessageName="FWK_TBX_T_FIELD_GENERAL" dataType="NUMBER" unvalidated="true" selectiveSearchCriteria="true">
+                     <lovMappings>
+                        <lovMap lovItem="OrderNum" id="ToFromSearchOrder" resultTo="SearchOrder" criteriaFrom="SearchOrder"/>
+                     </lovMappings>
+                  </oa:messageLovInput>
+                  <oa:messageChoice readOnly="false" required="no" defaultValue="ANY" styleClass="OraFieldText" pickListViewDef="oracle.apps.fnd.framework.toolbox.poplist.server.CreatedListVO" pickListDispAttr="Meaning" pickListValAttr="LookupCode" id="Created" tipType="none" tipMessageAppShortName="AK" tipMessageName="FWK_TBX_T_LONG_GENERAL" prompt="Created" selectiveSearchCriteria="true"/>
+                  <oa:messageCheckBox readOnly="false" styleClass="OraFieldText" id="MyOrders" text="Show my orders only" prompt="Show my orders only"/>
+                  <oa:messageLayout id="ButtonLayout">
+                     <ui:contents>
+                        <oa:submitButton use="/oracle/apps/fnd/attributesets/Buttons/Go" shortDesc="Select to view search results." id="Go"/>
+                     </ui:contents>
+                  </oa:messageLayout>
+               </ui:contents>
+            </oa:messageComponentLayout>
+            <oa:spacer id="item2"/>
+            <oa:separator id="item1"/>
+            <oa:stackLayout id="region2">
+               <ui:contents>
+                  <oa:table id="ResultsTable" amDefName="oracle.apps.fnd.framework.toolbox.tutorial.server.SearchAM" width="100%">
+                     <ui:contents>
+                        <oa:messageStyledText id="OrderNumber" dataType="NUMBER" prompt="Order Number" viewName="PoSimpleSummaryVO1" viewAttr="OrderNumber" sortState="ascending" queryable="false" initSortSeq="first"/>
+                        <oa:messageStyledText id="Description" dataType="VARCHAR2" prompt="Description" viewName="PoSimpleSummaryVO1" viewAttr="Description" maximumLength="240"/>
+                        <oa:messageStyledText id="CurrencyCode" dataType="VARCHAR2" prompt="Currency Code" viewName="PoSimpleSummaryVO1" viewAttr="CurrencyCode" maximumLength="30"/>
+                        <oa:messageStyledText id="CreationDate1" dataType="DATE" prompt="Creation Date" viewName="PoSimpleSummaryVO1" viewAttr="CreationDate"/>
+                        <oa:messageStyledText id="BuyerId" dataType="NUMBER" prompt="Buyer ID" viewName="PoSimpleSummaryVO1" viewAttr="BuyerId"/>
+                        <oa:messageStyledText id="BuyerName" dataType="VARCHAR2" prompt="Buyer Name" viewName="PoSimpleSummaryVO1" viewAttr="BuyerName" maximumLength="240"/>
+                        <oa:messageStyledText id="SupplierName" dataType="VARCHAR2" prompt="Supplier Name" viewName="PoSimpleSummaryVO1" viewAttr="SupplierName" maximumLength="80"/>
+                        <oa:messageStyledText id="BuyerEmail" dataType="VARCHAR2" prompt="Buyer Email" viewName="PoSimpleSummaryVO1" viewAttr="BuyerEmail" maximumLength="240"/>
+                        <oa:messageStyledText id="OrderTotal1" dataType="NUMBER" prompt="Order Total" viewName="PoSimpleSummaryVO1" viewAttr="OrderTotal"/>
+                        <oa:messageStyledText id="SupplierId" dataType="NUMBER" prompt="Supplier ID" viewName="PoSimpleSummaryVO1" viewAttr="SupplierId"/>
+                        <oa:messageStyledText id="EmployeeId" dataType="NUMBER" prompt="Employee ID" viewName="PoSimpleSummaryVO1" viewAttr="EmployeeId"/>
+                        <oa:image id="Details" source="detailsicon_enabled.gif" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/tutorial/webui/SimplifiedPODescPG&amp;retainAM=Y&amp;addBreadCrumb=Y&amp;headerId={@OrderNumber}&amp;sourcePageType=Standard" prompt="Details" shortDesc="Details"/>
+                     </ui:contents>
+                     <ui:tableActions>
+                        <oa:flowLayout id="tableActionButton">
+                           <ui:contents>
+                              <oa:button id="TabelAction" text="Create PO" prompt="Create PO" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/tutorial/webui/POCreateWithMapPG&amp;retainAM=Y&amp;addBreadCrumb=Y&amp;headerId={@OrderNumber}"/>
+                           </ui:contents>
+                        </oa:flowLayout>
+                     </ui:tableActions>
+                     <ui:tableSelection>
+                        <oa:singleSelection id="singleSelection1"/>
+                     </ui:tableSelection>
+                  </oa:table>
+               </ui:contents>
+            </oa:stackLayout>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>

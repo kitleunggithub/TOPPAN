@@ -1,0 +1,775 @@
+<?xml version='1.0' encoding='US-ASCII' ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+
+<!-- $Header: PurchaseOrderShipmentEO.xml 120.10 2006/07/03 21:31:53 atgops1 noship $ -->
+
+<Entity
+   Name="PurchaseOrderShipmentEO"
+   DBObjectType="table"
+   DBObjectName="FWK_TBX_PO_SHIPMENTS"
+   AliasName="PurchaseOrderShipmentEO"
+   BindingStyle="Oracle"
+   BatchThreshold="100"
+   UseGlueCode="false"
+   RowClass="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEOImpl"
+   DefClass="oracle.apps.fnd.framework.server.OAEntityDefImpl"
+   CollClass="oracle.apps.fnd.framework.server.OAEntityCache" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.38.51" />
+      <AttrArray Name="_publishEvents">
+      </AttrArray>
+      <Attr Name="_codeGenFlag2" Value="Init|Delete|Access" />
+   </DesignTime>
+   <Attribute
+      Name="ShipmentId"
+      IsUpdateable="while_insert"
+      IsNotNull="true"
+      ColumnName="SHIPMENT_ID"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="FWK_TBX_PO_SHIPMENTS"
+      PrimaryKey="true" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoShipments/ShipmentId" />
+      </Properties>
+   </Attribute>
+   <Attribute
+      Name="LineId"
+      IsNotNull="true"
+      ColumnName="LINE_ID"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="FWK_TBX_PO_SHIPMENTS" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoLines/LineId" />
+      </Properties>
+   </Attribute>
+   <Attribute
+      Name="ShipmentNumber"
+      IsUpdateable="while_insert"
+      IsNotNull="true"
+      ColumnName="SHIPMENT_NUMBER"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="FWK_TBX_PO_SHIPMENTS" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoShipments/ShipmentNumber" />
+      </Properties>
+   </Attribute>
+   <Attribute
+      Name="NeedByDate"
+      ColumnName="NEED_BY_DATE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="DATE"
+      TableName="FWK_TBX_PO_SHIPMENTS" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoShipments/NeedByDate" />
+      </Properties>
+   </Attribute>
+   <Attribute
+      Name="ReceiptQuantity"
+      ColumnName="RECEIPT_QUANTITY"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="FWK_TBX_PO_SHIPMENTS" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoShipments/ReceiptQuantity" />
+      </Properties>
+   </Attribute>
+   <Attribute
+      Name="OrderQuantity"
+      IsNotNull="true"
+      ColumnName="ORDER_QUANTITY"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="FWK_TBX_PO_SHIPMENTS" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoShipments/OrderQuantity" />
+      </Properties>
+   </Attribute>
+   <Attribute
+      Name="ShipToAddressId"
+      IsNotNull="true"
+      ColumnName="SHIP_TO_ADDRESS_ID"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="FWK_TBX_PO_SHIPMENTS" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoShipments/ShipToAddressId" />
+      </Properties>
+   </Attribute>
+   <Attribute
+      Name="LastUpdateDate"
+      IsNotNull="true"
+      ColumnName="LAST_UPDATE_DATE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="DATE"
+      TableName="FWK_TBX_PO_SHIPMENTS" >
+   </Attribute>
+   <Attribute
+      Name="LastUpdatedBy"
+      IsNotNull="true"
+      ColumnName="LAST_UPDATED_BY"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="FWK_TBX_PO_SHIPMENTS" >
+   </Attribute>
+   <Attribute
+      Name="CreationDate"
+      IsNotNull="true"
+      ColumnName="CREATION_DATE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="DATE"
+      TableName="FWK_TBX_PO_SHIPMENTS" >
+   </Attribute>
+   <Attribute
+      Name="CreatedBy"
+      IsNotNull="true"
+      ColumnName="CREATED_BY"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="FWK_TBX_PO_SHIPMENTS" >
+   </Attribute>
+   <Attribute
+      Name="LastUpdateLogin"
+      ColumnName="LAST_UPDATE_LOGIN"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="FWK_TBX_PO_SHIPMENTS" >
+   </Attribute>
+   <Attribute
+      Name="AttributeCategory"
+      Precision="30"
+      ColumnName="ATTRIBUTE_CATEGORY"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="FWK_TBX_PO_SHIPMENTS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute1"
+      Precision="150"
+      ColumnName="ATTRIBUTE1"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="FWK_TBX_PO_SHIPMENTS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute2"
+      Precision="150"
+      ColumnName="ATTRIBUTE2"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="FWK_TBX_PO_SHIPMENTS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute3"
+      Precision="150"
+      ColumnName="ATTRIBUTE3"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="FWK_TBX_PO_SHIPMENTS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute4"
+      Precision="150"
+      ColumnName="ATTRIBUTE4"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="FWK_TBX_PO_SHIPMENTS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute5"
+      Precision="150"
+      ColumnName="ATTRIBUTE5"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="FWK_TBX_PO_SHIPMENTS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute6"
+      Precision="150"
+      ColumnName="ATTRIBUTE6"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="FWK_TBX_PO_SHIPMENTS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute7"
+      Precision="150"
+      ColumnName="ATTRIBUTE7"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="FWK_TBX_PO_SHIPMENTS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute8"
+      Precision="150"
+      ColumnName="ATTRIBUTE8"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="FWK_TBX_PO_SHIPMENTS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute9"
+      Precision="150"
+      ColumnName="ATTRIBUTE9"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="FWK_TBX_PO_SHIPMENTS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute10"
+      Precision="150"
+      ColumnName="ATTRIBUTE10"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="FWK_TBX_PO_SHIPMENTS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute11"
+      Precision="150"
+      ColumnName="ATTRIBUTE11"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="FWK_TBX_PO_SHIPMENTS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute12"
+      Precision="150"
+      ColumnName="ATTRIBUTE12"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="FWK_TBX_PO_SHIPMENTS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute13"
+      Precision="150"
+      ColumnName="ATTRIBUTE13"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="FWK_TBX_PO_SHIPMENTS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute14"
+      Precision="150"
+      ColumnName="ATTRIBUTE14"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="FWK_TBX_PO_SHIPMENTS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Attribute15"
+      Precision="150"
+      ColumnName="ATTRIBUTE15"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="FWK_TBX_PO_SHIPMENTS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="ReceiptDate"
+      ColumnName="RECEIPT_DATE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="TIMESTAMP"
+      TableName="FWK_TBX_PO_SHIPMENTS" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoShipments/ReceiptDate" />
+      </Properties>
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="PromiseDate"
+      ColumnName="PROMISE_DATE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="TIMESTAMP"
+      TableName="FWK_TBX_PO_SHIPMENTS" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoShipments/PromiseDate" />
+      </Properties>
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </Attribute>
+   <AccessorAttribute
+      Name="PurchaseOrderLineEO"
+      Association="oracle.apps.fnd.framework.toolbox.schema.server.PoLineToPoShipAO"
+      AssociationEnd="oracle.apps.fnd.framework.toolbox.schema.server.PoLineToPoShipAO.PurchaseOrderLineEO"
+      AssociationOtherEnd="oracle.apps.fnd.framework.toolbox.schema.server.PoLineToPoShipAO.PurchaseOrderShipmentEO"
+      Type="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderLineEOImpl" >
+   </AccessorAttribute>
+   <Key
+      Name="FwkTbxPoShipmentsLineIdCheck" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.LineId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;LINE_ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="FWK_TBX_PO_SHIPMENTS_LINE_ID_C" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="FwkTbxPoShipmentsOrderQuantityCheck" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.OrderQuantity" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;ORDER_QUANTITY&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="FWK_TBX_PO_SHIPMENTS_ORDER_QUA" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="FwkTbxPoShipmentsPk" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.ShipmentId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_isPrimary" Value="true" />
+         <Attr Name="_DBObjectName" Value="FWK_TBX_PO_SHIPMENTS_PK" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="FwkTbxPoShipmentsShipToAddressIdCheck" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.ShipToAddressId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;SHIP_TO_ADDRESS_ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="FWK_TBX_PO_SHIPMENTS_SHIP_TO_A" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="FwkTbxPoShipmentsShipmentIdCheck" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.ShipmentId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;SHIPMENT_ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="FWK_TBX_PO_SHIPMENTS_SHIPMENT_" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="FwkTbxPoShipmentsShipmentNumberCheck" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.ShipmentNumber" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;SHIPMENT_NUMBER&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="FWK_TBX_PO_SHIPMENTS_SHIPMENT_" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00169471" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.LineId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;LINE_ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00169471" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00169472" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.ShipmentNumber" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;SHIPMENT_NUMBER&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00169472" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00169473" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.LastUpdateDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;LAST_UPDATE_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00169473" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00169474" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.LastUpdatedBy" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;LAST_UPDATED_BY&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00169474" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00169475" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.CreationDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATION_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00169475" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00169476" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.CreatedBy" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATED_BY&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00169476" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00192884" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.LineId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;LINE_ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00192884" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00192885" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.ShipmentNumber" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;SHIPMENT_NUMBER&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00192885" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00192886" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.LastUpdateDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;LAST_UPDATE_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00192886" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00192887" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.LastUpdatedBy" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;LAST_UPDATED_BY&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00192887" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00192888" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.CreationDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATION_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00192888" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00192889" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.CreatedBy" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATED_BY&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00192889" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00232410" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.LineId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;LINE_ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00232410" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00232411" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.ShipmentNumber" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;SHIPMENT_NUMBER&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00232411" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00232412" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.LastUpdateDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;LAST_UPDATE_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00232412" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00232413" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.LastUpdatedBy" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;LAST_UPDATED_BY&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00232413" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00232414" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.CreationDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATION_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00232414" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00232415" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.CreatedBy" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATED_BY&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00232415" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00234951" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.LineId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;LINE_ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00234951" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00234952" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.ShipmentNumber" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;SHIPMENT_NUMBER&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00234952" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00234953" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.LastUpdateDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;LAST_UPDATE_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00234953" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00234954" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.LastUpdatedBy" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;LAST_UPDATED_BY&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00234954" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00234955" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.CreationDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATION_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00234955" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00234956" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.CreatedBy" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATED_BY&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00234956" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00252757" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.LineId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;LINE_ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00252757" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00252758" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.ShipmentNumber" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;SHIPMENT_NUMBER&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00252758" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00252759" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.LastUpdateDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;LAST_UPDATE_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00252759" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00252760" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.LastUpdatedBy" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;LAST_UPDATED_BY&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00252760" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00252761" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.CreationDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATION_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00252761" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00252762" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.CreatedBy" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATED_BY&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00252762" />
+      </DesignTime>
+   </Key>
+</Entity>

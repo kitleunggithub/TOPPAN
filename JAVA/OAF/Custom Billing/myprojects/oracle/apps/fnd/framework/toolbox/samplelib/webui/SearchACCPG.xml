@@ -1,0 +1,105 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath:~PROD:~PATH:~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath:~PROD:mds:directory  -->
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header: SearchACCPG.xml 120.7 2006/05/25 13:14:27 atgops1 noship $">
+   <content>
+      <oa:pageLayout id="PageLayoutRN" amDefName="oracle.apps.fnd.framework.toolbox.samplelib.server.SampleBrowserAM" windowTitle="OA Framework Toolbox Sample Library" title="Auto Customization Criteria Search Example">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:query id="QueryRN" mode="autoCustomizationCriteria" dispSimple="true" dispCustomized="true" dispAdvanced="true">
+               <oa:simpleSearchMappings>
+                  <oa:queryCriteriaMap id="simpleFirstSearchMap" criteriaItem="FirstNameSearch" resultsItem="FirstName"/>
+               </oa:simpleSearchMappings>
+               <ui:contents>
+                  <oa:table id="EmpTable" userCustomizable="true" width="100%" shortDesc="Employees Table">
+                     <ui:contents>
+                        <oa:messageStyledText id="EmployeeId" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EmployeeId" dataType="NUMBER" viewName="EmployeesVO2" viewAttr="EmployeeId" selectiveSearchCriteria="true" sortState="ascending" initSortSeq="first"/>
+                        <oa:messageStyledText id="FirstName" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FirstName" dataType="VARCHAR2" viewName="EmployeesVO2" viewAttr="FirstName" maximumLength="20" selectiveSearchCriteria="true" userCustomizable="true"/>
+                        <oa:messageStyledText id="LastName" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/LastName" dataType="VARCHAR2" viewName="EmployeesVO2" viewAttr="LastName" maximumLength="40" selectiveSearchCriteria="true" userCustomizable="true" sortState="ascending"/>
+                        <oa:messageStyledText id="EmailAddress" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EmailAddress" dataType="VARCHAR2" viewName="EmployeesVO2" viewAttr="EmailAddress" maximumLength="240"/>
+                        <oa:messageStyledText id="Salary" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/Salary" dataType="NUMBER" viewName="EmployeesVO2" viewAttr="Salary"/>
+                        <oa:messageStyledText id="StartDate" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/StartDate" dataType="DATE" viewName="EmployeesVO2" viewAttr="StartDate"/>
+                        <oa:messageStyledText id="EndDate" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EndDate" dataType="DATE" viewName="EmployeesVO2" viewAttr="EndDate"/>
+                        <oa:messageStyledText id="Position" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/Position" dataType="VARCHAR2" viewName="EmployeesVO2" viewAttr="PositionDisplay" maximumLength="30"/>
+                     </ui:contents>
+                  </oa:table>
+               </ui:contents>
+               <oa:advancedSearchMappings>
+                  <oa:queryCriteriaMap id="AdvFirstMap" criteriaItem="AdvFirstName" resultsItem="FirstName"/>
+                  <oa:queryCriteriaMap id="AdvLastNameMap" criteriaItem="AdvLastName" resultsItem="LastName"/>
+                  <oa:queryCriteriaMap id="AdvSalMap" criteriaItem="AdvSalary" resultsItem="Salary"/>
+                  <oa:queryCriteriaMap id="AdvStartDateMap" criteriaItem="AdvStartDate" resultsItem="StartDate"/>
+               </oa:advancedSearchMappings>
+               <oa:advancedSearchPanel>
+                  <oa:header text="Advanced Search" id="AdvancedSearchHdr">
+                     <ui:contents>
+                        <oa:advancedSearch id="AdvancedSeachRN">
+                           <oa:criteria>
+                              <oa:criteriaRow id="FirstNameCriteria">
+                                 <ui:contents>
+                                    <oa:messageStyledText id="item1" prompt="First Name"/>
+                                    <oa:messageTextInput id="AdvFirstName" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FirstName" selectiveSearchCriteria="true" shortDesc="First Name"/>
+                                 </ui:contents>
+                              </oa:criteriaRow>
+                              <oa:criteriaRow id="LastNameCriteria">
+                                 <ui:contents>
+                                    <oa:messageStyledText id="item2" prompt="Last Name"/>
+                                    <oa:messageTextInput id="AdvLastName" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/LastName" selectiveSearchCriteria="true" shortDesc="Last Name"/>
+                                 </ui:contents>
+                              </oa:criteriaRow>
+                              <oa:criteriaRow id="SalCriteria">
+                                 <ui:contents>
+                                    <oa:messageStyledText id="item3" prompt="Salary"/>
+                                    <oa:messageTextInput id="AdvSalary" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/Salary" selectiveSearchCriteria="false" dataType="NUMBER" shortDesc="Salary"/>
+                                 </ui:contents>
+                              </oa:criteriaRow>
+                              <oa:criteriaRow id="StartDateCriteria">
+                                 <ui:contents>
+                                    <oa:messageStyledText id="item4" prompt="Start Date"/>
+                                    <oa:messageTextInput id="AdvStartDate" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/StartDate" dataType="DATE" shortDesc="Start Date"/>
+                                 </ui:contents>
+                              </oa:criteriaRow>
+                           </oa:criteria>
+                        </oa:advancedSearch>
+                     </ui:contents>
+                  </oa:header>
+               </oa:advancedSearchPanel>
+               <oa:simpleSearchPanel>
+                  <oa:header text="Simple Search" id="SimpleSearchHdr">
+                     <ui:contents>
+                        <oa:messageComponentLayout id="SimpleSearchRN">
+                           <ui:contents>
+                              <oa:messageLovInput id="FirstNameSearch" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FirstName" selectiveSearchCriteria="true">
+                                 <lovContents>
+                                    <oa:listOfValues id="FirstNameLovRN">
+                                       <ui:contents>
+                                          <oa:table name="FirstNameLovRN" id="EmpsLovTable" shortDesc="Employees Table">
+                                             <ui:contents>
+                                                <oa:messageStyledText id="FirstNameLovRes" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FirstName" dataType="VARCHAR2" viewName="EmployeeNamesVO1" viewAttr="FirstName" maximumLength="20" queryable="true"/>
+                                                <oa:messageStyledText id="LastNameLovRes" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/LastName" dataType="VARCHAR2" viewName="EmployeeNamesVO1" viewAttr="LastName" maximumLength="40" queryable="true"/>
+                                             </ui:contents>
+                                          </oa:table>
+                                       </ui:contents>
+                                    </oa:listOfValues>
+                                 </lovContents>
+                                 <lovMappings>
+                                    <lovMap id="simpleFirstLovMap" lovItem="FirstNameLovRes" resultTo="FirstNameSearch" criteriaFrom="FirstNameSearch"/>
+                                 </lovMappings>
+                              </oa:messageLovInput>
+                           </ui:contents>
+                        </oa:messageComponentLayout>
+                     </ui:contents>
+                  </oa:header>
+               </oa:simpleSearchPanel>
+            </oa:query>
+         </ui:contents>
+         <ui:productBranding>
+            <oa:image id="ProductBranding" source="FNDTAPPBRAND.gif" shortDesc="OA Framework Toolbox Tutorial"/>
+         </ui:productBranding>
+         <ui:returnNavigation>
+            <oa:link id="ReturnTo" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/samplelib/webui/SampleBrowserPG&amp;retainAM=Y" text="Return to Sample Browser"/>
+         </ui:returnNavigation>
+      </oa:pageLayout>
+   </content>
+</page>

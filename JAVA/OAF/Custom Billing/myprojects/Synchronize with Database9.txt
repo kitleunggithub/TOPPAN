@@ -1,0 +1,4 @@
+<Done>Entity :InvoiceEO
+|__Attribute :TotalLineAmount
+|____<Done>Change Precision, Scale  to (38, 2)
+

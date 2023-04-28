@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+
+<!-- $Header: LookupCodeTLEO.xml 120.8 2006/07/03 19:45:09 atgops1 noship $ -->
+
+<Entity
+   Name="LookupCodeTLEO"
+   DBObjectType="table"
+   DBObjectName="FWK_TBX_LOOKUP_CODES_TL"
+   AliasName="LookupCodeTLEO"
+   BindingStyle="Oracle"
+   BatchThreshold="100"
+   UseGlueCode="false"
+   RowClass="oracle.apps.fnd.framework.toolbox.schema.server.LookupCodeTLEOImpl"
+   DefClass="oracle.apps.fnd.framework.server.OAEntityDefImpl"
+   CollClass="oracle.apps.fnd.framework.server.OAEntityCache" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_collSuperClass" Value="oracle.apps.fnd.framework.server.OAEntityCache" />
+      <Attr Name="_defSuperClass" Value="oracle.apps.fnd.framework.server.OAEntityDefImpl" />
+      <Attr Name="_version" Value="10.1.3.38.51" />
+      <AttrArray Name="_publishEvents">
+      </AttrArray>
+      <Attr Name="_superClass" Value="oracle.apps.fnd.framework.server.OAEntityImpl" />
+      <Attr Name="_codeGenFlag2" Value="Init|Delete|Access" />
+   </DesignTime>
+   <Attribute
+      Name="LookupType"
+      IsUpdateable="while_insert"
+      IsNotNull="true"
+      Precision="30"
+      ColumnName="LOOKUP_TYPE"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="FWK_TBX_LOOKUP_CODES_TL"
+      PrimaryKey="true" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LookupCode"
+      IsUpdateable="while_insert"
+      IsNotNull="true"
+      Precision="30"
+      ColumnName="LOOKUP_CODE"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="FWK_TBX_LOOKUP_CODES_TL"
+      PrimaryKey="true" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Meaning"
+      IsNotNull="true"
+      Precision="80"
+      ColumnName="MEANING"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="FWK_TBX_LOOKUP_CODES_TL" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Language"
+      IsNotNull="true"
+      Precision="4"
+      ColumnName="LANGUAGE"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="FWK_TBX_LOOKUP_CODES_TL"
+      PrimaryKey="true" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="4" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="SourceLang"
+      IsNotNull="true"
+      Precision="4"
+      ColumnName="SOURCE_LANG"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="FWK_TBX_LOOKUP_CODES_TL" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="4" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Description"
+      Precision="240"
+      ColumnName="DESCRIPTION"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="FWK_TBX_LOOKUP_CODES_TL" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <AccessorAttribute
+      Name="LookupCodeEO"
+      Association="oracle.apps.fnd.framework.toolbox.schema.server.LookupCodeToTLAO"
+      AssociationEnd="oracle.apps.fnd.framework.toolbox.schema.server.LookupCodeToTLAO.LookupCodeEO"
+      AssociationOtherEnd="oracle.apps.fnd.framework.toolbox.schema.server.LookupCodeToTLAO.OA_TL_ENTITIES"
+      Type="oracle.apps.fnd.framework.toolbox.schema.server.LookupCodeEOImpl" >
+   </AccessorAttribute>
+</Entity>

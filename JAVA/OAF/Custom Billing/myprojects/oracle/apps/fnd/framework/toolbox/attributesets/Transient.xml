@@ -1,0 +1,12 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory  -->
+<!-- Following  attribute sets for the transient attributes. It would be nice if you add some message tips to some attribute sets -->
+<!-- Followed by region header attribute sets, add as many as you need -->
+<!-- Followed by UI standards, object specific button attribute sets, use Buttons.xml for shared, no object specific buttons. Add as many as you need -->
+<package xmlns="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:jrad="http://xmlns.oracle.com/jrad" version="9.0.3.5.3_312" xml:lang="en-US" file-version="$Header: Transient.xml 120.2 2006/05/25 13:08:38 atgops1 noship $">
+   <jrad:attributeSet docName="SupplierAttachments" comment="SupplierAttachments" prompt="Supplier Attachments" columns="10"/>
+   <jrad:attributeSet docName="POAttachments" comment="POAttachments" prompt="PO Attachments" columns="10"/>
+   <jrad:attributeSet docName="DynamicAttributeGroups" comment="DynamicAttributeGroups" prompt="DynamicAttributeGroups" columns="10"/>
+   <jrad:attributeSet docName="AttributeProperties" comment="AttributeProperties" prompt="AttributeProperties" columns="10"/>
+   <jrad:attributeSet docName="SecurityVal" comment="SecurityVal" prompt="SecurityVal" columns="10"/>
+</package>

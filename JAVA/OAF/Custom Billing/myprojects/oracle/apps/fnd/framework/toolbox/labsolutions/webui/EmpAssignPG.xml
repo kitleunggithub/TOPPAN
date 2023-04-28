@@ -1,0 +1,46 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory -->
+<page xmlns="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:user="http://xmlns.oracle.com/jrad/user" version="9.0.3.8.9_1008" xml:lang="en-US" file-version="$Header: EmpAssignPG.xml 120.7 2006/05/25 13:09:35 atgops1 noship $" xmlns:jrad="http://xmlns.oracle.com/jrad">
+   <content>
+      <oa:pageLayout windowTitle="Framework Toolbox Tutorial: Labs" helpTargetAppShortName="ak" id="PageLayoutRN" akRegionCode="FWK_TBX_LABS_EMP_STEP2_PAGE" regionName="Assign Employee Page" amDefName="oracle.apps.fnd.framework.toolbox.labsolutions.server.EmployeeAM" title="Update Employee:  Assignment" warnAboutChanges="true" controllerClass="oracle.apps.fnd.framework.toolbox.labsolutions.webui.EmployeeAssignCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBranding" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:productBranding>
+            <oa:image id="productBranding" source="FNDTAPPBRAND.gif" shortDesc="OA Framework Toolbox Tutorial"/>
+         </ui:productBranding>
+         <ui:location>
+            <oa:train id="TrainRN" extends="/oracle/apps/fnd/framework/toolbox/labsolutions/webui/UpdateEmpTrainRN"/>
+         </ui:location>
+         <ui:contents>
+            <oa:pageButtonBar id="PageButtons" extends="/oracle/apps/fnd/framework/toolbox/labsolutions/webui/UpdateEmployeeFootRN"/>
+            <oa:messageComponentLayout id="MainRN">
+               <ui:contents>
+                  <oa:messageStyledText id="StartDate" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/StartDate" dataType="DATE" viewName="EmployeeFullVO1" viewAttr="StartDate" styleClass="OraDataText"/>
+                  <oa:messageTextInput id="EndDate" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EndDate" dataType="DATE" viewName="EmployeeFullVO1" viewAttr="EndDate" styleClass="OraFieldText" tipType="dateFormat"/>
+                  <oa:messageChoice id="Position" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/Position" dataType="VARCHAR2" viewName="EmployeeFullVO1" viewAttr="PositionCode" required="yes" pickListDispAttr="Meaning" pickListValAttr="LookupCode" pickListViewDef="oracle.apps.fnd.framework.toolbox.poplist.server.PositionsVO"/>
+                  <oa:messageLovInput id="MgrName" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FullName_Manager" dataType="VARCHAR2" viewName="EmployeeFullVO1" viewAttr="ManagerName" maximumLength="240" styleClass="OraFieldText" externalListOfValues="/oracle/apps/fnd/framework/toolbox/lov/webui/EmployeesLovRN">
+                     <lovMappings>
+                        <lovMap id="ToFromMgrName" lovItem="EmpName" resultTo="MgrName" criteriaFrom="MgrName"/>
+                        <lovMap id="ToMgrNum" lovItem="EmpNum" resultTo="MgrNum"/>
+                     </lovMappings>
+                  </oa:messageLovInput>
+                  <oa:messageTextInput id="Salary" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/Salary" dataType="NUMBER" viewName="EmployeeFullVO1" viewAttr="Salary" required="yes" styleClass="OraFieldText"/>
+                  <oa:messageLayout id="MgrNumLayout">
+                     <ui:contents>
+                        <oa:formValue id="MgrNum" dataType="NUMBER" prompt="Manager ID" viewName="EmployeeFullVO1" viewAttr="ManagerId"/>
+                     </ui:contents>
+                  </oa:messageLayout>
+               </ui:contents>
+            </oa:messageComponentLayout>
+         </ui:contents>
+         <ui:pageStatus>
+            <oa:flowLayout id="PageStatusRN">
+               <ui:contents>
+                  <oa:tableLayout id="RequiredKey" extends="/oracle/apps/fnd/framework/webui/OAReqFieldDescRG" width="100%"/>
+               </ui:contents>
+            </oa:flowLayout>
+         </ui:pageStatus>
+      </oa:pageLayout>
+   </content>
+</page>

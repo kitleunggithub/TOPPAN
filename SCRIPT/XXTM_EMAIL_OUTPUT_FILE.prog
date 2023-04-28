@@ -1,0 +1,111 @@
+#!/bin/bash
+#!/usr/bin/sh
+# --------------------------------------------------
+# Parameters
+#
+#EBS self Request Job ID
+request_id=$4
+
+## Source shared functions
+. $XXTM_TOP/bin/xxcm_lib.sh
+
+#User Para List :
+request_job_id=$5
+recipient_emails=$6
+email_subject=$7
+email_body=$8
+login_str=`echo $1 | cut -d" " -f3 | cut -d"=" -f2 | sed 's/"//g'`
+
+echo "Parameters"
+echo "----------"
+echo "1)request_job_id   : $request_job_id"
+echo "2)recipient_emails : $recipient_emails"
+echo "3)email_subject    : $email_subject"
+echo "3)email_body       : $email_body"
+echo ""
+#echo "login_str is : $login_str "
+
+echo "concurrent request id: $4"
+
+if [ -z "$request_job_id" ]
+then
+	request_job_id=`sqlplus -s $login_str <<-END_OF_SQL
+	SET SERVEROUTPUT ON
+	SET PAGESIZE 0
+	WHENEVER SQLERROR EXIT FAILURE
+	select fcr.request_id from fnd_concurrent_requests fcr, fnd_concurrent_programs fcp 
+	where fcp.concurrent_program_id = fcr.concurrent_program_id 
+	and fcp.concurrent_program_name like 'XXARMYDSO%'
+	and fcr.priority_request_id = (select fcr.priority_request_id from fnd_concurrent_requests fcr where request_id = $4);
+	EXIT
+	END_OF_SQL`
+
+	request_job_id=`echo $request_job_id | sed 's/ *$//g'`
+fi
+
+echo "cd $APPLCSF/out"
+cd $APPLCSF/out
+echo "ls -ltr *$request_job_id.*"
+ls -ltr *$request_job_id.*
+
+if [ $? == 2 ] ; then
+echo "No Output file found for this request ID : $request_job_id"
+exit 0
+fi
+
+output_filetype=`sqlplus -s $login_str <<-END_OF_SQL
+				  SET SERVEROUTPUT ON
+				  SET PAGESIZE 0
+				  WHENEVER SQLERROR EXIT FAILURE
+				  SELECT upper(output_file_type)
+				  FROM fnd_Concurrent_requests 
+				  WHERE request_Id = $request_job_id;
+				  EXIT
+END_OF_SQL`
+
+echo "output_filetype is : $output_filetype "
+
+if [ $output_filetype == "XML" ] ; then 
+		echo "Its Output File type is XML."	
+output_filename=`sqlplus -s $login_str <<-END_OF_SQL
+				  SET SERVEROUTPUT ON
+				  SET PAGESIZE 0
+				  WHENEVER SQLERROR EXIT FAILURE
+				  SELECT substr(file_name,-1*instr(reverse(file_name),'/') + 1)
+				  FROM FND_CONC_REQ_OUTPUTS   
+				  WHERE concurrent_request_Id = $request_job_id;
+				  EXIT
+END_OF_SQL`
+		echo "Its Output File Name is $output_filename "
+		
+elif [ $output_filetype == "TEXT" ] ; then		
+		echo "Its Output File type is TEXT."
+output_filename=`sqlplus -s $login_str <<-END_OF_SQL
+				  SET SERVEROUTPUT ON
+				  SET PAGESIZE 0
+				  WHENEVER SQLERROR EXIT FAILURE
+				  SELECT substr(outfile_name,-1*instr(reverse(outfile_name),'/') + 1)
+				  FROM fnd_concurrent_requests  
+				  WHERE request_Id = $request_job_id;
+				  EXIT
+END_OF_SQL`
+		echo "Its Output File Name is $output_filename "
+else
+		echo "Its Output File type is $output_filetype that is NOT XML or TEXT. Not Processing..."
+		exit 0
+fi
+
+echo "email_subject is $email_subject"
+echo "email_body is $email_body"
+
+echo "Start mail out the output file..."
+mailx -a $output_filename -s "$email_subject" $recipient_emails<<EOF
+Dear Recipient(s),
+$email_body
+
+Regards,
+TM EBS Team
+EOF
+echo "End of mail out the output file..."
+
+

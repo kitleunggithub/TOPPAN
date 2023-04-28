@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='US-ASCII' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<!-- $Header: PoLineShipFullVO.xml 120.8 2006/07/04 00:25:40 atgops1 noship $ -->
+
+<ViewObject
+   Name="PoLineShipFullVO"
+   BindingStyle="Oracle"
+   CustomQuery="true"
+   RowClass="oracle.apps.fnd.framework.toolbox.tutorial.server.PoLineShipFullVORowImpl"
+   ComponentClass="oracle.apps.fnd.framework.toolbox.tutorial.server.PoLineShipFullVOImpl"
+   FetchMode="FETCH_AS_NEEDED"
+   Passivate="All"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+SELECT PurchaseOrderLineEO.LINE_ID, 
+       PurchaseOrderLineEO.HEADER_ID, 
+       PurchaseOrderLineEO.LINE_NUMBER, 
+       PurchaseOrderLineEO.ITEM_ID, 
+       PurchaseOrderLineEO.ITEM_DESCRIPTION, 
+       PurchaseOrderLineEO.UNIT_OF_MEASURE, 
+       PurchaseOrderLineEO.QUANTITY, 
+       PurchaseOrderLineEO.UNIT_PRICE, 
+       PurchaseOrderShipmentEO.SHIPMENT_ID, 
+       PurchaseOrderShipmentEO.LINE_ID AS LINE_ID1, 
+       PurchaseOrderShipmentEO.SHIPMENT_NUMBER, 
+       PurchaseOrderShipmentEO.NEED_BY_DATE, 
+       PurchaseOrderShipmentEO.RECEIPT_QUANTITY, 
+       PurchaseOrderShipmentEO.ORDER_QUANTITY, 
+       PurchaseOrderShipmentEO.SHIP_TO_ADDRESS_ID,
+       flkp.meaning AS UOM_DISPLAY
+FROM FWK_TBX_PO_LINES PurchaseOrderLineEO, 
+FWK_TBX_PO_SHIPMENTS PurchaseOrderShipmentEO,
+fwk_tbx_lookup_codes_vl flkp
+WHERE PurchaseOrderLineEO.LINE_ID = PurchaseOrderShipmentEO.LINE_ID
+and PurchaseOrderLineEO.UNIT_OF_MEASURE = flkp.lookup_code 
+and flkp.lookup_type = 'FWK_TBX_UNIT_OF_MEASURE'
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.38.51" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll" />
+   </DesignTime>
+   <EntityUsage
+      Name="PurchaseOrderLineEO"
+      Entity="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderLineEO" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="false" />
+      </DesignTime>
+   </EntityUsage>
+   <EntityUsage
+      Name="PurchaseOrderShipmentEO"
+      Entity="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO"
+      Association="oracle.apps.fnd.framework.toolbox.schema.server.PoLineToPoShipAO"
+      AssociationEnd="oracle.apps.fnd.framework.toolbox.schema.server.PoLineToPoShipAO.PurchaseOrderShipmentEO"
+      SourceUsage="oracle.apps.fnd.framework.toolbox.tutorial.server.PoLineShipFullVO.PurchaseOrderLineEO" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="false" />
+         <AttrArray Name="_dstAttributes">
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.LineId" />
+         </AttrArray>
+         <AttrArray Name="_srcAttributes">
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderLineEO.LineId" />
+         </AttrArray>
+      </DesignTime>
+   </EntityUsage>
+   <ViewAttribute
+      Name="LineId"
+      IsUpdateable="while_insert"
+      EntityAttrName="LineId"
+      EntityUsage="PurchaseOrderLineEO"
+      AliasName="LINE_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="HeaderId"
+      IsNotNull="true"
+      EntityAttrName="HeaderId"
+      EntityUsage="PurchaseOrderLineEO"
+      AliasName="HEADER_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LineNumber"
+      IsUpdateable="while_insert"
+      IsNotNull="true"
+      EntityAttrName="LineNumber"
+      EntityUsage="PurchaseOrderLineEO"
+      AliasName="LINE_NUMBER" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ItemId"
+      EntityAttrName="ItemId"
+      EntityUsage="PurchaseOrderLineEO"
+      AliasName="ITEM_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ItemDescription"
+      EntityAttrName="ItemDescription"
+      EntityUsage="PurchaseOrderLineEO"
+      AliasName="ITEM_DESCRIPTION" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="UnitOfMeasure"
+      EntityAttrName="UnitOfMeasure"
+      EntityUsage="PurchaseOrderLineEO"
+      AliasName="UNIT_OF_MEASURE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Quantity"
+      EntityAttrName="Quantity"
+      EntityUsage="PurchaseOrderLineEO"
+      AliasName="QUANTITY" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="UnitPrice"
+      EntityAttrName="UnitPrice"
+      EntityUsage="PurchaseOrderLineEO"
+      AliasName="UNIT_PRICE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ShipmentId"
+      IsUpdateable="while_insert"
+      EntityAttrName="ShipmentId"
+      EntityUsage="PurchaseOrderShipmentEO"
+      AliasName="SHIPMENT_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LineId1"
+      IsNotNull="true"
+      EntityAttrName="LineId"
+      EntityUsage="PurchaseOrderShipmentEO"
+      AliasName="LINE_ID1" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ShipmentNumber"
+      IsUpdateable="while_insert"
+      IsNotNull="true"
+      EntityAttrName="ShipmentNumber"
+      EntityUsage="PurchaseOrderShipmentEO"
+      AliasName="SHIPMENT_NUMBER" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="NeedByDate"
+      EntityAttrName="NeedByDate"
+      EntityUsage="PurchaseOrderShipmentEO"
+      AliasName="NEED_BY_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ReceiptQuantity"
+      EntityAttrName="ReceiptQuantity"
+      EntityUsage="PurchaseOrderShipmentEO"
+      AliasName="RECEIPT_QUANTITY" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="OrderQuantity"
+      EntityAttrName="OrderQuantity"
+      EntityUsage="PurchaseOrderShipmentEO"
+      AliasName="ORDER_QUANTITY" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ShipToAddressId"
+      EntityAttrName="ShipToAddressId"
+      EntityUsage="PurchaseOrderShipmentEO"
+      AliasName="SHIP_TO_ADDRESS_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="UomDisplay"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="80"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="UomDisplay"
+      Expression="UomDisplay"
+      SQLType="VARCHAR" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LineTotal"
+      IsQueriable="false"
+      IsPersistent="false"
+      EntityAttrName="LineTotal"
+      EntityUsage="PurchaseOrderLineEO"
+      AliasName="$none$" >
+   </ViewAttribute>
+   <ViewLinkAccessor
+      Name="PoDetailsFullVO1"
+      ViewLink="oracle.apps.fnd.framework.toolbox.tutorial.server.PoHeaderEOLineEOVL"
+      Type="oracle.jbo.Row"
+      Reversed="true"
+      IsUpdateable="false" >
+   </ViewLinkAccessor>
+</ViewObject>

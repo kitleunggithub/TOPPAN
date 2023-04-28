@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="InvoiceApprovalReasonLovVO"
+   BindingStyle="OracleName"
+   CustomQuery="true"
+   RowClass="oracle.apps.fnd.framework.server.OAViewRowImpl"
+   ComponentClass="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceApprovalReasonLovVOImpl"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+SELECT 
+flex_value APPROVAL_REASON
+,ffvt.description  APPROVAL_REASON_DESC
+			FROM 
+			fnd_flex_value_sets ffvs ,
+			fnd_flex_values ffv ,
+			fnd_flex_values_tl ffvt
+			WHERE
+			ffvs.flex_value_set_id = ffv.flex_value_set_id
+			AND ffv.flex_value_id = ffvt.flex_value_id
+			AND ffvt.language = 'US'
+			AND flex_value_set_name = 'XXBS_INVOICE_APPROVAL_REASON'
+		AND ffv.enabled_flag = 'Y'
+			AND NVL(ffv.end_date_active,SYSDATE) >= SYSDATE
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess" />
+   </DesignTime>
+   <ViewAttribute
+      Name="ApprovalReason"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="150"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="APPROVAL_REASON"
+      Expression="APPROVAL_REASON"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ApprovalReasonDesc"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="APPROVAL_REASON_DESC"
+      Expression="APPROVAL_REASON_DESC"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+</ViewObject>

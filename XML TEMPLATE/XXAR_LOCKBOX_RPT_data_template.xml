@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Header: XXAR_LOCKBOX_RPT_data_template.xml 115.0 2013/08/14 16:01:48 xdouser noship $ -->
+<!-- dbdrv: none -->
+<dataTemplate name="XXAR_LOCKBOX_RPT" defaultPackage="xxcm_bi_reporting_pub" description="XXAR Lockbox Pre-Processing Report">
+   <properties>
+      <property name="include_parameters" value="true"/>
+      <property name="include_null_Element" value="true"/>
+      <property name="xml_tag_case" value="upper"/>
+      <property name="db_fetch_size" value="100"/>
+      <property name="scalable_mode" value="off"/>
+      <property name="include_rowsettag" value="false"/>
+      <property name="debug_mode" value="on"/>
+   </properties>
+   <parameters>
+   <parameter name="p_Lockbox" dataType="character" defaultValue="unknown" include_in_output="true"/>
+   <parameter name="p_EmailAddr" dataType="character" defaultValue="" include_in_output="true"/>
+   <parameter name="p_DepositDate" dataType="character" defaultValue="unknown" include_in_output="true"/>
+   </parameters>
+   <lexicals/>
+   <dataQuery>
+   <sqlStatement name="Q1" dataSourceRef="">
+      <![CDATA[SELECT nvl(inv_4.status_message, 'No invoice on check') STATUS_MESSAGE,
+       inv_6.batch_name BATCH_NAME,
+       inv_6.item_number CHECK_SEQ_NUMBER,
+       inv_6.check_number RECEIPT_NUMBER,
+       nvl(to_char(inv_6.receipt_date,'DD-MON-YYYY'), to_char(inv_6.deposit_date,'DD-MON-YYYY')) RECEIPT_DATE,
+       inv_6.remittance_amount/100 REMIT_AMT,
+       inv_6.rec_customer_number RECEIPT_CUST,
+       inv_4.invoice INVOICE,
+       inv_4.customer_number INVOICE_CUST,
+       inv_4.amount_applied/100 REMITTANCE_AMOUNT,
+       inv_4.invoice_orig INVOICE_ORIG,
+       --xxcm_common.get_business_unit(gl.segment2) BUSINESS_UNIT
+	   '' BUSINESS_UNIT
+FROM xxar_payments_interface inv_6
+    LEFT JOIN (SELECT item_number, batch_name
+             , status_message1  status_message
+             , invoice1         invoice
+             , customer_number1 customer_number
+             , amount_applied1  amount_applied
+             , invoice1_orig    invoice_orig
+        FROM xxar_payments_interface inv1_4
+        WHERE inv1_4.record_type = 4
+        UNION
+        SELECT item_number, batch_name
+             , status_message2, invoice2, customer_number2, amount_applied2, invoice2_orig
+        FROM xxar_payments_interface inv2_4
+        WHERE inv2_4.record_type = 4
+          AND invoice2 is not null
+        UNION
+        SELECT item_number, batch_name
+             , status_message3, invoice3, customer_number3, amount_applied3, invoice3_orig
+        FROM xxar_payments_interface inv3_4
+        WHERE inv3_4.record_type = 4
+          AND invoice3 is not null
+       )                              inv_4 ON inv_4.item_number = inv_6.item_number
+                                             AND inv_4.batch_name = inv_6.batch_name
+    LEFT JOIN ra_customer_trx           trx ON trx.trx_number = decode(substr(inv_4.invoice,1,3),'XXX',inv_4.invoice_orig,inv_4.invoice)
+    LEFT JOIN ra_cust_trx_line_gl_dist dist ON dist.account_class = 'REC'
+                                             AND trx.customer_trx_id = dist.customer_trx_id
+    LEFT JOIN gl_code_combinations       gl ON gl.code_combination_id = dist.code_combination_id
+WHERE inv_6.record_type = 6 ]]>
+   </sqlStatement>
+   <sqlStatement name="Q2" dataSourceRef="">
+      <![CDATA[select fnd_global.conc_request_id               request_id
+                    , xxcm_common.get_db_constant('SMTP_HOST') smtp_host
+                    , xxcm_common.get_constant_value('INTERNAL_DOMAIN_NAME') domain
+               from dual]]>
+   </sqlStatement>
+   </dataQuery>
+   <dataStructure>
+   <group name="G_ALL" source="Q2" groupFilter="">
+      <element name="REQUEST_ID" value="request_id" />
+      <element name="P_SMTP_HOST"  value="smtp_host" />
+      <element name="P_DOMAIN"     value="domain" />
+      <group name="G_LB_REC" source="Q1" groupFilter="">
+         <element name="STATUS_MESSAGE" value="STATUS_MESSAGE" function=""/>
+         <element name="BATCH_NAME" value="BATCH_NAME" function=""/>
+         <element name="CHECK_SEQ_NUMBER" value="CHECK_SEQ_NUMBER" function=""/>
+         <element name="RECEIPT_NUMBER" value="RECEIPT_NUMBER" function=""/>
+         <element name="RECEIPT_DATE" value="RECEIPT_DATE" function=""/>
+         <element name="REMIT_AMT" value="REMIT_AMT" function=""/>
+         <element name="RECEIPT_CUST" value="RECEIPT_CUST" function=""/>
+         <element name="INVOICE" value="INVOICE" function=""/>
+         <element name="INVOICE_CUST" value="INVOICE_CUST" function=""/>
+         <element name="REMITTANCE_AMOUNT" value="REMITTANCE_AMOUNT" function=""/>
+         <element name="INVOICE_ORIG" value="INVOICE_ORIG" function=""/>
+         <element name="BUSINESS_UNIT" value="BUSINESS_UNIT" function=""/>
+      </group>
+   </group>
+   </dataStructure>
+</dataTemplate>

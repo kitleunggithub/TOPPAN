@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding='windows-1252'?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<!-- $Header: EmployeesVO.xml 120.10 2006/07/15 12:33:49 atgops1 noship $ -->
+
+<ViewObject
+   Name="EmployeesVO"
+   BindingStyle="Oracle"
+   CustomQuery="true"
+   RowClass="oracle.apps.fnd.framework.toolbox.labsolutions.server.EmployeesVORowImpl"
+   ComponentClass="oracle.apps.fnd.framework.toolbox.labsolutions.server.EmployeesVOImpl"
+   MsgBundleClass="oracle.jbo.common.JboResourceBundle"
+   FetchMode="FETCH_AS_NEEDED"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+SELECT EmployeeEO.EMPLOYEE_ID, 
+       EmployeeEO.FULL_NAME AS EMPLOYEE_NAME, 
+       EmployeeEO.EMAIL_ADDRESS, 
+       EmployeeEO1.FULL_NAME AS MANAGER_NAME, 
+       EmployeeEO1.EMPLOYEE_ID AS MANAGER_ID, 
+       EmployeeEO.FIRST_NAME, 
+       EmployeeEO.LAST_NAME, 
+       EmployeeEO.SALARY, 
+       EmployeeEO.START_DATE, 
+       EmployeeEO.END_DATE, 
+       EmployeeEO1.EMAIL_ADDRESS AS MANAGER_EMAIL,
+       flkp.meaning AS POSITION_DISPLAY,
+       decode(nvl(to_char(EmployeeEO.END_DATE), 'Y'), 'Y', 'okind_status.gif', 'criticalind_status.gif') AS EMPLOYEE_STATUS,
+        decode(nvl(to_char(EmployeeEO.END_DATE), 'N'), 'N',
+'DeleteDisabled', 'DeleteEnabled') AS DELETE_SWITCHER
+FROM FWK_TBX_EMPLOYEES EmployeeEO, 
+FWK_TBX_EMPLOYEES EmployeeEO1,
+FWK_TBX_LOOKUP_CODES_VL flkp
+WHERE EmployeeEO.MANAGER_ID = EmployeeEO1.EMPLOYEE_ID (+)
+and EmployeeEO.POSITION_CODE = flkp.lookup_code
+and flkp.lookup_type = 'FWK_TBX_POSITIONS'
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="9.0.3.11.1" />
+      <Attr Name="_CodeGenFlagNew" Value="36" />
+   </DesignTime>
+   <EntityUsage
+      Name="EmployeeEO"
+      Entity="oracle.apps.fnd.framework.toolbox.schema.server.EmployeeEO" >
+      <DesignTime>
+         <Attr Name="_EntireObjectTable" Value="false" />
+         <Attr Name="_queryClause" Value="false" />
+      </DesignTime>
+   </EntityUsage>
+   <EntityUsage
+      Name="EmployeeEO1"
+      Entity="oracle.apps.fnd.framework.toolbox.schema.server.EmployeeEO"
+      Association="oracle.apps.fnd.framework.toolbox.schema.server.EmpToMgrAO"
+      AssociationEnd="oracle.apps.fnd.framework.toolbox.schema.server.EmpToMgrAO.ManagerIdEmployeeEO1"
+      SourceUsage="oracle.apps.fnd.framework.toolbox.labsolutions.server.EmployeesVO.EmployeeEO"
+      ReadOnly="true"
+      Reference="true" >
+      <DesignTime>
+         <Attr Name="_EntireObjectTable" Value="false" />
+         <Attr Name="_queryClause" Value="false" />
+         <AttrArray Name="_srcAttributes">
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.EmployeeEO.ManagerId" />
+         </AttrArray>
+         <AttrArray Name="_dstAttributes">
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.EmployeeEO.EmployeeId" />
+         </AttrArray>
+      </DesignTime>
+   </EntityUsage>
+   <ViewAttribute
+      Name="EmployeeId"
+      IsUpdateable="while_insert"
+      IsNotNull="true"
+      EntityAttrName="EmployeeId"
+      EntityUsage="EmployeeEO"
+      AliasName="EMPLOYEE_ID"
+      ColumnType="VARCHAR2" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="0" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="EmployeeName"
+      EntityAttrName="FullName"
+      EntityUsage="EmployeeEO"
+      AliasName="FULL_NAME"
+      ColumnType="VARCHAR2" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="0" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="EmailAddress"
+      EntityAttrName="EmailAddress"
+      EntityUsage="EmployeeEO"
+      AliasName="EMAIL_ADDRESS"
+      ColumnType="VARCHAR2" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="0" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ManagerName"
+      EntityAttrName="FullName"
+      EntityUsage="EmployeeEO1"
+      AliasName="FULL_NAME1"
+      ColumnType="VARCHAR2" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="0" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ManagerId"
+      IsUpdateable="while_insert"
+      IsNotNull="true"
+      EntityAttrName="EmployeeId"
+      EntityUsage="EmployeeEO1"
+      AliasName="EMPLOYEE_ID1"
+      ColumnType="VARCHAR2" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="0" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="FirstName"
+      IsNotNull="true"
+      EntityAttrName="FirstName"
+      EntityUsage="EmployeeEO"
+      AliasName="FIRST_NAME"
+      ColumnType="VARCHAR2" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="0" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastName"
+      IsNotNull="true"
+      EntityAttrName="LastName"
+      EntityUsage="EmployeeEO"
+      AliasName="LAST_NAME"
+      ColumnType="VARCHAR2" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="0" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Salary"
+      IsNotNull="true"
+      EntityAttrName="Salary"
+      EntityUsage="EmployeeEO"
+      AliasName="SALARY"
+      ColumnType="VARCHAR2" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="0" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StartDate"
+      IsUpdateable="while_insert"
+      EntityAttrName="StartDate"
+      EntityUsage="EmployeeEO"
+      AliasName="START_DATE"
+      ColumnType="VARCHAR2" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="0" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="EndDate"
+      EntityAttrName="EndDate"
+      EntityUsage="EmployeeEO"
+      AliasName="END_DATE"
+      ColumnType="VARCHAR2" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="0" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ManagerEmail"
+      EntityAttrName="EmailAddress"
+      EntityUsage="EmployeeEO1"
+      AliasName="EMAIL_ADDRESS1"
+      ColumnType="VARCHAR2" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="0" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PositionDisplay"
+      IsQueriable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="80"
+      Type="java.lang.String"
+      AliasName="POSITION_DISPLAY"
+      ColumnType="VARCHAR2"
+      Expression="POSITION_DISPLAY"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="EmployeeStatus"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="22"
+      Type="java.lang.String"
+      AliasName="EMPLOYEE_STATUS"
+      ColumnType="VARCHAR2"
+      Expression="EMPLOYEE_STATUS"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="DeleteSwitcher"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="14"
+      Type="java.lang.String"
+      AliasName="DELETE_SWITCHER"
+      ColumnType="VARCHAR2"
+      Expression="DELETE_SWITCHER"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="14" />
+      </DesignTime>
+   </ViewAttribute>
+</ViewObject>

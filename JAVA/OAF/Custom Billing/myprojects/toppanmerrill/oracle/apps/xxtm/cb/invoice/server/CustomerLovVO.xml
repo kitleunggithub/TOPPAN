@@ -1,0 +1,334 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="CustomerLovVO"
+   BindingStyle="OracleName"
+   CustomQuery="true"
+   RowClass="oracle.apps.fnd.framework.server.OAViewRowImpl"
+   ComponentClass="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.CustomerLovVOImpl"
+   FetchMode="FETCH_AS_NEEDED"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+SELECT HP.PARTY_ID
+, HP.PARTY_NAME
+, CA.ACCOUNT_NUMBER 
+, CA.ATTRIBUTE1 SALESREP1
+, CA.ATTRIBUTE2 SPLIT1
+,(SELECT --RESOURCE_ID, 
+RESOURCE_NAME 
+FROM JTF_RS_DEFRESOURCES_V
+WHERE NVL(end_date_active,SYSDATE) >= SYSDATE
+AND RESOURCE_ID = CA.ATTRIBUTE1
+) SALESREP1_NAME
+--, CA.ATTRIBUTE3 SALESREP2
+--, CA.ATTRIBUTE4 SPLIT2
+--, CA.ATTRIBUTE5 SALESREP3
+--, CA.ATTRIBUTE6 SPLIT3
+--, CA.ATTRIBUTE7 SALESREP4
+--, CA.ATTRIBUTE8 SPLIT4
+--, CA.ATTRIBUTE9 SALESREP5
+--, CA.ATTRIBUTE10 SPLIT5
+--, CA.ATTRIBUTE11 STOCK_CODE
+--, CA.ATTRIBUTE12 CUSTOMER_SINCE
+--, CA.ATTRIBUTE13 CREDIT_RATING
+--,(SELECT 
+----ffv.flex_value,
+--ffvt.description value_description
+--FROM 
+--fnd_flex_value_sets ffvs ,
+--fnd_flex_values ffv ,
+--fnd_flex_values_tl ffvt
+--WHERE
+--ffvs.flex_value_set_id = ffv.flex_value_set_id
+--and ffv.flex_value_id = ffvt.flex_value_id
+--AND ffvt.language = 'US'
+--and flex_value_set_name = 'XXAR_CREDIT_RATING'
+--and ffv.enabled_flag = 'Y'
+--AND NVL(ffv.end_date_active,SYSDATE) >= SYSDATE
+--AND ffv.flex_value = CA.ATTRIBUTE13) CREDIT_RATING_DESC
+--, CA.ATTRIBUTE14 CREDIT_LIMIT
+--, CA.ATTRIBUTE15 CREDIT_PERIOD
+--, CA.ATTRIBUTE16 CUSTOMER_STATUS
+--,(SELECT --LOOKUP_CODE,
+--MEANING  
+--FROM FND_LOOKUP_VALUES
+--WHERE lookup_type = 'ACCOUNT_STATUS' 
+--AND enabled_flag = 'Y' 
+--AND NVL(end_date_active,SYSDATE) >= SYSDATE
+--AND LOOKUP_CODE = CA.ATTRIBUTE16 
+--)CUSTOMER_STATUS_DESC
+--, CA.ATTRIBUTE16 REMARK
+, CA.PAYMENT_TERM_ID
+,( SELECT 
+--TERM_ID,
+NAME  
+FROM RA_TERMS_VL 
+WHERE  NVL(end_date_active,SYSDATE) >= SYSDATE
+AND TERM_ID = CA.PAYMENT_TERM_ID
+)PAYMENT_TERM_DESC
+,CA.CUST_ACCOUNT_ID
+FROM 
+HZ_PARTIES HP
+,HZ_CUST_ACCOUNTS_ALL CA
+WHERE HP.PARTY_ID = CA.PARTY_ID
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess" />
+   </DesignTime>
+   <ViewAttribute
+      Name="PartyId"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="PARTY_ID"
+      Expression="PARTY_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PartyName"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="360"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PARTY_NAME"
+      Expression="PARTY_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="360" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="AccountNumber"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="ACCOUNT_NUMBER"
+      Expression="ACCOUNT_NUMBER"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Salesrep1"
+      IsPersistent="false"
+      Precision="150"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="SALESREP1"
+      Expression="SALESREP1"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Split1"
+      IsPersistent="false"
+      Precision="150"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="SPLIT1"
+      Expression="SPLIT1"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Salesrep1Name"
+      IsPersistent="false"
+      Precision="360"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="SALESREP1_NAME"
+      Expression="SALESREP1_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="360" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StockCode"
+      IsPersistent="false"
+      Precision="150"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="STOCK_CODE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CustomerSince"
+      IsPersistent="false"
+      Precision="150"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CUSTOMER_SINCE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreditRating"
+      IsPersistent="false"
+      Precision="150"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CREDIT_RATING"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreditRatingDesc"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CREDIT_RATING_DESC"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreditLimit"
+      IsPersistent="false"
+      Precision="150"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CREDIT_LIMIT"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreditPeriod"
+      IsPersistent="false"
+      Precision="150"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CREDIT_PERIOD"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CustomerStatus"
+      IsPersistent="false"
+      Precision="150"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CUSTOMER_STATUS"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CustomerStatusDesc"
+      IsPersistent="false"
+      Precision="80"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CUSTOMER_STATUS_DESC"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Remark"
+      IsPersistent="false"
+      Precision="150"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="REMARK"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PaymentTermId"
+      IsPersistent="false"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="PAYMENT_TERM_ID"
+      Expression="PAYMENT_TERM_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PaymentTermDesc"
+      IsPersistent="false"
+      Precision="15"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PAYMENT_TERM_DESC"
+      Expression="PAYMENT_TERM_DESC"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="15" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CustAccountId"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="CUST_ACCOUNT_ID"
+      Expression="CUST_ACCOUNT_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="BillToContact"
+      IsPersistent="false"
+      Precision="360"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="BILL_TO_CONTACT"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="360" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="BillToContactEmail"
+      IsPersistent="false"
+      Precision="32"
+      Type="java.lang.String"
+      ColumnType="CHAR"
+      AliasName="BILL_TO_CONTACT_EMAIL"
+      SQLType="VARCHAR" >
+   </ViewAttribute>
+</ViewObject>

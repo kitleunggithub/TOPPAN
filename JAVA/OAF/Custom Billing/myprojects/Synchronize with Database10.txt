@@ -1,0 +1,4 @@
+The following Synchronization Actions were performed successfully:
+
+Entity :InvoiceStyleEO
+  Create Key for Constraint: XXBS_INVOICE_STYLES_U2

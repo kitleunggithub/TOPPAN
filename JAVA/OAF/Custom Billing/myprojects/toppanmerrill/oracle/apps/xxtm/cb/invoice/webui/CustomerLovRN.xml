@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oa:listOfValues version="10.1.3_" xml:lang="en-US" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$" scope="/">
+   <ui:contents>
+      <oa:table name="CustomerLovRN" id="CustomerLovVO1">
+         <ui:contents>
+            <oa:messageStyledText id="PartyId" dataType="NUMBER" prompt="PartyId" viewName="CustomerLovVO1" viewAttr="PartyId" maximumLength="15" rendered="false"/>
+            <oa:messageStyledText id="CustAccountId" dataType="NUMBER" prompt="CustAccountId" viewName="CustomerLovVO1" viewAttr="CustAccountId" maximumLength="15" rendered="false"/>
+            <oa:messageStyledText id="PartyName" dataType="VARCHAR2" prompt="Customer Name" viewName="CustomerLovVO1" viewAttr="PartyName" maximumLength="360" queryable="true" selectiveSearchCriteria="false"/>
+            <oa:messageStyledText id="AccountNumber" dataType="VARCHAR2" prompt="Customer Number" viewName="CustomerLovVO1" viewAttr="AccountNumber" maximumLength="30" queryable="true" selectiveSearchCriteria="false"/>
+            <oa:messageStyledText id="Salesrep1" dataType="VARCHAR2" prompt="Salesrep1" viewName="CustomerLovVO1" viewAttr="Salesrep1" maximumLength="150" rendered="false"/>
+            <oa:messageStyledText id="Salesrep1Name" dataType="VARCHAR2" prompt="Primary Sales Rep" viewName="CustomerLovVO1" viewAttr="Salesrep1Name" maximumLength="360" queryable="true" rendered="false"/>
+            <oa:messageStyledText id="Split1" dataType="VARCHAR2" prompt="Split1" viewName="CustomerLovVO1" viewAttr="Split1" maximumLength="150" rendered="false"/>
+            <oa:messageStyledText id="PaymentTermId" dataType="NUMBER" prompt="PaymentTermId" viewName="CustomerLovVO1" viewAttr="PaymentTermId" maximumLength="150" rendered="false"/>
+            <oa:messageStyledText id="PaymentTermDesc" dataType="VARCHAR2" prompt="Payment Term" viewName="CustomerLovVO1" viewAttr="PaymentTermDesc" maximumLength="150"/>
+         </ui:contents>
+      </oa:table>
+   </ui:contents>
+</oa:listOfValues>

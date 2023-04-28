@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory -->
+<oa:header akRegionCode="FWK_TBX_T_LSN8_SEARCH" regionName="Home Search Region" xmlns="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:user="http://xmlns.oracle.com/jrad/user" version="9.0.3.8.9_1008" xml:lang="en-US" file-version="$Header: HomeSearchRN.xml 120.5 2005/07/12 12:09:22 atgops1 noship $">
+   <ui:contents>
+      <oa:messageComponentLayout id="ContentRN" columns="1" width="100%" promptWidth="1%">
+         <ui:contents>
+            <oa:messageChoice readOnly="false" defaultValue="PURCHASE_ORDERS" prompt="Object" styleClass="OraFieldText" pickListViewDef="oracle.apps.fnd.framework.toolbox.poplist.server.HomeSearchObjectsVO" pickListDispAttr="Meaning" pickListValAttr="LookupCode" id="SearchList"/>
+            <oa:messageTextInput readOnly="false" columns="15" rows="1" secret="false" styleClass="OraFieldText" maximumLength="30" id="SearchField" shortDesc="Search Criteria Value"/>
+            <oa:messageLayout id="ButtonLayout">
+               <ui:contents>
+                  <oa:submitButton shortDesc="Select to view search results." id="Go" use="/oracle/apps/fnd/attributesets/Buttons/Go"/>
+               </ui:contents>
+            </oa:messageLayout>
+         </ui:contents>
+      </oa:messageComponentLayout>
+   </ui:contents>
+</oa:header>

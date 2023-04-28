@@ -1,0 +1,66 @@
+The following Synchronization Actions were performed successfully:
+
+Entity :InvoiceLineEO
+  Attribute :LastUpdateLogin
+    Change Mandatory to:true
+  Attribute :LastUpdateDate
+    Change Mandatory to:true
+  Attribute :LastUpdatedBy
+    Change Mandatory to:true
+  Attribute :CreationDate
+    Change Mandatory to:true
+  Attribute :CreatedBy
+    Change Mandatory to:true
+  Attribute :ProductTypeId
+    Change Mandatory to:true
+  Attribute :SellAmount
+    Change Mandatory to:true
+  Attribute :UnitSell
+    Change Mandatory to:true
+  Attribute :QuantitySell
+    Change Mandatory to:true
+  Attribute :ProjectOrgId
+    Change Mandatory to:true
+  Attribute :OrganizationId
+    Change Mandatory to:true
+  Attribute :ProjectId
+    Change Mandatory to:true
+  Attribute :CustomerTrxId
+    Change Mandatory to:true
+  Attribute :CustomerTrxLineId
+    Change Mandatory to:true
+  Create Attribute for column: LINE_TYPE
+  Create Attribute for column: STATUS
+  Create Attribute for column: LEVEL_1
+  Create Attribute for column: LEVEL_2
+  Create Attribute for column: LEVEL_3
+  Key :XxbsCustomerTrxLinesU1
+    Change Disabled Constraint to:false
+  Key :SysC00277847
+    Change Disabled Constraint to:false
+  Key :SysC00277846
+    Change Disabled Constraint to:false
+  Key :SysC00277845
+    Change Disabled Constraint to:false
+  Key :SysC00277844
+    Change Disabled Constraint to:false
+  Key :SysC00277843
+    Change Disabled Constraint to:false
+  Key :SysC00277842
+    Change Disabled Constraint to:false
+  Key :SysC00277841
+    Change Disabled Constraint to:false
+  Key :SysC00277840
+    Change Disabled Constraint to:false
+  Key :SysC00277839
+    Change Disabled Constraint to:false
+  Key :SysC00277838
+    Change Disabled Constraint to:false
+  Key :SysC00277837
+    Change Disabled Constraint to:false
+  Key :SysC00277835
+    Change Disabled Constraint to:false
+  Key :SysC00277832
+    Change Disabled Constraint to:false
+  Key :SysC00277831
+    Change Disabled Constraint to:false

@@ -1,0 +1,345 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+
+<Entity
+   Name="InvoiceSalesRepSplitsEO"
+   DBObjectType="synonym"
+   DBObjectName="XXBS_REP_SPLITS"
+   AliasName="InvoiceSalesRepSplitsEO"
+   BindingStyle="OracleName"
+   UseGlueCode="false"
+   RowClass="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceSalesRepSplitsEOImpl"
+   DefClass="oracle.apps.fnd.framework.server.OAEntityDefImpl"
+   CollClass="oracle.apps.fnd.framework.server.OAEntityCache" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+      <AttrArray Name="_publishEvents">
+      </AttrArray>
+      <Attr Name="_panelSchema" Value="table|alias" />
+      <Attr Name="_codeGenFlag2" Value="Init|Delete|Access|DML|Val" />
+   </DesignTime>
+   <Attribute
+      Name="RepSplitId"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      ColumnName="REP_SPLIT_ID"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXBS_REP_SPLITS"
+      PrimaryKey="true" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="CustomerTrxId"
+      Precision="15"
+      Scale="0"
+      ColumnName="CUSTOMER_TRX_ID"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXBS_REP_SPLITS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="SalesrepId"
+      Precision="15"
+      Scale="0"
+      ColumnName="SALESREP_ID"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXBS_REP_SPLITS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="PrimaryFlag"
+      Precision="1"
+      ColumnName="PRIMARY_FLAG"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXBS_REP_SPLITS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="1" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="SplitPercentage"
+      ColumnName="SPLIT_PERCENTAGE"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXBS_REP_SPLITS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="CreatedBy"
+      Precision="15"
+      Scale="0"
+      ColumnName="CREATED_BY"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXBS_REP_SPLITS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="CreationDate"
+      ColumnName="CREATION_DATE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="TIMESTAMP"
+      TableName="XXBS_REP_SPLITS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LastUpdatedBy"
+      Precision="15"
+      Scale="0"
+      ColumnName="LAST_UPDATED_BY"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXBS_REP_SPLITS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LastUpdateDate"
+      ColumnName="LAST_UPDATE_DATE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="TIMESTAMP"
+      TableName="XXBS_REP_SPLITS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LastUpdateLogin"
+      Precision="15"
+      Scale="0"
+      ColumnName="LAST_UPDATE_LOGIN"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXBS_REP_SPLITS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Adjustment"
+      Precision="17"
+      Scale="4"
+      ColumnName="ADJUSTMENT"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXBS_REP_SPLITS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="SalespersonType"
+      Precision="100"
+      ColumnName="SALESPERSON_TYPE"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXBS_REP_SPLITS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="100" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="SequenceNumber"
+      Precision="15"
+      Scale="0"
+      ColumnName="SEQUENCE_NUMBER"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXBS_REP_SPLITS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <AccessorAttribute
+      Name="InvoiceEO"
+      Association="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceToInvoiceSalesRepSplitsAS"
+      AssociationEnd="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceToInvoiceSalesRepSplitsAS.InvoiceEO"
+      AssociationOtherEnd="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceToInvoiceSalesRepSplitsAS.InvoiceSalesRepSplitsEO"
+      Type="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceEOImpl" >
+   </AccessorAttribute>
+   <Key
+      Name="SysC00277873" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceSalesRepSplitsEO.RepSplitId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;REP_SPLIT_ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_isDisabledConstraint" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00277873" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00277874" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceSalesRepSplitsEO.CustomerTrxId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CUSTOMER_TRX_ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_isDisabledConstraint" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00277874" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00277875" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceSalesRepSplitsEO.SalesrepId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;SALESREP_ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_isDisabledConstraint" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00277875" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00277876" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceSalesRepSplitsEO.PrimaryFlag" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;PRIMARY_FLAG&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_isDisabledConstraint" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00277876" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00277877" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceSalesRepSplitsEO.SplitPercentage" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;SPLIT_PERCENTAGE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_isDisabledConstraint" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00277877" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00277878" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceSalesRepSplitsEO.CreatedBy" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATED_BY&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_isDisabledConstraint" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00277878" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00277879" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceSalesRepSplitsEO.CreationDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATION_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_isDisabledConstraint" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00277879" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00277880" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceSalesRepSplitsEO.LastUpdatedBy" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;LAST_UPDATED_BY&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_isDisabledConstraint" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00277880" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00277881" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceSalesRepSplitsEO.LastUpdateDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;LAST_UPDATE_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_isDisabledConstraint" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00277881" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00277882" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceSalesRepSplitsEO.LastUpdateLogin" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;LAST_UPDATE_LOGIN&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_isDisabledConstraint" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00277882" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00277883" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceSalesRepSplitsEO.SequenceNumber" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;SEQUENCE_NUMBER&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_isDisabledConstraint" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00277883" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="XxbsRepSplitsU1" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceSalesRepSplitsEO.RepSplitId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_isPrimary" Value="true" />
+         <Attr Name="_DBObjectName" Value="XXBS_REP_SPLITS_U1" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="XxbsRepSplits2trxFk" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceSalesRepSplitsEO.CustomerTrxId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_referencedKey" Value="XXBS_CUSTOMER_TRX_U1" />
+         <Attr Name="_isForeign" Value="true" />
+         <Attr Name="_DBObjectName" Value="XXBS_REP_SPLITS2TRX_FK" />
+      </DesignTime>
+   </Key>
+</Entity>

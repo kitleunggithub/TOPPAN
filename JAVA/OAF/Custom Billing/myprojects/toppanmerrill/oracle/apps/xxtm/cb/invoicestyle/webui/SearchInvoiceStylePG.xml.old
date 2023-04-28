@@ -1,0 +1,38 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <content>
+      <oa:pageLayout id="PageLayoutRN" amDefName="toppanmerrill.oracle.apps.xxtm.cb.invoicestyle.server.InvoiceStyleAM" windowTitle="Search Invoice Style Window" title="Search Invoice Style" controllerClass="toppanmerrill.oracle.apps.xxtm.cb.invoicestyle.webui.SearchInvoiceStyleCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:query id="QueryRN" mode="resultsBasedSearch" dispSimple="false" dispCustomized="false" dispAdvanced="false" hideSaveSearch="true" customizePanelTitle="" simpleSearchInstrTexts="">
+               <ui:contents>
+                  <oa:table id="ResultsTable" width="100%" userCustomizable="true" blockSize="30">
+                     <ui:contents>
+                        <oa:messageStyledText id="InvoiceStyleName" dataType="VARCHAR2" prompt="Style Name" viewName="SearchInvoiceStyleVO1" viewAttr="InvoiceStyleName" maximumLength="50" queryable="true" selectiveSearchCriteria="false" sortState="yes"/>
+                        <oa:messageStyledText id="Language" dataType="VARCHAR2" prompt="Language" viewName="SearchInvoiceStyleVO1" viewAttr="Language" maximumLength="20" queryable="true" selectiveSearchCriteria="false" sortState="yes"/>
+                        <oa:messageStyledText id="Status" dataType="VARCHAR2" prompt="Status" viewName="SearchInvoiceStyleVO1" viewAttr="Status" maximumLength="20" queryable="true" selectiveSearchCriteria="false" sortState="yes"/>
+                        <oa:messageChoice id="StatusPopList" dataType="VARCHAR2" prompt="Status" viewName="SearchInvoiceStyleVO1" viewAttr="Status" queryable="true" selectiveSearchCriteria="false" sortState="yes" allowBlankValue="true" pickListViewDef="toppanmerrill.oracle.apps.xxtm.cb.invoicestyle.server.InvoiceStyleStatusLovVO" pickListDispAttr="Status" pickListValAttr="Status" styleClass="OraFieldText" readOnly="true" disabled="false" rendered="true"/>
+                        <oa:image id="UpdateAction" use="/oracle/apps/fnd/attributesets/Buttons/Update" source="updateicon_enabled.gif" shortDesc="Update Record" imageHeight="24" imageWidth="24">
+                           <ui:primaryClientAction>
+                              <ui:fireAction event="Update">
+                                 <ui:parameters>
+                                    <ui:parameter key="PInvoiceStyleId" value="${oa.SearchInvoiceStyleVO1.InvoiceStyleId}"/>
+                                 </ui:parameters>
+                              </ui:fireAction>
+                           </ui:primaryClientAction>
+                        </oa:image>
+                     </ui:contents>
+                  </oa:table>
+               </ui:contents>
+            </oa:query>
+            <oa:pageButtonBar id="PageButtons">
+               <ui:contents>
+                  <oa:submitButton id="New" text="New Style" prompt="New Style" rendered="true"/>
+               </ui:contents>
+            </oa:pageButtonBar>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>

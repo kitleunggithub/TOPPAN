@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--============================================================================ -->
+<!--            MERRILL CORPORATION - R12 12.2.4 				                 -->
+<!--       MERRILL TECHNOLOGIES INDIA PRIVATE LIMITED                            -->
+<!--============================================================================ -->
+<!-- File Name   : XXAP_FUNDING_REP_BIP.xml    	                             	 -->
+<!--                                                                             -->
+<!-- Description : XXAP Funding Report										 	 -->
+<!--              						                                         -->
+<!--                                                                             -->
+<!-- Usage   	 : To extract the due payment details for the AP Invoice		 -->
+<!--                                                                             -->
+<!--  Development and Maintenance history                                        -->
+<!--  Date      Author               Version  Description                        -->
+<!--  ========= ==================  ========= =================================  -->
+<!--  xx-xxx-xx xxxxxxxxxxxxxx 		 1.0      Initial Devlopment				 -->
+<!--  06-APR-18 Senthil Nathan 		 1.1      CR Issue Request# 2059			 -->
+<!--  17-APR-18 Senthil Nathan 		 1.2      CR Enh Request# to ADD New Coln	 -->
+<!--  05-MAY-21 Senthil Nathan 		 1.3      CR Enh Request# to ADD New Column Invoice Date, Due Date and Overdue Date	 -->
+<!--  ************************************************************************** -->
+
+<dataTemplate name="XXAP_FUNDING_REP_BIP" defaultPackage="" description="XXAP Funding Report">
+   <properties>
+      <property name="include_parameters" value="true"/>
+      <property name="include_null_Element" value="true"/>
+      <property name="xml_tag_case" value="upper"/>
+      <property name="db_fetch_size" value="100"/>
+      <property name="scalable_mode" value="off"/>
+      <property name="include_rowsettag" value="false"/>
+      <property name="debug_mode" value="on"/>
+   </properties>
+   <parameters>
+      <parameter name="P_BANK_NAME" dataType="character" include_in_output="true"/>      <!-- Bank Name -->
+      <parameter name="P_BANK_ACCT_NUM" dataType="character" include_in_output="true"/>  <!-- Bank Account Number-->
+      <parameter name="P_DATE" dataType="date" include_in_output="true"/>	         	 <!-- Pay through date-->
+      <parameter name="P_LEGAL_ENTITY" dataType="character" include_in_output="true"/>   <!-- Bank LE -->
+   </parameters>
+   <lexicals/>
+   <dataQuery>
+   <sqlStatement name="Q1" dataSourceRef="">
+      <![CDATA[
+     WITH banks AS
+        ( SELECT ba.account_owner_org_id legal_entity_id
+               , bb.bank_name
+               , ba.bank_account_name
+               , ba.bank_account_num
+               , ba.currency_code
+               , ppp_banks.payment_method
+          FROM ce_bank_accounts ba
+            JOIN ce_bank_branches_v     bb ON ( bb.branch_party_id = ba.bank_branch_id )
+            JOIN ce_bank_acct_uses_all bau ON ( bau.bank_account_id = ba.bank_account_id )
+            JOIN hr_operating_units     ou ON ( ou.organization_id = bau.org_id )
+            JOIN gl_ledgers             gl ON ( gl.ledger_id = ou.set_of_books_id )
+            -- list of bank values from flex values
+            JOIN (SELECT banks.applicable_value_to bank_account_id
+                       , pymt_methods.applicable_value_to payment_method
+                  FROM iby_payment_profiles pp
+                    JOIN iby_applicable_pmt_profs banks
+                            ON ( banks.system_profile_code = pp.system_profile_code
+                             AND banks.applicable_type_code = 'INTERNAL_BANK_ACCOUNT'
+                               )
+                    JOIN iby_applicable_pmt_profs pymt_methods
+                            ON ( pymt_methods.system_profile_code = pp.system_profile_code
+                             AND pymt_methods.applicable_type_code = 'PAYMENT_METHOD'
+                                )
+                   WHERE 1=1 --xxcm_common.flex_value_exists('XXAP_FUNDING_ACCOUNTS', pp.system_profile_code, 'Y') = 'Y'
+				   AND nvl(pp.inactive_date, sysdate+1) > sysdate
+                 ) ppp_banks on ( ppp_banks.bank_account_id = ba.bank_account_id )
+          WHERE nvl(ba.end_date, sysdate+1) > sysdate
+       )
+     SELECT aia.INVOICE_ID
+      , aia.PAYMENT_METHOD_CODE
+      , aia.LEGAL_ENTITY_ID
+      , ep.name              LEGAL_ENTITY  /* 4 */
+      , aia.ORG_ID
+      , xxcm_common.get_org_name(aia.org_id) ORG_NAME  /* 6 */
+      , nvl( banks.bank_name, dflt_banks.bank_name)                 bank_name /* 7 */
+      , nvl( banks.bank_account_name, dflt_banks.bank_account_name) bank_acct_name
+      , nvl( banks.bank_account_num, dflt_banks.bank_account_num)   bank_acct_num /* 9 */
+      , s.vendor_name                      /* 10 */
+      , s.segment1          VENDOR_NUM
+      , TO_CHAR (apsa.due_date, 'DD-MON-YYYY') SCHEDULED_PAYMENT_DATE /* 12 */
+      , aia.INVOICE_NUM                    /* 13 */
+      , TO_CHAR (aia.invoice_date, 'DD-MON-YYYY') INVOICE_DATE
+      , TO_CHAR (apsa.due_date, 'DD-MON-YYYY') INVOICE_DUE_DATE
+      , trunc(:P_DATE) - trunc(apsa.due_date) INVOICE_OVERDUE_DAY
+      , aia.INVOICE_CURRENCY_CODE
+   -- , aia.INVOICE_AMOUNT																	-- Commented for CR#2059 V1.1
+      , apsa.amount_remaining INVOICE_AMOUNT												-- Added for CR#2059 V1.1
+   /* , ROUND(aia.INVOICE_AMOUNT
+          * NVL ( rate.conversion_rate, 1),2)               converted_currency_amount */	-- Commented for CR#2059 V1.1
+	  , ROUND(apsa.amount_remaining
+          * NVL ( rate.conversion_rate, 1),2)               converted_currency_amount		-- Added for CR#2059 V1.1
+      , nvl(rate.conversion_rate,1)                         conversion_rate
+      , fsp.currency_code                                   Conc_curr
+	  , aia.pay_group_lookup_code                           PAY_GRP							-- Added for CR#2059 V1.2
+      , s.vendor_type_lookup_code                           SUPP_TYPE						-- Added for CR#2059 V1.2
+  FROM ap_invoices_all aia
+    JOIN ap_payment_schedules_all apsa ON ( apsa.invoice_id = aia.invoice_id )
+    JOIN ap_suppliers                s ON ( s.vendor_id = aia.vendor_id )
+    JOIN po_vendor_sites_all      povs ON ( povs.vendor_id      = aia.vendor_id
+                                        AND povs.vendor_site_id = aia.vendor_site_id )
+    JOIN po_vendors                pov ON ( pov.vendor_id = povs.vendor_id )
+    JOIN (SELECT fsp.org_id, gls.currency_code
+          FROM financials_system_params_all fsp,
+             gl_ledgers gls
+          WHERE fsp.set_of_books_id = gls.ledger_id
+         )                         fsp ON ( fsp.org_id = aia.org_id )
+    LEFT JOIN banks              banks ON ( banks.legal_entity_id = aia.legal_entity_id
+                                        AND banks.payment_method  = aia.payment_method_code
+                                        AND banks.currency_code   = aia.invoice_currency_code)
+    JOIN banks              dflt_banks ON ( dflt_banks.legal_entity_id = aia.legal_entity_id
+                                        AND dflt_banks.payment_method  = aia.payment_method_code
+                                        AND dflt_banks.currency_code   = fsp.currency_code)
+    JOIN xle_entity_profiles       ep ON ( ep.legal_entity_id = aia.legal_entity_id )
+    LEFT JOIN (SELECT distinct to_currency, from_currency,
+                 first_value(CONVERSION_RATE) over (partition by to_currency, from_currency
+                                                    order by conversion_date desc, last_update_date desc) conversion_rate
+               FROM GL_DAILY_RATES
+               WHERE conversion_type = xxcm_common.get_constant_value('XXGL_RATE_CONVERSION_TYPE')
+              )                   rate ON ( rate.to_currency = fsp.currency_code
+                                        AND rate.from_currency = aia.invoice_currency_code
+                                          )
+ WHERE     1 = 1
+  AND aia.invoice_id NOT IN
+              (SELECT invoice_id
+                 FROM ap_holds_all aph
+                WHERE aia.invoice_id = aph.invoice_id
+                  AND release_lookup_code IS NULL)
+/*  AND NVL (pov.hold_all_payments_flag, 'N') = 'N' */
+  AND aia.invoice_amount <> 0
+  AND NVL (povs.hold_all_payments_flag, 'N') = 'N'
+  AND NVL (aia.payment_status_flag, 'N') IN ('N', 'P') /* payment unpaid or partially paid */
+  AND aia.cancelled_date IS NULL                       /* suppress cancelled invoices */
+  AND EXISTS (SELECT 1
+              FROM ap_invoice_lines_all ail
+               JOIN ap_invoice_distributions_all aid on ( aid.invoice_id = ail.invoice_id
+                                              AND aid.invoice_line_number = ail.line_number )
+              WHERE ail.invoice_id = aia.invoice_id
+                AND aid.match_status_flag = 'A'
+             ) /* Invoice is validated */
+  AND TRUNC (apsa.due_date) <= :P_DATE
+  AND ( aia.legal_entity_id  = :P_LEGAL_ENTITY )
+  AND (  dflt_banks.bank_name = :P_BANK_NAME )
+  AND ( :P_BANK_ACCT_NUM IS NULL  OR nvl(banks.bank_account_num, dflt_banks.bank_account_num)  = :P_BANK_ACCT_NUM)
+  AND apsa.amount_remaining != 0																					-- Added for CR#2059 V1.2
+  ORDER BY LEGAL_ENTITY,ORG_NAME,bank_acct_num,vendor_name,SCHEDULED_PAYMENT_DATE,INVOICE_NUM
+       ]]>
+   </sqlStatement>
+   </dataQuery>
+   <dataStructure>
+   <group name="G_REPORT" source="Q1" groupFilter="">
+      <element name="INVOICE_ID"                value="INVOICE_ID" />
+      <element name="PAYMENT_METHOD"            value="PAYMENT_METHOD_CODE" />
+      <element name="LEGAL_ENTITY_ID"           value="LEGAL_ENTITY_ID" />
+      <element name="LEGAL_ENTITY"              value="LEGAL_ENTITY" />
+      <element name="ORG_ID"                    value="ORG_ID" />
+      <element name="ORG_NAME"                  value="ORG_NAME" />
+      <element name="INVOICE_NUM"               value="INVOICE_NUM" />
+      <element name="INVOICE_DATE"              value="INVOICE_DATE" />
+      <element name="INVOICE_DUE_DATE"          value="INVOICE_DUE_DATE" />
+      <element name="INVOICE_OVERDUE_DAY"       value="INVOICE_OVERDUE_DAY" />	  
+      <element name="INVOICE_CURRENCY_CODE"     value="INVOICE_CURRENCY_CODE" />
+      <element name="INVOICE_AMOUNT"            value="INVOICE_AMOUNT" />
+      <element name="BANK_NAME"                 value="BANK_NAME" />
+      <element name="BANK_ACCT_NAME"            value="BANK_ACCT_NAME" />
+      <element name="BANK_ACCT_NUM"             value="BANK_ACCT_NUM" />
+      <element name="VENDOR_NAME"               value="VENDOR_NAME" />
+      <element name="VENDOR_NUM"                value="VENDOR_NUM" />
+      <element name="SCHEDULED_PAYMENT_DATE"    value="SCHEDULED_PAYMENT_DATE" />
+      <element name="CONVERTED_CURRENCY_AMOUNT" value="CONVERTED_CURRENCY_AMOUNT" />
+      <element name="CURRENCY_CODE"             value="CONC_CURR" />
+      <element name="CONVERSION_RATE"           value="CONVERSION_RATE" />
+	  <element name="PAY_GRP"             		value="PAY_GRP" />
+      <element name="SUPP_TYPE"           		value="SUPP_TYPE" />
+   </group>
+   <element name="CS_CONV_CURR" value="G_REPORT.CONVERTED_CURRENCY_AMOUNT" dataType="number" function="sum"/>
+   </dataStructure>
+</dataTemplate>

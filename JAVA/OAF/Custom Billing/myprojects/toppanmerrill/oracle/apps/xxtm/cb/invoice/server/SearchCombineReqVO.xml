@@ -1,0 +1,220 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="SearchCombineReqVO"
+   OrderBy="COMBINE_REQ_NUMBER DESC"
+   BindingStyle="OracleName"
+   CustomQuery="true"
+   RowClass="oracle.apps.fnd.framework.server.OAViewRowImpl"
+   ComponentClass="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SearchCombineReqVOImpl"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+SELECT 
+combine.COMBINE_REQ_ID
+, combine.PARENT_CUSTOMER_TRX_ID
+, TO_NUMBER(combine.COMBINE_REQ_NUMBER) COMBINE_REQ_NUMBER
+, combine.REQ_TYPE
+, combine.STATUS
+, cust.PARTY_ID CUSTOMER_ID
+, cust.PARTY_NAME CUSTOMER_NAME
+, parent_invoice.AR_TRX_NUMBER PARENT_TRX_NUMBER
+, child_invoice.AR_TRX_NUMBER CHILD_TRX_NUMBER
+, parent_invoice.CUSTOMER_TRX_ID PARENT_TRX_ID
+, child_invoice.CUSTOMER_TRX_ID CHILD_TRX_ID
+, combine.ORG_ID
+FROM 
+XXBS_COMBINE_REQ combine
+, XXBS_COMBINE_REQ_DTL combine_dtl
+, XXBS_CUSTOMER_TRX parent_invoice
+, XXBS_CUSTOMER_TRX child_invoice
+, HZ_PARTIES cust
+, HZ_CUST_ACCOUNTS_ALL acc
+WHERE
+combine.COMBINE_REQ_ID = combine_dtl.COMBINE_REQ_ID(+)
+AND combine.PARENT_CUSTOMER_TRX_ID = parent_invoice.CUSTOMER_TRX_ID (+)
+AND combine_dtl.CHILD_CUSTOMER_TRX_ID = child_invoice.CUSTOMER_TRX_ID (+)
+AND parent_invoice.BILL_TO_CUSTOMER_ID = acc.CUST_ACCOUNT_ID (+)
+AND acc.PARTY_ID = cust.PARTY_ID (+)
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess" />
+   </DesignTime>
+   <ViewAttribute
+      Name="CombineReqId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="COMBINE_REQ_ID"
+      Expression="COMBINE_REQ_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ParentCustomerTrxId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="PARENT_CUSTOMER_TRX_ID"
+      Expression="PARENT_CUSTOMER_TRX_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CombineReqNumber"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="50"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="COMBINE_REQ_NUMBER"
+      Expression="COMBINE_REQ_NUMBER"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="50" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ReqType"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="50"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="REQ_TYPE"
+      Expression="REQ_TYPE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="50" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Status"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="50"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="STATUS"
+      Expression="STATUS"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="50" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CustomerId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="CUSTOMER_ID"
+      Expression="CUSTOMER_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CustomerName"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="360"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CUSTOMER_NAME"
+      Expression="CUSTOMER_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="360" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ParentTrxNumber"
+      IsPersistent="false"
+      Precision="20"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PARENT_TRX_NUMBER"
+      Expression="PARENT_TRX_NUMBER"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="20" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ChildTrxNumber"
+      IsPersistent="false"
+      Precision="20"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CHILD_TRX_NUMBER"
+      Expression="CHILD_TRX_NUMBER"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="20" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ParentTrxId"
+      IsPersistent="false"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="PARENT_TRX_ID"
+      Expression="PARENT_TRX_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ChildTrxId"
+      IsPersistent="false"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="CHILD_TRX_ID"
+      Expression="CHILD_TRX_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="OrgId"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="ORG_ID"
+      Expression="ORG_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+</ViewObject>

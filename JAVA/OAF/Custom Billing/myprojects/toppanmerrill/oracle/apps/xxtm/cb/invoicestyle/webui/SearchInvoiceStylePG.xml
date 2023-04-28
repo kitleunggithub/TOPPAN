@@ -1,0 +1,74 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <content>
+      <oa:pageLayout id="PageLayoutRN" amDefName="toppanmerrill.oracle.apps.xxtm.cb.invoicestyle.server.InvoiceStyleAM" windowTitle="Search Invoice Style Window" title="Search Invoice Style" controllerClass="toppanmerrill.oracle.apps.xxtm.cb.invoicestyle.webui.SearchInvoiceStyleCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:messageComponentLayout id="QueryRN" rows="1" columns="2" fieldWidth="100%">
+               <ui:contents>
+                  <oa:messageTextInput id="StyleName" prompt="Style Name" columns="50" maximumLength="50"/>
+                  <oa:messageChoice id="Status" prompt="Status" pickListViewDef="toppanmerrill.oracle.apps.xxtm.cb.invoicestyle.server.InvoiceStyleStatusLovVO" pickListDispAttr="Status" pickListValAttr="Status" styleClass="OraFieldText"/>
+                  <oa:messageChoice id="Language" prompt="Language" pickListViewDef="toppanmerrill.oracle.apps.xxtm.cb.invoicestyle.server.InvoiceStyleLangLovVO" pickListDispAttr="LangDescription" pickListValAttr="LangDescription" styleClass="OraFieldText"/>
+               </ui:contents>
+            </oa:messageComponentLayout>
+            <oa:rowLayout id="ButtonRN">
+               <ui:contents>
+                  <oa:submitButton id="GoBN" use="/oracle/apps/fnd/attributesets/Buttons/Go"/>
+                  <oa:resetButton id="ClearBN" use="/oracle/apps/fnd/attributesets/Buttons/ClearAll" text="Clear"/>
+               </ui:contents>
+            </oa:rowLayout>
+            <oa:advancedTable id="SearchInvoiceStyleResultTE" text="" blockSize="20" viewName="SearchInvoiceStyleVO1" verticalGridlinesDisplayed="true" adminCustomizable="false" rowNavigationPolicy="page" width="99%">
+               <ui:contents>
+                  <oa:column id="StyleNameCN" rendered="true">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="StyleNameTH" prompt="Style Name" sortState="yes"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageStyledText id="StyleNameFD" viewAttr="InvoiceStyleName"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="LanguageCN" rendered="true">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="LanguageTH" prompt="Language" sortState="yes"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageStyledText id="LanguageFD" viewAttr="Language"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="StatusCN">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="StatusTH" prompt="Status" sortState="yes"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageStyledText id="StatusFD" viewAttr="Status"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="EditCN">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="EditTH" prompt="Edit"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:image id="EditFD" source="updateicon_enabled.gif">
+                           <ui:primaryClientAction>
+                              <ui:fireAction event="Update">
+                                 <ui:parameters>
+                                    <ui:parameter key="PInvoiceStyleId" value="${oa.SearchInvoiceStyleVO1.InvoiceStyleId}"/>
+                                 </ui:parameters>
+                              </ui:fireAction>
+                           </ui:primaryClientAction>
+                        </oa:image>
+                     </ui:contents>
+                  </oa:column>
+               </ui:contents>
+            </oa:advancedTable>
+            <oa:pageButtonBar id="PageButtons">
+               <ui:contents>
+                  <oa:submitButton id="New" text="New Style" prompt="New Style" rendered="true"/>
+               </ui:contents>
+            </oa:pageButtonBar>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>

@@ -1,0 +1,116 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath:~PROD:~PATH:~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath:~PROD:mds:directory  -->
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="9.0.3.9.1_1543" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header: BasicStructPG.xml 120.11 2006/05/25 13:13:09 atgops1 noship $">
+   <content>
+      <oa:pageLayout amDefName="oracle.apps.fnd.framework.toolbox.samplelib.server.SampleBrowserAM" id="PageLayoutRN" windowTitle="OA Framework Toolbox Sample Library" title="Basic Page Structure" quickLinksShown="true" controllerClass="oracle.apps.fnd.framework.toolbox.samplelib.webui.BasicStructCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:header id="HeaderARN" text="Header 1">
+               <ui:contents>
+                  <oa:tableLayout id="OuterLayout" hAlign="start" width="100%">
+                     <ui:contents>
+                        <oa:rowLayout id="ButtonRow" hAlign="start" width="100%">
+                           <ui:contents>
+                              <oa:cellFormat id="ButtonCell" hAlign="end" width="100%">
+                                 <ui:contents>
+                                    <oa:submitButton id="RegionButton" text="Region Action" prompt="Region Action" hAlign="end"/>
+                                 </ui:contents>
+                              </oa:cellFormat>
+                           </ui:contents>
+                        </oa:rowLayout>
+                        <oa:rowLayout id="HeadersRow" width="100%" hAlign="start">
+                           <ui:contents>
+                              <oa:cellFormat id="HeadersCell" width="100%" hAlign="start">
+                                 <ui:contents>
+                                    <oa:tableLayout id="InnerLayout" width="100%" hAlign="start">
+                                       <ui:contents>
+                                          <oa:rowLayout id="TopRow" width="100%" hAlign="start">
+                                             <ui:contents>
+                                                <oa:cellFormat id="LeftCell" width="50%" hAlign="start" vAlign="top" rowSpan="2">
+                                                   <ui:contents>
+                                                      <oa:header id="LeftSubheaderA" text="Subheader 1-1"/>
+                                                   </ui:contents>
+                                                </oa:cellFormat>
+                                                <oa:cellFormat id="RightCell" width="50%" hAlign="start" vAlign="top">
+                                                   <ui:contents>
+                                                      <oa:header id="RightSubheaderA" text="Subheader 1-2">
+                                                         <ui:contents>
+                                                            <oa:contentContainer id="ContentContainer" text="Content Container" icon="bullseyeicon_cctitle.gif" width="100%">
+                                                               <ui:contents>
+                                                                  <oa:bulletedList id="BulletedList">
+                                                                     <ui:contents>
+                                                                        <oa:link id="ListLink1" text="Yahoo!" destination="http://www.yahoo.com"/>
+                                                                        <oa:link id="ListLink2" text="Google" destination="http://www.google.com"/>
+                                                                     </ui:contents>
+                                                                  </oa:bulletedList>
+                                                               </ui:contents>
+                                                            </oa:contentContainer>
+                                                         </ui:contents>
+                                                      </oa:header>
+                                                   </ui:contents>
+                                                </oa:cellFormat>
+                                             </ui:contents>
+                                          </oa:rowLayout>
+                                          <oa:rowLayout id="BottomRow" width="100%" hAlign="start">
+                                             <ui:contents>
+                                                <oa:cellFormat id="BottomCell" width="100%" hAlign="start" vAlign="top">
+                                                   <ui:contents>
+                                                      <oa:header id="BottomSubheaderA" text="Subheader 1-3"/>
+                                                   </ui:contents>
+                                                </oa:cellFormat>
+                                             </ui:contents>
+                                          </oa:rowLayout>
+                                       </ui:contents>
+                                    </oa:tableLayout>
+                                 </ui:contents>
+                              </oa:cellFormat>
+                           </ui:contents>
+                        </oa:rowLayout>
+                     </ui:contents>
+                  </oa:tableLayout>
+               </ui:contents>
+            </oa:header>
+            <oa:header id="HeaderBRN" text="Header 2">
+               <ui:contents>
+                  <oa:formattedText id="sectionStamp" text="Section Stamp &lt;b>with Data&lt;/b>" styleClass="OraPageStampText"/>
+                  <oa:header id="SubheaderB" text="Subheader 2">
+                     <ui:contents>
+                        <oa:header id="SubSubHeaderB" text="Subsubheader 2"/>
+                     </ui:contents>
+                  </oa:header>
+               </ui:contents>
+            </oa:header>
+            <oa:hideShowHeader id="HeaderCRN" text="Hide/Show Header 3"/>
+            <oa:hideShowHeader id="HeaderD" text="Hide/Show Header 4"/>
+            <oa:pageButtonBar id="PageButtonsRN">
+               <ui:contents>
+                  <oa:submitButton id="Apply" use="/oracle/apps/fnd/attributesets/Buttons/Apply"/>
+                  <oa:submitButton id="Cancel" use="/oracle/apps/fnd/attributesets/Buttons/Cancel"/>
+               </ui:contents>
+            </oa:pageButtonBar>
+         </ui:contents>
+         <ui:footnote>
+            <oa:formattedText id="Footnote" styleClass="OraPageStampText" viewName="EmployeesVO1" viewAttr="EmployeeId" dataType="NUMBER" text="Footnote Prompt &lt;b>with Data&lt;/b>"/>
+         </ui:footnote>
+         <ui:returnNavigation>
+            <oa:link id="ReturnTo" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/samplelib/webui/SampleBrowserPG&amp;retainAM=Y" text="Return to Sample Browser"/>
+         </ui:returnNavigation>
+         <ui:productBranding>
+            <oa:formattedText id="ProductBranding" text="Toolbox"/>
+         </ui:productBranding>
+         <ui:pageStatus>
+            <oa:flowLayout id="PageStatusRN">
+               <ui:contents>
+                  <oa:staticStyledText id="HelpText" styleClass="OraInstructionText" messageAppShortName="AK" messageName="FWK_TBX_T_PAGE_GENERAL"/>
+                  <oa:tableLayout id="RequiredKey" extends="/oracle/apps/fnd/framework/webui/OAReqFieldDescRG" hAlign="center" width="100%"/>
+               </ui:contents>
+            </oa:flowLayout>
+         </ui:pageStatus>
+         <ui:inContextBranding>
+            <oa:formattedText id="FormattedText" text="Customer &lt;b>Sun Microsystems - Menlo Park&lt;/b>"/>
+         </ui:inContextBranding>
+      </oa:pageLayout>
+   </content>
+</page>

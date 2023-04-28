@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding='WINDOWS-1252'?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<!-- $Header: PoHeaderSimpleVO.xml 120.7 2005/07/12 11:12:10 atgops1 noship $ -->
+
+<ViewObject
+   Name="PoHeaderSimpleVO"
+   TimeStamp="1018909569962"
+   SelectList="PurchaseOrderHeaderEO.HEADER_ID, 
+       PurchaseOrderHeaderEO.DESCRIPTION, 
+
+       PurchaseOrderHeaderEO.CURRENCY_CODE, 
+       PurchaseOrderHeaderEO.CREATION_DATE, 
+
+       PurchaseOrderHeaderEO.BUYER_ID, 
+       EmployeeEO.EMPLOYEE_ID, 
+
+       EmployeeEO.FULL_NAME, 
+       PurchaseOrderHeaderEO.SUPPLIER_ID, 
+
+       SupplierEO.NAME, 
+       SupplierEO.SUPPLIER_ID AS SUPPLIER_ID1"
+   FromList="FWK_TBX_PO_HEADERS PurchaseOrderHeaderEO, FWK_TBX_EMPLOYEES EmployeeEO, FWK_TBX_SUPPLIERS SupplierEO"
+   Where="(PurchaseOrderHeaderEO.BUYER_ID = EmployeeEO.EMPLOYEE_ID
+AND PurchaseOrderHeaderEO.SUPPLIER_ID = SupplierEO.SUPPLIER_ID)"
+   BindingStyle="Oracle"
+   CustomQuery="false"
+   RowClass="oracle.apps.fnd.framework.server.OAViewRowImpl"
+   ComponentClass="oracle.apps.fnd.framework.toolbox.tutorial.server.PoHeaderSimpleVOImpl"
+   UseGlueCode="false" >
+   <DesignTime>
+      <Attr Name="_version" Value="5.0.0.6.84" />
+      <Attr Name="_CodeGenFlagNew" Value="36" />
+   </DesignTime>
+   <EntityUsage
+      Name="PurchaseOrderHeaderEO"
+      Entity="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderHeaderEO" >
+      <DesignTime>
+         <Attr Name="_ReadOnly" Value="false" />
+         <Attr Name="_EntireObjectTable" Value="false" />
+         <Attr Name="_queryClause" Value="true" />
+         <Attr Name="_queryWhere" Value="(PurchaseOrderHeaderEO.BUYER_ID = EmployeeEO.EMPLOYEE_ID
+AND PurchaseOrderHeaderEO.SUPPLIER_ID = SupplierEO.SUPPLIER_ID)" />
+      </DesignTime>
+   </EntityUsage>
+   <EntityUsage
+      Name="EmployeeEO"
+      Entity="oracle.apps.fnd.framework.toolbox.schema.server.EmployeeEO"
+      SourceUsage="oracle.apps.fnd.framework.toolbox.tutorial.server.PoHeaderSimpleVO.PurchaseOrderHeaderEO"
+      Reference="true" >
+      <DesignTime>
+         <Attr Name="_ReadOnly" Value="true" />
+         <Attr Name="_EntireObjectTable" Value="false" />
+         <Attr Name="_queryClause" Value="false" />
+         <AttrArray Name="_srcAttributes">
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderHeaderEO.LastUpdateDate" />
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderHeaderEO.LastUpdatedBy" />
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderHeaderEO.CreationDate" />
+         </AttrArray>
+         <AttrArray Name="_dstAttributes">
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.EmployeeEO.LastUpdateDate" />
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.EmployeeEO.LastUpdatedBy" />
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.EmployeeEO.CreationDate" />
+         </AttrArray>
+      </DesignTime>
+   </EntityUsage>
+   <EntityUsage
+      Name="SupplierEO"
+      Entity="oracle.apps.fnd.framework.toolbox.schema.server.SupplierEO"
+      SourceUsage="oracle.apps.fnd.framework.toolbox.tutorial.server.PoHeaderSimpleVO.EmployeeEO"
+      Reference="true" >
+      <DesignTime>
+         <Attr Name="_ReadOnly" Value="true" />
+         <Attr Name="_EntireObjectTable" Value="false" />
+         <Attr Name="_queryClause" Value="false" />
+         <AttrArray Name="_srcAttributes">
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.EmployeeEO.StartDate" />
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.EmployeeEO.EndDate" />
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.EmployeeEO.LastUpdateDate" />
+         </AttrArray>
+         <AttrArray Name="_dstAttributes">
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.SupplierEO.StartDate" />
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.SupplierEO.EndDate" />
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.SupplierEO.LastUpdateDate" />
+         </AttrArray>
+      </DesignTime>
+   </EntityUsage>
+   <ViewAttribute
+      Name="HeaderId"
+      EntityAttrName="HeaderId"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="HEADER_ID" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="0" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Description"
+      EntityAttrName="Description"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="DESCRIPTION" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="0" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CurrencyCode"
+      EntityAttrName="CurrencyCode"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="CURRENCY_CODE" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="0" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreationDate"
+      IsNotNull="true"
+      EntityAttrName="CreationDate"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="CREATION_DATE" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="0" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="OrderTotal"
+      IsQueriable="false"
+      IsPersistent="false"
+      EntityAttrName="OrderTotal"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="ORDERTOTAL" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="0" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="BuyerId"
+      EntityAttrName="BuyerId"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="BUYER_ID" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="0" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="EmployeeId"
+      IsUpdateable="false"
+      EntityAttrName="EmployeeId"
+      EntityUsage="EmployeeEO"
+      AliasName="EMPLOYEE_ID" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="0" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="FullName"
+      IsUpdateable="false"
+      EntityAttrName="FullName"
+      EntityUsage="EmployeeEO"
+      AliasName="FULL_NAME" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="0" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SupplierId"
+      EntityAttrName="SupplierId"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="SUPPLIER_ID" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="0" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Name"
+      IsUpdateable="false"
+      EntityAttrName="Name"
+      EntityUsage="SupplierEO"
+      AliasName="NAME" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="0" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SupplierId1"
+      IsUpdateable="false"
+      EntityAttrName="SupplierId"
+      EntityUsage="SupplierEO"
+      AliasName="SUPPLIER_ID1" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="0" />
+      </DesignTime>
+   </ViewAttribute>
+</ViewObject>

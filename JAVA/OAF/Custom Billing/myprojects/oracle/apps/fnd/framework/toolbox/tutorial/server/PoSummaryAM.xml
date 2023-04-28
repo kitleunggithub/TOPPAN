@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+
+<!-- $Header: PoSummaryAM.xml 120.12 2006/07/04 00:49:00 atgops1 noship $ -->
+
+<AppModule
+   Name="PoSummaryAM"
+   ComponentClass="oracle.apps.fnd.framework.toolbox.tutorial.server.PoSummaryAMImpl"
+   LoadComponentsLazily="true" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.38.51" />
+      <Attr Name="_deployType" Value="0" />
+   </DesignTime>
+   <ViewUsage
+      Name="CarriersVO1"
+      ViewObjectName="oracle.apps.fnd.framework.toolbox.poplist.server.CarriersVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="PaymentTermsVO1"
+      ViewObjectName="oracle.apps.fnd.framework.toolbox.poplist.server.PaymentTermsVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="PoSummaryVO1"
+      ViewObjectName="oracle.apps.fnd.framework.toolbox.tutorial.server.PoSummaryVO" >
+   </ViewUsage>
+</AppModule>

@@ -1,0 +1,73 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- +======================================================================+ -->
+<!-- |    Copyright (c) 2005, 2014 Oracle and/or its affiliates.           | -->
+<!-- |                         All rights reserved.                         | -->
+<!-- |                           Version 12.0.0                             | -->
+<!-- +======================================================================+ -->
+<!--  dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath:~PROD:~PATH:~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath:~PROD:mds:directory -->
+<oa:tableLayout version="10.1.3_" xml:lang="en-US" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header: ContactPopupRN.xml 120.0.12020000.1 2014/09/18 14:43:50 spunam noship $">
+   <ui:contents>
+      <oa:rowLayout id="region1">
+         <ui:contents>
+            <oa:cellFormat id="region2">
+               <ui:contents>
+                  <oa:image id="item1" source="/OA_HTML/cabo/images/alta/info_pic.png"/>
+               </ui:contents>
+            </oa:cellFormat>
+            <oa:cellFormat id="region11" width="8">
+               <ui:contents>
+                  <oa:spacer id="item4" width="8"/>
+               </ui:contents>
+            </oa:cellFormat>
+            <oa:cellFormat id="region3">
+               <ui:contents>
+                  <oa:tableLayout id="region4" hAlign="center">
+                     <ui:contents>
+                        <oa:rowLayout id="region5">
+                           <ui:contents>
+                              <oa:cellFormat id="region6" columnSpan="6">
+                                 <ui:contents>
+                                    <oa:formattedText id="BuyerNamePopup" viewName="PoDetailsFullExpVO1" viewAttr="BuyerName"/>
+                                 </ui:contents>
+                              </oa:cellFormat>
+                           </ui:contents>
+                        </oa:rowLayout>
+                        <oa:rowLayout id="region7">
+                           <ui:contents>
+                              <oa:cellFormat id="region8" columnSpan="6">
+                                 <ui:contents>
+                                    <oa:formattedText id="item2" text="Sales Manager"/>
+                                 </ui:contents>
+                              </oa:cellFormat>
+                           </ui:contents>
+                        </oa:rowLayout>
+                        <oa:rowLayout id="region9">
+                           <ui:contents>
+                              <oa:cellFormat id="region10" height="40" vAlign="bottom">
+                                 <ui:contents>
+                                    <oa:image id="item3Phone" source="/OA_HTML/cabo/images/alta/Phone.png" destination="tel:**700" imageWidth="16" imageHeight="16"/>
+                                 </ui:contents>
+                              </oa:cellFormat>
+                              <oa:cellFormat id="region12"/>
+                              <oa:cellFormat id="region13" vAlign="bottom">
+                                 <ui:contents>
+                                    <oa:image id="item3EMail" source="/OA_HTML/cabo/images/alta/email_blue_24.png" destination="mailto:{@BuyerEmail}?subject=Regarding Purchase Order: {@HeaderId}" viewName="PoDetailsFullExpVO1" imageHeight="16" imageWidth="16"/>
+                                 </ui:contents>
+                              </oa:cellFormat>
+                              <oa:cellFormat id="region14"/>
+                              <oa:cellFormat id="region15" vAlign="bottom">
+                                 <ui:contents>
+                                    <oa:image id="item3" source="/OA_HTML/cabo/images/alta/chat_blue_24.png" imageHeight="16" imageWidth="16"/>
+                                 </ui:contents>
+                              </oa:cellFormat>
+                              <oa:cellFormat id="region16"/>
+                           </ui:contents>
+                        </oa:rowLayout>
+                     </ui:contents>
+                  </oa:tableLayout>
+               </ui:contents>
+            </oa:cellFormat>
+         </ui:contents>
+      </oa:rowLayout>
+   </ui:contents>
+</oa:tableLayout>

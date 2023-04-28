@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory  -->
+<!-- Following  attribute sets for the FWK_TBX_ITEMS displayable columns. It would be nice if you add some message tips to some attribute sets -->
+<!-- Followed by region header attribute sets, add as many as you need -->
+<!-- Followed by UI standards, object specific button attribute sets, use Buttons.xml for shared, no object specific buttons. Add as many as you need -->
+<package xmlns="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:jrad="http://xmlns.oracle.com/jrad" version="9.0.3.5.3_312" xml:lang="en-US" file-version="$Header: FwkTbxItems.xml 120.5 2005/07/12 12:04:45 atgops1 noship $">
+   <jrad:attributeSet docName="ItemId" comment="When Item ID is referenced by Number only" prompt="Number" columns="10"/>
+   <jrad:attributeSet docName="ItemId_ItemNum" comment="When fill name 'Item Number' is required" prompt="Item Number" columns="10"/>
+   <jrad:attributeSet docName="ItemDescription" comment="Item long name" prompt="Description" shortDesc="Item Description" columns="30"/>
+   <jrad:attributeSet docName="FwkTbxItems" comment="Used as a header for items list region" prompt="Items"/>
+   <jrad:attributeSet docName="FwkTbxItems_Details" comment="Used as a header for an item details region" prompt="Item Details"/>
+   <jrad:attributeSet docName="CreateItem" comment="UI Standards 'Create xxx' button" prompt="Create Item"/>
+   <jrad:attributeSet docName="UpdateItem" comment="UI Standards 'Update xxx' button" prompt="Update Item"/>
+</package>

@@ -1,0 +1,119 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory -->
+<page xmlns="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:user="http://xmlns.oracle.com/jrad/user" version="9.0.3.8.6_865" xml:lang="en-US" file-version="$Header: PoSearchPG.xml 120.7 2006/05/25 13:17:18 atgops1 noship $" xmlns:jrad="http://xmlns.oracle.com/jrad">
+   <content>
+      <oa:pageLayout windowTitle="Framework Toolbox Tutorial: Search and View Details" helpTargetAppShortName="ak" id="PageLayoutRN" akRegionCode="FWK_TBX_T_LSN3_1PAGE" regionName="Purchase Order Search Page" amDefName="oracle.apps.fnd.framework.toolbox.tutorial.server.SearchAM" title="Purchase Orders">
+         <ui:corporateBranding>
+            <oa:image id="corporateBranding" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:productBranding>
+            <oa:image id="productBranding" source="FNDTAPPBRAND.gif" shortDesc="OA Framework Toolbox Tutorial"/>
+         </ui:productBranding>
+         <ui:contents>
+            <oa:header id="SearchHdr" text="Search" controllerClass="oracle.apps.fnd.framework.toolbox.tutorial.webui.PoSearchCO">
+               <ui:contents>
+                  <oa:staticStyledText styleClass="OraInstructionText" id="SearchHelp" messageName="FWK_TBX_T_REGION_GENERAL" messageAppShortName="AK" text="" prompt=""/>
+                  <oa:messageComponentLayout id="SearchRN" width="75%" promptWidth="25%" fieldWidth="75%">
+                     <ui:contents>
+                        <oa:messageLovInput externalListOfValues="/oracle/apps/fnd/framework/toolbox/lov/webui/PurchaseOrdersLovRN" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderId" readOnly="false" text="Purchase Order" rows="1" styleClass="OraFieldText" maximumLength="15" id="SearchOrder" styleLabelClass="OraPromptText" tipType="shortTip" tipMessageAppShortName="AK" textTranslationExpansion="none" promptTranslationExpansion="none" tipMessageName="FWK_TBX_T_FIELD_GENERAL" dataType="NUMBER" unvalidated="true" selectiveSearchCriteria="true">
+                           <lovMappings>
+                              <jrad:lovMap lovItem="OrderNum" id="ToFromSearchOrder" resultTo="SearchOrder" criteriaFrom="SearchOrder"/>
+                           </lovMappings>
+                        </oa:messageLovInput>
+                        <oa:messageChoice readOnly="false" required="no" defaultValue="ANY" styleClass="OraFieldText" pickListViewDef="oracle.apps.fnd.framework.toolbox.poplist.server.CreatedListVO" pickListDispAttr="Meaning" pickListValAttr="LookupCode" id="Created" tipType="longMessage" tipMessageAppShortName="AK" tipMessageName="FWK_TBX_T_LONG_GENERAL" prompt="Created" selectiveSearchCriteria="true"/>
+                        <oa:messageCheckBox readOnly="false" styleClass="OraFieldText" id="MyOrders" text="Show my orders only" prompt="Show my orders only"/>
+                        <oa:messageLayout id="ButtonLayout">
+                           <ui:contents>
+                              <oa:submitButton use="/oracle/apps/fnd/attributesets/Buttons/Go" shortDesc="Select to view search results." id="Go"/>
+                           </ui:contents>
+                        </oa:messageLayout>
+                     </ui:contents>
+                  </oa:messageComponentLayout>
+                  <oa:separator id="Separator"/>
+                  <oa:stackLayout id="ResultsRN">
+                     <ui:contents>
+                        <oa:staticStyledText styleClass="OraInstructionText" id="ResultsHelp" messageName="FWK_TBX_T_REGION_GENERAL" messageAppShortName="AK"/>
+                        <oa:tip styleClass="OraTipText" id="Tip" tipMessageAppShortName="AK" tipMessageName="FWK_TBX_T_TIP_BEAN"/>
+                        <oa:advancedTable id="ResultsTable" width="100%" viewName="PoSimpleSummaryVO1" shortDesc="Purchase Orders Table">
+                           <ui:contents>
+                              <oa:column id="OrderNumCol" columnDataFormat="textFormat">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="OrderNumHdr" sortState="ascending" initSortSeq="first" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderId_Number"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageStyledText sortState="ascending" viewAttr="OrderNumber" id="OrderNum" initSortSeq="first" promptTranslationExpansion="none" dataType="NUMBER" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderId_Number" viewName="PoSimpleSummaryVO1" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/tutorial/webui/PoDetailsPG&amp;retainAM=Y&amp;addBreadCrumb=Y&amp;headerId={@OrderNumber}"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="OrderDescCol">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="OrderDescHdr" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/Description"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageStyledText viewAttr="Description" id="OrderDesc" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/Description" viewName="PoSimpleSummaryVO1"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="BuyerCol">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="BuyerHdr" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FullName"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FullName" viewAttr="BuyerName" destination="mailto:{@BuyerEmail}" id="Buyer" promptTranslationExpansion="none" prompt="Buyer" viewName="PoSimpleSummaryVO1"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="CreationDateCol">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="CreationDateHdr" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/CreationDate"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/CreationDate" viewAttr="CreationDate" id="CreationDate" promptTranslationExpansion="none" dataType="DATE" viewName="PoSimpleSummaryVO1"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="SupplierCol">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="SupplierHdr" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSuppliers/SupplierName_Supplier"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSuppliers/SupplierName_Supplier" viewAttr="SupplierName" id="Supplier" viewName="PoSimpleSummaryVO1"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="CurrencyCol">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="CurrencyHdr" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/CurrencyCode"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/CurrencyCode" viewAttr="CurrencyCode" id="Currency" viewName="PoSimpleSummaryVO1"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="OrderTotalCol" columnDataFormat="numberFormat">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="OrderTotalHdr" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/OrderTotal"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/OrderTotal" viewAttr="OrderTotal" id="OrderTotal" viewName="PoSimpleSummaryVO1"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="DetailsCol" columnDataFormat="iconButtonFormat">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="DetailsHdr" prompt="Details"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:image source="detailsicon_enabled.gif" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/tutorial/webui/PoDetailsPG&amp;retainAM=Y&amp;addBreadCrumb=Y&amp;headerId={@OrderNumber}" shortDesc="Select to view this purchase order." id="Details" prompt="Details" imageHeight="24" imageWidth="24"/>
+                                 </ui:contents>
+                              </oa:column>
+                           </ui:contents>
+                        </oa:advancedTable>
+                     </ui:contents>
+                  </oa:stackLayout>
+               </ui:contents>
+            </oa:header>
+         </ui:contents>
+         <ui:pageStatus>
+            <oa:flowLayout id="PageStatusRN">
+               <ui:contents>
+                  <oa:staticStyledText id="PageHelp" styleClass="OraInstructionText" messageName="FWK_TBX_T_PAGE_GENERAL" messageAppShortName="AK"/>
+               </ui:contents>
+            </oa:flowLayout>
+         </ui:pageStatus>
+      </oa:pageLayout>
+   </content>
+</page>

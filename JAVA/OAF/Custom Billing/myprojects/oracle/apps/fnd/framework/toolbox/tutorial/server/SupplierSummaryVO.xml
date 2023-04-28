@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='US-ASCII' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<!-- $Header: SupplierSummaryVO.xml 120.11 2006/07/04 02:16:29 atgops1 noship $ -->
+
+<ViewObject
+   Name="SupplierSummaryVO"
+   BindingStyle="Oracle"
+   CustomQuery="true"
+   RowClass="oracle.apps.fnd.framework.toolbox.tutorial.server.SupplierSummaryVORowImpl"
+   ComponentClass="oracle.apps.fnd.framework.toolbox.tutorial.server.SupplierSummaryVOImpl"
+   FetchMode="FETCH_AS_NEEDED"
+   Passivate="All"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+SELECT SupplierEO.NAME, 
+       SupplierEO.SUPPLIER_ID, 
+       SupplierEO.START_DATE, 
+       SupplierEO.END_DATE,
+flk.meaning AS ON_HOLD_DISPLAY,
+       SupplierEO.ON_HOLD_FLAG
+FROM FWK_TBX_SUPPLIERS SupplierEO,
+     fwk_tbx_lookup_codes_vl flk
+where SupplierEO.on_hold_flag = flk.lookup_code 
+and   flk.lookup_type = 'FWK_TBX_YES_NO'
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.38.51" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll" />
+   </DesignTime>
+   <EntityUsage
+      Name="SupplierEO"
+      Entity="oracle.apps.fnd.framework.toolbox.schema.server.SupplierEO"
+      ReadOnly="true" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="false" />
+      </DesignTime>
+   </EntityUsage>
+   <ViewAttribute
+      Name="Name"
+      IsUpdateable="while_insert"
+      IsNotNull="true"
+      EntityAttrName="Name"
+      EntityUsage="SupplierEO"
+      AliasName="NAME" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SupplierId"
+      IsUpdateable="while_insert"
+      IsNotNull="true"
+      EntityAttrName="SupplierId"
+      EntityUsage="SupplierEO"
+      AliasName="SUPPLIER_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StartDate"
+      IsNotNull="true"
+      EntityAttrName="StartDate"
+      EntityUsage="SupplierEO"
+      AliasName="START_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="EndDate"
+      EntityAttrName="EndDate"
+      EntityUsage="SupplierEO"
+      AliasName="END_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="OnHoldDisplay"
+      IsQueriable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="80"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="ON_HOLD_DISPLAY"
+      Expression="ON_HOLD_DISPLAY"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="OnHoldFlag"
+      EntityAttrName="OnHoldFlag"
+      EntityUsage="SupplierEO"
+      AliasName="ON_HOLD_FLAG" >
+   </ViewAttribute>
+</ViewObject>

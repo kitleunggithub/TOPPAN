@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'windows-1252'?>
+<data-sources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://xmlns.oracle.com/oracleas/schema/data-sources-10_1.xsd" xmlns="http://xmlns.oracle.com/oracleas/schema">
+    <connection-pool name="jdev-connection-pool-fwk12dev">
+        <connection-factory factory-class="oracle.jdbc.pool.OracleDataSource" user="apps" password="->DataBase_User_YVM8HB3GJLuFbrwJSM3FGA5DVEuOtgyF" url="jdbc:oracle:thin:@//erpdevdb.toppanmerrill.com:1531/ebs_TMERPDEV"/>
+    </connection-pool>
+    <managed-data-source name="jdev-connection-managed-fwk12dev" jndi-name="jdbc/fwk12devDS" connection-pool-name="jdev-connection-pool-fwk12dev"/>
+    <native-data-source name="jdev-connection-native-fwk12dev" jndi-name="jdbc/fwk12devCoreDS" url="jdbc:oracle:thin:@//erpdevdb.toppanmerrill.com:1531/ebs_TMERPDEV" user="apps" password="->DataBase_User_YG1GiO2yRn3Ydq292SFcn4f7vl141OVU" data-source-class="oracle.jdbc.pool.OracleDataSource"/>
+    <connection-pool name="jdev-connection-pool-TM_DEV">
+        <connection-factory factory-class="oracle.jdbc.pool.OracleDataSource" user="APPS" password="->DataBase_User_MlIw_hAfrQHT-o8IIyo31-c0YB8GJyuN" url="jdbc:oracle:thin:@//10.25.0.11:1531/ebs_TMERPDEV"/>
+    </connection-pool>
+    <managed-data-source name="jdev-connection-managed-TM_DEV" jndi-name="jdbc/TM_DEVDS" connection-pool-name="jdev-connection-pool-TM_DEV"/>
+    <native-data-source name="jdev-connection-native-TM_DEV" jndi-name="jdbc/TM_DEVCoreDS" url="jdbc:oracle:thin:@//10.25.0.11:1531/ebs_TMERPDEV" user="APPS" password="->DataBase_User_J6WY9ers-mceeTl3qrPiUSQqKnqKA494" data-source-class="oracle.jdbc.pool.OracleDataSource"/>
+</data-sources>

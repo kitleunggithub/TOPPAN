@@ -1,0 +1,332 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<!-- $Header: EmployeesVO.xml 120.10 2006/07/03 16:50:48 atgops1 noship $ -->
+
+<ViewObject
+   Name="EmployeesVO"
+   BindingStyle="Oracle"
+   CustomQuery="true"
+   RowClass="oracle.apps.fnd.framework.toolbox.samplelib.server.EmployeesVORowImpl"
+   ComponentClass="oracle.apps.fnd.framework.toolbox.samplelib.server.EmployeesVOImpl"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+SELECT EmployeeEO.EMPLOYEE_ID, 
+       EmployeeEO.TITLE, 
+       EmployeeEO.FIRST_NAME, 
+       EmployeeEO.MIDDLE_NAMES, 
+       EmployeeEO.LAST_NAME, 
+       EmployeeEO.FULL_NAME, 
+       EmployeeEO.EMAIL_ADDRESS, 
+       EmployeeEO.MANAGER_ID, 
+       EmployeeEO.POSITION_CODE, 
+       EmployeeEO.SALARY, 
+       TRUNC(EmployeeEO.START_DATE,'DD') AS START_DATE, 
+       TRUNC(EmployeeEO.END_DATE,'DD') AS END_DATE, 
+       EmployeeEO.LAST_UPDATE_DATE, 
+       EmployeeEO.LAST_UPDATED_BY, 
+       EmployeeEO.CREATION_DATE, 
+       EmployeeEO.CREATED_BY, 
+       EmployeeEO.LAST_UPDATE_LOGIN, 
+       EmployeeEO.ATTRIBUTE_CATEGORY, 
+       EmployeeEO.ATTRIBUTE1, 
+       EmployeeEO.ATTRIBUTE2, 
+       EmployeeEO.ATTRIBUTE3, 
+       EmployeeEO.ATTRIBUTE4, 
+       EmployeeEO.ATTRIBUTE5, 
+       EmployeeEO.ATTRIBUTE6, 
+       EmployeeEO.ATTRIBUTE7, 
+       EmployeeEO.ATTRIBUTE8, 
+       EmployeeEO.ATTRIBUTE9, 
+       EmployeeEO.ATTRIBUTE10, 
+       EmployeeEO.ATTRIBUTE11, 
+       EmployeeEO.ATTRIBUTE12, 
+       EmployeeEO.ATTRIBUTE13, 
+       EmployeeEO.ATTRIBUTE14, 
+       EmployeeEO.ATTRIBUTE15, 
+       EmployeeEO1.FULL_NAME AS MANAGER_NAME, 
+       EmployeeEO1.EMPLOYEE_ID AS EMPLOYEE_ID1,
+       flkp.meaning as POSITION_DISPLAY
+FROM FWK_TBX_EMPLOYEES EmployeeEO, 
+FWK_TBX_EMPLOYEES EmployeeEO1,
+FWK_TBX_LOOKUP_CODES_VL flkp
+WHERE EmployeeEO.MANAGER_ID  = EmployeeEO1.EMPLOYEE_ID (+) and 
+flkp.lookup_code = EmployeeEO.POSITION_CODE and
+flkp.lookup_type = 'FWK_TBX_POSITIONS'
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_rowSuperClassName" Value="oracle.apps.fnd.framework.server.OAViewRowImpl" />
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.38.51" />
+      <Attr Name="_objectSuperClassName" Value="oracle.apps.fnd.framework.server.OAViewObjectImpl" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll" />
+   </DesignTime>
+   <EntityUsage
+      Name="EmployeeEO"
+      Entity="oracle.apps.fnd.framework.toolbox.schema.server.EmployeeEO" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="true" />
+         <Attr Name="_queryWhere" Value="EmployeeEO.EMPLOYEE_ID = EmployeeEO1.MANAGER_ID (+)" />
+      </DesignTime>
+   </EntityUsage>
+   <EntityUsage
+      Name="EmployeeEO1"
+      Entity="oracle.apps.fnd.framework.toolbox.schema.server.EmployeeEO"
+      Association="oracle.apps.fnd.framework.toolbox.schema.server.EmpToMgrAO"
+      AssociationEnd="oracle.apps.fnd.framework.toolbox.schema.server.EmpToMgrAO.EmployeeEO1"
+      SourceUsage="oracle.apps.fnd.framework.toolbox.samplelib.server.EmployeesVO.EmployeeEO"
+      Reference="true" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="false" />
+         <AttrArray Name="_dstAttributes">
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.EmployeeEO.ManagerId" />
+         </AttrArray>
+         <AttrArray Name="_srcAttributes">
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.EmployeeEO.EmployeeId" />
+         </AttrArray>
+      </DesignTime>
+   </EntityUsage>
+   <ViewAttribute
+      Name="EmployeeId"
+      IsUpdateable="while_insert"
+      IsNotNull="true"
+      EntityAttrName="EmployeeId"
+      EntityUsage="EmployeeEO"
+      AliasName="EMPLOYEE_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Title"
+      EntityAttrName="Title"
+      EntityUsage="EmployeeEO"
+      AliasName="TITLE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="FirstName"
+      IsNotNull="true"
+      EntityAttrName="FirstName"
+      EntityUsage="EmployeeEO"
+      AliasName="FIRST_NAME" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="MiddleNames"
+      EntityAttrName="MiddleNames"
+      EntityUsage="EmployeeEO"
+      AliasName="MIDDLE_NAMES" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastName"
+      IsNotNull="true"
+      EntityAttrName="LastName"
+      EntityUsage="EmployeeEO"
+      AliasName="LAST_NAME" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="FullName"
+      EntityAttrName="FullName"
+      EntityUsage="EmployeeEO"
+      AliasName="FULL_NAME" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="EmailAddress"
+      EntityAttrName="EmailAddress"
+      EntityUsage="EmployeeEO"
+      AliasName="EMAIL_ADDRESS" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ManagerId"
+      EntityAttrName="ManagerId"
+      EntityUsage="EmployeeEO"
+      AliasName="MANAGER_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PositionCode"
+      IsNotNull="true"
+      EntityAttrName="PositionCode"
+      EntityUsage="EmployeeEO"
+      AliasName="POSITION_CODE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Salary"
+      IsNotNull="true"
+      EntityAttrName="Salary"
+      EntityUsage="EmployeeEO"
+      AliasName="SALARY" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StartDate"
+      IsUpdateable="while_insert"
+      EntityAttrName="StartDate"
+      EntityUsage="EmployeeEO"
+      AliasName="START_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="EndDate"
+      EntityAttrName="EndDate"
+      EntityUsage="EmployeeEO"
+      AliasName="END_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdateDate"
+      IsNotNull="true"
+      EntityAttrName="LastUpdateDate"
+      EntityUsage="EmployeeEO"
+      AliasName="LAST_UPDATE_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdatedBy"
+      IsNotNull="true"
+      EntityAttrName="LastUpdatedBy"
+      EntityUsage="EmployeeEO"
+      AliasName="LAST_UPDATED_BY" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreationDate"
+      IsNotNull="true"
+      EntityAttrName="CreationDate"
+      EntityUsage="EmployeeEO"
+      AliasName="CREATION_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreatedBy"
+      IsNotNull="true"
+      EntityAttrName="CreatedBy"
+      EntityUsage="EmployeeEO"
+      AliasName="CREATED_BY" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdateLogin"
+      EntityAttrName="LastUpdateLogin"
+      EntityUsage="EmployeeEO"
+      AliasName="LAST_UPDATE_LOGIN" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="AttributeCategory"
+      EntityAttrName="AttributeCategory"
+      EntityUsage="EmployeeEO"
+      AliasName="ATTRIBUTE_CATEGORY" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute1"
+      EntityAttrName="Attribute1"
+      EntityUsage="EmployeeEO"
+      AliasName="ATTRIBUTE1" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute2"
+      EntityAttrName="Attribute2"
+      EntityUsage="EmployeeEO"
+      AliasName="ATTRIBUTE2" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute3"
+      EntityAttrName="Attribute3"
+      EntityUsage="EmployeeEO"
+      AliasName="ATTRIBUTE3" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute4"
+      EntityAttrName="Attribute4"
+      EntityUsage="EmployeeEO"
+      AliasName="ATTRIBUTE4" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute5"
+      EntityAttrName="Attribute5"
+      EntityUsage="EmployeeEO"
+      AliasName="ATTRIBUTE5" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute6"
+      EntityAttrName="Attribute6"
+      EntityUsage="EmployeeEO"
+      AliasName="ATTRIBUTE6" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute7"
+      EntityAttrName="Attribute7"
+      EntityUsage="EmployeeEO"
+      AliasName="ATTRIBUTE7" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute8"
+      EntityAttrName="Attribute8"
+      EntityUsage="EmployeeEO"
+      AliasName="ATTRIBUTE8" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute9"
+      EntityAttrName="Attribute9"
+      EntityUsage="EmployeeEO"
+      AliasName="ATTRIBUTE9" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute10"
+      EntityAttrName="Attribute10"
+      EntityUsage="EmployeeEO"
+      AliasName="ATTRIBUTE10" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute11"
+      EntityAttrName="Attribute11"
+      EntityUsage="EmployeeEO"
+      AliasName="ATTRIBUTE11" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute12"
+      EntityAttrName="Attribute12"
+      EntityUsage="EmployeeEO"
+      AliasName="ATTRIBUTE12" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute13"
+      EntityAttrName="Attribute13"
+      EntityUsage="EmployeeEO"
+      AliasName="ATTRIBUTE13" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute14"
+      EntityAttrName="Attribute14"
+      EntityUsage="EmployeeEO"
+      AliasName="ATTRIBUTE14" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute15"
+      EntityAttrName="Attribute15"
+      EntityUsage="EmployeeEO"
+      AliasName="ATTRIBUTE15" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ManagerName"
+      EntityAttrName="FullName"
+      EntityUsage="EmployeeEO1"
+      AliasName="MANAGER_NAME" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Employee_id1"
+      IsUpdateable="while_insert"
+      IsNotNull="true"
+      EntityAttrName="EmployeeId"
+      EntityUsage="EmployeeEO1"
+      AliasName="EMPLOYEE_ID1" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PositionDisplay"
+      IsPersistent="false"
+      Precision="80"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PositionDisplay"
+      Expression="PositionDisplay"
+      SQLType="VARCHAR" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="DetailFlag"
+      IsPersistent="false"
+      Precision="1"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="VIEW_ATTR"
+      SQLType="VARCHAR" >
+   </ViewAttribute>
+</ViewObject>

@@ -1,0 +1,252 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE JboPackage SYSTEM "jbo_03_01.dtd">
+
+<JboPackage
+   Name="server"
+   SeparateXMLFiles="true"
+   PackageName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server" >
+   <DesignTime>
+      <Attr Name="_ejbPackage" Value="false" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+   </DesignTime>
+   <Containee
+      Name="ActiveBillerLovVO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.ActiveBillerLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="CurrencyLovVO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.CurrencyLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="CustomerAddressLovVO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.CustomerAddressLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="CustomerContactLovVO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.CustomerContactLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="CustomerLovVO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.CustomerLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="GLPeriodNameLovVO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.GLPeriodNameLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="InvoiceActivityEO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceActivityEO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="InvoiceApprovalActivityVO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceApprovalActivityVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="InvoiceApprovalReasonLovVO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceApprovalReasonLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="InvoiceAuditEO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceAuditEO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="InvoiceAuditVO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceAuditVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="InvoiceChangeActivityVO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceChangeActivityVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="InvoiceCombineReqDtlEO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqDtlEO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="InvoiceCombineReqDtlVO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqDtlVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="InvoiceCombineReqEO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqEO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="InvoiceCombineReqStatusLovVO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqStatusLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="InvoiceCombineReqVL"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqVL"
+      ObjectType="ViewLink" >
+   </Containee>
+   <Containee
+      Name="InvoiceCombineReqVO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="InvoiceCombinReqAS"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombinReqAS"
+      ObjectType="Association" >
+   </Containee>
+   <Containee
+      Name="InvoiceEO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceEO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="InvoiceLineEO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceLineEO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="InvoiceLineTypeLovVO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceLineTypeLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="InvoiceLineVO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceLineVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="InvoiceReviseVO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceReviseVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="InvoiceSalesRepSplitsEO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceSalesRepSplitsEO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="InvoiceSalesRepSplitsVO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceSalesRepSplitsVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="InvoiceStatusLovVO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceStatusLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="InvoiceStyleLovVO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceStyleLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="InvoiceToInvoiceActivityAS"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceToInvoiceActivityAS"
+      ObjectType="Association" >
+   </Containee>
+   <Containee
+      Name="InvoiceToInvoiceApprovalActivityVL"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceToInvoiceApprovalActivityVL"
+      ObjectType="ViewLink" >
+   </Containee>
+   <Containee
+      Name="InvoiceToInvoiceAuditAS"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceToInvoiceAuditAS"
+      ObjectType="Association" >
+   </Containee>
+   <Containee
+      Name="InvoiceToInvoiceAuditVL"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceToInvoiceAuditVL"
+      ObjectType="ViewLink" >
+   </Containee>
+   <Containee
+      Name="InvoiceToInvoiceChangeActivityVL"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceToInvoiceChangeActivityVL"
+      ObjectType="ViewLink" >
+   </Containee>
+   <Containee
+      Name="InvoiceToInvoiceLineAS"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceToInvoiceLineAS"
+      ObjectType="Association" >
+   </Containee>
+   <Containee
+      Name="InvoiceToInvoiceLineVL"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceToInvoiceLineVL"
+      ObjectType="ViewLink" >
+   </Containee>
+   <Containee
+      Name="InvoiceToInvoiceSalesRepSplitsAS"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceToInvoiceSalesRepSplitsAS"
+      ObjectType="Association" >
+   </Containee>
+   <Containee
+      Name="InvoiceToInvoiceSalesRepSplitVL"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceToInvoiceSalesRepSplitVL"
+      ObjectType="ViewLink" >
+   </Containee>
+   <Containee
+      Name="InvoiceTrxTypeLovVO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceTrxTypeLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="InvoiceVO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="InvoiceVoidVO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceVoidVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="PaymentTermLovVO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.PaymentTermLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="PrimaryProductTypeLovVO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.PrimaryProductTypeLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="SalesRepLovVO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SalesRepLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="SearchCombineReqVO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SearchCombineReqVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="SearchInvoiceAM"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SearchInvoiceAM"
+      ObjectType="AppModule" >
+   </Containee>
+   <Containee
+      Name="SearchInvoiceLovVO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SearchInvoiceLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="SearchInvoiceVO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SearchInvoiceVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="SecCustomerLovVO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SecCustomerLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+</JboPackage>

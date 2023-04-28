@@ -1,0 +1,26 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oa:listOfValues version="10.1.3_" xml:lang="en-US" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <ui:contents>
+      <oa:table name="CustomerAddressLovRN" id="CustomerAddressLovVO1">
+         <ui:contents>
+            <oa:messageStyledText id="PartyId" dataType="NUMBER" prompt="PartyId" viewName="CustomerAddressLovVO1" viewAttr="PartyId" maximumLength="15" rendered="false"/>
+			<oa:messageStyledText id="PartySiteId" dataType="NUMBER" prompt="PartySiteId" viewName="CustomerAddressLovVO1" viewAttr="PartySiteId" maximumLength="15" rendered="false"/>
+			<oa:messageStyledText id="CustAccountId" dataType="NUMBER" prompt="CustAccountId" viewName="CustomerAddressLovVO1" viewAttr="CustAccountId" maximumLength="15" rendered="false"/>
+            <oa:messageStyledText id="CustAcctSiteId" dataType="NUMBER" prompt="CustAcctSiteId" viewName="CustomerAddressLovVO1" viewAttr="CustAcctSiteId" maximumLength="15" rendered="false"/>
+			<oa:messageStyledText id="SiteUseId" dataType="NUMBER" prompt="SiteUseId" viewName="CustomerAddressLovVO1" viewAttr="SiteUseId" maximumLength="15" rendered="false"/>
+			<oa:messageStyledText id="LocationId" dataType="NUMBER" prompt="LocationId" viewName="CustomerAddressLovVO1" viewAttr="LocationId" maximumLength="15" rendered="false"/>
+			<oa:messageStyledText id="OrgId" dataType="NUMBER" prompt="OrgId" viewName="CustomerAddressLovVO1" viewAttr="OrgId" maximumLength="15" rendered="false"/>
+			
+			<oa:messageStyledText id="SiteUseCode" dataType="VARCHAR2" prompt="Site Use Code" viewName="CustomerAddressLovVO1" viewAttr="SiteUseCode" maximumLength="240" queryable="true"/>
+            <oa:messageStyledText id="Address1" dataType="VARCHAR2" prompt="Address1" viewName="CustomerAddressLovVO1" viewAttr="Address1" maximumLength="240" queryable="true"/>
+            <oa:messageStyledText id="Address2" dataType="VARCHAR2" prompt="Address2" viewName="CustomerAddressLovVO1" viewAttr="Address2" maximumLength="240" queryable="true"/>
+            <oa:messageStyledText id="Address3" dataType="VARCHAR2" prompt="Address3" viewName="CustomerAddressLovVO1" viewAttr="Address3" maximumLength="240" queryable="true"/>
+            <oa:messageStyledText id="Address4" dataType="VARCHAR2" prompt="Address4" viewName="CustomerAddressLovVO1" viewAttr="Address4" maximumLength="240" queryable="true"/>
+            <oa:messageStyledText id="City" dataType="VARCHAR2" prompt="City" viewName="CustomerAddressLovVO1" viewAttr="City" maximumLength="60" queryable="true"/>
+            <oa:messageStyledText id="PostalCode" dataType="VARCHAR2" prompt="Postal Code" viewName="CustomerAddressLovVO1" viewAttr="PostalCode" maximumLength="60" queryable="true"/>
+            <oa:messageStyledText id="Country" dataType="VARCHAR2" prompt="Country" viewName="CustomerAddressLovVO1" viewAttr="Country" maximumLength="60" queryable="true"/>
+            <oa:messageStyledText id="FullAddress" dataType="VARCHAR2" prompt="Full Address" viewName="CustomerAddressLovVO1" viewAttr="FullAddress" maximumLength="1146" rendered="false"/>
+         </ui:contents>
+      </oa:table>
+   </ui:contents>
+</oa:listOfValues>

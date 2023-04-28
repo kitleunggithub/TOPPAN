@@ -1,0 +1,430 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+
+<Entity
+   Name="InvoiceStyleEO"
+   DBObjectType="synonym"
+   DBObjectName="XXBS_INVOICE_STYLES"
+   AliasName="InvoiceStyleEO"
+   BindingStyle="OracleName"
+   UseGlueCode="false"
+   RowClass="toppanmerrill.oracle.apps.xxtm.cb.invoicestyle.server.InvoiceStyleEOImpl"
+   DefClass="oracle.apps.fnd.framework.server.OAEntityDefImpl"
+   CollClass="oracle.apps.fnd.framework.server.OAEntityCache" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+      <AttrArray Name="_publishEvents">
+      </AttrArray>
+      <Attr Name="_panelSchema" Value="table|alias" />
+      <Attr Name="_codeGenFlag2" Value="Init|Delete|Access|Val" />
+   </DesignTime>
+   <Attribute
+      Name="InvoiceStyleId"
+      IsNotNull="true"
+      Precision="20"
+      Scale="0"
+      ColumnName="INVOICE_STYLE_ID"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXBS_INVOICE_STYLES"
+      PrimaryKey="true" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="InvoiceStyleName"
+      IsNotNull="true"
+      Precision="50"
+      ColumnName="INVOICE_STYLE_NAME"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXBS_INVOICE_STYLES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="50" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Language"
+      IsNotNull="true"
+      Precision="20"
+      ColumnName="LANGUAGE"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXBS_INVOICE_STYLES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="20" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="CreatedBy"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      ColumnName="CREATED_BY"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXBS_INVOICE_STYLES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="CreationDate"
+      IsNotNull="true"
+      ColumnName="CREATION_DATE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="TIMESTAMP"
+      TableName="XXBS_INVOICE_STYLES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LastUpdatedBy"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      ColumnName="LAST_UPDATED_BY"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXBS_INVOICE_STYLES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LastUpdateDate"
+      IsNotNull="true"
+      ColumnName="LAST_UPDATE_DATE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="TIMESTAMP"
+      TableName="XXBS_INVOICE_STYLES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LastUpdateLogin"
+      Precision="15"
+      Scale="0"
+      ColumnName="LAST_UPDATE_LOGIN"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXBS_INVOICE_STYLES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="HeadAttention"
+      Precision="240"
+      ColumnName="HEAD_ATTENTION"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXBS_INVOICE_STYLES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="HeadInvoiceNumber"
+      Precision="240"
+      ColumnName="HEAD_INVOICE_NUMBER"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXBS_INVOICE_STYLES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="HeadInvoiceDate"
+      Precision="240"
+      ColumnName="HEAD_INVOICE_DATE"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXBS_INVOICE_STYLES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="HeadDateReceived"
+      Precision="240"
+      ColumnName="HEAD_DATE_RECEIVED"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXBS_INVOICE_STYLES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="HeadSalesperson"
+      Precision="240"
+      ColumnName="HEAD_SALESPERSON"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXBS_INVOICE_STYLES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="HeadOurOrderNumber"
+      Precision="240"
+      ColumnName="HEAD_OUR_ORDER_NUMBER"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXBS_INVOICE_STYLES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="HeadCustOrderNumber"
+      Precision="240"
+      ColumnName="HEAD_CUST_ORDER_NUMBER"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXBS_INVOICE_STYLES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="HeadTerms"
+      Precision="240"
+      ColumnName="HEAD_TERMS"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXBS_INVOICE_STYLES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="FootPage"
+      Precision="240"
+      ColumnName="FOOT_PAGE"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXBS_INVOICE_STYLES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="DetailFreight"
+      Precision="240"
+      ColumnName="DETAIL_FREIGHT"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXBS_INVOICE_STYLES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="DetailTax"
+      Precision="240"
+      ColumnName="DETAIL_TAX"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXBS_INVOICE_STYLES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="DetailPostage"
+      Precision="240"
+      ColumnName="DETAIL_POSTAGE"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXBS_INVOICE_STYLES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="DetailTotalInvoice"
+      Precision="240"
+      ColumnName="DETAIL_TOTAL_INVOICE"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXBS_INVOICE_STYLES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="FootLeft"
+      Precision="4000"
+      ColumnName="FOOT_LEFT"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXBS_INVOICE_STYLES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="4000" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="FootRight"
+      Precision="4000"
+      ColumnName="FOOT_RIGHT"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXBS_INVOICE_STYLES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="4000" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="HeadEmail"
+      Precision="240"
+      ColumnName="HEAD_EMAIL"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXBS_INVOICE_STYLES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="DetailSubtotalPretax"
+      Precision="240"
+      ColumnName="DETAIL_SUBTOTAL_PRETAX"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXBS_INVOICE_STYLES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="InactiveDate"
+      ColumnName="INACTIVE_DATE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="TIMESTAMP"
+      TableName="XXBS_INVOICE_STYLES" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </Attribute>
+   <Key
+      Name="SysC00275286" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoicestyle.server.InvoiceStyleEO.InvoiceStyleId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;INVOICE_STYLE_ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00275286" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00275287" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoicestyle.server.InvoiceStyleEO.InvoiceStyleName" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;INVOICE_STYLE_NAME&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00275287" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00275288" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoicestyle.server.InvoiceStyleEO.Language" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;LANGUAGE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00275288" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00275289" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoicestyle.server.InvoiceStyleEO.CreatedBy" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATED_BY&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00275289" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00275290" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoicestyle.server.InvoiceStyleEO.CreationDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATION_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00275290" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00275291" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoicestyle.server.InvoiceStyleEO.LastUpdatedBy" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;LAST_UPDATED_BY&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00275291" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00275292" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoicestyle.server.InvoiceStyleEO.LastUpdateDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;LAST_UPDATE_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00275292" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="XxbsInvoiceStylesU1" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoicestyle.server.InvoiceStyleEO.InvoiceStyleId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_isPrimary" Value="true" />
+         <Attr Name="_DBObjectName" Value="XXBS_INVOICE_STYLES_U1" />
+      </DesignTime>
+   </Key>
+</Entity>

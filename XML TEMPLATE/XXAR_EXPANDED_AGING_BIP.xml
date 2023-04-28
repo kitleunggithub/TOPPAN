@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--============================================================================ -->
+<!--            MERRILL CORPORATION - R12 12.2.4 				                 -->
+<!--       MERRILL TECHNOLOGIES INDIA PRIVATE LIMITED                            -->
+<!--============================================================================ -->
+<!-- File Name   : XXPA_INV_BAL_RPT.xml      	                                 -->
+<!--                                                                             -->
+<!-- Description : XXPA Unprocessed Project Accounting Lines Report 			 -->
+<!--              						                                         -->
+<!--                                                                             -->
+<!-- Usage   	 : To display and list the unprocessed Project Accounting        -->
+<!--  			   lines in PA module for each month							 -->
+<!--                                                                             -->
+<!--  Development and Maintenance history                                        -->
+<!--  Date      Author               Version   Description                       -->
+<!--  ========= ==================   ========= ================================= -->
+<!--  18-Sep-17 Senthil Nathan 		 1.0       CR Enhancement Request# 1904		 -->
+<!--										   Added Customer Name Parameter	 -->
+<!--  05-May-21 DASH Kit Leung		 1.2	   DASH Kit Leung          05-MAY-2021   CR Enhancement Request 
+                                               1. Added new column 
+                                                  primary sales split ,2nd salesrep, 2nd salesrep split,
+                                                  3rd salesrep, 3rd salesrep split,4th salesrep, 
+                                                  4th salesrep split, SOE_YN, CREDIT_LIMIT,STOCK_CODE
+                                               2. add 8 bucket					 -->
+<!--  ************************************************************************** -->
+
+<dataTemplate name="XXAR_EXPANDED_AGING_BIP" defaultPackage="" description="Expanded Aging - 7 Buckets Report - Merrill">   
+
+   <properties>      
+      <property name="include_parameters" value="true"/>      
+      <property name="include_null_Element" value="true"/>      
+      <property name="xml_tag_case" value="upper"/>      
+      <property name="db_fetch_size" value="100"/>      
+      <property name="scalable_mode" value="off"/>      
+      <property name="include_rowsettag" value="false"/>      
+      <property name="debug_mode" value="on"/>   
+   </properties>     
+   <parameters>      
+	   <parameter name="p1" dataType="character" include_in_output="true"/>   <!-- p_reporting_level -->
+	   <parameter name="p2" dataType="number" include_in_output="true"/>   <!-- p_reporting_entity_id -->
+	   <parameter name="p3" dataType="number" include_in_output="true"/>   <!-- p_ca_set_of_books_id -->
+	   <parameter name="p4" dataType="number" include_in_output="true"/>   <!-- p_coaid -->
+	   <parameter name="p5" dataType="number" include_in_output="true"/>   <!-- p_conc_request_id -->
+	   <parameter name="p6" dataType="character" include_in_output="true"/>   <!-- p_in_as_of_date_low -->
+	   <parameter name="p7" dataType="character" include_in_output="true"/>   <!-- p_in_bucket_type_low -->
+	   <parameter name="p8" dataType="character" include_in_output="true"/>   <!-- p_credit_option -->
+	   <parameter name="p9" dataType="character" include_in_output="true"/>   <!-- p_in_currency -->
+	   <parameter name="p10" dataType="character" include_in_output="true"/>   <!-- p_risk_option -->
+	   <parameter name="p11" dataType="character" include_in_output="true"/>   <!-- p_customer_name --> <!-- Added for CR# 1904-->
+   </parameters>   
+   <dataQuery>    
+   	<sqlStatement name="B0" dataSourceRef="">
+	   	<![CDATA[
+					  SELECT lines.report_heading1 || ' ' || lines.report_heading2 bucket_head
+					    FROM ar_aging_bucket_lines lines, ar_aging_buckets buckets
+					   WHERE lines.aging_bucket_id = buckets.aging_bucket_id
+					     AND UPPER(buckets.bucket_name) = UPPER(:p7)
+					     AND NVL(buckets.status, 'A') = 'A'
+					     AND bucket_sequence_num = 0	   	
+	   	]]>
+   	</sqlStatement>
+   	<sqlStatement name="B1" dataSourceRef="">
+	   	<![CDATA[
+					  SELECT lines.report_heading1 || ' ' || lines.report_heading2 bucket_head
+					    FROM ar_aging_bucket_lines lines, ar_aging_buckets buckets
+					   WHERE lines.aging_bucket_id = buckets.aging_bucket_id
+					     AND UPPER(buckets.bucket_name) = UPPER(:p7)
+					     AND NVL(buckets.status, 'A') = 'A'
+					     AND bucket_sequence_num = 1	   	
+	   	]]>
+   	</sqlStatement>
+   	<sqlStatement name="B2" dataSourceRef="">
+	   	<![CDATA[
+					  SELECT lines.report_heading1 || ' ' || lines.report_heading2 bucket_head
+					    FROM ar_aging_bucket_lines lines, ar_aging_buckets buckets
+					   WHERE lines.aging_bucket_id = buckets.aging_bucket_id
+					     AND UPPER(buckets.bucket_name) = UPPER(:p7)
+					     AND NVL(buckets.status, 'A') = 'A'
+					     AND bucket_sequence_num = 2	   	
+	   	]]>
+   	</sqlStatement>
+   	<sqlStatement name="B3" dataSourceRef="">
+	   	<![CDATA[
+					  SELECT lines.report_heading1 || ' ' || lines.report_heading2 bucket_head
+					    FROM ar_aging_bucket_lines lines, ar_aging_buckets buckets
+					   WHERE lines.aging_bucket_id = buckets.aging_bucket_id
+					     AND UPPER(buckets.bucket_name) = UPPER(:p7)
+					     AND NVL(buckets.status, 'A') = 'A'
+					     AND bucket_sequence_num = 3	   	
+	   	]]>
+   	</sqlStatement>
+   	<sqlStatement name="B4" dataSourceRef="">
+	   	<![CDATA[
+					  SELECT lines.report_heading1 || ' ' || lines.report_heading2 bucket_head
+					    FROM ar_aging_bucket_lines lines, ar_aging_buckets buckets
+					   WHERE lines.aging_bucket_id = buckets.aging_bucket_id
+					     AND UPPER(buckets.bucket_name) = UPPER(:p7)
+					     AND NVL(buckets.status, 'A') = 'A'
+					     AND bucket_sequence_num = 4	   	
+	   	]]>
+   	</sqlStatement>
+   	<sqlStatement name="B5" dataSourceRef="">
+	   	<![CDATA[
+					  SELECT lines.report_heading1 || ' ' || lines.report_heading2 bucket_head
+					    FROM ar_aging_bucket_lines lines, ar_aging_buckets buckets
+					   WHERE lines.aging_bucket_id = buckets.aging_bucket_id
+					     AND UPPER(buckets.bucket_name) = UPPER(:p7)
+					     AND NVL(buckets.status, 'A') = 'A'
+					     AND bucket_sequence_num = 5	   	
+	   	]]>
+   	</sqlStatement>
+   	<sqlStatement name="B6" dataSourceRef="">
+	   	<![CDATA[
+					  SELECT lines.report_heading1 || ' ' || lines.report_heading2 bucket_head
+					    FROM ar_aging_bucket_lines lines, ar_aging_buckets buckets
+					   WHERE lines.aging_bucket_id = buckets.aging_bucket_id
+					     AND UPPER(buckets.bucket_name) = UPPER(:p7)
+					     AND NVL(buckets.status, 'A') = 'A'
+					     AND bucket_sequence_num = 6	   	
+	   	]]>
+   	</sqlStatement>   	   	   	   	   	   	
+   	<sqlStatement name="B7" dataSourceRef="">
+	   	<![CDATA[
+					  SELECT lines.report_heading1 || ' ' || lines.report_heading2 bucket_head
+					    FROM ar_aging_bucket_lines lines, ar_aging_buckets buckets
+					   WHERE lines.aging_bucket_id = buckets.aging_bucket_id
+					     AND UPPER(buckets.bucket_name) = UPPER(:p7)
+					     AND NVL(buckets.status, 'A') = 'A'
+					     AND bucket_sequence_num = 7	   	
+	   	]]>
+   	</sqlStatement>   	   	   	   	   	   		
+   <sqlStatement name="Q1" dataSourceRef="">
+      <![CDATA[
+      				select *
+      				  from table(XXAR_EXPANDED_AGING_RPT.get_records (
+      				  								 :p1
+      				  								,:p2
+      				  								,:p3
+      				  								,:p4
+      				  								,:p5
+      				  								,:p6
+      				  								,:p7
+      				  								,:p8
+      				  								,:p9
+      				  								,:p10
+													,:p11								-- Added for CR# 1904
+      				  )) order by 1,12 ASC
+      ]]>               
+   </sqlStatement> 
+   </dataQuery>   
+   <dataStructure>  
+   <group name="G_B0" source="B0" groupFilter=""> 
+   		<element name="bucket_head0" value="bucket_head" function=""/>
+   </group> 
+   <group name="G_B1" source="B1" groupFilter=""> 
+   		<element name="bucket_head1" value="bucket_head" function=""/>
+   </group> 
+   <group name="G_B2" source="B2" groupFilter=""> 
+   		<element name="bucket_head2" value="bucket_head" function=""/>
+   </group> 
+   <group name="G_B3" source="B3" groupFilter=""> 
+   		<element name="bucket_head3" value="bucket_head" function=""/>
+   </group> 
+   <group name="G_B4" source="B4" groupFilter=""> 
+   		<element name="bucket_head4" value="bucket_head" function=""/>
+   </group> 
+   <group name="G_B5" source="B5" groupFilter=""> 
+   		<element name="bucket_head5" value="bucket_head" function=""/>
+   </group> 
+   <group name="G_B6" source="B6" groupFilter=""> 
+   		<element name="bucket_head6" value="bucket_head" function=""/>
+   </group>                   
+   <group name="G_B7" source="B7" groupFilter=""> 
+   		<element name="bucket_head7" value="bucket_head" function=""/>
+   </group>                   
+   <group name="G_REPORT" source="Q1" groupFilter="">   
+	   <element name="customer_name" value="customer_name" function=""/>
+	   <element name="customer_number" value="customer_number" function=""/>
+	   <element name="OPERATING_UNIT_NAME" value="OPERATING_UNIT_NAME" function=""/>
+   	   <element name="CREDIT_LIMIT" value="CREDIT_LIMIT" function=""/>
+	   <element name="STOCK_CODE" value="STOCK_CODE" function=""/>
+	   <element name="SOE_YN" value="SOE_YN" function=""/>
+	   <element name="GL_DATE" value="GL_DATE" function=""/>	   
+	   <element name="product_line" value="business_unit" function=""/>
+	   <element name="site" value="site" function=""/>
+	   <element name="legal_entity" value="legal_entity" function=""/>
+	   <element name="primary_product_type" value="primary_product_type" function=""/>
+	   <element name="PRIMARY_SALESREP" value="PRIMARY_SALESREP" function=""/>
+	   <element name="PRIMARY_SALESREP_SPLIT" value="PRIMARY_SALESREP_SPLIT" function=""/>	   
+	   <element name="SALESREP_2ND" value="SALESREP_2ND" function=""/>
+	   <element name="SALESREP_2ND_SPLIT" value="SALESREP_2ND_SPLIT" function=""/>	   
+   	   <element name="SALESREP_3RD" value="SALESREP_3RD" function=""/>
+	   <element name="SALESREP_3RD_SPLIT" value="SALESREP_3RD_SPLIT" function=""/>	   
+	   <element name="SALESREP_4TH" value="SALESREP_4TH" function=""/>
+	   <element name="SALESREP_4TH_SPLIT" value="SALESREP_4TH_SPLIT" function=""/>	   	   
+	   <element name="SALESREP_5TH" value="SALESREP_5TH" function=""/>
+	   <element name="SALESREP_5TH_SPLIT" value="SALESREP_5TH_SPLIT" function=""/>	   	   
+   	   <element name="ACTIVE_BILLER" value="ACTIVE_BILLER" function=""/>	   
+	   <element name="payment_terms" value="payment_terms" function=""/>
+	   <element name="collection_status" value="collection_status" function=""/>
+	   <element name="collection_stage1_date" value="collection_stage1_date" function=""/>
+	   <element name="collection_stage2_date" value="collection_stage2_date" function=""/>
+	   <element name="invoice_number" value="invoice_number" function=""/>
+	   <element name="invoice_type" value="invoice_type" function=""/>
+	   <element name="invoice_date" value="invoice_date" function=""/>
+	   <element name="due_date" value="due_date" function=""/>
+	   <element name="description" value="description" function=""/>
+	   <element name="exchange_rate" value="exchange_rate" function=""/>
+	   <element name="functional_currency" value="functional_currency" function=""/>
+	   <element name="outstanding_amount" value="outstanding_amount" function=""/>
+	   <element name="bucket0" value="bucket0" function=""/>
+	   <element name="bucket1" value="bucket1" function=""/>
+	   <element name="bucket2" value="bucket2" function=""/>
+	   <element name="bucket3" value="bucket3" function=""/>
+	   <element name="bucket4" value="bucket4" function=""/>
+	   <element name="bucket5" value="bucket5" function=""/>
+	   <element name="bucket6" value="bucket6" function=""/>
+	   <element name="bucket7" value="bucket7" function=""/>
+	   <element name="invoiced_currency" value="invoiced_currency" function=""/>
+	   <element name="amount_in_invoice_currency" value="amount_in_invoice_currency" function=""/>
+   </group>
+   </dataStructure>
+</dataTemplate>

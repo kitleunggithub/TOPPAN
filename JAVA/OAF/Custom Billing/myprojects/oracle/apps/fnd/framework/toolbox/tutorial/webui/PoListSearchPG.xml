@@ -1,0 +1,264 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- +======================================================================+ -->
+<!-- |    Copyright (c) 2005, 2018 Oracle and/or its affiliates.           | -->
+<!-- |                         All rights reserved.                         | -->
+<!-- |                           Version 12.0.0                             | -->
+<!-- +======================================================================+ -->
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory -->
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header: PoListSearchPG.xml 120.0.12020000.9 2019/03/19 08:26:19 atgops1 noship $">
+   <content>
+      <oa:pageLayout id="region1" amDefName="oracle.apps.fnd.framework.toolbox.tutorial.server.SearchAM" windowTitle="Search Purchase Orders List Page" title="Purchase Orders List" controllerClass="oracle.apps.fnd.framework.toolbox.tutorial.webui.PoListSearchCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:query id="region2" dispAdvanced="true" dispCustomized="true" dispSimple="true" mode="autoCustomizationCriteria">
+               <oa:simpleSearchPanel>
+                  <oa:header text="Simple Search" id="region4">
+                     <ui:contents>
+                        <oa:messageComponentLayout id="region3">
+                           <ui:contents>
+                              <oa:messageLovInput id="POCriteria" prompt="Purchase Order" unvalidated="false" externalListOfValues="/oracle/apps/fnd/framework/toolbox/lov/webui/PurchaseOrdersLovRN">
+                                 <lovMappings>
+                                    <lovMap id="SearchOrder" lovItem="OrderNum" resultTo="POCriteria" criteriaFrom="item1"/>
+                                 </lovMappings>
+                              </oa:messageLovInput>
+                              <oa:messageTextInput id="CreationDateCrit" dataType="DATE" prompt="Creation Date"/>
+                              <oa:messageTextInput id="SupplierNameCrit" prompt="Supplier Name"/>
+                           </ui:contents>
+                        </oa:messageComponentLayout>
+                     </ui:contents>
+                  </oa:header>
+               </oa:simpleSearchPanel>
+               <oa:advancedSearchPanel>
+                  <oa:header text="Advanced Search" id="region5">
+                     <ui:contents>
+                        <oa:advancedSearch id="region6">
+                           <oa:criteria>
+                              <oa:criteriaRow id="BuyerNameAdvCrit">
+                                 <ui:contents>
+                                    <oa:messageStyledText id="item5" prompt="Buyer Name"/>
+                                    <oa:messageTextInput id="item6"/>
+                                 </ui:contents>
+                              </oa:criteriaRow>
+                              <oa:criteriaRow id="POAdvCriteria">
+                                 <ui:contents>
+                                    <oa:messageStyledText id="item3" prompt="Purchase Order"/>
+                                    <oa:messageLovInput id="item4" externalListOfValues="/oracle/apps/fnd/framework/toolbox/lov/webui/PurchaseOrdersLovRN" unvalidated="false" enableMultipleSelection="true">
+                                       <lovMappings>
+                                          <lovMap id="lovMap1" lovItem="OrderNum" resultTo="item4" criteriaFrom="item4"/>
+                                          <lovMap id="lovMap3" lovItem="Description" resultTo="item21"/>
+                                       </lovMappings>
+                                    </oa:messageLovInput>
+                                    <oa:formValue id="item21" enableMultipleSelection="true"/>
+                                 </ui:contents>
+                              </oa:criteriaRow>
+                              <oa:criteriaRow id="SupplierNameAdvCrit">
+                                 <ui:contents>
+                                    <oa:messageStyledText id="item7" prompt="Supplier Name"/>
+                                    <oa:messageTextInput id="item8"/>
+                                 </ui:contents>
+                              </oa:criteriaRow>
+                              <oa:criteriaRow id="POCreationDateAdvCrit">
+                                 <ui:contents>
+                                    <oa:messageStyledText id="item9" prompt="Creation Date"/>
+                                    <oa:messageTextInput id="item10" dataType="DATE" enableRangeSelection="true"/>
+                                 </ui:contents>
+                              </oa:criteriaRow>
+                              <oa:criteriaRow id="CurrencyCodeAdvCrit">
+                                 <ui:contents>
+                                    <oa:messageStyledText id="item11" prompt="Currency Code"/>
+                                    <oa:messageTextInput id="item12"/>
+                                 </ui:contents>
+                              </oa:criteriaRow>
+                              <oa:criteriaRow id="POStatusCrit">
+                                 <ui:contents>
+                                    <oa:messageStyledText id="item13" prompt="Status of the order"/>
+                                    <oa:messageChoice id="item14" pickListViewName="StatusListVO1" pickListDispAttr="Meaning" pickListValAttr="LookupCode" enableMultipleSelection="true"/>
+                                 </ui:contents>
+                              </oa:criteriaRow>
+                              <oa:criteriaRow id="confirmedFlagCriteria">
+                                 <ui:contents>
+                                    <oa:messageStyledText id="item17" prompt="PO Confirmed ?"/>
+                                    <oa:messageCheckBox id="item18" displayMode="Button"/>
+                                 </ui:contents>
+                              </oa:criteriaRow>
+                              <oa:criteriaRow id="criteriaRow1">
+                                 <ui:contents>
+                                    <oa:messageStyledText id="item22" prompt="Creation Date(Facet &amp; range)"/>
+                                    <oa:messageTextInput id="item23" dataType="DATE" enableRangeSelection="true" enableFacet="true">
+                                       <oa:facet>
+                                          <oa:dateFacet id="dateFacet1">
+                                             <oa:facetOption>
+                                                <oa:dateFacetOption id="dateFacetOption1" dateFacetOptionUserText="Last 7 Days" dateFacetOptionStartPeriod="-7" dateFacetOptionEndPeriod="1"/>
+                                                <oa:dateFacetOption id="dateFacetOption4" dateFacetOptionUserText="Last 10 Years" dateFacetOptionStartPeriod="-10" dateFacetOptionEndPeriod="1" dateFacetOptionPeriodFormat="Year" dateFacetOptionEnabled="true"/>
+                                                <oa:dateFacetOption id="dateFacetOption5" dateFacetOptionPeriodFormat="Months" dateFacetOptionUserText="Last 10 Months" dateFacetOptionStartPeriod="-10" dateFacetOptionEndPeriod="1"/>
+                                             </oa:facetOption>
+                                          </oa:dateFacet>
+                                       </oa:facet>
+                                    </oa:messageTextInput>
+                                 </ui:contents>
+                              </oa:criteriaRow>
+                              <oa:criteriaRow id="criteriaRow2">
+                                 <ui:contents>
+                                    <oa:messageStyledText id="item24" prompt="Creation Date(Facet without range)"/>
+                                    <oa:messageTextInput id="item25" dataType="DATE" enableFacet="true">
+                                       <oa:facet>
+                                          <oa:dateFacet id="dateFacet2">
+                                             <oa:facetOption>
+                                                <oa:dateFacetOption id="dateFacetOption2" dateFacetOptionUserText="Last 15 Days" dateFacetOptionStartPeriod="-15" dateFacetOptionEndPeriod="1"/>
+                                                <oa:dateFacetOption id="dateFacetOption3" dateFacetOptionPeriodFormat="Year" dateFacetOptionUserText="Last 20 Years" dateFacetOptionStartPeriod="-20" dateFacetOptionEndPeriod="1"/>
+                                             </oa:facetOption>
+                                          </oa:dateFacet>
+                                       </oa:facet>
+                                    </oa:messageTextInput>
+                                 </ui:contents>
+                              </oa:criteriaRow>
+                           </oa:criteria>
+                        </oa:advancedSearch>
+                     </ui:contents>
+                  </oa:header>
+               </oa:advancedSearchPanel>
+               <oa:simpleSearchMappings>
+                  <oa:queryCriteriaMap id="queryCriteriaMap1" criteriaItem="POCriteria" resultsItem="OrderNum"/>
+                  <oa:queryCriteriaMap id="queryCriteriaMap2" criteriaItem="CreationDateCrit" resultsItem="CreationDate"/>
+                  <oa:queryCriteriaMap id="queryCriteriaMap4" criteriaItem="SupplierNameCrit" resultsItem="Supplier"/>
+               </oa:simpleSearchMappings>
+               <ui:contents>
+                  <oa:advancedTable id="ResultsTable" width="100%" viewName="PoSimpleSummaryVO1" shortDesc="Purchase Orders Table" userCustomizable="true">
+                     <ui:contents>
+                        <oa:column id="OrderNumCol" columnDataFormat="textFormat">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="OrderNumHdr" sortState="ascending" initSortSeq="first" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderId_Number" prompt="Number(Drill Down With Retain AM = N)"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText sortState="ascending" viewAttr="OrderNumber" id="OrderNum" initSortSeq="first" promptTranslationExpansion="none" dataType="NUMBER" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderId_Number" viewName="PoSimpleSummaryVO1" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/tutorial/webui/PoDetailsPG&amp;retainAM=N&amp;addBreadCrumb=Y&amp;headerId={@OrderNumber}&amp;fromLSR=Y" userCustomizable="true" enableMultipleSelection="true"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="OrderDescCol">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="OrderDescHdr" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/Description"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText viewAttr="Description" id="OrderDesc" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/Description" viewName="PoSimpleSummaryVO1" userCustomizable="true" enableMultipleSelection="true"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="BuyerCol">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="BuyerHdr" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FullName"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FullName" viewAttr="BuyerName" destination="mailto:{@BuyerEmail}" id="Buyer" promptTranslationExpansion="none" prompt="Buyer" viewName="PoSimpleSummaryVO1" userCustomizable="true"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="CreationDateCol">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="CreationDateHdr" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/CreationDate"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/CreationDate" viewAttr="CreationDate" id="CreationDate" promptTranslationExpansion="none" dataType="DATE" viewName="PoSimpleSummaryVO1" userCustomizable="true" enableRangeSelection="true"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="SupplierCol">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="SupplierHdr" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSuppliers/SupplierName_Supplier"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSuppliers/SupplierName_Supplier" viewAttr="SupplierName" id="Supplier" viewName="PoSimpleSummaryVO1" userCustomizable="true"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="CurrencyCol">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="CurrencyHdr" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/CurrencyCode"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/CurrencyCode" viewAttr="CurrencyCode" id="Currency" viewName="PoSimpleSummaryVO1" userCustomizable="true"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="OrderTotalCol" columnDataFormat="numberFormat">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="OrderTotalHdr" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/OrderTotal"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/OrderTotal" viewAttr="OrderTotal" id="OrderTotal" viewName="PoSimpleSummaryVO1" userCustomizable="true"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="DetailsCol" columnDataFormat="iconButtonFormat">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="DetailsHdr" prompt="Details"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:image source="detailsicon_enabled.gif" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/tutorial/webui/PoDetailsPG&amp;retainAM=Y&amp;addBreadCrumb=Y&amp;headerId={@OrderNumber}" shortDesc="Select to view this purchase order." id="Details" prompt="Details" imageHeight="24" imageWidth="24"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="StatusCol">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="sortableHeader1" prompt="Status"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText id="item15" viewAttr="StatusCode" userCustomizable="true" enableMultipleSelection="true"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="column1">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="sortableHeader2" prompt="Confirm Flag"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText id="item16" viewAttr="ConfirmFlag"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="OrderNumCol1" columnDataFormat="textFormat">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="OrderNumHdr1" sortState="ascending" initSortSeq="first" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderId_Number" prompt="Number(Drill Down With Retain AM = Y)"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText sortState="ascending" viewAttr="OrderNumber" id="OrderNum1" initSortSeq="first" promptTranslationExpansion="none" dataType="NUMBER" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderId_Number" viewName="PoSimpleSummaryVO1" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/tutorial/webui/PoDetailsPG&amp;retainAM=Y&amp;addBreadCrumb=Y&amp;headerId={@OrderNumber}&amp;fromLSR=Y" userCustomizable="true" enableMultipleSelection="true"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="column2" user:attribute1="m,/" userCustomizable="true">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="sortableHeader3" prompt="Creation Date (Relative Date Criteria) With Range" userCustomizable="true"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText id="CreationDateRelativeDate" viewAttr="CreationDate" enableRangeSelection="true" dataType="DATE" userCustomizable="true" enableFacet="true"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="column21" user:attribute1="m,/" userCustomizable="true">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="sortableHeader31" prompt="Creation Date (Relative Date Criteria) Without Range" userCustomizable="true"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText id="CreationDateRelativeDate1" viewAttr="CreationDate" enableRangeSelection="true" dataType="DATE" userCustomizable="true" enableFacet="true"/>
+                           </ui:contents>
+                        </oa:column>
+                     </ui:contents>
+                     <ui:tableActions>
+                        <oa:flowLayout id="region7">
+                           <ui:contents>
+                              <oa:button id="item19" text="Create Purchase Order" prompt="Create Purchase Order">
+                                 <ui:primaryClientAction>
+                                    <ui:fireAction event="createpo"/>
+                                 </ui:primaryClientAction>
+                              </oa:button>
+                           </ui:contents>
+                        </oa:flowLayout>
+                     </ui:tableActions>
+                  </oa:advancedTable>
+               </ui:contents>
+               <oa:advancedSearchMappings>
+                  <oa:queryCriteriaMap id="queryCriteriaMap5" criteriaItem="item6" resultsItem="Buyer"/>
+                  <oa:queryCriteriaMap id="queryCriteriaMap6" criteriaItem="item4" resultsItem="OrderNum"/>
+                  <oa:queryCriteriaMap id="queryCriteriaMap7" criteriaItem="item8" resultsItem="Supplier"/>
+                  <oa:queryCriteriaMap id="queryCriteriaMap8" criteriaItem="item10" resultsItem="CreationDate"/>
+                  <oa:queryCriteriaMap id="queryCriteriaMap9" criteriaItem="item12" resultsItem="Currency"/>
+                  <oa:queryCriteriaMap id="queryCriteriaMap10" criteriaItem="item14" resultsItem="item15"/>
+                  <oa:queryCriteriaMap id="queryCriteriaMap11" criteriaItem="item18" resultsItem="item16"/>
+                  <oa:queryCriteriaMap id="queryCriteriaMap12" criteriaItem="item21" resultsItem="OrderDesc"/>
+                  <oa:queryCriteriaMap id="queryCriteriaMap13" criteriaItem="item23" resultsItem="CreationDateRelativeDate"/>
+                  <oa:queryCriteriaMap id="queryCriteriaMap14" criteriaItem="item25" resultsItem="CreationDateRelativeDate1"/>
+               </oa:advancedSearchMappings>
+            </oa:query>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>

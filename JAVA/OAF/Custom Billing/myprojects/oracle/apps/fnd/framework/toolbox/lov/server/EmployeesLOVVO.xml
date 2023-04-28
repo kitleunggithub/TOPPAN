@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<!-- $Header: EmployeesLOVVO.xml 120.8 2006/07/03 14:46:47 atgops1 noship $ -->
+
+<ViewObject
+   Name="EmployeesLOVVO"
+   OrderBy="2 asc"
+   BindingStyle="Oracle"
+   CustomQuery="true"
+   RowClass="oracle.apps.fnd.framework.toolbox.lov.server.EmployeesLOVVORowImpl"
+   ComponentClass="oracle.apps.fnd.framework.server.OAViewObjectImpl"
+   FetchMode="FETCH_AS_NEEDED"
+   Passivate="None"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+select e.employee_id,
+e.full_name,
+flkp.meaning AS POSITION_DISPLAY
+from fwk_tbx_employees e,
+fwk_tbx_lookup_codes_vl flkp
+where e.position_code = flkp.lookup_code
+and flkp.lookup_type = 'FWK_TBX_POSITIONS'
+and sysdate between e.start_date and nvl(e.end_date, sysdate)
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.38.51" />
+      <Attr Name="_codeGenFlag2" Value="Access" />
+   </DesignTime>
+   <ViewAttribute
+      Name="EmployeeId"
+      IsQueriable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="EMPLOYEE_ID"
+      Expression="EMPLOYEE_ID"
+      SQLType="NUMERIC" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="FullName"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="FULL_NAME"
+      Expression="FULL_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PositionDisplay"
+      IsQueriable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="80"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="POSITION_DISPLAY"
+      Expression="MEANING"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+</ViewObject>

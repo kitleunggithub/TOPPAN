@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory  -->
+<!-- Following  attribute sets for the FWK_TBX_PO_LINES displayable columns. It would be nice if you add some message tips to some attribute sets -->
+<!-- Followed by region header attribute sets, add as many as you need -->
+<!-- Followed by UI standards, object specific button attribute sets, use Buttons.xml for shared, no object specific buttons. Add as many as you need -->
+<package xmlns="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:jrad="http://xmlns.oracle.com/jrad" version="9.0.3.8.6_889" xml:lang="en-US" file-version="$Header: FwkTbxPoLines.xml 120.9 2006/05/25 13:08:30 atgops1 noship $">
+   <jrad:attributeSet docName="LineNumber" comment="Line number which is  unique for this  purchase order." prompt="Line" columns="15"/>
+   <jrad:attributeSet docName="ItemId" comment="Item unique identifier." prompt="Item"/>
+   <jrad:attributeSet docName="ItemDescription" comment="Item description." prompt="Description" columns="40"/>
+   <jrad:attributeSet docName="UnitOfMeasure" comment="Item quantity unit of measure." prompt="Unit"/>
+   <jrad:attributeSet docName="Quantity" comment="Item order quantity in associated unit of measure." prompt="Quantity" columns="15"/>
+   <jrad:attributeSet docName="UnitPrice" comment="Item price in order currency." prompt="Price" columns="15"/>
+   <jrad:attributeSet docName="FwkTbxPOLines" comment="Used as a header for order lines" prompt="Order Lines"/>
+   <jrad:attributeSet docName="LineTotal" columns="15" comment="Purchase order line total." dataType="NUMBER" prompt="Line Total"/>
+   <attributeSet docName="LineId" comment="Purchase order line unique identifier." columns="15" prompt="Line Id"/>
+   <attributeSet docName="PurchaseOrdersSVO" comment="PurchaseOrdersSVO." columns="15" prompt="Purchase Orders SVO"/>
+   <attributeSet docName="PurchaseOrderShipments" comment="PurchaseOrderShipments." columns="15" prompt="Purchase Order Shipments"/>
+</package>

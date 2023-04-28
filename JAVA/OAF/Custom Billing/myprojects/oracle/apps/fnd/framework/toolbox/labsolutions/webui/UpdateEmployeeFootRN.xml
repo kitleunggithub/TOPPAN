@@ -1,0 +1,15 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory -->
+<oa:pageButtonBar akRegionCode="FWK_TBX_LABS_EMPSUP_FOOTER" regionName="Toolbox Labs Employees Update Footer" controllerClass="oracle.apps.fnd.framework.toolbox.labsolutions.webui.EmployeeUpdateFooterCO" xmlns="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:user="http://xmlns.oracle.com/jrad/user" version="9.0.3.8.6_889" xml:lang="en-US" file-version="$Header: UpdateEmployeeFootRN.xml 120.8 2006/05/25 13:12:01 atgops1 noship $">
+   <ui:contents>
+      <oa:submitButton use="/oracle/apps/fnd/attributesets/Buttons/Cancel" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/labsolutions/webui/EmpSearchPG" shortDesc="Select to cancel this employee update." id="Cancel" warnAboutChanges="false" serverUnvalidated="true" unvalidated="true"/>
+      <oa:navigationBar id="NavBar" maxValue="3">
+         <ui:contents>
+            <oa:link id="Step1Link" text="Step 1 of 3: Employee Details" destination="/oracle/apps/fnd/framework/toolbox/labsolutions/webui/EmpDescPG" warnAboutChanges="false"/>
+            <oa:link id="Step2Link" text="Step 2 of 3: Assignment" destination="/oracle/apps/fnd/framework/toolbox/labsolutions/webui/EmpAssignPG" warnAboutChanges="false"/>
+            <oa:link id="Step3Link" text="Step 3 of 3: Review" destination="/oracle/apps/fnd/framework/toolbox/labsolutions/webui/EmpReviewPG" warnAboutChanges="false"/>
+         </ui:contents>
+      </oa:navigationBar>
+      <oa:submitButton use="/oracle/apps/fnd/attributesets/Buttons/Submit" hAlign="end" text="Submit" shortDesc="Select to save your work." id="Submit" textTranslationExpansion="none" promptTranslationExpansion="none"/>
+   </ui:contents>
+</oa:pageButtonBar>

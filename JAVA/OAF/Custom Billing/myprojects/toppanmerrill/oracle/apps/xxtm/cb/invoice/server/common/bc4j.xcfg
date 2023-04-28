@@ -1,0 +1,35 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig>
+   <AppModuleConfigBag>
+      <AppModuleConfig name="SearchInvoiceAMLocal">
+         <DeployPlatform>LOCAL</DeployPlatform>
+         <JDBCName>TM_DEV</JDBCName>
+         <jbo.project>OAProject1</jbo.project>
+         <AppModuleJndiName>toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SearchInvoiceAM</AppModuleJndiName>
+         <java.naming.factory.initial>oracle.jbo.common.JboInitialContextFactory</java.naming.factory.initial>
+         <ApplicationName>toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SearchInvoiceAM</ApplicationName>
+      </AppModuleConfig>
+      <AppModuleConfig name="InvoiceCombineRequestAMLocal">
+         <DeployPlatform>LOCAL</DeployPlatform>
+         <JDBCName>TM_DEV</JDBCName>
+         <jbo.project>OAProject1</jbo.project>
+         <AppModuleJndiName>toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineRequestAM</AppModuleJndiName>
+         <java.naming.factory.initial>oracle.jbo.common.JboInitialContextFactory</java.naming.factory.initial>
+         <ApplicationName>toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineRequestAM</ApplicationName>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <ConnectionDefinition name="TM_DEV">
+      <ENTRY name="JDBC_PORT" value="1531"/>
+      <ENTRY name="ConnectionType" value="JDBC"/>
+      <ENTRY name="HOSTNAME" value="10.25.0.11"/>
+      <ENTRY name="user" value="APPS"/>
+      <ENTRY name="ConnectionName" value="TM_DEV"/>
+      <ENTRY name="ServiceName" value="ebs_TMERPDEV"/>
+      <ENTRY name="JdbcDriver" value="oracle.jdbc.OracleDriver"/>
+      <ENTRY name="password">
+         <![CDATA[{904}05C9A6E35A983EEF03DE5ED6A27D38CB6C27AF0A57FB80BF03]]>
+      </ENTRY>
+      <ENTRY name="ORACLE_JDBC_TYPE" value="thin"/>
+      <ENTRY name="DeployPassword" value="true"/>
+   </ConnectionDefinition>
+</BC4JConfig>

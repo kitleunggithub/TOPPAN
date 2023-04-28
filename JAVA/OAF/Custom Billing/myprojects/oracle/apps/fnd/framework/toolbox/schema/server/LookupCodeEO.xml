@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+
+<!-- $Header: LookupCodeEO.xml 120.8 2006/07/03 19:39:04 atgops1 noship $ -->
+
+<Entity
+   Name="LookupCodeEO"
+   DBObjectType="table"
+   DBObjectName="FWK_TBX_LOOKUP_CODES_VL"
+   AliasName="LookupCodeEO"
+   BindingStyle="Oracle"
+   BatchThreshold="100"
+   UseGlueCode="false"
+   RowClass="oracle.apps.fnd.framework.toolbox.schema.server.LookupCodeEOImpl"
+   DefClass="oracle.apps.fnd.framework.server.OAEntityDefImpl"
+   CollClass="oracle.apps.fnd.framework.server.OAEntityCache" >
+   <Properties>
+      <Property Name ="OA_BASE_TABLE" Value ="FWK_TBX_LOOKUP_CODES_B" />
+   </Properties>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.38.51" />
+      <AttrArray Name="_publishEvents">
+      </AttrArray>
+      <Attr Name="_codeGenFlag2" Value="Init|Delete|Access" />
+   </DesignTime>
+   <Attribute
+      Name="LookupType"
+      IsUpdateable="while_insert"
+      IsNotNull="true"
+      Precision="30"
+      ColumnName="LOOKUP_TYPE"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="FWK_TBX_LOOKUP_CODES_VL"
+      PrimaryKey="true" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LookupCode"
+      IsUpdateable="while_insert"
+      IsNotNull="true"
+      Precision="30"
+      ColumnName="LOOKUP_CODE"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="FWK_TBX_LOOKUP_CODES_VL"
+      PrimaryKey="true" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="StartDateActive"
+      ColumnName="START_DATE_ACTIVE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="TIMESTAMP"
+      TableName="FWK_TBX_LOOKUP_CODES_VL" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="EndDateActive"
+      ColumnName="END_DATE_ACTIVE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="TIMESTAMP"
+      TableName="FWK_TBX_LOOKUP_CODES_VL" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="Meaning"
+      Precision="80"
+      ColumnName="MEANING"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="FWK_TBX_LOOKUP_CODES_VL" >
+   </Attribute>
+   <Attribute
+      Name="Description"
+      Precision="240"
+      ColumnName="DESCRIPTION"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="FWK_TBX_LOOKUP_CODES_VL" >
+   </Attribute>
+   <AccessorAttribute
+      Name="OA_TL_ENTITIES"
+      Association="oracle.apps.fnd.framework.toolbox.schema.server.LookupCodeToTLAO"
+      AssociationEnd="oracle.apps.fnd.framework.toolbox.schema.server.LookupCodeToTLAO.OA_TL_ENTITIES"
+      AssociationOtherEnd="oracle.apps.fnd.framework.toolbox.schema.server.LookupCodeToTLAO.LookupCodeEO"
+      Type="oracle.jbo.RowIterator"
+      IsUpdateable="false" >
+   </AccessorAttribute>
+</Entity>

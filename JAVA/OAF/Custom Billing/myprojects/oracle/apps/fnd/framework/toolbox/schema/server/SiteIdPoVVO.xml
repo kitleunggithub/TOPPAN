@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<!-- $Header: SiteIdPoVVO.xml 120.8 2006/07/03 21:40:19 atgops1 noship $ -->
+
+<ViewObject
+   Name="SiteIdPoVVO"
+   BindingStyle="Oracle"
+   CustomQuery="true"
+   RowClass="oracle.apps.fnd.framework.toolbox.schema.server.SiteIdPoVVORowImpl"
+   ComponentClass="oracle.apps.fnd.framework.toolbox.schema.server.SiteIdPoVVOImpl"
+   FetchMode="FETCH_AS_NEEDED"
+   Passivate="None"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+select supplier_site_id
+from fwk_tbx_supplier_sites
+where sysdate between start_date and nvl(end_date, sysdate)
+and nvl(purchasing_site_flag, 'N') = 'Y'
+and supplier_site_id = :1
+and supplier_id = :2
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.38.51" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll" />
+   </DesignTime>
+   <ViewAttribute
+      Name="SupplierSiteId"
+      IsQueriable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="SUPPLIER_SITE_ID"
+      Expression="SUPPLIER_SITE_ID"
+      SQLType="NUMERIC" >
+   </ViewAttribute>
+</ViewObject>

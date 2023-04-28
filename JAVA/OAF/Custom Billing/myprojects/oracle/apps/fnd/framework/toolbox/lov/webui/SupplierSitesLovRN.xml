@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory -->
+<oa:listOfValues title="Toolbox Supplier Sites LOV" amDefName="oracle.apps.fnd.framework.toolbox.lov.server.TutorialLOVAM" controllerClass="oracle.apps.fnd.framework.toolbox.lov.webui.SupplierSiteLOVCO" xmlns="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:user="http://xmlns.oracle.com/jrad/user" xml:lang="en-US" version="9.0.3.8.6_865" file-version="$Header: SupplierSitesLovRN.xml 120.8 2006/05/25 13:12:39 atgops1 noship $" scope="/">
+   <ui:contents>
+      <oa:table akRegionCode="FWK_TBX_T_SUPPLIER_SITES_LOV" regionName="Supplier Sites Table" blockSize="25" standalone="true" id="SitesTable" name="FWK_TBX_T_SUPPLIER_SITES_LOV" shortDesc="Supplier Sites Table">
+         <ui:contents>
+            <oa:messageStyledText queryable="true" viewName="SupplierSitesLOVVO1" viewAttr="SiteName" id="SiteName" promptTranslationExpansion="none" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSupplierSites/SiteName_Site"/>
+            <oa:formValue viewName="SupplierSitesLOVVO1" viewAttr="SupplierSiteId" id="SiteId" prompt="Site Id" dataType="NUMBER" rendered="true"/>
+            <oa:formValue viewName="SupplierSitesLOVVO1" viewAttr="SupplierId" id="SupplierId" prompt="Supplier Number" dataType="NUMBER" rendered="true"/>
+            <oa:messageStyledText viewName="SupplierSitesLOVVO1" viewAttr="Name" id="SupplierName" rendered="true" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSuppliers/SupplierName_Supplier"/>
+         </ui:contents>
+      </oa:table>
+   </ui:contents>
+</oa:listOfValues>

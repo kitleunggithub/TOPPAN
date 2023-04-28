@@ -1,0 +1,39 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath:~PROD:~PATH:~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath:~PROD:mds:directory  -->
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="9.0.3.9.1_1444" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header: SearchRBSPG.xml 120.8 2006/05/25 13:14:36 atgops1 noship $">
+   <content>
+      <oa:pageLayout id="PageLayoutRN" windowTitle="OA Framework Toolbox Sample Library" title="Results Based Search Example" amDefName="oracle.apps.fnd.framework.toolbox.samplelib.server.SampleBrowserAM">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:query id="QueryRN" dispSimple="true" dispCustomized="true" dispAdvanced="true" simpleSearchInstrTexts="These are the simple search instructions." simpleSearchPanelButtonLabel="Simple Button Label" customizeInstrTexts="These are the views panel instructions." viewConfPanelButtonLabel="Views Button Label" saveSearchButtonText="Save Search Button Label" advancedSearchInstrTexts="These are the advanced panel instructions." advSearchPanelButtonLabel="Advanced Button Label" prompt="Query Prompt" mode="resultsBasedSearch">
+               <ui:contents>
+                  <oa:stackLayout id="ResultsRN">
+                     <ui:contents>
+                        <oa:staticStyledText id="HelpText" styleClass="OraInstructionText" messageAppShortName="AK" messageName="FWK_TBX_T_REGION_GENERAL"/>
+                        <oa:table id="EmpTable" width="100%" userCustomizable="true" regionName="Employees Table" shortDesc="Employees Table">
+                           <ui:contents>
+                              <oa:messageStyledText id="EmployeeId" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EmployeeId" dataType="NUMBER" viewName="EmployeesVO3" viewAttr="EmployeeId" queryable="true" selectiveSearchCriteria="true" sortState="ascending" initSortSeq="first" userCustomizable="true"/>
+                              <oa:messageStyledText id="FirstName" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FirstName" dataType="VARCHAR2" viewName="EmployeesVO3" viewAttr="FirstName" maximumLength="20" queryable="true" selectiveSearchCriteria="true" sortState="yes" userCustomizable="true"/>
+                              <oa:messageStyledText id="LastName" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/LastName" dataType="VARCHAR2" viewName="EmployeesVO3" viewAttr="LastName" maximumLength="40" queryable="true" selectiveSearchCriteria="true" sortState="yes" userCustomizable="true"/>
+                              <oa:messageStyledText id="EmailAddress" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EmailAddress" dataType="VARCHAR2" viewName="EmployeesVO3" viewAttr="EmailAddress" maximumLength="240" userCustomizable="true"/>
+                              <oa:messageStyledText id="Salary" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/Salary" dataType="NUMBER" viewName="EmployeesVO3" viewAttr="Salary" queryable="true" sortState="yes" userCustomizable="true"/>
+                              <oa:messageStyledText id="StartDate" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/StartDate" dataType="DATE" viewName="EmployeesVO3" viewAttr="StartDate" queryable="true" userCustomizable="true"/>
+                              <oa:messageStyledText id="EndDate" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EndDate" dataType="DATE" viewName="EmployeesVO3" viewAttr="EndDate" queryable="true" userCustomizable="true"/>
+                           </ui:contents>
+                        </oa:table>
+                     </ui:contents>
+                  </oa:stackLayout>
+               </ui:contents>
+            </oa:query>
+         </ui:contents>
+         <ui:returnNavigation>
+            <oa:link id="ReturnTo" text="Return to Sample Browser" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/samplelib/webui/SampleBrowserPG&amp;retainAM=Y"/>
+         </ui:returnNavigation>
+         <ui:productBranding>
+            <oa:image id="ProductBranding" source="FNDTAPPBRAND.gif" shortDesc="OA Framework Toolbox Tutorial"/>
+         </ui:productBranding>
+      </oa:pageLayout>
+   </content>
+</page>

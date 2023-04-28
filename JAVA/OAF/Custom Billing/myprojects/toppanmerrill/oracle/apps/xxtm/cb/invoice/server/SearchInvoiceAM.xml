@@ -1,0 +1,183 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+
+<AppModule
+   Name="SearchInvoiceAM"
+   ComponentClass="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SearchInvoiceAMImpl" >
+   <Properties>
+      <Property Name ="RETENTION_LEVEL" Value ="MANAGE_STATE" />
+   </Properties>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+      <Attr Name="_deployType" Value="0" />
+   </DesignTime>
+   <ViewUsage
+      Name="SearchInvoiceVO1"
+      ViewObjectName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SearchInvoiceVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="ActiveBillerLovVO1"
+      ViewObjectName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.ActiveBillerLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="InvoiceStatusLovVO1"
+      ViewObjectName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceStatusLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="InvoiceVO1"
+      ViewObjectName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="InvoiceSalesRepSplitsVO1"
+      ViewObjectName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceSalesRepSplitsVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="InvoiceLineVO1"
+      ViewObjectName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceLineVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="PrimaryProductTypeLovVO1"
+      ViewObjectName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.PrimaryProductTypeLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="CustomerLovVO1"
+      ViewObjectName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.CustomerLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="GLPeriodNameLovVO1"
+      ViewObjectName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.GLPeriodNameLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="CustomerAddressLovVO1"
+      ViewObjectName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.CustomerAddressLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="CustomerContactLovVO1"
+      ViewObjectName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.CustomerContactLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="InvoiceAuditVO1"
+      ViewObjectName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceAuditVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="InvoiceChangeActivityVO1"
+      ViewObjectName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceChangeActivityVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="InvoiceApprovalActivityVO1"
+      ViewObjectName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceApprovalActivityVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="InvoiceLineTypeLovVO1"
+      ViewObjectName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceLineTypeLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="InvoiceTrxTypeLovVO1"
+      ViewObjectName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceTrxTypeLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="InvoiceCombineReqVO1"
+      ViewObjectName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="InvoiceCombineReqDtlVO1"
+      ViewObjectName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqDtlVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="SearchInvoiceLovVO1"
+      ViewObjectName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SearchInvoiceLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="SearchCombineReqVO1"
+      ViewObjectName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SearchCombineReqVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="InvoiceVoidVO1"
+      ViewObjectName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceVoidVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="InvoiceApprovalReasonLovVO1"
+      ViewObjectName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceApprovalReasonLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="InvoiceCombineReqStatusLovVO1"
+      ViewObjectName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqStatusLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="SecCustomerLovVO1"
+      ViewObjectName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SecCustomerLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="InvoiceReviseVO1"
+      ViewObjectName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceReviseVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="PaymentTermLovVO1"
+      ViewObjectName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.PaymentTermLovVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="SalesRepLovVO1"
+      ViewObjectName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SalesRepLovVO" >
+   </ViewUsage>
+   <ViewLinkUsage
+      Name="InvoiceToInvoiceSalesRepSplitVL1"
+      ViewLinkObjectName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceToInvoiceSalesRepSplitVL"
+      SrcViewUsageName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SearchInvoiceAM.InvoiceVO1"
+      DstViewUsageName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SearchInvoiceAM.InvoiceSalesRepSplitsVO1" >
+      <DesignTime>
+         <Attr Name="_isCodegen" Value="true" />
+         <Attr Name="_version" Value="10.1.3.43.6" />
+      </DesignTime>
+   </ViewLinkUsage>
+   <ViewLinkUsage
+      Name="InvoiceToInvoiceLineVL1"
+      ViewLinkObjectName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceToInvoiceLineVL"
+      SrcViewUsageName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SearchInvoiceAM.InvoiceVO1"
+      DstViewUsageName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SearchInvoiceAM.InvoiceLineVO1" >
+      <DesignTime>
+         <Attr Name="_isCodegen" Value="true" />
+         <Attr Name="_version" Value="10.1.3.43.6" />
+      </DesignTime>
+   </ViewLinkUsage>
+   <ViewLinkUsage
+      Name="InvoiceToInvoiceAuditVL1"
+      ViewLinkObjectName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceToInvoiceAuditVL"
+      SrcViewUsageName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SearchInvoiceAM.InvoiceVO1"
+      DstViewUsageName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SearchInvoiceAM.InvoiceAuditVO1" >
+      <DesignTime>
+         <Attr Name="_isCodegen" Value="true" />
+         <Attr Name="_version" Value="10.1.3.43.6" />
+      </DesignTime>
+   </ViewLinkUsage>
+   <ViewLinkUsage
+      Name="InvoiceToInvoiceChangeActivityVL1"
+      ViewLinkObjectName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceToInvoiceChangeActivityVL"
+      SrcViewUsageName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SearchInvoiceAM.InvoiceVO1"
+      DstViewUsageName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SearchInvoiceAM.InvoiceChangeActivityVO1" >
+      <DesignTime>
+         <Attr Name="_isCodegen" Value="true" />
+         <Attr Name="_version" Value="10.1.3.43.6" />
+      </DesignTime>
+   </ViewLinkUsage>
+   <ViewLinkUsage
+      Name="InvoiceToInvoiceApprovalActivityVL1"
+      ViewLinkObjectName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceToInvoiceApprovalActivityVL"
+      SrcViewUsageName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SearchInvoiceAM.InvoiceVO1"
+      DstViewUsageName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SearchInvoiceAM.InvoiceApprovalActivityVO1" >
+      <DesignTime>
+         <Attr Name="_isCodegen" Value="true" />
+         <Attr Name="_version" Value="10.1.3.43.6" />
+      </DesignTime>
+   </ViewLinkUsage>
+   <ViewLinkUsage
+      Name="InvoiceCombineReqVL1"
+      ViewLinkObjectName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqVL"
+      SrcViewUsageName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SearchInvoiceAM.InvoiceCombineReqVO1"
+      DstViewUsageName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SearchInvoiceAM.InvoiceCombineReqDtlVO1" >
+      <DesignTime>
+         <Attr Name="_isCodegen" Value="true" />
+         <Attr Name="_version" Value="10.1.3.43.6" />
+      </DesignTime>
+   </ViewLinkUsage>
+</AppModule>

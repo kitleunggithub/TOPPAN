@@ -1,0 +1,38 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory -->
+<page xmlns="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:user="http://xmlns.oracle.com/jrad/user" version="9.0.3.8.9_1008" xml:lang="en-US" file-version="$Header: HomePG.xml 120.7 2006/05/25 13:11:32 atgops1 noship $">
+   <content>
+      <oa:pageLayout windowTitle="Framework Toolbox Tutorial: Labs" helpTargetAppShortName="ak" id="PageLayoutRN" akRegionCode="FWK_TBX_LABS_HOME_PAGE" regionName="Home Page" amDefName="oracle.apps.fnd.framework.toolbox.labsolutions.server.HomeAM" controllerClass="oracle.apps.fnd.framework.toolbox.labsolutions.webui.HomePageCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBranding" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:productBranding>
+            <oa:image id="productBranding" source="FNDTAPPBRAND.gif" shortDesc="OA Framework Toolbox Tutorial"/>
+         </ui:productBranding>
+         <ui:contents>
+            <oa:tableLayout akRegionCode="FWK_TBX_LABS_HOME_CONTENTTABLE" regionName="Content Table Layout" id="ContentLayout" width="100%">
+               <ui:contents>
+                  <oa:rowLayout akRegionCode="FWK_TBX_LABS_HOME_CONTENT_ROW" regionName="Content Row" id="ContentRow" width="100%">
+                     <ui:contents>
+                        <oa:cellFormat akRegionCode="FWK_TBX_LABS_HOME_CONTENTCELL" regionName="Content Cell" vAlign="top" hAlign="start" width="100%" id="ContentCell">
+                           <ui:contents>
+                              <oa:header akRegionCode="FWK_TBX_LABS_HOME_NTF_HDR" regionName="Notifications At-a-Glance" controllerClass="oracle.apps.fnd.framework.toolbox.labsolutions.webui.HomeNotificationsCO" text="Notifications" id="NotificationRN">
+                                 <ui:contents>
+                                    <oa:stackLayout id="Notifications" extends="/oracle/apps/fnd/wf/worklist/webui/AdvancWorklistRG" regionName="Notifications"/>
+                                 </ui:contents>
+                              </oa:header>
+                           </ui:contents>
+                        </oa:cellFormat>
+                        <oa:cellFormat id="SpacerCell" vAlign="middle" hAlign="start" regionName="Spacer Cell">
+                           <ui:contents>
+                              <oa:spacer id="Spacer" width="6"/>
+                           </ui:contents>
+                        </oa:cellFormat>
+                     </ui:contents>
+                  </oa:rowLayout>
+               </ui:contents>
+            </oa:tableLayout>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>

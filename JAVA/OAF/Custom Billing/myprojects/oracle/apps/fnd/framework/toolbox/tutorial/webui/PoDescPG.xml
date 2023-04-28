@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory -->
+<page xmlns="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:user="http://xmlns.oracle.com/jrad/user" version="9.0.3.8.9_1015" xml:lang="en-US" file-version="$Header: PoDescPG.xml 120.7 2006/05/25 13:16:25 atgops1 noship $" xmlns:jrad="http://xmlns.oracle.com/jrad">
+   <content>
+      <oa:pageLayout windowTitle="Framework Toolbox Tutorial: Multistep Create" helpTargetAppShortName="ak" id="PageLayoutRN" akRegionCode="FWK_TBX_T_LSN7_2PAGE" regionName="Describe Purchase Order Page" amDefName="oracle.apps.fnd.framework.toolbox.tutorial.server.MultistepCreateAM" title="Create Purchase Order: Description" warnAboutChanges="true" controllerClass="oracle.apps.fnd.framework.toolbox.tutorial.webui.PoDescriptionPageCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBranding" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:productBranding>
+            <oa:image id="productBranding" source="FNDTAPPBRAND.gif" shortDesc="OA Framework Toolbox Tutorial"/>
+         </ui:productBranding>
+         <ui:contents>
+            <oa:pageButtonBar id="PageButtons" extends="/oracle/apps/fnd/framework/toolbox/tutorial/webui/CreatePoFootRN"/>
+            <oa:messageComponentLayout id="MainRN">
+               <ui:contents>
+                  <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderId" viewName="PoDetailsFullVO1" viewAttr="HeaderId" styleClass="OraDataText" id="HeaderId" prompt="Order Number" dataType="NUMBER"/>
+                  <oa:messageLovInput externalListOfValues="/oracle/apps/fnd/framework/toolbox/lov/webui/BuyersLovRN" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FullName" readOnly="false" required="yes" text="Buyer" rows="1" viewName="PoDetailsFullVO1" viewAttr="FullName" styleClass="OraFieldText" maximumLength="240" id="BuyerName" styleLabelClass="OraPromptText" textTranslationExpansion="none" promptTranslationExpansion="none" prompt="Buyer">
+                     <lovMappings>
+                        <jrad:lovMap lovItem="BuyerName" id="ToFromBuyerName" resultTo="BuyerName" criteriaFrom="BuyerName"/>
+                        <jrad:lovMap lovItem="EmpId" id="ToBuyerId" resultTo="BuyerId"/>
+                     </lovMappings>
+                  </oa:messageLovInput>
+                  <oa:messageTextInput readOnly="false" secret="false" viewName="PoDetailsFullVO1" viewAttr="Description" styleClass="OraFieldText" maximumLength="240" id="Description" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/Description"/>
+                  <oa:messageLovInput externalListOfValues="/oracle/apps/fnd/framework/toolbox/lov/webui/SuppliersLovRN" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSuppliers/SupplierName_Supplier" readOnly="false" required="yes" text="Supplier" rows="1" viewName="PoDetailsFullVO1" viewAttr="Name" styleClass="OraFieldText" maximumLength="80" id="SupplierName" styleLabelClass="OraPromptText" textTranslationExpansion="none">
+                     <lovMappings>
+                        <lovMap lovItem="SupplierName" resultTo="SupplierName" requiredForLOV="false" id="ToFromSupplierName" criteriaFrom="SupplierName"/>
+                        <lovMap lovItem="SupplierId" resultTo="SupplierId" requiredForLOV="false" id="ToSupplierId"/>
+                     </lovMappings>
+                  </oa:messageLovInput>
+                  <oa:messageLovInput externalListOfValues="/oracle/apps/fnd/framework/toolbox/lov/webui/SupplierSitesLovRN" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSupplierSites/SiteName" readOnly="false" required="yes" text="Suplier Site" rows="1" viewName="PoDetailsFullVO1" viewAttr="SiteName" styleClass="OraFieldText" maximumLength="20" id="SupplierSiteName" styleLabelClass="OraPromptText" tipType="shortTip" tipMessageAppShortName="AK" textTranslationExpansion="none" promptTranslationExpansion="none" tipMessageName="FWK_TBX_T_PO_SUP_BEFORE_SITE">
+                     <lovMappings>
+                        <jrad:lovMap lovItem="SiteName" id="ToFromSiteName" resultTo="SupplierSiteName" criteriaFrom="SupplierSiteName"/>
+                        <jrad:lovMap lovItem="SiteId" id="ToSiteId" resultTo="SiteId"/>
+                        <jrad:lovMap lovItem="SupplierId" id="FromSupplierId" programmaticQuery="false" criteriaFrom="SupplierId"/>
+                        <jrad:lovMap lovItem="SupplierName" id="FromSupplierName" requiredForLOV="true" programmaticQuery="true" criteriaFrom="SupplierName"/>
+                     </lovMappings>
+                  </oa:messageLovInput>
+                  <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/CurrencyCode" viewName="PoDetailsFullVO1" viewAttr="CurrencyCode" styleClass="OraDataText" id="CurrencyCode"/>
+                  <oa:messageChoice use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/PaymentTermsCode" readOnly="false" required="yes" viewName="PoDetailsFullVO1" viewAttr="PaymentTermsCode" styleClass="OraFieldText" pickListViewDef="oracle.apps.fnd.framework.toolbox.poplist.server.PaymentTermsVO" pickListDispAttr="Meaning" pickListValAttr="LookupCode" id="PaymentTerms"/>
+                  <oa:messageChoice use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/CarrierCode" readOnly="false" required="yes" viewName="PoDetailsFullVO1" viewAttr="CarrierCode" styleClass="OraFieldText" pickListViewDef="oracle.apps.fnd.framework.toolbox.poplist.server.CarriersVO" pickListDispAttr="Meaning" pickListValAttr="LookupCode" id="Carrier" defaultValue="FEDEX"/>
+                  <oa:messageLayout id="HiddenFieldLayout">
+                     <ui:contents>
+                        <oa:formValue viewName="PoDetailsFullVO1" viewAttr="BuyerId" id="BuyerId" prompt="Employee Number" dataType="NUMBER"/>
+                        <oa:formValue viewName="PoDetailsFullVO1" viewAttr="SupplierSiteId" id="SiteId" prompt="Supplier Site ID" dataType="NUMBER"/>
+                        <oa:formValue viewName="PoDetailsFullVO1" viewAttr="SupplierId" id="SupplierId" prompt="Supplier ID" dataType="NUMBER"/>
+                     </ui:contents>
+                  </oa:messageLayout>
+               </ui:contents>
+            </oa:messageComponentLayout>
+         </ui:contents>
+         <ui:location>
+            <oa:train id="TrainRN" extends="/oracle/apps/fnd/framework/toolbox/tutorial/webui/CreatePoTrainRN"/>
+         </ui:location>
+         <ui:pageStatus>
+            <oa:flowLayout id="PageStatusRN">
+               <ui:contents>
+                  <oa:staticStyledText styleClass="OraInstructionText" id="PageHelp" messageName="FWK_TBX_T_PAGE_GENERAL" messageAppShortName="AK"/>
+                  <oa:tableLayout id="RequiredKey" extends="/oracle/apps/fnd/framework/webui/OAReqFieldDescRG" hAlign="center" width="100%"/>
+               </ui:contents>
+            </oa:flowLayout>
+         </ui:pageStatus>
+      </oa:pageLayout>
+   </content>
+</page>

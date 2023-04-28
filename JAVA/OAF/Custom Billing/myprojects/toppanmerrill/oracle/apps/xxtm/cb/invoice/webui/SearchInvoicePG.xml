@@ -1,0 +1,147 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <content>
+      <oa:pageLayout id="PageLayoutRN" amDefName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SearchInvoiceAM" windowTitle="Search Invoice Window" title="Search Invoice" controllerClass="toppanmerrill.oracle.apps.xxtm.cb.invoice.webui.SearchInvoiceCO" warnAboutChanges="false">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:messageComponentLayout id="QueryRN" columns="3" searchRegion="false" rows="5" adminCustomizable="false">
+               <ui:contents>
+                  <oa:messageStyledText id="ProjectText" prompt="Project:"/>
+                  <oa:messageTextInput id="ProjectNumField" prompt="Project Num"/>
+                  <oa:messageTextInput id="ProjectNameField" prompt="Project Name"/>
+                  <oa:messageStyledText id="BillingTitle" prompt="Billing:"/>
+                  <oa:messageChoice id="ActiveBillerField" prompt="Active Biller" pickListViewDef="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.ActiveBillerLovVO" pickListDispAttr="BillerName" pickListValAttr="BillerId"/>
+                  <oa:messageStyledText id="CustomerTitle" prompt="Customer:"/>
+                  <oa:messageTextInput id="CustomerNumField" prompt="Customer Num"/>
+                  <oa:messageTextInput id="CustomerNameField" prompt="Customer Name"/>
+                  <oa:messageChoice id="PrimarySalesRepField" prompt="Primary Sales Rep" pickListViewDef="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SalesRepLovVO" pickListDispAttr="SalesRepName" pickListValAttr="SalesRepId"/>
+                  <oa:messageStyledText id="DummyField1"/>
+                  <oa:messageStyledText id="InvoiceTitle" prompt="Invoice Transaction:"/>
+                  <oa:messageTextInput id="TransactionNumField" prompt="Transaction Num"/>
+                  <oa:messageTextInput id="TransactionDateFromField" dataType="DATE" prompt="Transaction Date From"/>
+                  <oa:messageTextInput id="TransactionDateToField" dataType="DATE" prompt="Transaction Date To"/>
+                  <oa:messageChoice id="StatusField" prompt="Status" pickListViewDef="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceStatusLovVO" pickListDispAttr="StatusDescription" pickListValAttr="StatusValue"/>
+               </ui:contents>
+            </oa:messageComponentLayout>
+            <oa:rowLayout id="ButtonRN">
+               <ui:contents>
+                  <oa:submitButton id="GoBN" use="/oracle/apps/fnd/attributesets/Buttons/Go"/>
+                  <oa:resetButton id="ClearBN" use="/oracle/apps/fnd/attributesets/Buttons/ClearAll" text="Clear"/>
+               </ui:contents>
+            </oa:rowLayout>
+            <!--
+            <oa:table id="SearchInvoiceVO1" text="Search Result" blockSize="20" adminCustomizable="false">
+               <ui:contents>
+                  <oa:messageStyledText id="CustomerTrxId" viewName="SearchInvoiceVO1" viewAttr="CustomerTrxId" rendered="false"/>
+                  <oa:link id="ArTrxNumber" text="Transaction Number" viewName="SearchInvoiceVO1" viewAttr="ArTrxNumber" destination="OA.jsp?page=/toppanmerrill/oracle/apps/xxtm/cb/invoice/webui/InvoiceDetailPG&amp;retainAM=Y&amp;addBreadCrumb=N&amp;CustomerTrxId={@CustomerTrxId}"/>
+                  <oa:messageStyledText id="TrxDate" dataType="DATE" prompt="Transaction Date" viewName="SearchInvoiceVO1" viewAttr="TrxDate"/>
+                  <oa:messageStyledText id="ProjectNumber" dataType="VARCHAR2" prompt="Project Number" viewName="SearchInvoiceVO1" viewAttr="ProjectNumber" maximumLength="25"/>
+                  <oa:messageStyledText id="ProjectName" dataType="VARCHAR2" prompt="Project Name" viewName="SearchInvoiceVO1" viewAttr="ProjectName" maximumLength="30"/>
+                  <oa:messageStyledText id="CustomerName" dataType="VARCHAR2" prompt="Bill to Customer Name" viewName="SearchInvoiceVO1" viewAttr="CustomerName" maximumLength="360"/>
+                  <oa:messageStyledText id="CurrentStatusDescription" dataType="VARCHAR2" prompt="Status" viewName="SearchInvoiceVO1" viewAttr="CurrentStatusDescription" maximumLength="240"/>
+                  <oa:messageStyledText id="InvoiceClass" dataType="VARCHAR2" prompt="Class" viewName="SearchInvoiceVO1" viewAttr="InvoiceClassDescription" maximumLength="1"/>
+               </ui:contents>
+               <ui:tableSelection>
+                  <oa:multipleSelection id="multipleSelection1" viewName="SearchInvoiceVO1" viewAttr="Selected" adminCustomizable="false" shortDesc="Select Invoice">
+                     <ui:contents>
+                        <oa:selectionButton id="CopyBN" text="Copy" adminCustomizable="false"/>
+                        <oa:selectionButton id="CombinBN" text="Combine"/>
+                        <oa:selectionButton id="UncombineBN" text="Uncombine"/>
+                        <oa:selectionButton id="VoidBN" text="Void"/>
+                        <oa:selectionButton id="UnbillBN" text="Unbill"/>
+                     </ui:contents>
+                  </oa:multipleSelection>
+               </ui:tableSelection>
+            </oa:table>
+			-->
+            <oa:advancedTable id="SearchInvoiceResultTE" text="Result Listing" blockSize="20" viewName="SearchInvoiceVO1" width="90%" verticalGridlinesDisplayed="true" adminCustomizable="false" rowNavigationPolicy="page">
+               <ui:contents>
+                  <oa:column id="InvoiceCustomerTrxIdCN" rendered="false">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="InvoiceCustomerTrxIdTH" prompt="Customer Trx Id" sortState="no"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageStyledText id="InvoiceCustomerTrxIdFD" viewAttr="CustomerTrxId"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="InvoiceArTrxNumberCN">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="InvoiceArTrxNumberTH" prompt="Transaction Number" sortState="yes"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:link id="InvoiceArTrxNumberLK" viewAttr="ArTrxNumber" destination="OA.jsp?page=/toppanmerrill/oracle/apps/xxtm/cb/invoice/webui/InvoiceDetailPG&amp;retainAM=Y&amp;addBreadCrumb=N&amp;CustomerTrxId={@CustomerTrxId}" text="Transaction Number"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="InvoiceTrxDateCN">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="InvoiceTrxDateTH" prompt="Transaction Date" sortState="yes"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageStyledText id="InvoiceTrxDateFD" viewAttr="TrxDate" dataType="DATE"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="InvoiceProjectNumberCN">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="InvoiceProjectNumberTH" prompt="Project Number" sortState="yes"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageStyledText id="InvoiceProjectNumberFD" viewAttr="ProjectNumber"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="InvoiceProjectNameCN">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="InvoiceProjectNameTH" prompt="Project Name" sortState="yes"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageStyledText id="InvoiceProjectNameFD" viewAttr="ProjectName"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="InvoiceCustomerNameCN">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="InvoiceCustomerNameTH" prompt="Customer Name" sortState="yes"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageStyledText id="InvoiceCustomerNameFD" viewAttr="CustomerName"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="InvoiceCurrentStatusDescriptionCN">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="InvoiceCurrentStatusDescriptionTH" prompt="Status" sortState="yes"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageStyledText id="InvoiceCurrentStatusDescriptionFD" viewAttr="CurrentStatusDescription"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="InvoiceClassDescriptionCN">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="InvoiceClassDescriptionTH" prompt="Class" sortState="yes"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageStyledText id="InvoiceClassDescriptionFD" viewAttr="InvoiceClassDescription"/>
+                     </ui:contents>
+                  </oa:column>
+               </ui:contents>
+               <ui:tableSelection>
+                  <oa:multipleSelection id="SearchInvoiceResultTS" viewAttr="Selected" text="Select Invoice">
+                     <ui:contents>
+                        <oa:rowLayout id="SearchInvoiceResultRL">
+                           <ui:contents>
+                              <!--<oa:button id="CopyBN" text="Copy" prompt="Copy" popupId="InvoiceCopyPopupRN" popupEnabled="true"/>-->
+                              <oa:submitButton id="CopyBN" prompt="Copy"/>
+                              <oa:submitButton id="CombineBN" prompt="Combine"/>
+                              <oa:submitButton id="UncombineBN" prompt="Uncombine"/>
+                              <oa:submitButton id="ReviseBN" prompt="Revise"/>
+                              <oa:submitButton id="VoidBN" prompt="Void"/>
+                              <oa:submitButton id="PrintBN" text="Print" prompt="Print"/>
+                           </ui:contents>
+                        </oa:rowLayout>
+                     </ui:contents>
+                  </oa:multipleSelection>
+               </ui:tableSelection>
+            </oa:advancedTable>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>

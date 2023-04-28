@@ -1,0 +1,55 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory -->
+<page xmlns="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:user="http://xmlns.oracle.com/jrad/user" version="9.0.3.8.13_1323" xml:lang="en-US" file-version="$Header: SupplierSearchPG.xml 120.10 2006/05/25 13:18:26 atgops1 noship $">
+   <content>
+      <oa:pageLayout windowTitle="Framework Toolbox Tutorial: Create (Single Step)" helpTargetAppShortName="ak" id="PageLayoutRN" akRegionCode="FWK_TBX_T_LSN4_1PAGE" regionName="Supplier Search Page" title="Suppliers" amDefName="oracle.apps.fnd.framework.toolbox.tutorial.server.CreateAM">
+         <ui:corporateBranding>
+            <oa:image id="corporateBranding" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:productBranding>
+            <oa:image id="productBranding" source="FNDTAPPBRAND.gif" shortDesc="OA Framework Toolbox Tutorial"/>
+         </ui:productBranding>
+         <ui:contents>
+            <oa:staticStyledText styleClass="OraInstructionText" id="PageHelp" messageName="FWK_TBX_T_PAGE_GENERAL" messageAppShortName="AK"/>
+            <oa:header akRegionCode="FWK_TBX_T_LSN4_SEARCH" regionName="Search Region" controllerClass="oracle.apps.fnd.framework.toolbox.tutorial.webui.SupplierSearchCO" text="Search" id="SearchRN">
+               <ui:contents>
+                  <oa:messageComponentLayout id="MainSearchRN" width="75%" promptWidth="25%" fieldWidth="75%">
+                     <ui:contents>
+                        <oa:messageTextInput use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSuppliers/SupplierName_Supplier" readOnly="false" rows="1" secret="false" styleClass="OraFieldText" maximumLength="80" id="SupplierName" selectiveSearchCriteria="true"/>
+                        <oa:messageTextInput use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSuppliers/SupplierId_Number" readOnly="false" rows="1" secret="false" styleClass="OraFieldText" maximumLength="15" id="SupplierNum" dataType="NUMBER" selectiveSearchCriteria="true"/>
+                     </ui:contents>
+                  </oa:messageComponentLayout>
+                  <oa:hideShow akRegionCode="FWK_TBX_T_LSN4_HIDESHOW" regionName="HideShow Content" addChildren="true" id="HideShowRN" disclosed="false" undisclosedText="Show More Search Options" disclosedText="Hide Search Options">
+                     <ui:contents>
+                        <oa:defaultSingleColumn akRegionCode="FWK_TBX_T_LSN4_SHOW_SRCH" regionName="Toolbox Lesson 4 Show Search" headerDisabled="true" id="ShowSearch">
+                           <ui:contents>
+                              <oa:messageCheckBox use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSuppliers/OnHoldFlag" readOnly="false" styleClass="OraFieldText" id="OnHold"/>
+                           </ui:contents>
+                        </oa:defaultSingleColumn>
+                     </ui:contents>
+                  </oa:hideShow>
+                  <oa:submitButton use="/oracle/apps/fnd/attributesets/Buttons/Go" shortDesc="Select to view search results." id="Go"/>
+                  <oa:separator id="Separator"/>
+                  <oa:table id="SuppliersTable" regionName="Suppliers Table" width="100%" messageName="FWK_TBX_T_NO_SUPPLIERS_FOUND" messageAppShortName="AK" shortDesc="Suppliers Table">
+                     <ui:contents>
+                        <oa:messageStyledText id="Supplier" dataType="VARCHAR2" text="Name" prompt="Supplier" viewAttr="Name" sortState="ascending" initSortSeq="first" textTranslationExpansion="none" promptTranslationExpansion="none" viewName="SupplierSummaryVO1"/>
+                        <oa:messageStyledText id="SupplierId" dataType="NUMBER" text="SupplierId" prompt="Number" viewAttr="SupplierId" sortState="yes" textTranslationExpansion="none" promptTranslationExpansion="none" viewName="SupplierSummaryVO1"/>
+                        <oa:messageStyledText id="OnHoldDisplay" dataType="VARCHAR2" text="OnHoldDisplay" prompt="On Hold" viewAttr="OnHoldDisplay" textTranslationExpansion="none" promptTranslationExpansion="none" viewName="SupplierSummaryVO1"/>
+                        <oa:messageStyledText id="StartDate" dataType="DATE" text="StartDate" prompt="Start Date" viewAttr="StartDate" textTranslationExpansion="none" promptTranslationExpansion="none" viewName="SupplierSummaryVO1"/>
+                        <oa:messageStyledText id="EndDate" dataType="DATE" text="EndDate" prompt="End Date" viewAttr="EndDate" textTranslationExpansion="none" promptTranslationExpansion="none" viewName="SupplierSummaryVO1"/>
+                        <oa:image id="SitesIcon" shortDesc="Select to view and edit supplier sites." prompt="Supplier Sites" source="subtask_enabled.gif" promptTranslationExpansion="none" imageHeight="24" imageWidth="24"/>
+                     </ui:contents>
+                     <ui:tableActions>
+                        <oa:flowLayout id="GlobalButtons">
+                           <ui:contents>
+                              <oa:submitButton id="Create" text="Create Supplier" prompt="Create Supplier" shortDesc="Select to create a supplier."/>
+                           </ui:contents>
+                        </oa:flowLayout>
+                     </ui:tableActions>
+                  </oa:table>
+               </ui:contents>
+            </oa:header>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>

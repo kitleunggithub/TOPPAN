@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+
+<!-- $Header: PoToSupplierAO.xml 120.8 2006/07/03 21:13:46 atgops1 noship $ -->
+
+<Association
+   Name="PoToSupplierAO" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.38.51" />
+   </DesignTime>
+   <AssociationEnd
+      Name="PurchaseOrderHeaderEO"
+      Cardinality="-1"
+      Source="true"
+      Owner="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderHeaderEO"
+      LockTopContainer="false" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderHeaderEO.SupplierId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_finderName" Value="PurchaseOrderHeaderEO" />
+         <Attr Name="_aggregation" Value="0" />
+         <Attr Name="_minCardinality" Value="1" />
+         <Attr Name="_isUpdateable" Value="true" />
+      </DesignTime>
+   </AssociationEnd>
+   <AssociationEnd
+      Name="SupplierEO"
+      Cardinality="1"
+      Owner="oracle.apps.fnd.framework.toolbox.schema.server.SupplierEO" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.SupplierEO.SupplierId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_finderName" Value="SupplierEO" />
+         <Attr Name="_aggregation" Value="0" />
+         <Attr Name="_minCardinality" Value="1" />
+         <Attr Name="_isUpdateable" Value="true" />
+      </DesignTime>
+   </AssociationEnd>
+</Association>

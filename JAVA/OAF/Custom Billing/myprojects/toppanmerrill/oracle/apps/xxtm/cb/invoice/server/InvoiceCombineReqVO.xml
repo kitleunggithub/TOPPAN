@@ -1,0 +1,524 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="InvoiceCombineReqVO"
+   BindingStyle="OracleName"
+   CustomQuery="true"
+   RowClass="oracle.apps.fnd.framework.server.OAViewRowImpl"
+   ComponentClass="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqVOImpl"
+   UseGlueCode="false" >
+   <Properties>
+      <Property Name ="VO_ATTR.InvoiceCombineReqDtlVO.VO_DATATYPE" Value ="Number" />
+      <Property Name ="VO_ATTR.InvoiceCombineReqDtlVO.VO_QUALIFIED_NAME" Value ="Number" />
+   </Properties>
+   <SQLQuery><![CDATA[
+SELECT InvoiceCombineReqEO.COMBINE_REQ_ID 
+       ,InvoiceCombineReqEO.PARENT_CUSTOMER_TRX_ID 
+       ,InvoiceCombineReqEO.COMBINE_REQ_NUMBER 
+       ,InvoiceCombineReqEO.STATUS 
+       ,InvoiceCombineReqEO.APPROVAL_REASON 
+       ,InvoiceCombineReqEO.JUSTIFICATION 
+       ,InvoiceCombineReqEO.ORG_ID 
+       ,InvoiceCombineReqEO.CREATED_BY 
+       ,InvoiceCombineReqEO.CREATION_DATE 
+       ,InvoiceCombineReqEO.LAST_UPDATED_BY 
+       ,InvoiceCombineReqEO.LAST_UPDATE_DATE 
+       ,InvoiceCombineReqEO.LAST_UPDATE_LOGIN 
+       ,InvoiceCombineReqEO.REQ_TYPE
+    , invoice.CUSTOMER_TRX_ID
+	, invoice.AR_TRX_NUMBER
+	, invoice.TRX_DATE
+	, invoice.CURRENT_STATUS
+	, (SELECT 
+			ffvt.description value_description
+			FROM 
+			fnd_flex_value_sets ffvs ,
+			fnd_flex_values ffv ,
+			fnd_flex_values_tl ffvt
+			WHERE
+			ffvs.flex_value_set_id = ffv.flex_value_set_id
+			AND ffv.flex_value_id = ffvt.flex_value_id
+			AND ffvt.language = 'US'
+			AND flex_value_set_name = 'XXBS_INVOICE_STATUS'
+			AND flex_value = invoice.CURRENT_STATUS
+		AND ffv.enabled_flag = 'Y'
+			AND NVL(ffv.end_date_active,SYSDATE) >= SYSDATE
+	) CURRENT_STATUS_DESCRIPTION
+	, invoice.INVOICE_CLASS
+	, (SELECT 
+			ffvt.description value_description
+			FROM 
+			fnd_flex_value_sets ffvs ,
+			fnd_flex_values ffv ,
+			fnd_flex_values_tl ffvt
+			WHERE
+			ffvs.flex_value_set_id = ffv.flex_value_set_id
+			AND ffv.flex_value_id = ffvt.flex_value_id
+			AND ffvt.language = 'US'
+			AND flex_value_set_name = 'XXBS_INVOICE_CLASS'
+			AND flex_value = invoice.INVOICE_CLASS
+		AND ffv.enabled_flag = 'Y'
+			AND NVL(ffv.end_date_active,SYSDATE) >= SYSDATE
+	) INVOICE_CLASS_DESCRIPTION
+	, invoice.ORIGINAL_PROJECT_ID
+	, invoice.BILL_TO_CUSTOMER_ID
+	, invoice.PRIMARY_SALESREP_ID
+	, invoice.ACTIVE_BILLER_ID
+	, (
+	select DESCRIPTION
+	from fnd_user where USER_ID = invoice.ACTIVE_BILLER_ID
+	) ACTIVE_BILLER_NAME
+	, pa.PROJECT_ID
+	, pa.SEGMENT1 PROJECT_NUMBER             
+	, pa.LONG_NAME PROJECT_NAME                 
+	, pa.DESCRIPTION PROJECT_DESCRIPTION          
+	, cust.PARTY_ID CUSTOMER_ID
+	, cust.PARTY_NAME CUSTOMER_NAME
+	, acc.ACCOUNT_NUMBER CUSTOMER_NO
+	, res.RESOURCE_ID PRIMAY_SALESREP_ID
+	, res.RESOURCE_NAME PRIMAY_SALESREP_NAME
+    , invoice.CUST_TRX_TYPE_ID
+	, trx_type.NAME TRX_TYPE_NAME
+        , NVL((SELECT SUM(SELL_AMOUNT) FROM XXBS_CUSTOMER_TRX_LINES WHERE CUSTOMER_TRX_ID = invoice.CUSTOMER_TRX_ID),0) TOTAL_INVOICE_AMT
+FROM XXBS_COMBINE_REQ InvoiceCombineReqEO
+, PA_PROJECTS_ALL pa
+, XXBS_CUSTOMER_TRX invoice
+, HZ_PARTIES cust
+, HZ_CUST_ACCOUNTS_ALL acc
+, XXBS_REP_SPLITS salesrep
+, JTF_RS_DEFRESOURCES_V res
+, RA_CUST_TRX_TYPES_ALL trx_type
+WHERE 
+InvoiceCombineReqEO.PARENT_CUSTOMER_TRX_ID  = invoice.CUSTOMER_TRX_ID (+)
+AND invoice.ORIGINAL_PROJECT_ID = pa.project_id (+)
+AND invoice.BILL_TO_CUSTOMER_ID = acc.CUST_ACCOUNT_ID (+)
+AND acc.PARTY_ID = cust.PARTY_ID (+)
+AND invoice.CUSTOMER_TRX_ID = salesrep.CUSTOMER_TRX_ID (+) 
+AND salesrep.SALESREP_ID  = res.RESOURCE_ID (+) 
+AND salesrep.PRIMARY_FLAG (+) = 'Y'
+and invoice.CUST_TRX_TYPE_ID = trx_type.CUST_TRX_TYPE_ID (+)
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess" />
+   </DesignTime>
+   <EntityUsage
+      Name="InvoiceCombineReqEO"
+      Entity="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqEO" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="false" />
+      </DesignTime>
+   </EntityUsage>
+   <ViewAttribute
+      Name="CombineReqId"
+      IsNotNull="true"
+      EntityAttrName="CombineReqId"
+      EntityUsage="InvoiceCombineReqEO"
+      AliasName="COMBINE_REQ_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ParentCustomerTrxId"
+      IsNotNull="true"
+      EntityAttrName="ParentCustomerTrxId"
+      EntityUsage="InvoiceCombineReqEO"
+      AliasName="PARENT_CUSTOMER_TRX_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CombineReqNumber"
+      IsNotNull="true"
+      EntityAttrName="CombineReqNumber"
+      EntityUsage="InvoiceCombineReqEO"
+      AliasName="COMBINE_REQ_NUMBER" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Status"
+      IsNotNull="true"
+      EntityAttrName="Status"
+      EntityUsage="InvoiceCombineReqEO"
+      AliasName="STATUS" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ApprovalReason"
+      EntityAttrName="ApprovalReason"
+      EntityUsage="InvoiceCombineReqEO"
+      AliasName="APPROVAL_REASON" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Justification"
+      EntityAttrName="Justification"
+      EntityUsage="InvoiceCombineReqEO"
+      AliasName="JUSTIFICATION" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="OrgId"
+      IsNotNull="true"
+      EntityAttrName="OrgId"
+      EntityUsage="InvoiceCombineReqEO"
+      AliasName="ORG_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreatedBy"
+      IsNotNull="true"
+      EntityAttrName="CreatedBy"
+      EntityUsage="InvoiceCombineReqEO"
+      AliasName="CREATED_BY" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreationDate"
+      IsNotNull="true"
+      EntityAttrName="CreationDate"
+      EntityUsage="InvoiceCombineReqEO"
+      AliasName="CREATION_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdatedBy"
+      IsNotNull="true"
+      EntityAttrName="LastUpdatedBy"
+      EntityUsage="InvoiceCombineReqEO"
+      AliasName="LAST_UPDATED_BY" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdateDate"
+      IsNotNull="true"
+      EntityAttrName="LastUpdateDate"
+      EntityUsage="InvoiceCombineReqEO"
+      AliasName="LAST_UPDATE_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdateLogin"
+      IsNotNull="true"
+      EntityAttrName="LastUpdateLogin"
+      EntityUsage="InvoiceCombineReqEO"
+      AliasName="LAST_UPDATE_LOGIN" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ReqType"
+      IsNotNull="true"
+      EntityAttrName="ReqType"
+      EntityUsage="InvoiceCombineReqEO"
+      AliasName="REQ_TYPE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CustomerTrxId"
+      IsPersistent="false"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="CUSTOMER_TRX_ID"
+      Expression="CUSTOMER_TRX_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ArTrxNumber"
+      IsPersistent="false"
+      Precision="20"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="AR_TRX_NUMBER"
+      Expression="AR_TRX_NUMBER"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="20" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="TrxDate"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      AliasName="TRX_DATE"
+      Expression="TRX_DATE"
+      SQLType="DATE" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CurrentStatus"
+      IsPersistent="false"
+      Precision="50"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CURRENT_STATUS"
+      Expression="CURRENT_STATUS"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="50" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CurrentStatusDescription"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CURRENT_STATUS_DESCRIPTION"
+      Expression="CURRENT_STATUS_DESCRIPTION"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="InvoiceClass"
+      IsPersistent="false"
+      Precision="1"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="INVOICE_CLASS"
+      Expression="INVOICE_CLASS"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="1" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="InvoiceClassDescription"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="INVOICE_CLASS_DESCRIPTION"
+      Expression="INVOICE_CLASS_DESCRIPTION"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="OriginalProjectId"
+      IsPersistent="false"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="ORIGINAL_PROJECT_ID"
+      Expression="ORIGINAL_PROJECT_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="BillToCustomerId"
+      IsPersistent="false"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="BILL_TO_CUSTOMER_ID"
+      Expression="BILL_TO_CUSTOMER_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PrimarySalesrepId"
+      IsPersistent="false"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="PRIMARY_SALESREP_ID"
+      Expression="PRIMARY_SALESREP_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ActiveBillerId"
+      IsPersistent="false"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="ACTIVE_BILLER_ID"
+      Expression="ACTIVE_BILLER_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ActiveBillerName"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="ACTIVE_BILLER_NAME"
+      Expression="ACTIVE_BILLER_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ProjectId"
+      IsPersistent="false"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="PROJECT_ID"
+      Expression="PROJECT_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ProjectNumber"
+      IsPersistent="false"
+      Precision="25"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PROJECT_NUMBER"
+      Expression="PROJECT_NUMBER"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="25" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ProjectName"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PROJECT_NAME"
+      Expression="PROJECT_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ProjectDescription"
+      IsPersistent="false"
+      Precision="250"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PROJECT_DESCRIPTION"
+      Expression="PROJECT_DESCRIPTION"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="250" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CustomerId"
+      IsPersistent="false"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="CUSTOMER_ID"
+      Expression="CUSTOMER_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CustomerName"
+      IsPersistent="false"
+      Precision="360"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CUSTOMER_NAME"
+      Expression="CUSTOMER_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="360" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CustomerNo"
+      IsPersistent="false"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CUSTOMER_NO"
+      Expression="CUSTOMER_NO"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PrimaySalesrepId"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="PRIMAY_SALESREP_ID"
+      Expression="PRIMAY_SALESREP_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PrimaySalesrepName"
+      IsPersistent="false"
+      Precision="360"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PRIMAY_SALESREP_NAME"
+      Expression="PRIMAY_SALESREP_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="360" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CustTrxTypeId"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="CUST_TRX_TYPE_ID"
+      Expression="CUST_TRX_TYPE_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="TrxTypeName"
+      IsPersistent="false"
+      Precision="20"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="TRX_TYPE_NAME"
+      Expression="TRX_TYPE_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="20" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="TotalInvoiceAmt"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="TOTAL_INVOICE_AMT"
+      Expression="TOTAL_INVOICE_AMT"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewLinkAccessor
+      Name="InvoiceCombineReqDtlVO"
+      ViewLink="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqVL"
+      Type="oracle.jbo.RowIterator"
+      IsUpdateable="false" >
+   </ViewLinkAccessor>
+</ViewObject>

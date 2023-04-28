@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath:~PROD:~PATH:~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath:~PROD:mds:directory  -->
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="9.0.3.8.8_992" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header: WorklistPG.xml 120.7 2006/05/25 13:15:24 atgops1 noship $">
+   <content>
+      <oa:pageLayout id="PageLayoutRN" amDefName="oracle.apps.fnd.framework.toolbox.samplelib.server.SampleBrowserAM" windowTitle="OA Framework Toolbox Sample Library" title="Workflow Worklist">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:productBranding>
+            <oa:image id="ProdBrand" shortDesc="OA Framework Toolbox Sample Library" source="FNDTAPPBRAND.gif"/>
+         </ui:productBranding>
+         <ui:contents>
+            <oa:stackLayout id="WorklistRN" extends="/oracle/apps/fnd/wf/worklist/webui/AdvancWorklistRG"/>
+         </ui:contents>
+         <ui:returnNavigation>
+            <oa:link id="ReturnTo" text="Return To Sample Library" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/samplelib/webui/SampleBrowserPG&amp;retainAM=Y"/>
+         </ui:returnNavigation>
+      </oa:pageLayout>
+   </content>
+</page>

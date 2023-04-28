@@ -1,0 +1,22 @@
+The following Synchronization Actions were performed successfully:
+
+Entity :InvoiceEO
+  Attribute :Preliminary
+    Change Precision to 1
+  Attribute :DisplayLevel3Total
+    Change Column type to VARCHAR2
+    Change Precision to 1
+  Attribute :DisplayLevel3
+    Change Precision to 1
+  Attribute :DisplayLevel2Total
+    Change Column type to VARCHAR2
+    Change Precision to 1
+  Attribute :DisplayLevel2
+    Change Precision to 1
+  Attribute :DisplayLevel1Total
+    Change Column type to VARCHAR2
+    Change Precision to 1
+  Attribute :DisplayLevel1
+    Change Precision to 1
+  Attribute :DisplaySalesperson
+    Change Precision to 1

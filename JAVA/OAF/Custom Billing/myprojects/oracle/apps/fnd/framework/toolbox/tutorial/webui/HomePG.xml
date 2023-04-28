@@ -1,0 +1,75 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory -->
+<page xmlns="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:user="http://xmlns.oracle.com/jrad/user" version="9.0.3.8.9_1008" xml:lang="en-US" file-version="$Header: HomePG.xml 120.7 2006/05/25 13:16:08 atgops1 noship $">
+   <content>
+      <oa:pageLayout windowTitle="Framework Toolbox Tutorial: Home" helpTargetAppShortName="ak" id="PageLayoutRN" akRegionCode="FWK_TBX_T_LSN8_1PAGE" regionName="Home Page" amDefName="oracle.apps.fnd.framework.toolbox.tutorial.server.HomeAM" controllerClass="oracle.apps.fnd.framework.toolbox.tutorial.webui.HomePageCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBranding" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:productBranding>
+            <oa:image id="productBranding" source="FNDTAPPBRAND.gif" shortDesc="OA Framework Toolbox Tutorial"/>
+         </ui:productBranding>
+         <ui:contents>
+            <oa:tableLayout akRegionCode="FWK_TBX_T_LSN8_CONTENT_LAYOUT" regionName="Content Table Layout" id="ContentLayout" width="100%">
+               <ui:contents>
+                  <oa:rowLayout akRegionCode="FWK_TBX_T_LSN8_CONTENT_ROW" regionName="Content Row" id="ContentRow">
+                     <ui:contents>
+                        <oa:cellFormat akRegionCode="FWK_TBX_T_LSN8_CONTENT_CELL" regionName="Content Cell" vAlign="top" hAlign="start" width="100%" id="ContentCell">
+                           <ui:contents>
+                              <oa:stackLayout akRegionCode="FWK_TBX_T_LSN8_CONTENT" regionName="Content Region" id="ContentRN">
+                                 <ui:contents>
+                                    <oa:stackLayout akRegionCode="FWK_TBX_T_LSN8_WELCOME" regionName="Welcome Region" controllerClass="oracle.apps.fnd.framework.toolbox.tutorial.webui.HomeWelcomeCO" addChildren="false" id="WelcomeRN">
+                                       <ui:contents/>
+                                    </oa:stackLayout>
+                                    <oa:header id="OrdersRN" regionName="Purchase Orders At-a-Glance" text="Recent Purchase Orders" controllerClass="oracle.apps.fnd.framework.toolbox.tutorial.webui.HomePurchaseOrdersCO">
+                                       <ui:contents>
+                                          <oa:tableLayout id="PoMore" regionName="PO More Table Layout" width="100%">
+                                             <ui:contents>
+                                                <oa:rowLayout id="PORow" regionName="PO More Row">
+                                                   <ui:contents>
+                                                      <oa:cellFormat id="PoTextCell" regionName="PO More Text Cell" hAlign="start">
+                                                         <ui:contents>
+                                                            <oa:staticStyledText id="PoText" styleClass="OraInstructionText" messageName="FWK_TBX_T_HOME_ORDERS_HELP" messageAppShortName="AK"/>
+                                                         </ui:contents>
+                                                      </oa:cellFormat>
+                                                      <oa:cellFormat id="PoButtonCell" regionName="PO More Button Cell" hAlign="end">
+                                                         <ui:contents>
+                                                            <oa:submitButton id="PoFullList" shortDesc="Select to view purchase orders." text="Full List" hAlign="end" textTranslationExpansion="none" promptTranslationExpansion="none" prompt="Full List"/>
+                                                         </ui:contents>
+                                                      </oa:cellFormat>
+                                                   </ui:contents>
+                                                </oa:rowLayout>
+                                             </ui:contents>
+                                          </oa:tableLayout>
+                                          <oa:table id="PoTable" regionName="Purchase Orders Table" blockSize="5" messageName="FWK_TBX_T_NO_POS_FOUND" messageAppShortName="AK" width="100%" shortDesc="Purchase Orders Table">
+                                             <ui:contents>
+                                                <oa:messageStyledText id="OrderNum" dataType="NUMBER" text="OrderNumber" prompt="Number" viewAttr="OrderNumber" sortState="yes" textTranslationExpansion="none" promptTranslationExpansion="none" viewName="PoSimpleSummaryVO1"/>
+                                                <oa:messageStyledText id="Description" dataType="VARCHAR2" text="Description" prompt="Description" viewAttr="Description" textTranslationExpansion="none" promptTranslationExpansion="none" viewName="PoSimpleSummaryVO1"/>
+                                                <oa:messageStyledText id="SupplierName" dataType="VARCHAR2" text="SupplierName" prompt="Supplier" viewAttr="SupplierName" textTranslationExpansion="none" promptTranslationExpansion="none" viewName="PoSimpleSummaryVO1"/>
+                                                <oa:messageStyledText id="CreationDate" dataType="DATE" text="CreationDate" prompt="Created" viewAttr="CreationDate" sortState="descending" initSortSeq="first" textTranslationExpansion="none" promptTranslationExpansion="none" viewName="PoSimpleSummaryVO1"/>
+                                             </ui:contents>
+                                          </oa:table>
+                                       </ui:contents>
+                                    </oa:header>
+                                    <oa:header akRegionCode="FWK_TBX_T_LSN8_NTF_HDR" regionName="Notifications At-a-Glance" controllerClass="oracle.apps.fnd.framework.toolbox.tutorial.webui.HomeNotificationsCO" text="Notifications" id="NotificationsRN">
+                                       <ui:contents>
+                                          <oa:stackLayout id="Notifications" extends="/oracle/apps/fnd/wf/worklist/webui/AdvancWorklistRG"/>
+                                       </ui:contents>
+                                    </oa:header>
+                                 </ui:contents>
+                              </oa:stackLayout>
+                           </ui:contents>
+                        </oa:cellFormat>
+                        <oa:cellFormat id="SpacerCell" vAlign="middle" hAlign="start" regionName="Spacer Cell">
+                           <ui:contents>
+                              <oa:spacer id="Spacer" width="6"/>
+                           </ui:contents>
+                        </oa:cellFormat>
+                     </ui:contents>
+                  </oa:rowLayout>
+               </ui:contents>
+            </oa:tableLayout>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>

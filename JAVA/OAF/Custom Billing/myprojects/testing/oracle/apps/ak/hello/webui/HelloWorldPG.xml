@@ -1,0 +1,22 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <content>
+      <oa:pageLayout id="PageLayoutRN" windowTitle="Hello World Window Title" title="Hello World Page Header" amDefName="testing.oracle.apps.ak.hello.server.HelloAM">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:messageComponentLayout id="MainRN" controllerClass="testing.oracle.apps.ak.hello.webui.HelloWorldMainCO">
+               <ui:contents>
+                  <oa:messageTextInput id="HelloName" prompt="Name" columns="20"/>
+                  <oa:messageLayout id="ButtonLayout">
+                     <ui:contents>
+                        <oa:submitButton id="Go" use="/oracle/apps/fnd/attributesets/Buttons/Go"/>
+                     </ui:contents>
+                  </oa:messageLayout>
+               </ui:contents>
+            </oa:messageComponentLayout>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>

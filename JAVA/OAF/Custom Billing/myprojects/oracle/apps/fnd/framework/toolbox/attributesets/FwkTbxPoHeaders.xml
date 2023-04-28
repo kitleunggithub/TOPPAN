@@ -1,0 +1,47 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory  -->
+<!-- Following  attribute sets for the FWK_TBX_PO_HEADERS displayable columns. It would be nice if you add some message tips to some attribute sets -->
+<!-- Followed by region header attribute sets, add as many as you need -->
+<!-- Followed by UI standards, object specific button attribute sets, use Buttons.xml for shared, no object specific buttons. Add as many as you need -->
+<package xmlns="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:jrad="http://xmlns.oracle.com/jrad" version="9.0.3.8.6_889" xml:lang="en-US" file-version="$Header: FwkTbxPoHeaders.xml 120.9 2006/05/25 13:08:21 atgops1 noship $">
+   <jrad:attributeSet docName="HeaderId" comment="Purchase order unique identifier." prompt="Purchase Order" columns="15"/>
+   <jrad:attributeSet docName="HeaderId_Number" comment="Purchase order unique identifier." prompt="Number" columns="15"/>
+   <jrad:attributeSet docName="Description" comment="A brief description of the purchase order." prompt="Description" columns="40" rows="2"/>
+   <jrad:attributeSet docName="StatusCode" comment="Internal purchase order processing state." prompt="Status" columns="40"/>
+   <jrad:attributeSet docName="CurrencyCode" comment="ISO standard currency code." prompt="Currency" columns="5"/>
+   <jrad:attributeSet docName="PaymentTermsCode" comment="Purchase order payment terms." prompt="Payment Terms" columns="40"/>
+   <jrad:attributeSet docName="CarrierCode" comment="Designated purchase order carrier." prompt="Carrier" columns="40"/>
+   <jrad:attributeSet docName="ShipToAddress" comment="Default purchase order shipping address which may be overridden at the shipment level." prompt="Ship To Address"/>
+   <jrad:attributeSet docName="BillToAddress" comment="Purchase order billing address." prompt="Bill To Address"/>
+   <jrad:attributeSet docName="Rate" comment="Exchange rate for foreign currency." prompt="Rate" columns="15"/>
+   <jrad:attributeSet docName="FwkTbxPOHeaders" comment="Used as a header for order header list region" prompt="Purchase Orders"/>
+   <jrad:attributeSet docName="CreateOrder" comment="UI Standards 'Create xxx' button or icon" prompt="Create Purchase Order" shortDesc="Select to create a purchase order."/>
+   <jrad:attributeSet docName="UpdateOrder" comment="UI Standards 'Update xxx' button or icon." prompt="Update Order" shortDesc="Select to update this purchase order."/>
+   <jrad:attributeSet docName="CreationDate" columns="30" comment="Date purchase order was created." prompt="Created"/>
+   <jrad:attributeSet docName="OrderTotal" columns="15" comment="Purchase order total." prompt="Order Total" dataType="NUMBER"/>
+   <jrad:attributeSet docName="HeaderId_Order" columns="15" comment="Purchase order unique identifier." prompt="Order"/>
+   <attributeSet docName="SupplierId" comment="Supplier unique identifier." prompt="Supplier Id" columns="15"/>
+   <attributeSet docName="SupplierSiteId" comment="Supplier site unique identifier." columns="15" prompt="Supplier Site Id"/>
+   <attributeSet docName="ConfirmFlag" comment="Flag indicating whether the purchase order has been accepted by the supplier." columns="3" prompt="Confirm Flag"/>
+   <attributeSet docName="BuyerId" comment="Buyer unique identifier." columns="15" prompt="Buyer Id"/>
+   <attributeSet docName="ShipToAddressId" comment="Purchase order shipping address unique identifier." columns="15" prompt="Ship-To Address Id"/>
+   <attributeSet docName="BillToAddressId" comment="Purchase order billing address unique identifier." columns="15" prompt="Bill-To Address Id"/>
+   <attributeSet docName="HeaderAttributeCategory" comment="HeaderAttributeCategory." columns="15" prompt="HeaderAttributeCategory"/>
+   <attributeSet docName="HeaderAttribute1" comment="HeaderAttribute1." columns="15" prompt="Header Attribute 1"/>
+   <attributeSet docName="HeaderAttribute2" comment="HeaderAttribute2." columns="15" prompt="Header Attribute 2"/>
+   <attributeSet docName="HeaderAttribute3" comment="HeaderAttribute3." columns="15" prompt="Header Attribute 3"/>
+   <attributeSet docName="HeaderAttribute4" comment="HeaderAttribute4." columns="15" prompt="Header Attribute 4"/>
+   <attributeSet docName="HeaderAttribute5" comment="HeaderAttribute5." columns="15" prompt="Header Attribute 5"/>
+   <attributeSet docName="HeaderAttribute6" comment="HeaderAttribute6." columns="15" prompt="Header Attribute 6"/>
+   <attributeSet docName="HeaderAttribute7" comment="HeaderAttribute7." columns="15" prompt="Header Attribute 7"/>
+   <attributeSet docName="HeaderAttribute8" comment="HeaderAttribute8." columns="15" prompt="Header Attribute 8"/>
+   <attributeSet docName="HeaderAttribute9" comment="HeaderAttribute9." columns="15" prompt="Header Attribute 9"/>
+   <attributeSet docName="HeaderAttribute10" comment="HeaderAttribute10." columns="15" prompt="Header Attribute 10"/>
+   <attributeSet docName="HeaderAttribute11" comment="HeaderAttribute11." columns="15" prompt="Header Attribute 11"/>
+   <attributeSet docName="HeaderAttribute12" comment="HeaderAttribute12." columns="15" prompt="Header Attribute 12"/>
+   <attributeSet docName="HeaderAttribute13" comment="HeaderAttribute13." columns="15" prompt="Header Attribute 13"/>
+   <attributeSet docName="HeaderAttribute14" comment="HeaderAttribute14." columns="15" prompt="Header Attribute 14"/>
+   <attributeSet docName="HeaderAttribute15" comment="HeaderAttribute15." columns="15" prompt="Header Attribute 15"/>
+   <attributeSet docName="KFF1_AnchorAttribute" comment="KFF1_AnchorAttribute." columns="15" prompt="KFF1_AnchorAttribute"/>
+   <attributeSet docName="PurchaseOrderLines" comment="PurchaseOrderLines." columns="15" prompt="PurchaseOrderLines"/>
+</package>

@@ -1,0 +1,289 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="CustomerAddressLovVO"
+   BindingStyle="OracleName"
+   CustomQuery="true"
+   RowClass="oracle.apps.fnd.framework.server.OAViewRowImpl"
+   ComponentClass="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.CustomerAddressLovVOImpl"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+SELECT
+HP.PARTY_ID 
+,HPS.PARTY_SITE_ID
+,HL.LOCATION_ID
+,HL.ADDRESS1 
+,HL.ADDRESS2
+,HL.ADDRESS3
+,HL.ADDRESS4
+,HL.CITY
+,HL.POSTAL_CODE
+,HL.COUNTRY
+,HL.ADDRESS1 ||', '||
+HL.ADDRESS2 ||', '||
+HL.ADDRESS3 ||', ' ||
+HL.ADDRESS4 ||', ' ||
+HL.CITY ||', ' ||
+HL.POSTAL_CODE ||', ' ||
+HL.COUNTRY FULL_ADDRESS
+,CA.CUST_ACCOUNT_ID
+,CS.CUST_ACCT_SITE_ID
+,CSU.SITE_USE_ID
+,CSU.SITE_USE_CODE
+,CS.ORG_ID
+FROM HZ_PARTIES HP
+, HZ_CUST_ACCOUNTS_ALL CA
+, HZ_CUST_ACCT_SITES_ALL CS
+, HZ_CUST_SITE_USES_ALL CSU
+, HZ_PARTY_SITES HPS
+, HZ_LOCATIONS HL
+WHERE HP.PARTY_ID = HPS.PARTY_ID 
+AND HP.PARTY_ID = CA.PARTY_ID 
+AND CA.CUST_ACCOUNT_ID = CS.CUST_ACCOUNT_ID
+AND CS.PARTY_SITE_ID = HPS.PARTY_SITE_ID
+AND CS.CUST_ACCT_SITE_ID = CSU.CUST_ACCT_SITE_ID
+AND CS.ORG_ID = CSU.ORG_ID
+AND HPS.LOCATION_ID = HL.LOCATION_ID
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess" />
+   </DesignTime>
+   <ViewAttribute
+      Name="PartyId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="PARTY_ID"
+      Expression="PARTY_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PartySiteId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="PARTY_SITE_ID"
+      Expression="PARTY_SITE_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LocationId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="LOCATION_ID"
+      Expression="LOCATION_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Address1"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="ADDRESS1"
+      Expression="ADDRESS1"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Address2"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="ADDRESS2"
+      Expression="ADDRESS2"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Address3"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="ADDRESS3"
+      Expression="ADDRESS3"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Address4"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="ADDRESS4"
+      Expression="ADDRESS4"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="City"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="60"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CITY"
+      Expression="CITY"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="60" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PostalCode"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="60"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="POSTAL_CODE"
+      Expression="POSTAL_CODE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="60" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Country"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="60"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="COUNTRY"
+      Expression="COUNTRY"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="60" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="FullAddress"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="1146"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="FULL_ADDRESS"
+      Expression="FULL_ADDRESS"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="1146" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CustAccountId"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="CUST_ACCOUNT_ID"
+      Expression="CUST_ACCOUNT_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CustAcctSiteId"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="CUST_ACCT_SITE_ID"
+      Expression="CUST_ACCT_SITE_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SiteUseId"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="SITE_USE_ID"
+      Expression="SITE_USE_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SiteUseCode"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="SITE_USE_CODE"
+      Expression="SITE_USE_CODE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="OrgId"
+      IsPersistent="false"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="ORG_ID"
+      Expression="ORG_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+</ViewObject>

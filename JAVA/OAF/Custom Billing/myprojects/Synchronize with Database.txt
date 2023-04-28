@@ -1,0 +1,111 @@
+The following Synchronization Actions were performed successfully:
+
+Entity :InvoiceEO
+  Attribute :InvoiceClass
+    Change Mandatory to:true
+  Attribute :LastUpdateLogin
+    Change Mandatory to:true
+  Attribute :LastUpdateDate
+    Change Mandatory to:true
+  Attribute :LastUpdatedBy
+    Change Mandatory to:true
+  Attribute :CreationDate
+    Change Mandatory to:true
+  Attribute :CreatedBy
+    Change Mandatory to:true
+  Attribute :EnteredCurrencyCode
+    Change Mandatory to:true
+  Attribute :CurrencyCode
+    Change Mandatory to:true
+  Attribute :TermId
+    Change Mandatory to:true
+  Attribute :CurrentStatusDate
+    Change Mandatory to:true
+  Attribute :ActiveBillerId
+    Change Mandatory to:true
+  Attribute :OwningBillerId
+    Change Mandatory to:true
+  Attribute :InvoiceAddressId
+    Change Mandatory to:true
+  Attribute :BillToCustomerId
+    Change Mandatory to:true
+  Attribute :BillToAddressId
+    Change Mandatory to:true
+  Attribute :PeriodName
+    Change Mandatory to:true
+  Attribute :TrxDate
+    Change Mandatory to:true
+  Attribute :CustTrxTypeId
+    Change Mandatory to:true
+  Attribute :PrimaryProductTypeId
+    Change Mandatory to:true
+  Attribute :SetOfBooksId
+    Change Mandatory to:true
+  Attribute :OrganizationId
+    Change Mandatory to:true
+  Attribute :CustomerTrxId
+    Change Mandatory to:true
+  Create Attribute for column: INVOICE_STYLE_NAME
+  Create Attribute for column: INVOICE_TITLE
+  Create Attribute for column: INVOICE_DESC_ONE_LINE
+  Create Attribute for column: TAX_DESC
+  Create Attribute for column: TAX_AMOUNT
+  Create Attribute for column: INVOICE_FOOT_TOP
+  Create Attribute for column: INVOICE_FOOT_BOTTOM
+  Create Attribute for column: DISPLAY_SALESPERSON
+  Create Attribute for column: DISPLAY_LEVEL_1
+  Create Attribute for column: DISPLAY_LEVEL_1_TOTAL
+  Create Attribute for column: DISPLAY_LEVEL_2
+  Create Attribute for column: DISPLAY_LEVEL_2_TOTAL
+  Create Attribute for column: DISPLAY_LEVEL_3
+  Create Attribute for column: DISPLAY_LEVEL_3_TOTAL
+  Create Attribute for column: PRELIMINARY
+  Create Attribute for column: BILL_TO_CONTACT_ID
+  Key :XxbsCustomerTrxU1
+    Change Disabled Constraint to:false
+  Key :SysC00277908
+    Change Disabled Constraint to:false
+  Key :SysC00277907
+    Change Disabled Constraint to:false
+  Key :SysC00277906
+    Change Disabled Constraint to:false
+  Key :SysC00277905
+    Change Disabled Constraint to:false
+  Key :SysC00277904
+    Change Disabled Constraint to:false
+  Key :SysC00277903
+    Change Disabled Constraint to:false
+  Key :SysC00277902
+    Change Disabled Constraint to:false
+  Key :SysC00277901
+    Change Disabled Constraint to:false
+  Key :SysC00277900
+    Change Disabled Constraint to:false
+  Key :SysC00277898
+    Change Disabled Constraint to:false
+  Key :SysC00277897
+    Change Disabled Constraint to:false
+  Key :SysC00277896
+    Change Disabled Constraint to:false
+  Key :SysC00277895
+    Change Disabled Constraint to:false
+  Key :SysC00277894
+    Change Disabled Constraint to:false
+  Key :SysC00277893
+    Change Disabled Constraint to:false
+  Key :SysC00277891
+    Change Disabled Constraint to:false
+  Key :SysC00277890
+    Change Disabled Constraint to:false
+  Key :SysC00277889
+    Change Disabled Constraint to:false
+  Key :SysC00277888
+    Change Disabled Constraint to:false
+  Key :SysC00277887
+    Change Disabled Constraint to:false
+  Key :SysC00277886
+    Change Disabled Constraint to:false
+  Key :SysC00277885
+    Change Disabled Constraint to:false
+  Remove Key Constraint: SysC00277892
+  Create Key for Constraint: SYS_C00283855

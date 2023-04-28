@@ -1,0 +1,85 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath:~PROD:~PATH:~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath:~PROD:mds:directory  -->
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="9.0.3.9.1_1593" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header: PartialPageExamplePG.xml 120.9 2006/07/04 04:04:25 atgops1 noship $">
+   <content>
+      <oa:pageLayout id="PageLayoutRN" amDefName="oracle.apps.fnd.framework.toolbox.samplelib.server.SampleBrowserAM" windowTitle="OA Framework Toolbox Tutorial Sample Library" title="Partial Page Rendering Example" controllerClass="oracle.apps.fnd.framework.toolbox.samplelib.webui.PartialPageExampleCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:returnNavigation>
+            <oa:link id="ReturnTo" text="Return to Sample Browser" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/samplelib/webui/SampleBrowserPG&amp;retainAM=Y"/>
+         </ui:returnNavigation>
+         <ui:contents>
+            <oa:hideShowHeader id="UIPropertiesHdr" text="Change UI Properties" disclosed="true">
+               <ui:contents>
+                  <oa:messageComponentLayout id="UIPropertiesRN">
+                     <ui:contents>
+                        <oa:messageChoice id="PPREventSource" pickListDispAttr="Meaning" pickListValAttr="LookupCode" pickListViewDef="oracle.apps.fnd.framework.toolbox.poplist.server.OrderStatusesVO" viewName="PurchaseOrderHeadersVO1" viewAttr="StatusCode" prompt="Approval Status" required="yes" serverUnvalidated="true">
+                           <ui:primaryClientAction>
+                              <ui:firePartialAction event="approveList" id="firePartialAction1"/>
+                           </ui:primaryClientAction>
+                        </oa:messageChoice>
+                        <oa:messageTextInput id="ApproveComment" prompt="Approval Comment" rendered="${oa.SampleBrowserPVO1.PoApproveRender}" columns="100" required="${oa.SampleBrowserPVO1.PoApproveRequired}"/>
+                        <oa:messageTextInput id="ForwardToApprover" prompt="Forward To Approver" rendered="${oa.SampleBrowserPVO1.PoApproveRender}" columns="30" readOnly="${oa.SampleBrowserPVO1.PoApproveReadOnly}"/>
+                        <oa:messageTextInput id="RejectionComment" prompt="Rejection Reason" rendered="${oa.SampleBrowserPVO1.PoRejectRender}" columns="100"/>
+                        <oa:messageChoice id="PPRCurrency" pickListViewDef="oracle.apps.fnd.framework.toolbox.poplist.server.CurrencyVO" pickListDispAttr="Meaning" pickListValAttr="LookupCode" viewName="PurchaseOrderPPRVO1" viewAttr="CurrencyCode" prompt="Currency">
+                           <ui:primaryClientAction>
+                              <ui:firePartialAction event="PPRCurrency"/>
+                           </ui:primaryClientAction>
+                        </oa:messageChoice>
+                        <oa:messageTextInput id="PPRRate" viewName="PurchaseOrderPPRVO1" viewAttr="Rate" prompt="Rate" dataType="NUMBER" maximumLength="3" columns="3" readOnly="true" tipType="shortTip" tipMessageAppShortName="FND" tipMessageName="FWK_TBX_S_CURRENCY_TIP"/>
+                     </ui:contents>
+                  </oa:messageComponentLayout>
+               </ui:contents>
+            </oa:hideShowHeader>
+            <oa:hideShowHeader id="DataHdr" text="Cascading Data Changes" rendered="false">
+               <ui:contents>
+                  <oa:messageComponentLayout id="DataRN">
+                     <ui:contents>
+                        <oa:messageTextInput id="Supplier" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSuppliers/SupplierName" viewName="PurchaseOrderHeadersVO1" viewAttr="SupplierId" dataType="NUMBER" required="no"/>
+                        <oa:messageTextInput id="SupplierSite" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSupplierSites/SiteName" viewName="PurchaseOrderHeadersVO1" viewAttr="SupplierSiteId"/>
+                     </ui:contents>
+                  </oa:messageComponentLayout>
+               </ui:contents>
+            </oa:hideShowHeader>
+            <oa:hideShowHeader id="MasterDetailRN" text="Coordinate Master Detail Tables">
+               <ui:contents>
+                  <oa:table id="SuppliersTable" width="100%" blockSize="5" shortDesc="Suppliers Table">
+                     <ui:contents>
+                        <oa:messageStyledText id="SupplierId" dataType="NUMBER" prompt="Supplier Number" viewName="SuppliersVO1" viewAttr="SupplierId" sortState="ascending" initSortSeq="first"/>
+                        <oa:messageStyledText id="SupplierName" viewName="SuppliersVO1" viewAttr="Name" prompt="Supplier Name"/>
+                        <oa:messageStyledText id="OnHoldFlag" dataType="VARCHAR2" prompt="On Hold" viewName="SuppliersVO1" viewAttr="OnHoldFlag" maximumLength="1"/>
+                        <oa:messageStyledText id="StartDate" dataType="DATE" prompt="Start Date" viewName="SuppliersVO1" viewAttr="StartDate"/>
+                        <oa:messageStyledText id="EndDate" dataType="DATE" prompt="End Date" viewName="SuppliersVO1" viewAttr="EndDate"/>
+                     </ui:contents>
+                     <ui:tableSelection>
+                        <oa:singleSelection id="SingleSelection" serverUnvalidated="true" viewName="SuppliersVO1" viewAttr="SelectFlag">
+                           <ui:primaryClientAction>
+                              <ui:firePartialAction unvalidated="true" event="supplierSelect"/>
+                           </ui:primaryClientAction>
+                        </oa:singleSelection>
+                     </ui:tableSelection>
+                  </oa:table>
+                  <oa:header id="SupplierSitesHeader">
+                     <ui:contents>
+                        <oa:table id="SupplierSitesTable" width="100%" shortDesc="Supplier Sites Table">
+                           <ui:contents>
+                              <oa:messageStyledText id="SupplierId1" dataType="NUMBER" prompt="Supplier Number" viewName="SupplierSitesVO1" viewAttr="SupplierId"/>
+                              <oa:messageStyledText id="SupplierSiteId1" dataType="NUMBER" prompt="Site Number" viewName="SupplierSitesVO1" viewAttr="SupplierSiteId"/>
+                              <oa:messageStyledText id="SiteName" dataType="VARCHAR2" prompt="Site Name" viewName="SupplierSitesVO1" viewAttr="SiteName" maximumLength="20"/>
+                              <oa:messageStyledText id="PurchasingSiteFlag" dataType="VARCHAR2" prompt="Purchasing Site" viewName="SupplierSitesVO1" viewAttr="PurchasingSiteFlag" maximumLength="1"/>
+                              <oa:messageStyledText id="StartDate1" dataType="DATE" prompt="Start Date" viewName="SupplierSitesVO1" viewAttr="StartDate"/>
+                              <oa:messageStyledText id="EndDate1" dataType="DATE" prompt="End Date" viewName="SupplierSitesVO1" viewAttr="EndDate"/>
+                           </ui:contents>
+                        </oa:table>
+                     </ui:contents>
+                  </oa:header>
+               </ui:contents>
+            </oa:hideShowHeader>
+         </ui:contents>
+         <ui:productBranding>
+            <oa:image id="ProductBranding" source="FNDTAPPBRAND.gif" shortDesc="OA Framework Toolbox Tutorial"/>
+         </ui:productBranding>
+      </oa:pageLayout>
+   </content>
+</page>

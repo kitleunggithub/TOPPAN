@@ -1,0 +1,77 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- +======================================================================+ -->
+<!-- |    Copyright (c) 2005, 2018 Oracle and/or its affiliates.           | -->
+<!-- |                         All rights reserved.                         | -->
+<!-- |                           Version 12.0.0                             | -->
+<!-- +======================================================================+ -->
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath:~PROD:~PATH:~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath:~PROD:mds:directory  -->
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header: TableUserPersonalizationPG.xml 120.0.12020000.3 2018/10/16 06:01:53 atgops1 noship $">
+   <content>
+      <oa:pageLayout id="region1" amDefName="oracle.apps.fnd.framework.toolbox.samplelib.server.SampleBrowserAM" windowTitle="User Personalization On Tables" controllerClass="oracle.apps.fnd.framework.toolbox.samplelib.webui.TableUserPersonalizationCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:tip id="item12" text="Salary and First Name columns are rendered false. Users can show  these columns through the settings menu."/>
+            <oa:advancedTable id="TableRN" viewName="EmployeesVO1" shortDesc="User Personalization Demo Table" tableBanding="rowBanding" width="100%" detailViewAttr="DetailFlag" blockSize="5" text="Toolbox Employees - Table User Personalization Demo" enableUserControlOnColumns="true">
+               <ui:contents>
+                  <oa:column id="SalaryCol" totalValue="false" columnDataFormat="numberFormat" userCustomizable="true" rendered="false">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="SalaryHdr" required="no" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/Salary"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageTextInput id="Salary" viewAttr="Salary" dataType="NUMBER" maximumLength="10" required="yes" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/Salary" userCustomizable="true" rendered="false"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="EndDateCol" userCustomizable="true">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="EndDateHdr" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EndDate"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageTextInput id="EndDate" required="no" viewAttr="EndDate" dataType="DATE" tipType="dateFormat" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EndDate" userCustomizable="true"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="FirstNameCol" rendered="false" userCustomizable="true">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="sortableHeader1" prompt="First Name"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageTextInput id="item1" viewAttr="FirstName" rendered="false" userCustomizable="true"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="LastNameCol" rendered="true" userCustomizable="true">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="sortableHeader11" prompt="Last Name"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageTextInput id="item11" viewAttr="LastName" rendered="true" userCustomizable="true"/>
+                     </ui:contents>
+                  </oa:column>
+               </ui:contents>
+               <ui:detail>
+                  <oa:messageComponentLayout id="DetailRN">
+                     <ui:contents>
+                        <oa:messageChoice id="Position" viewAttr="PositionCode" required="no" pickListDispAttr="Meaning" pickListValAttr="LookupCode" pickListViewName="PositionsVO1" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/Position" viewName="EmployeesVO1" defaultValue="BUYER"/>
+                        <oa:messageLovInput id="ManagerId" viewAttr="ManagerId" dataType="NUMBER" externalListOfValues="/oracle/apps/fnd/framework/toolbox/lov/webui/EmployeesLovRN" columns="15" viewName="EmployeesVO1" prompt="Manager Id" translatableDefaultValue="5">
+                           <lovMappings>
+                              <lovMap id="NumMap" lovItem="EmpNum" resultTo="ManagerId" criteriaFrom="ManagerId"/>
+                           </lovMappings>
+                        </oa:messageLovInput>
+                        <oa:messageTextInput id="EmailAddress" viewAttr="EmailAddress" dataType="VARCHAR2" viewName="EmployeesVO1" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EmailAddress" maximumLength="240"/>
+                     </ui:contents>
+                  </oa:messageComponentLayout>
+               </ui:detail>
+            </oa:advancedTable>
+            <oa:tip id="item13" text="Supplier Identifier and End Date columns are rendered false. Users can show  these columns through settings menu."/>
+            <oa:table id="classicTableRN" text="End user personalization - classic tables" shortDesc="End user personalization - classic tables" enableUserControlOnColumns="true">
+               <ui:contents>
+                  <oa:messageStyledText id="item14" viewName="SuppliersVO1" viewAttr="SupplierId" prompt="Supplier Identifier" userCustomizable="true" rendered="false"/>
+                  <oa:messageStyledText id="item15" viewName="SuppliersVO1" viewAttr="Name" prompt="Supplier Name" userCustomizable="true"/>
+                  <oa:messageStyledText id="item16" viewName="SuppliersVO1" viewAttr="StartDate" prompt="StartDate" userCustomizable="true"/>
+                  <oa:messageStyledText id="item17" viewName="SuppliersVO1" viewAttr="EndDate" userCustomizable="true" prompt="End Date" rendered="false"/>
+               </ui:contents>
+            </oa:table>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>

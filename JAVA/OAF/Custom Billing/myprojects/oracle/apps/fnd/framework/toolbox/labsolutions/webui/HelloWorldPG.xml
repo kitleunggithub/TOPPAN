@@ -1,0 +1,26 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory -->
+<page xmlns="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:jrad="http://xmlns.oracle.com/jrad" version="9.0.3.9.1_1390" xml:lang="en-US" file-version="$Header: HelloWorldPG.xml 120.8 2006/05/25 13:11:12 atgops1 noship $">
+   <jrad:content>
+      <oa:pageLayout id="PageLayoutRN" regionName="Hello World Page" windowTitle="Hello World Window Title" amDefName="oracle.apps.fnd.framework.toolbox.tutorial.server.HelloWorldAM" title="Hello World Page Title" controllerClass="oracle.apps.fnd.framework.toolbox.tutorial.webui.HelloWorldMainCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBranding" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:messageComponentLayout id="MainRN">
+               <ui:contents>
+                  <oa:messageTextInput id="HelloName" columns="15" prompt="Name" styleClass="OraFieldText" promptTranslationExpansion="none" maximumLength="50"/>
+                  <oa:messageLayout id="ButtonLayout">
+                     <ui:contents>
+                        <oa:submitButton id="Go" shortDesc="Select to see this work." text="Go" textTranslationExpansion="none" promptTranslationExpansion="none" use="/oracle/apps/fnd/attributesets/Buttons/Go"/>
+                     </ui:contents>
+                  </oa:messageLayout>
+               </ui:contents>
+            </oa:messageComponentLayout>
+         </ui:contents>
+         <ui:productBranding>
+            <oa:image id="productBranding" source="FNDTAPPBRAND.gif" shortDesc="OA Framework Toolbox Tutorial"/>
+         </ui:productBranding>
+      </oa:pageLayout>
+   </jrad:content>
+</page>

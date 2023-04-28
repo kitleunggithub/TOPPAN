@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory -->
+<oa:listOfValues title="Toolbox PO LOV" amDefName="oracle.apps.fnd.framework.toolbox.lov.server.TutorialLOVAM" xmlns="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:user="http://xmlns.oracle.com/jrad/user" xml:lang="en-US" version="9.0.3.8.6_882" file-version="$Header: PurchaseOrdersLovRN.xml 120.8 2006/05/25 13:12:30 atgops1 noship $" scope="/">
+   <ui:contents>
+      <oa:table akRegionCode="FWK_TBX_T_PO_LOV" regionName="Purchase Orders Table" blockSize="25" standalone="true" id="OrdersTable" name="FWK_TBX_T_PO_LOV" shortDesc="Purchase Orders Table">
+         <ui:contents>
+            <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderId_Order" queryable="true" viewName="AllPOsExpVO1" viewAttr="HeaderId" id="OrderNum" promptTranslationExpansion="none" dataType="NUMBER"/>
+            <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/StatusCode" viewName="AllPOsExpVO1" viewAttr="StatusDisplay" id="Status"/>
+            <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/Description" queryable="true" viewName="AllPOsExpVO1" viewAttr="Description" id="Description"/>
+         </ui:contents>
+      </oa:table>
+   </ui:contents>
+</oa:listOfValues>

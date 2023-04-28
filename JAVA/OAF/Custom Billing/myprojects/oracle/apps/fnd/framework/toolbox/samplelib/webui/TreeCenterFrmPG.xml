@@ -1,0 +1,31 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath:~PROD:~PATH:~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath:~PROD:mds:directory  -->
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="9.0.3.8.9_1018" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header: TreeCenterFrmPG.xml 120.7 2006/05/25 13:15:05 atgops1 noship $">
+   <content>
+      <oa:pageLayout id="DetailsPG" windowTitle="OA Framework Toolbox Sample Library" amDefName="oracle.apps.fnd.framework.toolbox.samplelib.server.SampleBrowserAM" controllerClass="oracle.apps.fnd.framework.toolbox.samplelib.webui.TreeDetailsCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:header id="EmployeesHdr" text="Employee Details">
+               <ui:contents>
+                  <oa:messageComponentLayout id="EmployeesRN">
+                     <ui:contents>
+                        <oa:messageStyledText id="EmployeeId" dataType="VARCHAR2" viewName="SimpleEmployeesVO1" viewAttr="EmployeeId" styleClass="OraDataText" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EmployeeId"/>
+                        <oa:messageStyledText id="FullName" dataType="VARCHAR2" viewName="SimpleEmployeesVO1" viewAttr="FullName" maximumLength="240" styleClass="OraDataText" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FullName"/>
+                        <oa:messageStyledText id="EmailAddress" viewName="SimpleEmployeesVO1" viewAttr="EmailAddress" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EmailAddress" styleClass="OraDataText"/>
+                        <oa:messageStyledText id="Position" viewName="SimpleEmployeesVO1" viewAttr="PositionDisplay" styleClass="OraDataText" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/Position"/>
+                        <oa:messageStyledText id="Salary" dataType="VARCHAR2" viewName="SimpleEmployeesVO1" viewAttr="Salary" styleClass="OraDataText" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/Salary"/>
+                        <oa:messageStyledText id="StartDate" viewName="SimpleEmployeesVO1" viewAttr="StartDate" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/StartDate" styleClass="OraDataText"/>
+                        <oa:messageStyledText id="EndDate" viewName="SimpleEmployeesVO1" viewAttr="EndDate" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EndDate" styleClass="OraDataText"/>
+                     </ui:contents>
+                  </oa:messageComponentLayout>
+               </ui:contents>
+            </oa:header>
+         </ui:contents>
+         <ui:productBranding>
+            <oa:image id="ProdBrand" source="FNDTAPPBRAND.gif" shortDesc="OA Framework Toolbox Tutorial"/>
+         </ui:productBranding>
+      </oa:pageLayout>
+   </content>
+</page>

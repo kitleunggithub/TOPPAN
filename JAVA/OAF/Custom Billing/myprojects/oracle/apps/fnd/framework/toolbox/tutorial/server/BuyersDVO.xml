@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="BuyersDVO"
+   SelectList="EmployeeEO.EMPLOYEE_ID, 
+       EmployeeEO.FULL_NAME"
+   FromList="FWK_TBX_EMPLOYEES EmployeeEO"
+   BindingStyle="Oracle"
+   CustomQuery="false"
+   RowClass="oracle.apps.fnd.framework.toolbox.tutorial.server.BuyersDVORowImpl"
+   ComponentClass="oracle.apps.fnd.framework.server.OAViewObjectImpl"
+   UseGlueCode="false" >
+   <Properties>
+      <Property Name ="RCS_ID" Value ="$Header: BuyersDVO.xml 120.9.12010000.2 2008/10/06 12:23:34 atgops1 ship $" />
+      <Property Name ="SVC_COMPONENT_CLASS" Value ="oracle.apps.fnd.framework.toolbox.tutorial.Buyer" />
+      <Property Name ="SVC_DATA_OBJECT" Value ="Buyer" />
+      <Property Name ="SVC_DISPLAY_NAME" Value ="Buyer" />
+      <Property Name ="SVC_DOCUMENTATION" Value ="The Buyers domain" />
+      <Property Name ="SVC_FILTER.BuyerFilter.SVC_ATTRIBUTES" Value ="EmployeeId,FullName" />
+      <Property Name ="SVC_FILTER.BuyerFilter.SVC_COMPONENT_CLASS" Value ="oracle.apps.fnd.framework.toolbox.tutorial.BuyerFilter" />
+      <Property Name ="SVC_FILTER.BuyerFilter.SVC_DISPLAY_NAME" Value ="Buyer Filter" />
+      <Property Name ="SVC_FILTER.BuyerFilter.SVC_DOCUMENTATION" Value ="The Buyers domain filter" />
+      <Property Name ="SVC_FILTER.BuyerFilter.SVC_EXPRESSION" Value ="true" />
+      <Property Name ="SVC_FILTER.BuyerFilter.SVC_NAMESPACE" Value ="/oracle/apps/fnd/framework/toolbox/tutorial/" />
+      <Property Name ="SVC_FILTER.BuyerFilter.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_FILTER.BuyerFilter.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_FILTER.BuyerFilter.SVC_REP_PRODUCT" Value ="fnd" />
+      <Property Name ="SVC_FILTER.BuyerFilter.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_FILTER.BuyerFilter.SVC_SUPER_CLASS" Value ="oracle.svc.expression.ExpressionFilter" />
+      <Property Name ="SVC_FILTERS" Value ="BuyerFilter" />
+      <Property Name ="SVC_IS_DOMAIN" Value ="true" />
+      <Property Name ="SVC_NAMESPACE" Value ="/oracle/apps/fnd/framework/toolbox/tutorial/" />
+      <Property Name ="SVC_OBJECT" Value ="SDO" />
+      <Property Name ="SVC_PRIMARY_KEYS" Value ="EmployeeId" />
+      <Property Name ="SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_REP_PRODUCT" Value ="fnd" />
+      <Property Name ="SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_SUPER_CLASS" Value ="oracle.svc.DataObjectImpl" />
+      <Property Name ="SVC_VO_DEF" Value ="oracle.apps.fnd.framework.toolbox.tutorial.server.BuyersDVO" />
+   </Properties>
+   <DesignTime>
+      <Attr Name="_rowSuperClassName" Value="oracle.apps.fnd.framework.server.OAViewRowImpl" />
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.38.51" />
+      <Attr Name="_codeGenFlag2" Value="Access" />
+   </DesignTime>
+   <EntityUsage
+      Name="EmployeeEO"
+      Entity="oracle.apps.fnd.framework.toolbox.schema.server.EmployeeEO" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="false" />
+      </DesignTime>
+   </EntityUsage>
+   <ViewAttribute
+      Name="EmployeeId"
+      IsUpdateable="while_insert"
+      IsNotNull="true"
+      EntityAttrName="EmployeeId"
+      EntityUsage="EmployeeEO"
+      AliasName="EMPLOYEE_ID" >
+      <Properties>
+         <Property Name ="SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+         <Property Name ="SVC_SIZE" Value ="0" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="FullName"
+      EntityAttrName="FullName"
+      EntityUsage="EmployeeEO"
+      AliasName="FULL_NAME" >
+      <Properties>
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_SIZE" Value ="240" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+</ViewObject>

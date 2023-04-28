@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding='windows-1252'?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<!-- $Header: ItemSummaryVO.xml 120.7 2005/07/12 11:04:20 atgops1 noship $ -->
+
+<ViewObject
+   Name="ItemSummaryVO"
+   SelectList="ItemFlexfieldEO.ITEM_ID, 
+       ItemFlexfieldEO.ITEM_DESCRIPTION, 
+       ItemFlexfieldEO.START_DATE_ACTIVE, 
+       ItemFlexfieldEO.END_DATE_ACTIVE"
+   FromList="FWK_TBX_ITEMS ItemFlexfieldEO"
+   BindingStyle="Oracle"
+   CustomQuery="false"
+   RowClass="oracle.apps.fnd.framework.toolbox.labsolutions.server.ItemSummaryVORowImpl"
+   ComponentClass="oracle.apps.fnd.framework.server.OAViewObjectImpl"
+   MsgBundleClass="oracle.jbo.common.JboResourceBundle"
+   UseGlueCode="false" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="9.0.3.12.25" />
+      <Attr Name="_CodeGenFlagNew" Value="4" />
+   </DesignTime>
+   <EntityUsage
+      Name="ItemFlexfieldEO"
+      Entity="oracle.apps.fnd.framework.toolbox.schema.server.ItemFlexfieldEO" >
+      <DesignTime>
+         <Attr Name="_EntireObjectTable" Value="false" />
+         <Attr Name="_queryClause" Value="false" />
+      </DesignTime>
+   </EntityUsage>
+   <ViewAttribute
+      Name="ItemId"
+      IsNotNull="true"
+      EntityAttrName="ItemId"
+      EntityUsage="ItemFlexfieldEO"
+      AliasName="ITEM_ID"
+      ColumnType="VARCHAR2" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ItemDescription"
+      IsNotNull="true"
+      EntityAttrName="ItemDescription"
+      EntityUsage="ItemFlexfieldEO"
+      AliasName="ITEM_DESCRIPTION"
+      ColumnType="VARCHAR2" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StartDateActive"
+      EntityAttrName="StartDateActive"
+      EntityUsage="ItemFlexfieldEO"
+      AliasName="START_DATE_ACTIVE"
+      ColumnType="VARCHAR2" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="EndDateActive"
+      EntityAttrName="EndDateActive"
+      EntityUsage="ItemFlexfieldEO"
+      AliasName="END_DATE_ACTIVE"
+      ColumnType="VARCHAR2" >
+   </ViewAttribute>
+</ViewObject>

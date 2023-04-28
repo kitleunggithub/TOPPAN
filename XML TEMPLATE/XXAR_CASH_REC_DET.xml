@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+* 09/10/18 akaplan Enh Req 2194 - Add functional amount to query
+* 12/17/18 akaplan Enh Req 2245: Enable VPD
+-->
+<dataTemplate name="XXAR_CASH_REC_DET" defaultPackage="" description="XXAR Cash Receipts by Company Detail Report">
+   <properties>
+      <property name="include_parameters"    value="true"/>
+      <property name="include_null_Element"  value="true"/>
+      <property name="xml_tag_case"          value="upper"/>
+      <property name="db_fetch_size"         value="100"/>
+      <property name="scalable_mode"         value="off"/>
+      <property name="include_rowsettag"     value="false"/>
+      <property name="debug_mode"            value="on"/>
+   </properties>
+   <parameters>
+      <parameter name="p_fr_dep_date"  dataType="character" include_in_output="true"/>
+      <parameter name="p_to_dep_date"  dataType="character" include_in_output="true"/>
+      <parameter name="p_fr_gl_date"   dataType="character" include_in_output="true"/>
+      <parameter name="p_to_gl_date"   dataType="character" include_in_output="true"/>
+      <parameter name="p_fr_bu"        dataType="character" include_in_output="true"/>
+      <parameter name="p_to_bu"        dataType="character" include_in_output="true"/>
+      <parameter name="p_fr_site"      dataType="character" include_in_output="true"/>
+      <parameter name="p_to_site"      dataType="character" include_in_output="true"/>
+      <parameter name="p_fr_inv_type"  dataType="character" include_in_output="true"/>
+      <parameter name="p_to_inv_type"  dataType="character" include_in_output="true"/>
+      <parameter name="p_batch_source" dataType="character" include_in_output="true"/>
+      <parameter name="p_org_id"       dataType="character" include_in_output="true"/>
+   </parameters>
+   <lexicals/>
+   <dataQuery>
+   <sqlStatement name="Q1" dataSourceRef="">
+      <![CDATA[
+      select
+          xxcm_common.get_org_name(cr.org_id)           operating_unit,
+          DECODE (
+                aps.payment_schedule_id,
+                -1, arpt_sql_func_util.get_lookup_meaning ('ACTIVITY_APPS',
+                                                           'ON_ACC'),
+                -3, arpt_sql_func_util.get_lookup_meaning ('ACTIVITY_APPS',
+                                                           'RCPT_WRITE_OFF'),
+                -4, arpt_sql_func_util.get_lookup_meaning ('ACTIVITY_APPS',
+                                                           'CLAIM_INV'),
+                -6, arpt_sql_func_util.get_lookup_meaning ('ACTIVITY_APPS',
+                                                           'CC_REFUND'),
+                -8, arpt_sql_func_util.get_lookup_meaning ('ACTIVITY_APPS',
+                                                           'REFUND'),
+                -9, arpt_sql_func_util.get_lookup_meaning ('ACTIVITY_APPS',
+                                                           'CC_CHARGEBACK'),
+                trt.name)                               invoice_type,
+--          decode(trt.name,null,'! ON ACCOUNT',trt.name) invoice_type,
+          --bu_seg.attribute2                             business,
+		  ''                                              business,
+          gl.segment3                                   site,
+          to_char(cr.deposit_date,'DD-MON-YYYY')        deposit_date,
+          cust.CUSTOMER_NUMBER,
+          cust.customer_name                            customer,
+          trx.trx_number                                invoice_number,
+          to_char(trx.trx_date,'DD-MON-YYYY')           transaction_date,
+          aps.exchange_rate,
+          nvl(app.acctd_amount_applied_from,app.amount_applied) functional_amount,
+          gled.currency_code                            functional_currency,
+          app.amount_applied                            transaction_amount,
+          DECODE (SIGN (app.applied_payment_schedule_id),
+                        -1, cr.currency_code,
+                        aps.invoice_currency_code)      transaction_currency,
+          cr.receipt_number                             receipt_number,
+          arb.name                                      batch_name,
+          rep.name                                      salesrep,
+          app.attribute1                                notes
+      from
+        ar_receivable_applications  app,
+        ar_cash_receipt_history     hist,
+        gl_code_combinations        gl,
+        ar_batches                  arb,
+        ra_customer_trx             trx,
+        ra_cust_trx_types           trt,
+        ar_customers                cust,
+        ar_cash_receipts            cr,
+        ra_salesreps                rep,
+        ar_batch_sources            bs,
+        gl_ledgers                  gled,
+        ar_payment_schedules        aps,
+        (select t.customer_trx_id, min(l.customer_Trx_line_id) prepay_id
+              from ra_cust_trx_types tt
+              ,  ra_customer_trx  t
+              ,  ra_customer_trx_lines l
+              where tt.type = 'DEP'
+              and  (:p_fr_inv_type is null or :p_fr_inv_type <= tt.name)
+              and  (:p_to_inv_type is null or :p_to_inv_type >= tt.name)
+              and t.cust_trx_type_id = tt.cust_trx_type_id
+              and t.org_id = tt.org_id
+              and t.customer_trx_id = l.customer_trx_id
+              group by t.customer_trx_id
+          )                         depo,
+         (SELECT v.flex_value
+                  ,v.attribute2
+          FROM  fnd_flex_value_sets s,fnd_flex_values v
+          WHERE v.flex_value_set_id = s.flex_value_set_id
+            AND s.flex_value_set_name = 'XXGL_R12_PL') bu_seg
+      where
+        (:p_org_id is null or :p_org_id = cr.org_id)
+        and app.code_combination_id = gl.code_combination_id
+        and bu_seg.flex_value = gl.segment2
+        and hist.cash_receipt_id = app.cash_receipt_id
+        and hist.current_record_flag = 'Y'
+        and hist.batch_id = arb.batch_id (+)
+        and trx.customer_trx_id(+) = app.applied_customer_trx_id
+        and cust.customer_id = cr.pay_from_customer
+        and cr.cash_receipt_id = hist.cash_receipt_id
+        and trx.primary_salesrep_id = rep.salesrep_id(+)
+        and trx.cust_trx_type_id = trt.cust_trx_type_id(+)
+        and trx.customer_trx_id =depo.customer_trx_id(+)
+        and (arb.batch_source_id = bs.batch_source_id (+)
+        and arb.org_id = bs.org_id (+)
+        and app.set_of_books_id = gled.ledger_id
+        and app.applied_payment_schedule_id = aps.payment_schedule_id
+        and app.display = 'Y'
+        and aps.payment_schedule_id <> -3
+        and ((nvl(:p_fr_inv_type,'x') ='ON ACCOUNT' and nvl(:p_to_inv_type,'x') ='ON ACCOUNT' AND aps.trx_number = 'On Account')
+            OR((nvl(:p_fr_inv_type,'x') <>'ON ACCOUNT' and nvl(:p_to_inv_type,'x') <>'ON ACCOUNT' AND nvl(:p_fr_inv_type,'x') <= trt.name AND nvl(:p_to_inv_type,'x') >= trt.name ))
+            OR (:p_fr_inv_type is null AND :p_to_inv_type is null))
+        and	cr.deposit_date BETWEEN FND_DATE.CANONICAL_TO_DATE(:p_fr_dep_date)
+                  AND FND_DATE.CANONICAL_TO_DATE(:p_to_dep_date)
+        and	hist.gl_date BETWEEN FND_DATE.CANONICAL_TO_DATE(:p_fr_gl_date)
+                  AND FND_DATE.CANONICAL_TO_DATE(:p_to_gl_date)
+        and (:p_fr_site is null or :p_fr_site <= gl.segment3)
+        and (:p_to_site is null or :p_to_site >= gl.segment3)
+        --and (nvl(:p_fr_bu,'ALL') = 'ALL' or :p_fr_bu <= bu_seg.attribute2)
+        --and (nvl(:p_to_bu,'ALL') = 'ALL' or :p_to_bu >= bu_seg.attribute2)
+        and (:p_batch_source is null or bs.name = :p_batch_source) )
+      order by
+         1,2,3,4,6,7
+      ]]>
+   </sqlStatement>
+   </dataQuery>
+   <dataStructure>
+   <group name="G_REPORT" source="Q1" groupFilter="">
+      <element name="OPERATING_UNIT"         value="OPERATING_UNIT"        />
+      <element name="INVOICE_TYPE"           value="INVOICE_TYPE"          />
+      <element name="BUSINESS"               value="BUSINESS"              />
+      <element name="SITE"                   value="SITE"                  />
+      <element name="DEPOSIT_DATE"           value="DEPOSIT_DATE"          />
+      <element name="CUSTOMER_NUMBER"        value="CUSTOMER_NUMBER"       />
+      <element name="CUSTOMER"               value="CUSTOMER"              />
+      <element name="INVOICE_NUMBER"         value="INVOICE_NUMBER"        />
+      <element name="TRANSACTION_DATE"       value="TRANSACTION_DATE"      />
+      <element name="TRANSACTION_AMOUNT"     value="TRANSACTION_AMOUNT"    />
+      <element name="TRANSACTION_CURRENCY"   value="TRANSACTION_CURRENCY"  />
+      <element name="FUNCTIONAL_AMOUNT"      value="FUNCTIONAL_AMOUNT"     />
+      <element name="FUNCTIONAL_CURRENCY"    value="FUNCTIONAL_CURRENCY"   />
+      <element name="RECEIPT_NUMBER"         value="RECEIPT_NUMBER"        />
+      <element name="BATCH_NAME"             value="BATCH_NAME"            />
+      <element name="SALESREP"               value="SALESREP"              />
+      <element name="NOTES"                  value="NOTES"                 />
+   </group>
+   </dataStructure>
+</dataTemplate>

@@ -1,0 +1,117 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory -->
+<page xmlns="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:user="http://xmlns.oracle.com/jrad/user" version="9.0.3.9.1_1390" xml:lang="en-US" file-version="$Header: PoDetailsPG.xml 120.10 2006/05/25 13:16:34 atgops1 noship $">
+   <content>
+      <oa:pageLayout windowTitle="Framework Toolbox Tutorial: Search and View Details" helpTargetAppShortName="ak" id="PageLayoutRN" akRegionCode="FWK_TBX_T_LSN3_2PAGE" regionName="Purchase Order Details Page" amDefName="oracle.apps.fnd.framework.toolbox.tutorial.server.SearchAM" controllerClass="oracle.apps.fnd.framework.toolbox.tutorial.webui.PoDetailsPageCO" title="Purchase Order:">
+         <ui:corporateBranding>
+            <oa:image id="corporateBranding" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:productBranding>
+            <oa:image id="productBranding" source="FNDTAPPBRAND.gif" shortDesc="OA Framework Toolbox Tutorial"/>
+         </ui:productBranding>
+         <ui:contents>
+            <oa:pageButtonBar id="PageButtons" regionName="Page-Level Buttons">
+               <ui:contents>
+                  <oa:button hAlign="end" shortDesc="Select to view a printable version of this page." id="PrintablePage" text="Printable Page" prompt="Printable Page" accessKey="0" targetFrame="_blank" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/tutorial/webui/PoDetailsPG&amp;retainAM=Y&amp;OARF=printable&amp;headerId={@HeaderId}" viewName="PoDetailsFullExpVO1"/>
+               </ui:contents>
+            </oa:pageButtonBar>
+            <oa:header id="DescHdr" text="Description">
+               <ui:contents>
+                  <oa:messageComponentLayout id="DescRN" columns="2" rows="3">
+                     <ui:contents>
+                        <oa:messageStyledText id="OrderNum" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderId_Number" styleClass="OraDataText" dataType="NUMBER" viewName="PoDetailsFullExpVO1" viewAttr="HeaderId"/>
+                        <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/OrderTotal" viewName="PoDetailsFullExpVO1" viewAttr="OrderTotal" styleClass="OraDataText" id="OrderTotal"/>
+                        <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/StatusCode" viewName="PoDetailsFullExpVO1" viewAttr="StatusDisplay" styleClass="OraDataText" id="Status"/>
+                        <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FullName" viewName="PoDetailsFullExpVO1" viewAttr="BuyerName" styleClass="OraLinkText" destination="mailto:{@BuyerEmail}" id="BuyerName" promptTranslationExpansion="none" prompt="Buyer"/>
+                        <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/Description" viewName="PoDetailsFullExpVO1" viewAttr="Description" styleClass="OraDataText" id="Description"/>
+                        <oa:messageLayout id="CurrencyLayout">
+                           <ui:contents>
+                              <oa:formValue use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/CurrencyCode" viewName="PoDetailsFullExpVO1" viewAttr="CurrencyCode" id="Currency"/>
+                           </ui:contents>
+                        </oa:messageLayout>
+                     </ui:contents>
+                  </oa:messageComponentLayout>
+               </ui:contents>
+            </oa:header>
+            <oa:header akRegionCode="FWK_TBX_T_LSN3_DET_TERMS" regionName="Terms Region" text="Terms and Conditions" id="TermsRN">
+               <ui:contents>
+                  <oa:tableLayout akRegionCode="FWK_TBX_T_LSN3_TERMS_TABLE" regionName="Terms Table Layout" id="TermsLayout" width="100%">
+                     <ui:contents>
+                        <oa:rowLayout akRegionCode="FWK_TBX_T_LSN3_TERMS_ROW1" regionName="Terms Top Row" id="TermsTopRow">
+                           <ui:contents>
+                              <oa:cellFormat akRegionCode="FWK_TBX_T_LSN3_TERMS_CELL1" regionName="Supplier Cell" vAlign="top" hAlign="start" id="SupplierCell" rowSpan="2">
+                                 <ui:contents>
+                                    <oa:header id="SupplierHdr" text="Supplier">
+                                       <ui:contents>
+                                          <oa:messageComponentLayout akRegionCode="FWK_TBX_T_LSN3_SUPPLIER_RGN" regionName="Supplier Region" id="SupplierRN">
+                                             <ui:contents>
+                                                <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSuppliers/SupplierName_Supplier" viewName="PoDetailsFullExpVO1" viewAttr="SupplierName" styleClass="OraDataText" id="SupplierName"/>
+                                                <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSupplierSites/SiteName_Site" viewName="PoDetailsFullExpVO1" viewAttr="SiteName" styleClass="OraDataText" id="SiteName" promptTranslationExpansion="none"/>
+                                                <oa:messageStyledText viewName="PoDetailsFullExpVO1" viewAttr="SiteAddressLine1" styleClass="OraDataText" id="AddressLine1" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxAddresses/AddressLine1"/>
+                                                <oa:messageStyledText viewName="PoDetailsFullExpVO1" viewAttr="SiteTownOrCity" styleClass="OraDataText" id="City" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxAddresses/TownOrCity"/>
+                                                <oa:messageStyledText viewName="PoDetailsFullExpVO1" viewAttr="SitePostalCode" styleClass="OraDataText" id="PostalCode" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxAddresses/PostalCode"/>
+                                             </ui:contents>
+                                          </oa:messageComponentLayout>
+                                       </ui:contents>
+                                    </oa:header>
+                                 </ui:contents>
+                              </oa:cellFormat>
+                              <oa:cellFormat akRegionCode="FWK_TBX_T_LSN3_TERMS_CELL2" regionName="Payment Terms Cell" vAlign="top" hAlign="start" id="PayTermsCell">
+                                 <ui:contents>
+                                    <oa:header id="PayTermsHdr" text="Payment Terms">
+                                       <ui:contents>
+                                          <oa:messageComponentLayout akRegionCode="FWK_TBX_T_LSN3_PAYTERMS_RGN" regionName="Payment Terms Region" id="PayTermsRN">
+                                             <ui:contents>
+                                                <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/PaymentTermsCode" viewName="PoDetailsFullExpVO1" viewAttr="PaymentTermsDisplay" styleClass="OraDataText" id="PaymentTerms"/>
+                                             </ui:contents>
+                                          </oa:messageComponentLayout>
+                                       </ui:contents>
+                                    </oa:header>
+                                 </ui:contents>
+                              </oa:cellFormat>
+                           </ui:contents>
+                        </oa:rowLayout>
+                        <oa:rowLayout akRegionCode="FWK_TBX_T_LSN3_TERMS_ROW2" regionName="Terms Bottom Row" id="TermsBottomRow">
+                           <ui:contents>
+                              <oa:cellFormat akRegionCode="FWK_TBX_T_LSN3_TERMS_CELL3" regionName="Ship Terms Cell" vAlign="top" hAlign="start" id="ShipTermsCell">
+                                 <ui:contents>
+                                    <oa:header id="ShipTermsHdr" text="Shipping Terms">
+                                       <ui:contents>
+                                          <oa:messageComponentLayout akRegionCode="FWK_TBX_T_LSN3_SHIPTERMS_RGN" regionName="Ship Terms Region" id="ShipTermsRN" adminCustomizable="false">
+                                             <ui:contents>
+                                                <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/CarrierCode" viewName="PoDetailsFullExpVO1" viewAttr="CarrierDisplay" styleClass="OraDataText" id="Carrier"/>
+                                             </ui:contents>
+                                          </oa:messageComponentLayout>
+                                       </ui:contents>
+                                    </oa:header>
+                                 </ui:contents>
+                              </oa:cellFormat>
+                           </ui:contents>
+                        </oa:rowLayout>
+                     </ui:contents>
+                  </oa:tableLayout>
+               </ui:contents>
+            </oa:header>
+            <oa:header akRegionCode="FWK_TBX_T_LSN3_ITEMS" regionName="Line Items Region" text="Items" id="ItemsRN">
+               <ui:contents>
+                  <oa:table akRegionCode="FWK_TBX_T_LSN3_ITEMS_TABLE" regionName="Line Items Table" blockSize="25" id="ItemsTable" width="100%" messageName="FWK_TBX_T_NO_ITEMS_FOUND" messageAppShortName="AK" shortDesc="Items Table">
+                     <ui:contents>
+                        <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoLines/LineNumber" sortState="ascending" viewName="PoLinesExpVO1" viewAttr="LineNumber" id="LineNum" initSortSeq="first" dataType="NUMBER"/>
+                        <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoLines/ItemId" viewName="PoLinesExpVO1" viewAttr="ItemName" id="ItemName"/>
+                        <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoLines/ItemDescription" viewName="PoLinesExpVO1" viewAttr="ItemDescription" id="ItemDesc"/>
+                        <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoShipments/NeedByDate" viewName="PoLinesExpVO1" viewAttr="NeedByDate" id="NeedByDate" dataType="DATE"/>
+                        <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoLines/UnitOfMeasure" viewName="PoLinesExpVO1" viewAttr="UnitOfMeasure" id="Uom"/>
+                        <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoLines/Quantity" viewName="PoLinesExpVO1" viewAttr="Quantity" id="Quantity" dataType="NUMBER"/>
+                        <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoLines/UnitPrice" viewName="PoLinesExpVO1" viewAttr="UnitPrice" id="Price" dataType="NUMBER"/>
+                        <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoLines/LineTotal" viewName="PoLinesExpVO1" viewAttr="LineTotal" id="LineTotal"/>
+                     </ui:contents>
+                  </oa:table>
+               </ui:contents>
+            </oa:header>
+         </ui:contents>
+         <ui:returnNavigation>
+            <oa:link id="returnLink" destination="OA.jsp?OAFunc=FWK_TOOLBOX_PO_SEARCH&amp;retainAM=Y" text="Return to Search"/>
+         </ui:returnNavigation>
+      </oa:pageLayout>
+   </content>
+</page>

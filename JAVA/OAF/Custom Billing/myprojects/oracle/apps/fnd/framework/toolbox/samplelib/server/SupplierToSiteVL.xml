@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+
+<!-- $Header: SupplierToSiteVL.xml 120.9 2006/07/03 18:15:25 atgops1 noship $ -->
+
+<ViewLink
+   Name="SupplierToSiteVL"
+   EntityAssociation="oracle.apps.fnd.framework.toolbox.schema.server.SupplierToSiteAO" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.38.51" />
+   </DesignTime>
+   <ViewLinkDefEnd
+      Name="SuppliersVO"
+      Cardinality="1"
+      Owner="oracle.apps.fnd.framework.toolbox.samplelib.server.SuppliersVO"
+      Source="true" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.samplelib.server.SuppliersVO.SupplierId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_finderName" Value="SuppliersVO" />
+         <Attr Name="_accessor" Value="true" />
+         <Attr Name="_minCardinality" Value="1" />
+         <Attr Name="_isUpdateable" Value="true" />
+      </DesignTime>
+   </ViewLinkDefEnd>
+   <ViewLinkDefEnd
+      Name="SupplierSitesVO"
+      Cardinality="-1"
+      Owner="oracle.apps.fnd.framework.toolbox.samplelib.server.SupplierSitesVO" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.samplelib.server.SupplierSitesVO.SupplierId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_finderName" Value="SupplierSitesVO" />
+         <Attr Name="_accessor" Value="true" />
+         <Attr Name="_isUpdateable" Value="true" />
+      </DesignTime>
+   </ViewLinkDefEnd>
+</ViewLink>

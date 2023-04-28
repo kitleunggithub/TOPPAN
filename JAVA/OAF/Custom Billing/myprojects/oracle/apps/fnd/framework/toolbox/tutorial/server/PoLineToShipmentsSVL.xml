@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+
+<!-- $Header: PoLineToShipmentsSVL.xml 120.10 2006/07/04 00:36:53 atgops1 noship $ -->
+
+<ViewLink
+   Name="PoLineToShipmentsSVL"
+   EntityAssociation="oracle.apps.fnd.framework.toolbox.schema.server.PoLineToPoShipAO" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.38.51" />
+   </DesignTime>
+   <ViewLinkDefEnd
+      Name="PurchaseOrderLine"
+      Cardinality="1"
+      Owner="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrderLinesSVO"
+      Source="true" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrderLinesSVO.LineId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_finderName" Value="PurchaseOrderLine" />
+         <Attr Name="_accessor" Value="true" />
+         <Attr Name="_minCardinality" Value="1" />
+         <Attr Name="_isUpdateable" Value="true" />
+      </DesignTime>
+   </ViewLinkDefEnd>
+   <ViewLinkDefEnd
+      Name="PurchaseOrderShipment"
+      Cardinality="-1"
+      Owner="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrderShipmentsSVO" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrderShipmentsSVO.LineId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_finderName" Value="PurchaseOrderShipment" />
+         <Attr Name="_accessor" Value="true" />
+         <Attr Name="_isUpdateable" Value="true" />
+      </DesignTime>
+   </ViewLinkDefEnd>
+</ViewLink>

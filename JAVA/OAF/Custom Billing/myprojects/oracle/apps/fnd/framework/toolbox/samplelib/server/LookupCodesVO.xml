@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='US-ASCII' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<!-- $Header: LookupCodesVO.xml 120.10 2006/07/03 17:01:55 atgops1 noship $ -->
+
+<ViewObject
+   Name="LookupCodesVO"
+   SelectList="LookupCodeEO.LOOKUP_TYPE, 
+       LookupCodeEO.LOOKUP_CODE, 
+       LookupCodeEO.MEANING, 
+       LookupCodeEO.START_DATE_ACTIVE, 
+       LookupCodeEO.END_DATE_ACTIVE, 
+       LookupCodeEO.DESCRIPTION"
+   FromList="FWK_TBX_LOOKUP_CODES_VL LookupCodeEO"
+   BindingStyle="Oracle"
+   CustomQuery="false"
+   RowClass="oracle.apps.fnd.framework.toolbox.samplelib.server.LookupCodesVORowImpl"
+   ComponentClass="oracle.apps.fnd.framework.toolbox.samplelib.server.LookupCodesVOImpl"
+   UseGlueCode="false" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.38.51" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll" />
+   </DesignTime>
+   <EntityUsage
+      Name="LookupCodeEO"
+      Entity="oracle.apps.fnd.framework.toolbox.schema.server.LookupCodeEO" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="false" />
+      </DesignTime>
+   </EntityUsage>
+   <ViewAttribute
+      Name="LookupType"
+      IsUpdateable="while_insert"
+      IsNotNull="true"
+      EntityAttrName="LookupType"
+      EntityUsage="LookupCodeEO"
+      AliasName="LOOKUP_TYPE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LookupCode"
+      IsUpdateable="while_insert"
+      IsNotNull="true"
+      EntityAttrName="LookupCode"
+      EntityUsage="LookupCodeEO"
+      AliasName="LOOKUP_CODE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Meaning"
+      EntityAttrName="Meaning"
+      EntityUsage="LookupCodeEO"
+      AliasName="MEANING" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StartDateActive"
+      EntityAttrName="StartDateActive"
+      EntityUsage="LookupCodeEO"
+      AliasName="START_DATE_ACTIVE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="EndDateActive"
+      EntityAttrName="EndDateActive"
+      EntityUsage="LookupCodeEO"
+      AliasName="END_DATE_ACTIVE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Description"
+      EntityAttrName="Description"
+      EntityUsage="LookupCodeEO"
+      AliasName="DESCRIPTION" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SelectRow"
+      IsPersistent="false"
+      Precision="255"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="VIEW_ATTR"
+      SQLType="VARCHAR" >
+   </ViewAttribute>
+</ViewObject>

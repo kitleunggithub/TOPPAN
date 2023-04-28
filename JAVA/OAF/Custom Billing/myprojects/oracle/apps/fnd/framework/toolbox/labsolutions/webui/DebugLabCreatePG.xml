@@ -1,0 +1,32 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath:~PROD:~PATH:~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath:~PROD:mds:directory  -->
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="9.0.3.8.3_736" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header: DebugLabCreatePG.xml 120.7 2006/05/25 13:09:16 atgops1 noship $">
+   <content>
+      <oa:pageLayout id="PageLayoutRN" amDefName="oracle.apps.fnd.framework.toolbox.labsolutions.server.DebugLabAM" amStateRequired="false" warnAboutChanges="true" title="Create Employee (Debug Lab)" windowTitle="OA Framework Toolbox Tutorial Debug Lab" controllerClass="oracle.apps.fnd.framework.toolbox.labsolutions.webui.DebugLabCreateCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:pageButtonBar id="PageButtonsRN">
+               <ui:contents>
+                  <oa:button id="Cancel" use="/oracle/apps/fnd/attributesets/Buttons/Cancel" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/labsolutions/webui/DebugLabSearchPG" warnAboutChanges="false"/>
+                  <oa:submitButton id="Apply" use="/oracle/apps/fnd/attributesets/Buttons/Apply"/>
+               </ui:contents>
+            </oa:pageButtonBar>
+            <oa:defaultSingleColumn id="MainRN">
+               <ui:contents>
+                  <oa:messageStyledText id="EmployeeId" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EmployeeId" dataType="NUMBER" viewName="DebugLabEmpFullVO1" viewAttr="EmployeeId" styleClass="OraDataText"/>
+                  <oa:messageTextInput id="FirstName" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FirstName" dataType="VARCHAR2" viewName="DebugLabEmpFullVO1" viewAttr="FirstName" maximumLength="20" required="yes" styleClass="OraFieldText"/>
+                  <oa:messageTextInput id="LastName" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/LastName" dataType="VARCHAR2" viewName="DebugLabEmpFullVO1" viewAttr="LastName" maximumLength="40" required="yes" styleClass="OraFieldText"/>
+                  <oa:messageTextInput id="EmployeeEmail" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EmailAddress" dataType="VARCHAR2" viewName="DebugLabEmpFullVO1" viewAttr="EmployeeEmail" maximumLength="240" styleClass="OraFieldText"/>
+                  <oa:messageChoice id="PositionDisplay" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/Position" dataType="VARCHAR2" viewName="DebugLabEmpFullVO1" viewAttr="PositionDisplay" pickListDispAttr="Meaning" pickListValAttr="LookupCode" pickListViewDef="oracle.apps.fnd.framework.toolbox.poplist.server.PositionsVO" defaultValue="PRESIDENT" required="yes"/>
+                  <oa:formValue id="ManagerId" dataType="NUMBER" prompt="Manager ID" viewName="DebugLabEmpFullVO1" viewAttr="ManagerId"/>
+                  <oa:messageTextInput id="Salary" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/Salary" dataType="NUMBER" viewName="DebugLabEmpFullVO1" viewAttr="Salary" required="yes" styleClass="OraFieldText"/>
+                  <oa:messageStyledText id="StartDate" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/StartDate" dataType="DATE" viewName="DebugLabEmpFullVO1" viewAttr="StartDate" required="yes" tipType="dateFormat" styleClass="OraDataText"/>
+                  <oa:messageTextInput id="EndDate" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EndDate" dataType="DATE" viewName="DebugLabEmpFullVO1" viewAttr="EndDate" tipType="dateFormat" styleClass="OraFieldText"/>
+               </ui:contents>
+            </oa:defaultSingleColumn>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>

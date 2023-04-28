@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory -->
+<oa:listOfValues title="Toolbox Labs Employee LOV" amDefName="oracle.apps.fnd.framework.toolbox.lov.server.LabSolutionsLOVAM" xmlns="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:user="http://xmlns.oracle.com/jrad/user" xml:lang="en-US" version="9.0.3.8.9_1017" file-version="$Header: EmployeesLovRN.xml 120.8 2006/05/25 13:12:20 atgops1 noship $" scope="/" advancedSearchAllowed="true">
+   <ui:contents>
+      <oa:table akRegionCode="FWK_TBX_LABS_EMPLOYEE_LOV" regionName="Employees Table" standalone="true" id="EmpsTable" name="FWK_TBX_LABS_EMPLOYEE_LOV" width="100%" shortDesc="Employees Table">
+         <ui:contents>
+            <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FullName" queryable="true" sortState="ascending" viewAttr="EmployeeName" id="EmpName" initSortSeq="first" promptTranslationExpansion="none" prompt="Name" selectiveSearchCriteria="true" viewName="EmployeeNamesVO1"/>
+            <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EmployeeId_Number" queryable="true" viewAttr="EmployeeNumber" id="EmpNum" promptTranslationExpansion="none" dataType="NUMBER" selectiveSearchCriteria="true" viewName="EmployeeNamesVO1"/>
+            <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EmailAddress" viewName="EmployeeNamesVO1" viewAttr="EmailAddress" id="Email"/>
+         </ui:contents>
+      </oa:table>
+   </ui:contents>
+</oa:listOfValues>

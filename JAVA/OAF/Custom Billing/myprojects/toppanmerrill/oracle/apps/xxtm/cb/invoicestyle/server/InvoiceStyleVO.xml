@@ -1,0 +1,213 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="InvoiceStyleVO"
+   SelectList="InvoiceStyleEO.INVOICE_STYLE_ID, 
+       InvoiceStyleEO.INVOICE_STYLE_NAME, 
+       InvoiceStyleEO.LANGUAGE, 
+       InvoiceStyleEO.CREATED_BY, 
+       InvoiceStyleEO.CREATION_DATE, 
+       InvoiceStyleEO.LAST_UPDATED_BY, 
+       InvoiceStyleEO.LAST_UPDATE_DATE, 
+       InvoiceStyleEO.LAST_UPDATE_LOGIN, 
+       InvoiceStyleEO.HEAD_ATTENTION, 
+       InvoiceStyleEO.HEAD_INVOICE_NUMBER, 
+       InvoiceStyleEO.HEAD_INVOICE_DATE, 
+       InvoiceStyleEO.HEAD_DATE_RECEIVED, 
+       InvoiceStyleEO.HEAD_SALESPERSON, 
+       InvoiceStyleEO.HEAD_OUR_ORDER_NUMBER, 
+       InvoiceStyleEO.HEAD_CUST_ORDER_NUMBER, 
+       InvoiceStyleEO.HEAD_TERMS, 
+       InvoiceStyleEO.FOOT_PAGE, 
+       InvoiceStyleEO.DETAIL_FREIGHT, 
+       InvoiceStyleEO.DETAIL_TAX, 
+       InvoiceStyleEO.DETAIL_POSTAGE, 
+       InvoiceStyleEO.DETAIL_TOTAL_INVOICE, 
+       InvoiceStyleEO.FOOT_LEFT, 
+       InvoiceStyleEO.FOOT_RIGHT, 
+       InvoiceStyleEO.HEAD_EMAIL, 
+       InvoiceStyleEO.DETAIL_SUBTOTAL_PRETAX, 
+       InvoiceStyleEO.INACTIVE_DATE"
+   FromList="XXBS_INVOICE_STYLES InvoiceStyleEO"
+   BindingStyle="OracleName"
+   CustomQuery="false"
+   RowClass="toppanmerrill.oracle.apps.xxtm.cb.invoicestyle.server.InvoiceStyleVORowImpl"
+   ComponentClass="toppanmerrill.oracle.apps.xxtm.cb.invoicestyle.server.InvoiceStyleVOImpl"
+   UseGlueCode="false" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess" />
+   </DesignTime>
+   <EntityUsage
+      Name="InvoiceStyleEO"
+      Entity="toppanmerrill.oracle.apps.xxtm.cb.invoicestyle.server.InvoiceStyleEO" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="false" />
+      </DesignTime>
+   </EntityUsage>
+   <ViewAttribute
+      Name="InvoiceStyleId"
+      IsNotNull="true"
+      EntityAttrName="InvoiceStyleId"
+      EntityUsage="InvoiceStyleEO"
+      AliasName="INVOICE_STYLE_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="InvoiceStyleName"
+      IsNotNull="true"
+      EntityAttrName="InvoiceStyleName"
+      EntityUsage="InvoiceStyleEO"
+      AliasName="INVOICE_STYLE_NAME" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Language"
+      IsNotNull="true"
+      EntityAttrName="Language"
+      EntityUsage="InvoiceStyleEO"
+      AliasName="LANGUAGE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreatedBy"
+      IsNotNull="true"
+      EntityAttrName="CreatedBy"
+      EntityUsage="InvoiceStyleEO"
+      AliasName="CREATED_BY" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreationDate"
+      IsNotNull="true"
+      EntityAttrName="CreationDate"
+      EntityUsage="InvoiceStyleEO"
+      AliasName="CREATION_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdatedBy"
+      IsNotNull="true"
+      EntityAttrName="LastUpdatedBy"
+      EntityUsage="InvoiceStyleEO"
+      AliasName="LAST_UPDATED_BY" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdateDate"
+      IsNotNull="true"
+      EntityAttrName="LastUpdateDate"
+      EntityUsage="InvoiceStyleEO"
+      AliasName="LAST_UPDATE_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdateLogin"
+      EntityAttrName="LastUpdateLogin"
+      EntityUsage="InvoiceStyleEO"
+      AliasName="LAST_UPDATE_LOGIN" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="HeadAttention"
+      EntityAttrName="HeadAttention"
+      EntityUsage="InvoiceStyleEO"
+      AliasName="HEAD_ATTENTION" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="HeadInvoiceNumber"
+      EntityAttrName="HeadInvoiceNumber"
+      EntityUsage="InvoiceStyleEO"
+      AliasName="HEAD_INVOICE_NUMBER" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="HeadInvoiceDate"
+      EntityAttrName="HeadInvoiceDate"
+      EntityUsage="InvoiceStyleEO"
+      AliasName="HEAD_INVOICE_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="HeadDateReceived"
+      EntityAttrName="HeadDateReceived"
+      EntityUsage="InvoiceStyleEO"
+      AliasName="HEAD_DATE_RECEIVED" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="HeadSalesperson"
+      EntityAttrName="HeadSalesperson"
+      EntityUsage="InvoiceStyleEO"
+      AliasName="HEAD_SALESPERSON" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="HeadOurOrderNumber"
+      EntityAttrName="HeadOurOrderNumber"
+      EntityUsage="InvoiceStyleEO"
+      AliasName="HEAD_OUR_ORDER_NUMBER" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="HeadCustOrderNumber"
+      EntityAttrName="HeadCustOrderNumber"
+      EntityUsage="InvoiceStyleEO"
+      AliasName="HEAD_CUST_ORDER_NUMBER" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="HeadTerms"
+      EntityAttrName="HeadTerms"
+      EntityUsage="InvoiceStyleEO"
+      AliasName="HEAD_TERMS" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="FootPage"
+      EntityAttrName="FootPage"
+      EntityUsage="InvoiceStyleEO"
+      AliasName="FOOT_PAGE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="DetailFreight"
+      EntityAttrName="DetailFreight"
+      EntityUsage="InvoiceStyleEO"
+      AliasName="DETAIL_FREIGHT" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="DetailTax"
+      EntityAttrName="DetailTax"
+      EntityUsage="InvoiceStyleEO"
+      AliasName="DETAIL_TAX" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="DetailPostage"
+      EntityAttrName="DetailPostage"
+      EntityUsage="InvoiceStyleEO"
+      AliasName="DETAIL_POSTAGE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="DetailTotalInvoice"
+      EntityAttrName="DetailTotalInvoice"
+      EntityUsage="InvoiceStyleEO"
+      AliasName="DETAIL_TOTAL_INVOICE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="FootLeft"
+      EntityAttrName="FootLeft"
+      EntityUsage="InvoiceStyleEO"
+      AliasName="FOOT_LEFT" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="FootRight"
+      EntityAttrName="FootRight"
+      EntityUsage="InvoiceStyleEO"
+      AliasName="FOOT_RIGHT" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="HeadEmail"
+      EntityAttrName="HeadEmail"
+      EntityUsage="InvoiceStyleEO"
+      AliasName="HEAD_EMAIL" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="DetailSubtotalPretax"
+      EntityAttrName="DetailSubtotalPretax"
+      EntityUsage="InvoiceStyleEO"
+      AliasName="DETAIL_SUBTOTAL_PRETAX" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="InactiveDate"
+      EntityAttrName="InactiveDate"
+      EntityUsage="InvoiceStyleEO"
+      AliasName="INACTIVE_DATE" >
+   </ViewAttribute>
+</ViewObject>

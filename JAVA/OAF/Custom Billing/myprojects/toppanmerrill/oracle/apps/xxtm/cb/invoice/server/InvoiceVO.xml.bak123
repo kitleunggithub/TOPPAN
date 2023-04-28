@@ -1,0 +1,849 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="InvoiceVO"
+   BindingStyle="OracleName"
+   CustomQuery="true"
+   RowClass="oracle.apps.fnd.framework.server.OAViewRowImpl"
+   ComponentClass="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceVOImpl"
+   UseGlueCode="false" >
+   <Properties>
+      <Property Name ="VO_ATTR.InvoiceLineVO.VO_DATATYPE" Value ="Number" />
+      <Property Name ="VO_ATTR.InvoiceLineVO.VO_QUALIFIED_NAME" Value ="Number" />
+      <Property Name ="VO_ATTR.InvoiceSalesRepSplitsVO.VO_DATATYPE" Value ="Number" />
+      <Property Name ="VO_ATTR.InvoiceSalesRepSplitsVO.VO_QUALIFIED_NAME" Value ="Number" />
+   </Properties>
+   <SQLQuery><![CDATA[
+SELECT 
+
+       InvoiceEO.CUSTOMER_TRX_ID
+       ,InvoiceEO.PARENT_CUSTOMER_TRX_ID 
+       ,InvoiceEO.AR_TRX_NUMBER
+       ,InvoiceEO.ORG_ID
+       ,InvoiceEO.SET_OF_BOOKS_ID
+       ,InvoiceEO.PRIMARY_PRODUCT_TYPE_ID
+       ,InvoiceEO.PROFILE_ID
+       ,InvoiceEO.CUST_TRX_TYPE_ID
+       ,InvoiceEO.TRX_DATE
+       ,InvoiceEO.DATE_RECEIVED
+       ,InvoiceEO.PERIOD_NAME
+       ,InvoiceEO.PRIMARY_SALESREP_ID
+       ,InvoiceEO.DESCRIPTION
+       ,InvoiceEO.COMMENTS
+       ,InvoiceEO.BILL_TO_ADDRESS_ID 
+       ,InvoiceEO.BILL_TO_CUSTOMER_ID
+       ,InvoiceEO.ATTENDEE
+       ,InvoiceEO.ATTENDEE_EMAIL
+       ,InvoiceEO.INVOICE_ADDRESS_ID
+       ,InvoiceEO.ORDER_NUMBER
+       ,InvoiceEO.CUSTOMER_ORDER_NUMBER
+       ,InvoiceEO.OWNING_BILLER_ID
+       ,InvoiceEO.ACTIVE_BILLER_ID
+       ,InvoiceEO.CURRENT_STATUS_DATE
+       ,InvoiceEO.TERM_ID
+       ,InvoiceEO.CURRENCY_CODE
+       ,InvoiceEO.ENTERED_CURRENCY_CODE
+       ,InvoiceEO.EXCHANGE_DATE
+       ,InvoiceEO.EXCHANGE_RATE
+       ,InvoiceEO.EXCHANGE_RATE_TYPE
+       ,InvoiceEO.CREATED_BY
+       ,InvoiceEO.CREATION_DATE
+       ,InvoiceEO.LAST_UPDATED_BY
+       ,InvoiceEO.LAST_UPDATE_DATE
+       ,InvoiceEO.LAST_UPDATE_LOGIN
+       ,InvoiceEO.PROJECT_CATEGORY_ID
+       ,InvoiceEO.PRIMARY_PROJECT_ORG_ID
+       ,InvoiceEO.ORIGINAL_PROJECT_ID
+       ,InvoiceEO.SOURCE_SYSTEM
+       ,InvoiceEO.PROJECT_COMPLETE_DATE
+       ,InvoiceEO.COST_SUM_SEND_DATE
+       ,InvoiceEO.MARGIN_REPORT_SEND_DATE
+       ,InvoiceEO.BILL_REMARK
+       ,InvoiceEO.INVOICE_CLASS
+       ,InvoiceEO.CURRENT_STATUS
+       
+       ,OU1.NAME ORGANIZATION_NAME
+       ,OU2.NAME PRI_PROJ_ORG_NAME
+       ,PA.SEGMENT1 PROJECT_NUMBER
+       ,PA.LONG_NAME PROJECT_NAME
+       ,ML.NAME PRIMARY_PRODUCT_TYPE
+       ,TT.NAME CUST_TRX_TYPE
+       ,HP1.PARTY_NAME CUSTOMER_NAME
+       ,CA1.ACCOUNT_NUMBER CUSTOMER_NUMBER
+       ,HL1.ADDRESS1 
+       ,HL1.ADDRESS1 ||' '|| HL1.ADDRESS2 ||' '|| HL1.ADDRESS3 ||' '|| HL1.ADDRESS4 ||' '|| HL1.CITY ||' '|| HL1.POSTAL_CODE ||' '|| HL1.COUNTRY BILL_TO_ADDRESS
+       ,InvoiceEO.SEC_BILL_TO_CUSTOMER_ID
+       ,HP2.PARTY_NAME SEC_CUSTOMER_NAME
+       ,CA2.ACCOUNT_NUMBER SEC_CUSTOMER_NUMBER
+       ,InvoiceEO.BILL_TO_CONTACT_ID
+       ,HPP.PERSON_FIRST_NAME CONTACT_FIRST_NAME
+       ,HPP.PERSON_MIDDLE_NAME CONTACT_MIDDLE_NAME
+       ,HPP.PERSON_LAST_NAME CONTACT_LAST_NAME
+       ,HPP.PERSON_FIRST_NAME||' '||HPP.PERSON_MIDDLE_NAME||NVL2(HPP.PERSON_MIDDLE_NAME,' ','')||HPP.PERSON_LAST_NAME CONTACT_FULL_NAME
+       ,HCP_EMAIL.EMAIL_ADDRESS
+       
+       ,InvoiceEO.INVOICE_STYLE_NAME
+       ,InvoiceEO.INVOICE_TITLE
+       ,InvoiceEO.INVOICE_DESC_ONE_LINE
+       ,InvoiceEO.TAX_DESC
+       ,InvoiceEO.TAX_AMOUNT
+       ,InvoiceEO.INVOICE_FOOT_TOP
+       ,InvoiceEO.INVOICE_FOOT_BOTTOM
+       ,InvoiceEO.DISPLAY_SALESPERSON
+       ,InvoiceEO.DISPLAY_LEVEL_1
+       ,InvoiceEO.DISPLAY_LEVEL_1_TOTAL
+       ,InvoiceEO.DISPLAY_LEVEL_2
+       ,InvoiceEO.DISPLAY_LEVEL_2_TOTAL
+       ,InvoiceEO.DISPLAY_LEVEL_3
+       ,InvoiceEO.DISPLAY_LEVEL_3_TOTAL
+       ,InvoiceEO.PRELIMINARY
+FROM XXBS_CUSTOMER_TRX InvoiceEO
+, HR_ALL_ORGANIZATION_UNITS OU1
+, HR_ALL_ORGANIZATION_UNITS OU2
+, PA_PROJECTS_ALL PA
+, AR_MEMO_LINES_ALL_TL ML
+, RA_CUST_TRX_TYPES_ALL TT
+, HZ_PARTIES HP1
+, HZ_PARTIES HP2
+, HZ_PARTY_SITES HPS1
+, HZ_CUST_ACCOUNTS_ALL CA1
+, HZ_CUST_ACCOUNTS_ALL CA2
+, HZ_CUST_ACCT_SITES_ALL CS1
+, HZ_LOCATIONS HL1
+, GL_LEDGERS GL
+
+, HZ_PARTIES REL_HP
+, HZ_PERSON_PROFILES HPP
+, HZ_RELATIONSHIPS HR
+, HZ_ORG_CONTACTS HOC
+, HZ_CUST_ACCOUNT_ROLES HCAR
+, HZ_CONTACT_POINTS HCP_EMAIL
+
+WHERE InvoiceEO.ORG_ID = OU1.ORGANIZATION_ID(+)
+AND InvoiceEO.PRIMARY_PROJECT_ORG_ID = OU2.ORGANIZATION_ID (+)
+AND InvoiceEO.ORIGINAL_PROJECT_ID = PA.PROJECT_ID (+)
+AND (InvoiceEO.PRIMARY_PRODUCT_TYPE_ID = ML.MEMO_LINE_ID (+)
+     AND InvoiceEO.ORGANIZATION_ID = ML.ORG_ID (+)
+     AND ML.LANGUAGE(+)='US')
+AND (InvoiceEO.CUST_TRX_TYPE_ID = TT.CUST_TRX_TYPE_ID (+)
+     AND InvoiceEO.ORG_ID = TT.ORG_ID (+)
+     AND InvoiceEO.SET_OF_BOOKS_ID = TT.SET_OF_BOOKS_ID (+)
+)
+AND InvoiceEO.SET_OF_BOOKS_ID = GL.LEDGER_ID (+)
+
+AND InvoiceEO.BILL_TO_CUSTOMER_ID = CA1.CUST_ACCOUNT_ID (+)
+AND CA1.PARTY_ID = HP1.PARTY_ID (+)
+AND CA1.CUST_ACCOUNT_ID = CS1.CUST_ACCOUNT_ID (+)
+AND CS1.PARTY_SITE_ID = HPS1.PARTY_SITE_ID (+)
+AND HPS1.LOCATION_ID = HL1.LOCATION_ID (+)
+AND InvoiceEO.BILL_TO_ADDRESS_ID = CS1.CUST_ACCT_SITE_ID (+)
+
+AND InvoiceEO.SEC_BILL_TO_CUSTOMER_ID = CA2.CUST_ACCOUNT_ID (+)
+AND CA2.PARTY_ID = HP2.PARTY_ID (+)
+
+AND InvoiceEO.BILL_TO_CONTACT_ID = HCAR.CUST_ACCOUNT_ROLE_ID (+)
+AND HCAR.PARTY_ID = REL_HP.PARTY_ID  (+)    
+AND REL_HP.PARTY_ID           = HR.PARTY_ID (+)
+AND HR.RELATIONSHIP_ID = HOC.PARTY_RELATIONSHIP_ID (+)
+
+AND HP1.PARTY_ID = HPP.PARTY_ID(+)
+AND HP1.PARTY_ID = HR.SUBJECT_ID (+)
+
+AND HR.SUBJECT_TABLE_NAME   (+)  = 'HZ_PARTIES'
+AND HR.SUBJECT_TYPE         (+)  = 'PERSON'
+AND HR.RELATIONSHIP_CODE     (+) = 'CONTACT_OF'
+
+AND HCAR.PARTY_ID = HCP_EMAIL.OWNER_TABLE_ID(+)  
+AND HCP_EMAIL.CONTACT_POINT_TYPE(+) = 'EMAIL'
+AND HCP_EMAIL.PRIMARY_FLAG(+) = 'Y'
+AND HCP_EMAIL.STATUS(+) = 'A'
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess" />
+   </DesignTime>
+   <EntityUsage
+      Name="InvoiceEO"
+      Entity="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceEO" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="false" />
+      </DesignTime>
+   </EntityUsage>
+   <ViewAttribute
+      Name="CustomerTrxId"
+      EntityAttrName="CustomerTrxId"
+      EntityUsage="InvoiceEO"
+      AliasName="CUSTOMER_TRX_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ParentCustomerTrxId"
+      EntityAttrName="ParentCustomerTrxId"
+      EntityUsage="InvoiceEO"
+      AliasName="PARENT_CUSTOMER_TRX_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ArTrxNumber"
+      EntityAttrName="ArTrxNumber"
+      EntityUsage="InvoiceEO"
+      AliasName="AR_TRX_NUMBER" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="OrgId"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="ORG_ID"
+      Expression="ORG_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SetOfBooksId"
+      EntityAttrName="SetOfBooksId"
+      EntityUsage="InvoiceEO"
+      AliasName="SET_OF_BOOKS_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PrimaryProductTypeId"
+      EntityAttrName="PrimaryProductTypeId"
+      EntityUsage="InvoiceEO"
+      AliasName="PRIMARY_PRODUCT_TYPE_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ProfileId"
+      EntityAttrName="ProfileId"
+      EntityUsage="InvoiceEO"
+      AliasName="PROFILE_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CustTrxTypeId"
+      EntityAttrName="CustTrxTypeId"
+      EntityUsage="InvoiceEO"
+      AliasName="CUST_TRX_TYPE_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="TrxDate"
+      EntityAttrName="TrxDate"
+      EntityUsage="InvoiceEO"
+      AliasName="TRX_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="DateReceived"
+      EntityAttrName="DateReceived"
+      EntityUsage="InvoiceEO"
+      AliasName="DATE_RECEIVED" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PeriodName"
+      EntityAttrName="PeriodName"
+      EntityUsage="InvoiceEO"
+      AliasName="PERIOD_NAME" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PrimarySalesrepId"
+      EntityAttrName="PrimarySalesrepId"
+      EntityUsage="InvoiceEO"
+      AliasName="PRIMARY_SALESREP_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Description"
+      EntityAttrName="Description"
+      EntityUsage="InvoiceEO"
+      AliasName="DESCRIPTION" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Comments"
+      EntityAttrName="Comments"
+      EntityUsage="InvoiceEO"
+      AliasName="COMMENTS" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="BillToAddressId"
+      EntityAttrName="BillToAddressId"
+      EntityUsage="InvoiceEO"
+      AliasName="BILL_TO_ADDRESS_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="BillToCustomerId"
+      EntityAttrName="BillToCustomerId"
+      EntityUsage="InvoiceEO"
+      AliasName="BILL_TO_CUSTOMER_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attendee"
+      EntityAttrName="Attendee"
+      EntityUsage="InvoiceEO"
+      AliasName="ATTENDEE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="AttendeeEmail"
+      EntityAttrName="AttendeeEmail"
+      EntityUsage="InvoiceEO"
+      AliasName="ATTENDEE_EMAIL" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="InvoiceAddressId"
+      EntityAttrName="InvoiceAddressId"
+      EntityUsage="InvoiceEO"
+      AliasName="INVOICE_ADDRESS_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="OrderNumber"
+      EntityAttrName="OrderNumber"
+      EntityUsage="InvoiceEO"
+      AliasName="ORDER_NUMBER" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CustomerOrderNumber"
+      EntityAttrName="CustomerOrderNumber"
+      EntityUsage="InvoiceEO"
+      AliasName="CUSTOMER_ORDER_NUMBER" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="OwningBillerId"
+      EntityAttrName="OwningBillerId"
+      EntityUsage="InvoiceEO"
+      AliasName="OWNING_BILLER_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ActiveBillerId"
+      EntityAttrName="ActiveBillerId"
+      EntityUsage="InvoiceEO"
+      AliasName="ACTIVE_BILLER_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CurrentStatusDate"
+      EntityAttrName="CurrentStatusDate"
+      EntityUsage="InvoiceEO"
+      AliasName="CURRENT_STATUS_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="TermId"
+      EntityAttrName="TermId"
+      EntityUsage="InvoiceEO"
+      AliasName="TERM_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CurrencyCode"
+      EntityAttrName="CurrencyCode"
+      EntityUsage="InvoiceEO"
+      AliasName="CURRENCY_CODE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="EnteredCurrencyCode"
+      EntityAttrName="EnteredCurrencyCode"
+      EntityUsage="InvoiceEO"
+      AliasName="ENTERED_CURRENCY_CODE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ExchangeDate"
+      EntityAttrName="ExchangeDate"
+      EntityUsage="InvoiceEO"
+      AliasName="EXCHANGE_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ExchangeRate"
+      EntityAttrName="ExchangeRate"
+      EntityUsage="InvoiceEO"
+      AliasName="EXCHANGE_RATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ExchangeRateType"
+      EntityAttrName="ExchangeRateType"
+      EntityUsage="InvoiceEO"
+      AliasName="EXCHANGE_RATE_TYPE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreatedBy"
+      EntityAttrName="CreatedBy"
+      EntityUsage="InvoiceEO"
+      AliasName="CREATED_BY" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreationDate"
+      EntityAttrName="CreationDate"
+      EntityUsage="InvoiceEO"
+      AliasName="CREATION_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdatedBy"
+      EntityAttrName="LastUpdatedBy"
+      EntityUsage="InvoiceEO"
+      AliasName="LAST_UPDATED_BY" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdateDate"
+      EntityAttrName="LastUpdateDate"
+      EntityUsage="InvoiceEO"
+      AliasName="LAST_UPDATE_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdateLogin"
+      EntityAttrName="LastUpdateLogin"
+      EntityUsage="InvoiceEO"
+      AliasName="LAST_UPDATE_LOGIN" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ProjectCategoryId"
+      EntityAttrName="ProjectCategoryId"
+      EntityUsage="InvoiceEO"
+      AliasName="PROJECT_CATEGORY_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PrimaryProjectOrgId"
+      EntityAttrName="PrimaryProjectOrgId"
+      EntityUsage="InvoiceEO"
+      AliasName="PRIMARY_PROJECT_ORG_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="OriginalProjectId"
+      EntityAttrName="OriginalProjectId"
+      EntityUsage="InvoiceEO"
+      AliasName="ORIGINAL_PROJECT_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SourceSystem"
+      EntityAttrName="SourceSystem"
+      EntityUsage="InvoiceEO"
+      AliasName="SOURCE_SYSTEM" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ProjectCompleteDate"
+      EntityAttrName="ProjectCompleteDate"
+      EntityUsage="InvoiceEO"
+      AliasName="PROJECT_COMPLETE_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CostSumSendDate"
+      EntityAttrName="CostSumSendDate"
+      EntityUsage="InvoiceEO"
+      AliasName="COST_SUM_SEND_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="MarginReportSendDate"
+      EntityAttrName="MarginReportSendDate"
+      EntityUsage="InvoiceEO"
+      AliasName="MARGIN_REPORT_SEND_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="BillRemark"
+      EntityAttrName="BillRemark"
+      EntityUsage="InvoiceEO"
+      AliasName="BILL_REMARK" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="InvoiceClass"
+      EntityAttrName="InvoiceClass"
+      EntityUsage="InvoiceEO"
+      AliasName="INVOICE_CLASS" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CurrentStatus"
+      EntityAttrName="CurrentStatus"
+      EntityUsage="InvoiceEO"
+      AliasName="CURRENT_STATUS" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="OrganizationName"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="ORGANIZATION_NAME"
+      Expression="ORGANIZATION_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PriProjOrgName"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PRI_PROJ_ORG_NAME"
+      Expression="PRI_PROJ_ORG_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ProjectNumber"
+      IsPersistent="false"
+      Precision="25"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PROJECT_NUMBER"
+      Expression="PROJECT_NUMBER"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="25" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ProjectName"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PROJECT_NAME"
+      Expression="PROJECT_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PrimaryProductType"
+      IsPersistent="false"
+      Precision="50"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PRIMARY_PRODUCT_TYPE"
+      Expression="PRIMARY_PRODUCT_TYPE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="50" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CustTrxType"
+      IsPersistent="false"
+      Precision="20"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CUST_TRX_TYPE"
+      Expression="CUST_TRX_TYPE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="20" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CustomerName"
+      IsPersistent="false"
+      Precision="360"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CUSTOMER_NAME"
+      Expression="CUSTOMER_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="360" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CustomerNumber"
+      IsPersistent="false"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CUSTOMER_NUMBER"
+      Expression="CUSTOMER_NUMBER"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Address1"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="ADDRESS1"
+      Expression="ADDRESS1"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="BillToAddress"
+      IsPersistent="false"
+      Precision="1146"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="BILL_TO_ADDRESS"
+      Expression="BILL_TO_ADDRESS"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="1146" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SecBillToCustomerId"
+      EntityAttrName="SecBillToCustomerId"
+      EntityUsage="InvoiceEO"
+      AliasName="SEC_BILL_TO_CUSTOMER_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SecCustomerName"
+      IsPersistent="false"
+      Precision="360"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="SEC_CUSTOMER_NAME"
+      Expression="SEC_CUSTOMER_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="360" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SecCustomerNumber"
+      IsPersistent="false"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="SEC_CUSTOMER_NUMBER"
+      Expression="SEC_CUSTOMER_NUMBER"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="BillToContactId"
+      EntityAttrName="BillToContactId"
+      EntityUsage="InvoiceEO"
+      AliasName="BILL_TO_CONTACT_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ContactFirstName"
+      IsPersistent="false"
+      Precision="150"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CONTACT_FIRST_NAME"
+      Expression="CONTACT_FIRST_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ContactMiddleName"
+      IsPersistent="false"
+      Precision="60"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CONTACT_MIDDLE_NAME"
+      Expression="CONTACT_MIDDLE_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="60" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ContactLastName"
+      IsPersistent="false"
+      Precision="150"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CONTACT_LAST_NAME"
+      Expression="CONTACT_LAST_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ContactFullName"
+      IsPersistent="false"
+      Precision="362"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CONTACT_FULL_NAME"
+      Expression="CONTACT_FULL_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="362" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="EmailAddress"
+      IsPersistent="false"
+      Precision="2000"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="EMAIL_ADDRESS"
+      Expression="EMAIL_ADDRESS"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="2000" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="InvoiceStyleName"
+      EntityAttrName="InvoiceStyleName"
+      EntityUsage="InvoiceEO"
+      AliasName="INVOICE_TYLE_NAME" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="InvoiceTitle"
+      EntityAttrName="InvoiceTitle"
+      EntityUsage="InvoiceEO"
+      AliasName="INVOICE_TITLE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="InvoiceDescOneLine"
+      EntityAttrName="InvoiceDescOneLine"
+      EntityUsage="InvoiceEO"
+      AliasName="INVOICE_DESC_ONE_LINE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="TaxDesc"
+      EntityAttrName="TaxDesc"
+      EntityUsage="InvoiceEO"
+      AliasName="TAX_DESC" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="TaxAmount"
+      EntityAttrName="TaxAmount"
+      EntityUsage="InvoiceEO"
+      AliasName="TAX_AMOUNT" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="InvoiceFootTop"
+      EntityAttrName="InvoiceFootTop"
+      EntityUsage="InvoiceEO"
+      AliasName="INVOICE_FOOT_TOP" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="InvoiceFootBottom"
+      EntityAttrName="InvoiceFootBottom"
+      EntityUsage="InvoiceEO"
+      AliasName="INVOICE_FOOT_BOTTOM" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="DisplaySalesperson"
+      IsSelected="false"
+      IsPersistent="false"
+      Precision="255"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="DISPLAY_SALESPERSON"
+      Expression="DISPLAY_SALESPERSON"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="4000" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="DisplayLevel1"
+      IsSelected="false"
+      IsPersistent="false"
+      Precision="255"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="DISPLAY_LEVEL_1"
+      Expression="DISPLAY_LEVEL_1"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="4000" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="DisplayLevel1Total"
+      IsSelected="false"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="DISPLAY_LEVEL_1_TOTAL"
+      Expression="DISPLAY_LEVEL_1_TOTAL"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="DisplayLevel2"
+      IsSelected="false"
+      IsPersistent="false"
+      Precision="255"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="DISPLAY_LEVEL_2"
+      Expression="DISPLAY_LEVEL_2"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="4000" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="DisplayLevel2Total"
+      IsSelected="false"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="DISPLAY_LEVEL_2_TOTAL"
+      Expression="DISPLAY_LEVEL_2_TOTAL"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="DisplayLevel3"
+      IsSelected="false"
+      IsPersistent="false"
+      Precision="255"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="DISPLAY_LEVEL_3"
+      Expression="DISPLAY_LEVEL_3"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="4000" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="DisplayLevel3Total"
+      IsSelected="false"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="DISPLAY_LEVEL_3_TOTAL"
+      Expression="DISPLAY_LEVEL_3_TOTAL"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Preliminary"
+      IsSelected="false"
+      IsPersistent="false"
+      Precision="255"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PRELIMINARY"
+      Expression="PRELIMINARY"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="4000" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewLinkAccessor
+      Name="InvoiceSalesRepSplitsVO"
+      ViewLink="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceToInvoiceSalesRepSplitVL"
+      Type="oracle.jbo.RowIterator"
+      IsUpdateable="false" >
+   </ViewLinkAccessor>
+   <ViewLinkAccessor
+      Name="InvoiceLineVO"
+      ViewLink="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceToInvoiceLineVL"
+      Type="oracle.jbo.RowIterator"
+      IsUpdateable="false" >
+   </ViewLinkAccessor>
+</ViewObject>

@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<!-- $Header: PoLineNumVVO.xml 120.8 2006/07/03 20:38:06 atgops1 noship $ -->
+
+<ViewObject
+   Name="PoLineNumVVO"
+   BindingStyle="Oracle"
+   CustomQuery="true"
+   RowClass="oracle.apps.fnd.framework.toolbox.schema.server.PoLineNumVVORowImpl"
+   ComponentClass="oracle.apps.fnd.framework.toolbox.schema.server.PoLineNumVVOImpl"
+   FetchMode="FETCH_AS_NEEDED"
+   Passivate="None"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+select line_number
+from fwk_tbx_po_lines
+where header_id = :1
+and line_number = :2
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.38.51" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll" />
+   </DesignTime>
+   <ViewAttribute
+      Name="MaxLineNumber"
+      IsQueriable="false"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      Expression="MAX(LINE_NUMBER)"
+      SQLType="NUMERIC" >
+   </ViewAttribute>
+</ViewObject>

@@ -1,0 +1,738 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<jpr:project xmlns:jpr="http://xmlns.oracle.com/ide/project">
+   <hash n="component-versions">
+      <value n="oracle.adf.dt.migration.ProjectMigrator" v="10.1.3.5.0"/>
+      <value n="oracle.adfdt.controller.jsf.addin.JSFProjectMigrator" v="10.1.3.5.0"/>
+      <value n="oracle.adfdt.controller.struts.addin.db.ADFStrutsProjectMigrator" v="10.1.3.5.0"/>
+      <value n="oracle.adfdt.controller.struts.addin.StrutsProjectMigrator" v="10.1.3.5.0"/>
+      <value n="oracle.adfdtinternal.view.faces.addin.ADFFacesLibraryMigrator" v="10.1.3.5.0"/>
+      <value n="oracle.bm.commonIde.ProjectUpgrader" v="10.1.3.5.0"/>
+      <value n="oracle.ide.model.Project" v="10.1.3.5.0"/>
+      <value n="oracle.ide.model.ResourcePathsMigrator" v="10.1.3.5.0"/>
+      <value n="oracle.jbo.dt.jclient.migrator.JCProjectMigrator" v="10.1.3.5.0"/>
+      <value n="oracle.jbo.dt.jdevx.ui.appnav.APProjectMigrator" v="10.1.3.5.0"/>
+      <value n="oracle.jdeveloper.dbmodeler.migration.ProjectMigratorHelper" v="10.1.3.5.0"/>
+      <value n="oracle.jdeveloper.ejb.EjbMigrator" v="10.1.3.5.0"/>
+      <value n="oracle.jdeveloper.offlinedb.migration.OfflineDBProjectMigrator" v="10.1.3.5.0"/>
+      <value n="oracle.jdevimpl.jsp.JsfLibraryMigrator" v="10.1.3.5.0"/>
+      <value n="oracle.jdevimpl.jsp.JspMigrator" v="10.1.3.1.0"/>
+      <value n="oracle.jdevimpl.runner.RunConfigurationsMigrator" v="10.1.3.5.0"/>
+      <value n="oracle.jdevimpl.webservices.WebServicesMigratorHelper" v="10.1.3.5.0"/>
+      <value n="oracle.jrad.design.ui.jide.oa.project.OAProjectMigrator" v="10.1.3.5.0"/>
+      <value n="oracle.toplink.addin.migration.TopLinkProjectMigrator" v="10.1.3.1.0"/>
+   </hash>
+   <list n="contentSets">
+      <string v="oracle.jdeveloper.model.PathsConfiguration/javaContentSet"/>
+      <string v="oracle.ide.model.ResourcePaths/resourcesContentSet"/>
+      <string v="oracle.jdeveloper.offlinedb.model.OfflineDBProjectSettings/offlineDBContentSet"/>
+      <string v="oracle.jdeveloper.model.J2eeSettings/webContentSet"/>
+      <string v="oracle.toplink.addin.TopLinkProjectSettings/toplinkContentSet"/>
+      <string v="oracle.bm.commonIde.data.project.ModelerProjectSettings/modelersContentSet"/>
+   </list>
+   <value n="defaultPackage" v="toppanmerrill.oracle.apps.xxtm.cb.invoicestyle.webui"/>
+   <hash n="ejbModuleContainer">
+      <value n="ejbVersion" v="NOT SPECIFIED"/>
+   </hash>
+   <value n="jbo.JboProject" v="OAProject1"/>
+   <value n="JboProject" v="true"/>
+   <value n="JRAD.IS_APPS_PROJECT" v="10.1.3_"/>
+   <value n="JRAD.JDEV_INSTALL_URL" v="C:\jdev_R12\jdevbin\jdev\"/>
+   <value n="JRAD.PROJECT_URL" v="C:\jdev_R12\jdevhome\jdev\myprojects\OAProject1.jpr"/>
+   <hash n="oracle.bm.commonIde.data.project.ModelerProjectSettings">
+      <hash n="modelersContentSet">
+         <list n="pattern-filters">
+            <string v="+**"/>
+         </list>
+         <list n="url-path">
+            <url path="model/"/>
+         </list>
+      </hash>
+   </hash>
+   <hash n="oracle.ide.model.ResourcePaths">
+      <hash n="resourcesContentSet">
+         <list n="pattern-filters">
+            <string v="+*"/>
+         </list>
+         <list n="url-path">
+            <url path="."/>
+         </list>
+      </hash>
+   </hash>
+   <hash n="oracle.ide.model.TechnologyScopeConfiguration">
+      <list n="technologyScope">
+         <string v="JSP"/>
+         <string v="ADFbc"/>
+         <string v="Java"/>
+         <string v="HTML"/>
+         <string v="OA"/>
+      </list>
+   </hash>
+   <value n="oracle.jbo.extends.appModule" v="oracle.apps.fnd.framework.server.OAApplicationModuleImpl"/>
+   <value n="oracle.jbo.extends.entityColl" v="oracle.apps.fnd.framework.server.OAEntityCache"/>
+   <value n="oracle.jbo.extends.entityDef" v="oracle.apps.fnd.framework.server.OAEntityDefImpl"/>
+   <value n="oracle.jbo.extends.entityRow" v="oracle.apps.fnd.framework.server.OAEntityImpl"/>
+   <value n="oracle.jbo.extends.viewObj" v="oracle.apps.fnd.framework.server.OAViewObjectImpl"/>
+   <value n="oracle.jbo.extends.viewRow" v="oracle.apps.fnd.framework.server.OAViewRowImpl"/>
+   <hash n="oracle.jdeveloper.compiler.OjcConfiguration">
+      <list n="copyRes">
+         <string v=".gif"/>
+         <string v=".jpg"/>
+         <string v=".jpeg"/>
+         <string v=".png"/>
+         <string v=".properties"/>
+         <string v=".xml"/>
+         <string v="-apf.xml"/>
+         <string v=".ejx"/>
+         <string v=".xcfg"/>
+         <string v=".cpx"/>
+         <string v=".dcx"/>
+         <string v=".wsdl"/>
+         <string v=".ini"/>
+         <string v=".tld"/>
+         <string v=".tag"/>
+         <string v=".jpx"/>
+      </list>
+      <value n="internalEncoding" v="Cp1252"/>
+      <value n="showPartialImportWarnings" v="true"/>
+      <value n="showUnusedImportWarnings" v="true"/>
+   </hash>
+   <hash n="oracle.jdeveloper.model.J2eeSettings">
+      <value n="j2eeWebAppName" v="APPS_HTML"/>
+      <value n="j2eeWebContextRoot" v="/OA_HTML"/>
+      <hash n="webContentSet">
+         <list n="pattern-filters">
+            <string v="+**"/>
+         </list>
+         <list n="url-path">
+            <url path="../myhtml/OA_HTML/"/>
+         </list>
+      </hash>
+   </hash>
+   <hash n="oracle.jdeveloper.model.PathsConfiguration">
+      <hash n="javaContentSet">
+         <list n="pattern-filters">
+            <string v="+**"/>
+         </list>
+         <list n="url-path">
+            <url path="."/>
+         </list>
+      </hash>
+   </hash>
+   <hash n="oracle.jdeveloper.offlinedb.model.OfflineDBProjectSettings">
+      <hash n="offlineDBContentSet">
+         <list n="pattern-filters">
+            <string v="+**"/>
+         </list>
+         <list n="url-path">
+            <url path="database/"/>
+         </list>
+      </hash>
+   </hash>
+   <hash n="oracle.jdeveloper.runner.RunConfigurations">
+      <hash n="runConfigurationDefinitions">
+         <hash n="Default">
+            <value n="custom" v="false"/>
+            <value n="javaOptions" v="-DFND_JDBC_STMT_CACHE_SIZE=200 -DCACHENODBINIT=true -DRUN_FROM_JDEV=true -mx512m -XX:MaxPermSize=768M"/>
+            <value n="name" v="Default"/>
+            <url n="runDirectoryURL" path="../myclasses/"/>
+            <value n="VMName" v="hotspot"/>
+         </hash>
+      </hash>
+      <list n="runConfigurationList">
+         <string v="Default"/>
+      </list>
+   </hash>
+   <hash n="oracle.jdevimpl.config.JProjectLibraries">
+      <list n="exportedReferences">
+         <hash>
+            <value n="id" v="BC4J Security"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="ADF Model Runtime"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="BC4J Tester"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+      </list>
+      <list n="libraryReferences">
+         <hash>
+            <value n="id" v="JDeveloper Runtime"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Oracle JDBC"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Connection Manager"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="BC4J Runtime"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="BC4J EJB Client"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="BC4J EJB Runtime"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="BC4J HTML"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="JSP Runtime"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Cabo"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="MDS Runtime"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="FND Libraries"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="BIBEANS Runtime"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="BC4J Oracle Domains"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="JTT Common"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="APPS Libraries"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="MDS XML OA Common"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="MDS XML Apps Common"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Portal Runtime"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Service Library"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Service Tester"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Oracle XML Parser v2"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="BC4J Security"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+      </list>
+   </hash>
+   <hash n="oracle.jdevimpl.config.JProjectPaths">
+      <url n="outputDirectory" path="../myclasses/"/>
+   </hash>
+   <hash n="oracle.jdevimpl.webapp.jsp.libraries.model.ProjectTagLibraries">
+      <hash n="libraries">
+         <hash n="WEB-INF\oa.tld">
+            <value n="jspVersion" v="1.1"/>
+            <value n="name" v="oa"/>
+            <value n="prefix" v="oa"/>
+            <value n="runInEditor" v="false"/>
+            <value n="showInPalette" v="true"/>
+            <value n="tldURL" v="WEB-INF/oa.tld"/>
+            <value n="URI" v="/WEB-INF/oa.tld"/>
+            <value n="version" v="1.0"/>
+         </hash>
+      </hash>
+   </hash>
+   <hash n="oracle.jrad.design.ui.jide.oa.project.JRADRunOptions">
+      <value n="selectedRunOptions" v=""/>
+   </hash>
+   <hash n="oracle.jrad.design.ui.jide.oa.project.JRADRuntimeData">
+      <value n="DBCFileName" v="TMERPDEV"/>
+      <value n="fndTop" v="C:\jdev_R12\jdevhome\jdev\dbc_files"/>
+      <value n="password" v="Dash1234"/>
+      <value n="respAppShortName" v="XXTM"/>
+      <value n="responsibility" v="XXBS_HKD2_BILLER"/>
+      <value n="userName" v="DASHSUPPORT"/>
+   </hash>
+   <hash n="oracle.toplink.addin.TopLinkProjectSettings">
+      <hash n="toplinkContentSet">
+         <list n="pattern-filters">
+            <string v="+**"/>
+         </list>
+         <list n="url-path">
+            <url path="toplink/"/>
+         </list>
+      </hash>
+   </hash>
+   <list n="ownerMap">
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="mycompany/oracle/apps/fnd/framework/toolbox/schema/server/MyCompanyPurchaseOrderHeaderEO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="mycompany/oracle/apps/fnd/framework/toolbox/schema/server/MyCompanyPurchaseOrderLinesEO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="mycompany/oracle/apps/fnd/framework/toolbox/schema/server/server.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="mycompany/oracle/apps/fnd/framework/toolbox/tutorial/server/MyCompanyPoSummaryVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="mycompany/oracle/apps/fnd/framework/toolbox/tutorial/server/server.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/DebugALabAM.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/DebugBLabAM.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/DebugLabAM.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/DebugLabEmpFullVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/DebugLabEmpSummaryVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/EmployeeAM.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/EmployeeFullVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/EmployeePVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/EmployeeSummaryVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/EmployeesVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/FlexfieldAM.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/GanttAM.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/HomeAM.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/ItemDetailsVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/ItemSummaryVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/PositionGraphVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/server.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/SupplierSAM.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/SupplierSitesSVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/SuppliersSVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/SupplierToSitesSVL.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/TaskDetailsVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/TaskListVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/TaskToDetailsVL.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/lov/server/AllPOsExpVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/lov/server/EmployeeNamesVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/lov/server/EmployeesLOVVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/lov/server/LabSolutionsLOVAM.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/lov/server/server.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/lov/server/SupplierSitesLOVVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/lov/server/SuppliersLOVVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/lov/server/TutorialLOVAM.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/lov/server/ValidBuyersExpVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/poplist/server/CarriersVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/poplist/server/CreatedListVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/poplist/server/CurrencyVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/poplist/server/HomeSearchObjectsVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/poplist/server/LookupTypesVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/poplist/server/OrderStatusesVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/poplist/server/PaymentTermsVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/poplist/server/PositionsVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/poplist/server/server.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/poplist/server/StatusListVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/poplist/server/UnitsOfMeasureVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/poplist/server/YesNoVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/samplelib/server/DepartmentEmpsVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/samplelib/server/EmployeesVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/samplelib/server/LookupCodesVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/samplelib/server/ManagerToEmployeesVL.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/samplelib/server/PurchaseOrderHeadersVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/samplelib/server/PurchaseOrderPPRVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/samplelib/server/SampleBrowserAM.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/samplelib/server/SampleBrowserPVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/samplelib/server/server.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/samplelib/server/SimpleEmployeesVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/samplelib/server/SupplierSitesVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/samplelib/server/SuppliersVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/samplelib/server/SupplierToSiteVL.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/AddressEO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/EmployeeEO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/EmployeeVAM.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/EmployeeVVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/EmpNameForIdVVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/EmpToMgrAO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/IdForEmpNameVVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/IdForSupplierNameVVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/IdForSupplierSiteVVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/ItemEO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/ItemFlexfieldEO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/LookupCodeEO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/LookupCodeTLEO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/LookupCodeToTLAO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/LookupCodeVVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/MaxPoLineVVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/MaxPoShipVVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/OrderTotalVVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/PoHeadToPoLineAO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/PoLineNumVVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/PoLineToPoShipAO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/PoShipNumVVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/PositionVVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/PoToBuyerAO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/PoToSupplierAO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/PoToSupplierSiteAO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/PurchaseOrderHeaderEO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/PurchaseOrderLineEO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/PurchaseOrderPPREO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/PurchaseOrderShipmentEO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/PurchaseOrderVAM.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/server.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/SiteIdPoVVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/SiteIdVVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/SiteNameForIdVVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/SupNameForIdVVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/SupplierEO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/SupplierIdPoVVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/SupplierIdVVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/SupplierNameVVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/SupplierSiteEO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/SupplierToSiteAO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/SupplierVAM.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/BuyersDVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/CarriersDVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/CreateAM.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/CurrenciesDVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/DeleteAM.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/HelloWorldAM.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/HomeAM.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/LookupCodesVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/MultistepCreateAM.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/OrderStatusesDVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PaymentTermsDVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PoDetailsFullExpVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PoDetailsFullVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PoHeaderEOLineEOVL.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PoHeaderSimpleVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PoHeaderToLinesSVL.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PoHeaderToLinesVL.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PoLinesExpVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PoLineShipFullVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PoLineToShipmentsSVL.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PoSimpleSummaryVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PoSummaryAM.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PoSummarySimpleExpVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PoSummaryVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PurchaseOrderAcknowledgementsSVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PurchaseOrderLinesSVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PurchaseOrderReceiptsSVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PurchaseOrderSAM.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PurchaseOrderShipmentsSVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PurchaseOrdersSVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/SearchAM.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/server.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/SupplierAndSitesDVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/SuppliersDVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/SuppliersExpVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/SupplierSummaryVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/SuppliersVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/UnitOfMeasuresDVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/UpdateAM.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="testing/oracle/apps/ak/hello/server/HelloAM.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="testing/oracle/apps/ak/hello/server/server.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/ActiveBillerLovVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/CurrencyLovVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/CustomerAddressLovVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/CustomerContactLovVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/CustomerLovVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/GLPeriodNameLovVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceActivityEO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceApprovalActivityVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceApprovalReasonLovVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceAuditEO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceAuditVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceChangeActivityVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceCombineReqDtlEO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceCombineReqDtlVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceCombineReqEO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceCombineReqStatusLovVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceCombineRequestAM.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceCombineReqVL.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceCombineReqVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceCombinReqAS.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceCombinReqEO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceEO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceLineEO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceLineTypeLovVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceLineVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceReviseVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceSalesRepSplitsEO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceSalesRepSplitsVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceStatusLovVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceStyleLovVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceToInvoiceActivityAS.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceToInvoiceApprovalActivityVL.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceToInvoiceAuditAS.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceToInvoiceAuditVL.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceToInvoiceChangeActivityVL.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceToInvoiceLineAS.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceToInvoiceLineVL.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceToInvoiceSalesRepSplitsAS.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceToInvoiceSalesRepSplitVL.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceTrxTypeLovVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceVoidVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/PaymentTermLovVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/PrimaryProductTypeLovVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/SalesRepLovVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/SearchCombineReqVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/SearchInvoiceAM.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/SearchInvoiceLovVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/SearchInvoiceVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/SecCustomerLovVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/server.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/XxbsCombineReqCustTrxFkAssoc.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/XxbsCombineReqCutTrxFkAssoc.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoicestyle/server/InvoiceStyleAM.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoicestyle/server/InvoiceStyleEO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoicestyle/server/InvoiceStyleLangLovVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoicestyle/server/InvoiceStyleStatusLovVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoicestyle/server/InvoiceStyleVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoicestyle/server/SearchInvoiceStyleVO.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.JdvXmlNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoicestyle/server/server.xml"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.ui.JdxXcfgNode"/><url n="nodeURL" path="mycompany/oracle/apps/fnd/framework/toolbox/schema/server/common/bc4j.xcfg"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.ui.JdxXcfgNode"/><url n="nodeURL" path="mycompany/oracle/apps/fnd/framework/toolbox/tutorial/server/common/bc4j.xcfg"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.ui.JdxXcfgNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/common/bc4j.xcfg"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.ui.JdxXcfgNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/lov/server/common/bc4j.xcfg"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.ui.JdxXcfgNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/poplist/server/common/bc4j.xcfg"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.ui.JdxXcfgNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/samplelib/server/common/bc4j.xcfg"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.ui.JdxXcfgNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/common/bc4j.xcfg"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.ui.JdxXcfgNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/common/bc4j.xcfg"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.ui.JdxXcfgNode"/><url n="nodeURL" path="testing/oracle/apps/ak/hello/server/common/bc4j.xcfg"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.ui.JdxXcfgNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/common/bc4j.xcfg"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jbo.dt.jdevx.ui.JdxXcfgNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoicestyle/server/common/bc4j.xcfg"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="mycompany/oracle/apps/fnd/framework/toolbox/schema/server/MyCompanyPurchaseOrderHeaderEOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="mycompany/oracle/apps/fnd/framework/toolbox/schema/server/MyCompanyPurchaseOrderLinesEOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="mycompany/oracle/apps/fnd/framework/toolbox/tutorial/server/MyCompanyPoSummaryVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/DebugALabAMImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/DebugBLabAMImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/DebugLabAMImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/DebugLabEmpFullVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/DebugLabEmpFullVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/DebugLabEmpSummaryVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/DebugLabEmpSummaryVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/EmployeeAMImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/EmployeeFullVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/EmployeeFullVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/EmployeeSummaryVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/EmployeesVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/EmployeesVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/FlexfieldAMImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/GanttAMImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/ItemDetailsVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/ItemDetailsVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/ItemSummaryVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/PositionGraphVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/PositionGraphVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/SupplierSAMImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/SupplierSitesSVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/SupplierSitesSVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/SuppliersSVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/SuppliersSVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/TaskDetailsVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/TaskListVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/server/TaskListVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/Supplier.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/SupplierFilter.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/SupplierService.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/SupplierSite.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/labsolutions/SupplierSiteFilter.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/lov/server/AllPOsExpVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/lov/server/EmployeeNamesVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/lov/server/EmployeesLOVVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/lov/server/LabSolutionsLOVAMImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/lov/server/SupplierSitesLOVVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/lov/server/SuppliersLOVVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/lov/server/ValidBuyersExpVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/lov/server/ValidBuyersExpVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/poplist/server/CarriersVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/poplist/server/CreatedListVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/poplist/server/CurrencyVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/poplist/server/HomeSearchObjectsVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/poplist/server/LookupTypesVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/poplist/server/OrderStatusesVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/poplist/server/OrderStatusesVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/poplist/server/PaymentTermsVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/poplist/server/PositionsVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/poplist/server/StatusListVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/poplist/server/StatusListVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/poplist/server/UnitsOfMeasureVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/poplist/server/YesNoVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/samplelib/server/DepartmentEmpsVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/samplelib/server/DepartmentEmpsVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/samplelib/server/EmployeesVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/samplelib/server/EmployeesVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/samplelib/server/LookupCodesVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/samplelib/server/LookupCodesVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/samplelib/server/PurchaseOrderHeadersVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/samplelib/server/PurchaseOrderHeadersVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/samplelib/server/PurchaseOrderPPRVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/samplelib/server/SampleBrowserAMImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/samplelib/server/SampleBrowserPVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/samplelib/server/SimpleEmployeesVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/samplelib/server/SimpleEmployeesVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/samplelib/server/SupplierSitesVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/samplelib/server/SupplierSitesVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/samplelib/server/SuppliersVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/samplelib/server/SuppliersVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/AddressEOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/EmployeeEOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/EmployeeVVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/EmployeeVVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/EmpNameForIdVVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/EmpNameForIdVVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/IdForEmpNameVVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/IdForEmpNameVVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/IdForSupplierNameVVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/IdForSupplierNameVVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/IdForSupplierSiteVVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/IdForSupplierSiteVVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/ItemEOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/ItemFlexfieldEOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/LookupCodeEOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/LookupCodeTLEOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/LookupCodeVVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/LookupCodeVVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/MaxPoLineVVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/MaxPoLineVVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/MaxPoShipVVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/MaxPoShipVVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/OrderTotalVVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/OrderTotalVVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/PoLineNumVVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/PoLineNumVVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/PoShipNumVVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/PoShipNumVVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/PositionVVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/PositionVVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/PurchaseOrderHeaderEOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/PurchaseOrderLineEOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/PurchaseOrderPPREOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/PurchaseOrderShipmentEOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/SiteIdPoVVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/SiteIdPoVVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/SiteIdVVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/SiteIdVVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/SiteNameForIdVVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/SiteNameForIdVVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/SupNameForIdVVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/SupNameForIdVVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/SupplierEOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/SupplierIdPoVVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/SupplierIdPoVVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/SupplierIdVVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/SupplierIdVVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/SupplierNameVVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/SupplierNameVVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/schema/server/SupplierSiteEOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/Buyer.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/BuyerFilter.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/PurchaseOrder.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/PurchaseOrderAcknowledgement.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/PurchaseOrderFilter.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/PurchaseOrderLine.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/PurchaseOrderLineFilter.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/PurchaseOrderReceipt.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/PurchaseOrderService.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/PurchaseOrderShipment.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/PurchaseOrderShipmentFilter.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/BuyersDVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/CreateAMImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/HomeAMImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/LookupCodesVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/LookupCodesVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/MultistepCreateAMImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PoDetailsFullExpVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PoDetailsFullVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PoDetailsFullVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PoHeaderSimpleVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PoLinesExpVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PoLinesExpVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PoLineShipFullVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PoLineShipFullVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PoSimpleSummaryVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PoSimpleSummaryVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PoSummaryAMImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PoSummarySimpleExpVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PoSummarySimpleExpVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PoSummaryVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PoSummaryVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PurchaseOrderAcknowledgementsSVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PurchaseOrderAcknowledgementsSVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PurchaseOrderLinesSVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PurchaseOrderLinesSVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PurchaseOrderReceiptsSVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PurchaseOrderReceiptsSVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PurchaseOrderSAMImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PurchaseOrderShipmentsSVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PurchaseOrderShipmentsSVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PurchaseOrdersSVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/PurchaseOrdersSVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/SearchAMImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/SupplierAndSitesDVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/SuppliersExpVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/SuppliersExpVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/SupplierSummaryVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/SupplierSummaryVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/SuppliersVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/SuppliersVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/server/UpdateAMImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/SupplierAndSite.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="oracle/apps/fnd/framework/toolbox/tutorial/SupplierAndSiteFilter.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="testing/oracle/apps/ak/hello/server/HelloAMImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/ActiveBillerLovVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/CurrencyLovVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/CustomerAddressLovVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/CustomerContactLovVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/CustomerLovVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/GLPeriodNameLovVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceActivityEOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceApprovalActivityVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceApprovalReasonLovVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceAuditEOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceAuditVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceChangeActivityVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceCombineReqDtlEOCollImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceCombineReqDtlEOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceCombineReqDtlVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceCombineReqEOCollImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceCombineReqEOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceCombineReqStatusLovVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceCombineRequestAMImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceCombineReqVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceCombinReqEOCollImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceCombinReqEOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceEOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceLineEOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceLineTypeLovVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceLineVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceReviseVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceSalesRepSplitsEOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceSalesRepSplitsVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceStatusLovVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceStyleLovVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceTrxTypeLovVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceVoidVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/InvoiceVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/PaymentTermLovVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/PrimaryProductTypeLovVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/SalesRepLovVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/SearchCombineReqVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/SearchInvoiceAMImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/SearchInvoiceLovVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/SearchInvoiceVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoice/server/SecCustomerLovVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoicestyle/server/InvoiceStyleAMImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoicestyle/server/InvoiceStyleEOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoicestyle/server/InvoiceStyleLangLovVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoicestyle/server/InvoiceStyleStatusLovVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoicestyle/server/InvoiceStyleVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoicestyle/server/InvoiceStyleVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoicestyle/server/SearchInvoiceStyleVOImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+      <hash><value n="nodeClass" v="oracle.jdeveloper.model.JavaSourceNode"/><url n="nodeURL" path="toppanmerrill/oracle/apps/xxtm/cb/invoicestyle/server/SearchInvoiceStyleVORowImpl.java"/><value n="ownerClass" v="oracle.jbo.dt.jdevx.ui.JdxAppNode"/><url n="ownerURL" path="OAProject1.jpx"/></hash>
+   </list>
+</jpr:project>

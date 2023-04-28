@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding='windows-1252'?>
+<!DOCTYPE JboProject SYSTEM "jbo_03_01.dtd">
+
+<JboProject
+   Name="ExtendLabSolutions"
+   SeparateXMLFiles="true"
+   PackageName="" >
+   <DesignTime>
+      <Attr Name="_version" Value="9.0.3.11.64" />
+      <Attr Name="_jprName" Value="ExtendLabSolutions.jpr" />
+      <Attr Name="_ejbPackage" Value="false" />
+      <Attr Name="_NamedConnection" Value="" />
+   </DesignTime>
+   <Containee
+      Name="server"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.server"
+      ObjectType="JboPackage" >
+   </Containee>
+   <Containee
+      Name="server"
+      FullName="oracle.apps.fnd.framework.toolbox.poplist.server.server"
+      ObjectType="JboPackage" >
+   </Containee>
+   <Containee
+      Name="server"
+      FullName="oracle.apps.fnd.framework.toolbox.lov.server.server"
+      ObjectType="JboPackage" >
+   </Containee>
+   <Containee
+      Name="server"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.server"
+      ObjectType="JboPackage" >
+   </Containee>
+   <Containee
+      Name="server"
+      FullName="mycompany.oracle.apps.fnd.framework.toolbox.schema.server.server"
+      ObjectType="JboPackage" >
+   </Containee>
+   <Containee
+      Name="server"
+      FullName="mycompany.oracle.apps.fnd.framework.toolbox.tutorial.server.server"
+      ObjectType="JboPackage" >
+   </Containee>
+   <Substitutes>
+      <Substitute OldName ="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderHeaderEO" NewName ="mycompany.oracle.apps.fnd.framework.toolbox.schema.server.MyCompanyPurchaseOrderHeaderEO" />
+      <Substitute OldName ="oracle.apps.fnd.framework.toolbox.tutorial.server.PoSummaryVO" NewName ="mycompany.oracle.apps.fnd.framework.toolbox.tutorial.server.MyCompanyPoSummaryVO" />
+      <Substitute OldName ="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderLineEO" NewName ="mycompany.oracle.apps.fnd.framework.toolbox.schema.server.MyCompanyPurchaseOrderLinesEO" />
+   </Substitutes>
+</JboProject>

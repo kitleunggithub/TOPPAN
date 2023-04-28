@@ -1,0 +1,57 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <content>
+      <oa:pageLayout id="PageLayoutRN" amDefName="toppanmerrill.oracle.apps.xxtm.cb.invoicestyle.server.InvoiceStyleAM" windowTitle="Invoice Style Detail Window" title="Invoice Style Detail" controllerClass="toppanmerrill.oracle.apps.xxtm.cb.invoicestyle.webui.UpdateInvoiceStyleCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:header id="StyleHeaderTitleRN" text="Style Header"/>
+            <oa:messageComponentLayout id="MainRN" columns="2" fieldWidth="100%" rows="2">
+               <ui:contents>
+                  <oa:messageTextInput id="StyleName" prompt="Style Name" columns="40" maximumLength="50" viewAttr="InvoiceStyleName" viewName="InvoiceStyleVO1" required="yes"/>
+                  <oa:messageChoice id="Language" viewName="InvoiceStyleVO1" viewAttr="Language" prompt="Language" styleClass="OraFieldText" pickListViewDef="toppanmerrill.oracle.apps.xxtm.cb.invoicestyle.server.InvoiceStyleLangLovVO" pickListDispAttr="LangDescription" pickListValAttr="LangValue" required="yes"/>
+                  <oa:messageTextInput id="InactiveDate" dataType="DATE" viewName="InvoiceStyleVO1" viewAttr="InactiveDate" prompt="Inactive Date"/>
+               </ui:contents>
+            </oa:messageComponentLayout>
+            <oa:header id="HeaderInfoTitleRN" text="Header Info"/>
+            <oa:messageComponentLayout id="HeaderInfoRN" fieldWidth="100%" columns="2" rows="2">
+               <ui:contents>
+                  <oa:messageTextInput id="HeadInvoiceNumber" prompt="Invoice Number" maximumLength="240" columns="80" viewName="InvoiceStyleVO1" viewAttr="HeadInvoiceNumber"/>
+                  <oa:messageTextInput id="HeadInvoiceDate" prompt="Invoice Date" maximumLength="240" columns="80" rows="1" viewName="InvoiceStyleVO1" viewAttr="HeadInvoiceDate"/>
+                  <oa:messageTextInput id="HeadOurOrderNumber" prompt="Our Order Number" maximumLength="240" columns="80" rows="1" viewName="InvoiceStyleVO1" viewAttr="HeadOurOrderNumber"/>
+                  <oa:messageTextInput id="HeadCustOrderNumber" prompt="Cust Order Number" maximumLength="240" columns="80" rows="1" viewName="InvoiceStyleVO1" viewAttr="HeadCustOrderNumber"/>
+                  <oa:messageTextInput id="HeadAttention" prompt="Attn" maximumLength="240" columns="80" viewName="InvoiceStyleVO1" viewAttr="HeadAttention"/>
+                  <oa:messageTextInput id="HeadDateReceived" prompt="Date Received" maximumLength="240" columns="80" rows="1" viewName="InvoiceStyleVO1" viewAttr="HeadDateReceived"/>
+                  <oa:messageTextInput id="HeadSalesperson" prompt="Sales Person" maximumLength="240" columns="80" rows="1" viewName="InvoiceStyleVO1" viewAttr="HeadSalesperson"/>
+                  <oa:messageTextInput id="HeadTerms" prompt="Terms" maximumLength="240" columns="80" rows="1" viewName="InvoiceStyleVO1" viewAttr="HeadTerms"/>
+                  <oa:messageTextInput id="HeadEmail" prompt="Email" maximumLength="240" columns="80" rows="1" viewName="InvoiceStyleVO1" viewAttr="HeadEmail"/>
+               </ui:contents>
+            </oa:messageComponentLayout>
+            <oa:header id="DetailInfoTitleRN" text="Detail Info"/>
+            <oa:messageComponentLayout id="DetailInfoRN" fieldWidth="100%" columns="2" rows="2">
+               <ui:contents>
+                  <oa:messageTextInput id="DetailSubtotalPretax" prompt="Subtotal" maximumLength="240" columns="80" rows="1" viewName="InvoiceStyleVO1" viewAttr="DetailSubtotalPretax"/>
+                  <oa:messageTextInput id="DetailFreight" prompt="Freight" maximumLength="240" columns="80" rows="1" viewName="InvoiceStyleVO1" viewAttr="DetailFreight"/>
+                  <oa:messageTextInput id="DetailTax" prompt="Tax" maximumLength="240" columns="80" rows="1" viewName="InvoiceStyleVO1" viewAttr="DetailTax"/>
+                  <oa:messageTextInput id="DetailPostage" prompt="Postage" maximumLength="240" columns="80" rows="1" viewName="InvoiceStyleVO1" viewAttr="DetailPostage"/>
+                  <oa:messageTextInput id="DetailTotalInvoice" prompt="Total Invoice" maximumLength="240" columns="80" rows="1" viewName="InvoiceStyleVO1" viewAttr="DetailTotalInvoice"/>
+               </ui:contents>
+            </oa:messageComponentLayout>
+            <oa:header id="FooterInfoTitleRN" text="Footer Info"/>
+            <oa:messageComponentLayout id="FooterInfoRN" fieldWidth="100%" columns="2" rows="1">
+               <ui:contents>
+                  <oa:messageTextInput id="FootLeft" prompt="Left" maximumLength="4000" columns="85" rows="6" viewName="InvoiceStyleVO1" viewAttr="FootLeft"/>
+                  <oa:messageTextInput id="FootRight" prompt="Right" maximumLength="4000" columns="85" rows="6" viewName="InvoiceStyleVO1" viewAttr="FootRight"/>
+               </ui:contents>
+            </oa:messageComponentLayout>
+            <oa:pageButtonBar id="PageButtons">
+               <ui:contents>
+                  <oa:submitButton id="Back" unvalidated="true" warnAboutChanges="true" text="Back" prompt="Back"/>
+                  <oa:submitButton id="Save" text="Save" prompt="Save" rendered="true"/>
+               </ui:contents>
+            </oa:pageButtonBar>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>

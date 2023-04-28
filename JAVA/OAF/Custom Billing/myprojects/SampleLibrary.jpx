@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding='windows-1252'?>
+<!DOCTYPE JboProject SYSTEM "jbo_03_01.dtd">
+
+<JboProject
+   Name="SampleLibrary"
+   SeparateXMLFiles="true"
+   PackageName="" >
+   <DesignTime>
+      <Attr Name="_version" Value="9.0.3.11.44" />
+      <Attr Name="_jprName" Value="SampleLibrary.jpr" />
+      <Attr Name="_ejbPackage" Value="false" />
+      <Attr Name="_NamedConnection" Value="" />
+   </DesignTime>
+   <Containee
+      Name="server"
+      FullName="oracle.apps.fnd.framework.toolbox.samplelib.server.server"
+      ObjectType="JboPackage" >
+   </Containee>
+   <Containee
+      Name="server"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.server"
+      ObjectType="JboPackage" >
+   </Containee>
+   <Containee
+      Name="server"
+      FullName="oracle.apps.fnd.framework.toolbox.lov.server.server"
+      ObjectType="JboPackage" >
+   </Containee>
+   <Containee
+      Name="server"
+      FullName="oracle.apps.fnd.framework.toolbox.poplist.server.server"
+      ObjectType="JboPackage" >
+   </Containee>
+</JboProject>

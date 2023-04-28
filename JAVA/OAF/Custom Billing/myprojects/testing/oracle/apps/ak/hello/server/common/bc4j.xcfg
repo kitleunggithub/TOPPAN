@@ -1,0 +1,27 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig>
+   <AppModuleConfigBag>
+      <AppModuleConfig name="HelloAMLocal">
+         <DeployPlatform>LOCAL</DeployPlatform>
+         <JDBCName>TM_DEV</JDBCName>
+         <jbo.project>OAProject1</jbo.project>
+         <AppModuleJndiName>testing.oracle.apps.ak.hello.server.HelloAM</AppModuleJndiName>
+         <java.naming.factory.initial>oracle.jbo.common.JboInitialContextFactory</java.naming.factory.initial>
+         <ApplicationName>testing.oracle.apps.ak.hello.server.HelloAM</ApplicationName>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <ConnectionDefinition name="TM_DEV">
+      <ENTRY name="JDBC_PORT" value="1531"/>
+      <ENTRY name="ConnectionType" value="JDBC"/>
+      <ENTRY name="HOSTNAME" value="10.25.0.11"/>
+      <ENTRY name="user" value="APPS"/>
+      <ENTRY name="ConnectionName" value="TM_DEV"/>
+      <ENTRY name="ServiceName" value="ebs_TMERPDEV"/>
+      <ENTRY name="JdbcDriver" value="oracle.jdbc.OracleDriver"/>
+      <ENTRY name="password">
+         <![CDATA[{904}0573EA82E9C4D0664C133807164072DB7033F35E2F210DC66D]]>
+      </ENTRY>
+      <ENTRY name="ORACLE_JDBC_TYPE" value="thin"/>
+      <ENTRY name="DeployPassword" value="true"/>
+   </ConnectionDefinition>
+</BC4JConfig>

@@ -1,0 +1,258 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+
+<Entity
+   Name="InvoiceAuditEO"
+   DBObjectType="synonym"
+   DBObjectName="XXBS_TRX_AUDITS"
+   AliasName="InvoiceAuditEO"
+   BindingStyle="OracleName"
+   UseGlueCode="false"
+   RowClass="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceAuditEOImpl"
+   DefClass="oracle.apps.fnd.framework.server.OAEntityDefImpl"
+   CollClass="oracle.apps.fnd.framework.server.OAEntityCache" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+      <AttrArray Name="_publishEvents">
+      </AttrArray>
+      <Attr Name="_panelSchema" Value="table|alias" />
+      <Attr Name="_codeGenFlag2" Value="Access" />
+   </DesignTime>
+   <Attribute
+      Name="TrxAuditId"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      ColumnName="TRX_AUDIT_ID"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXBS_TRX_AUDITS"
+      PrimaryKey="true" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="CustomerTrxId"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      ColumnName="CUSTOMER_TRX_ID"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXBS_TRX_AUDITS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="ProblemDesc"
+      IsNotNull="true"
+      Precision="4000"
+      ColumnName="PROBLEM_DESC"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXBS_TRX_AUDITS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="4000" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="FixDesc"
+      Precision="4000"
+      ColumnName="FIX_DESC"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      SQLType="VARCHAR"
+      TableName="XXBS_TRX_AUDITS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="4000" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="CreatedBy"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      ColumnName="CREATED_BY"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXBS_TRX_AUDITS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="CreationDate"
+      IsNotNull="true"
+      ColumnName="CREATION_DATE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="TIMESTAMP"
+      TableName="XXBS_TRX_AUDITS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LastUpdatedBy"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      ColumnName="LAST_UPDATED_BY"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXBS_TRX_AUDITS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LastUpdateDate"
+      IsNotNull="true"
+      ColumnName="LAST_UPDATE_DATE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="TIMESTAMP"
+      TableName="XXBS_TRX_AUDITS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LastUpdateLogin"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      ColumnName="LAST_UPDATE_LOGIN"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXBS_TRX_AUDITS" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <AccessorAttribute
+      Name="InvoiceEO"
+      Association="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceToInvoiceAuditAS"
+      AssociationEnd="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceToInvoiceAuditAS.InvoiceEO"
+      AssociationOtherEnd="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceToInvoiceAuditAS.InvoiceAuditEO"
+      Type="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceEOImpl" >
+   </AccessorAttribute>
+   <Key
+      Name="SysC00284364" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceAuditEO.TrxAuditId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;TRX_AUDIT_ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00284364" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00284365" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceAuditEO.CustomerTrxId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CUSTOMER_TRX_ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00284365" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00284366" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceAuditEO.ProblemDesc" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;PROBLEM_DESC&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00284366" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00284367" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceAuditEO.CreatedBy" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATED_BY&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00284367" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00284368" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceAuditEO.CreationDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATION_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00284368" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00284369" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceAuditEO.LastUpdatedBy" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;LAST_UPDATED_BY&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00284369" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00284370" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceAuditEO.LastUpdateDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;LAST_UPDATE_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00284370" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00284371" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceAuditEO.LastUpdateLogin" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;LAST_UPDATE_LOGIN&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00284371" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="XxbsTrxAuditsU1" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceAuditEO.TrxAuditId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_isPrimary" Value="true" />
+         <Attr Name="_DBObjectName" Value="XXBS_TRX_AUDITS_U1" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="XiaXctFk" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceAuditEO.CustomerTrxId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_referencedKey" Value="XXBS_CUSTOMER_TRX_U1" />
+         <Attr Name="_isForeign" Value="true" />
+         <Attr Name="_DBObjectName" Value="XIA_XCT_FK" />
+      </DesignTime>
+   </Key>
+</Entity>

@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath:~PROD:~PATH:~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath:~PROD:mds:directory  -->
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="9.0.3.8.9_1018" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header: TreeStartFrmPG.xml 120.5 2005/07/12 12:08:38 atgops1 noship $">
+   <content>
+      <oa:pageLayout id="MainRN" amDefName="oracle.apps.fnd.framework.toolbox.samplelib.server.SampleBrowserAM" controllerClass="oracle.apps.fnd.framework.toolbox.samplelib.webui.TreeStartFrameCO">
+         <ui:contents>
+            <oa:tree id="TreeRN" usage="tree">
+               <members>
+                  <oa:nodeDef id="ManagerNode" viewName="SimpleEmployeesVO1" viewAttr="FullName" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/samplelib/webui/TreeCenterFrmPG&amp;employeeId={@EmployeeId}&amp;OAPLRS=PLNH" targetFrame="OACFr"/>
+                  <oa:childNode id="EmployeesNode" viewLinkAccessorName="DirectReports" ancestorNode="/oracle/apps/fnd/framework/toolbox/samplelib/webui/TreeStartFrmPG.TreeRN"/>
+               </members>
+            </oa:tree>
+         </ui:contents>
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+      </oa:pageLayout>
+   </content>
+</page>

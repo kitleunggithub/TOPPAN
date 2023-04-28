@@ -1,0 +1,482 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <content>
+      <oa:pageLayout id="pageLayout" controllerClass="toppanmerrill.oracle.apps.xxtm.cb.invoice.webui.InvoiceDetailCO" amDefName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SearchInvoiceAM" warnAboutChanges="true">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:formValue id="OrganizationIdFD" viewName="InvoiceVO1" viewAttr="OrgId" dataType="NUMBER"/>
+            <oa:formValue id="SetOfBooksIdFD" viewName="InvoiceVO1" viewAttr="CustomerTrxId" dataType="NUMBER"/>
+            <oa:formValue id="ProjectIdFD" viewName="InvoiceVO1" viewAttr="OriginalProjectId" dataType="NUMBER"/>
+            <oa:formValue id="TransactionTypeIdFD" viewName="InvoiceVO1" viewAttr="CustTrxTypeId" dataType="NUMBER"/>
+            <oa:formValue id="CustomerIdFD" viewName="InvoiceVO1" viewAttr="BillToCustomerId" dataType="NUMBER"/>
+            <oa:formValue id="BillerToAddressIdFD" viewName="InvoiceVO1" viewAttr="BillToAddressId" dataType="NUMBER"/>
+            <oa:formValue id="SecCustomerIdFD" viewName="InvoiceVO1" viewAttr="SecBillToCustomerId" dataType="NUMBER"/>
+            <oa:formValue id="BillToContactId" viewName="InvoiceVO1" viewAttr="BillToContactId" dataType="NUMBER"/>
+            <oa:subTabLayout id="InvoiceMainTabRN" adminCustomizable="false" selectedIndex="1">
+               <ui:subTabs>
+                  <oa:subTabBar id="InvoiceTabBar">
+                     <ui:contents>
+                        <oa:link id="InvoiceBillingInputLK" text="Summary" destination="OA.jsp?page=/toppanmerrill/oracle/apps/xxtm/cb/invoice/webui/InvoiceDetailPG&amp;retainAM='Y'&quot;+&quot;&amp;&quot;+OASubTabLayoutBean.OA_SELECTED_SUBTAB_IDX+&quot;=&quot;+0"/>
+                        <oa:link id="InvoiceControlLK" text="Invoice Control" destination="OA.jsp?page=/toppanmerrill/oracle/apps/xxtm/cb/invoice/webui/InvoiceDetailPG&amp;retainAM='Y'&quot;+&quot;&amp;&quot;+OASubTabLayoutBean.OA_SELECTED_SUBTAB_IDX+&quot;=&quot;+1"/>
+                        <!--
+                        <oa:link id="InvoiceActivityHistoryLK" text="Activity History" destination="OA.jsp?page=/toppanmerrill/oracle/apps/xxtm/cb/invoice/webui/InvoiceDetailPG&amp;retainAM='Y'&quot;+&quot;&amp;&quot;+OASubTabLayoutBean.OA_SELECTED_SUBTAB_IDX+&quot;=&quot;+2"/>
+                        <oa:link id="InvoiceApprovalHistoryLK" text="Approval History" destination="OA.jsp?page=/toppanmerrill/oracle/apps/xxtm/cb/invoice/webui/InvoiceDetailPG&amp;retainAM='Y'&quot;+&quot;&amp;&quot;+OASubTabLayoutBean.OA_SELECTED_SUBTAB_IDX+&quot;=&quot;+3"/>
+                        <oa:link id="InvoiceAuditLK" text="Audit" destination="OA.jsp?page=/toppanmerrill/oracle/apps/xxtm/cb/invoice/webui/InvoiceDetailPG&amp;retainAM='Y'&quot;+&quot;&amp;&quot;+OASubTabLayoutBean.OA_SELECTED_SUBTAB_IDX+&quot;=&quot;+4"/>
+                        <oa:link id="InvoiceAttachmentLK" text="Attachment" destination="OA.jsp?page=/toppanmerrill/oracle/apps/xxtm/cb/invoice/webui/InvoiceDetailPG&amp;retainAM='Y'&quot;+&quot;&amp;&quot;+OASubTabLayoutBean.OA_SELECTED_SUBTAB_IDX+&quot;=&quot;+5"/>
+						-->
+                     </ui:contents>
+                  </oa:subTabBar>
+               </ui:subTabs>
+               <ui:contents>
+                  <oa:stackLayout id="InvoiceBillingInputTabRN" adminCustomizable="false">
+                     <ui:contents>
+                        <oa:header id="InvoiceHeaderTitleRN" text="Invoice Header"/>
+                        <oa:messageComponentLayout id="InvoiceHeaderRN" columns="2" rows="4">
+                           <ui:contents>
+                              <oa:messageTextInput id="TransactionNumberFD" prompt="Transaction Number" readOnly="true" viewName="InvoiceVO1" viewAttr="ArTrxNumber" required="yes"/>
+                              <oa:messageTextInput id="TransactionTypeFD" prompt="Transaction Type" viewName="InvoiceVO1" viewAttr="CustTrxType" readOnly="true" required="yes"/>
+                              <oa:messageTextInput id="CurrentStatusFD" prompt="Current Status" readOnly="true" viewName="InvoiceVO1" viewAttr="CurrentStatusDescription" required="yes"/>
+                              <oa:messageLovInput id="GLPeriodFD" prompt="GL Period" viewName="InvoiceVO1" viewAttr="PeriodName" externalListOfValues="/toppanmerrill/oracle/apps/xxtm/cb/invoice/webui/GLPeriodNameLovRN" required="yes">
+                                 <lovMappings>
+                                    <lovMap id="lovMapGLPeriodFD1" lovItem="PeriodName" resultTo="GLPeriodFD" criteriaFrom="GLPeriodFD" programmaticQuery="false"/>
+                                    <lovMap id="lovMapGLPeriodFD2" lovItem="SetOfBooksId" criteriaFrom="SetOfBooksIdFD" programmaticQuery="false" requiredForLOV="false"/>
+                                 </lovMappings>
+                              </oa:messageLovInput>
+                              <oa:messageTextInput id="TransactionDateFD" prompt="Transaction Date" dataType="DATE" viewName="InvoiceVO1" viewAttr="TrxDate" required="yes"/>
+                              <oa:messageTextInput id="InvoiceClassFD" prompt="Invoice Class" viewName="InvoiceVO1" viewAttr="InvoiceClassDescription" readOnly="true" required="yes"/>
+                              <oa:messageTextInput id="StatusDateFD" prompt="Status Date" dataType="DATE" readOnly="true" viewName="InvoiceVO1" viewAttr="CurrentStatusDate" required="no"/>
+                           </ui:contents>
+                        </oa:messageComponentLayout>
+                        <oa:header id="InvoiceProjectTitleRN" text="Project Info"/>
+                        <oa:messageComponentLayout id="InvoiceProjectRN" columns="2" rows="3">
+                           <ui:contents>
+                              <oa:messageTextInput id="OrganizationFD" prompt="Organization" readOnly="true" viewName="InvoiceVO1" viewAttr="OrganizationName"/>
+                              <oa:messageTextInput id="ProjectNumberFD" prompt="Project Number" readOnly="true" viewName="InvoiceVO1" viewAttr="ProjectNumber"/>
+                              <oa:messageChoice id="ProjectProductTypeFD" prompt="Primary Product Type" dataType="NUMBER" viewName="InvoiceVO1" viewAttr="PrimaryProductTypeId" readOnly="true" pickListViewDef="" pickListDispAttr="Name" pickListValAttr="MemoLineId" pickListViewName="PrimaryProductTypeLovVO1"/>
+                              <oa:messageTextInput id="PrimaryProjectOrgFD" prompt="Primary Project Org" readOnly="true" viewName="InvoiceVO1" viewAttr="PriProjOrgName"/>
+                              <oa:messageTextInput id="ProjectNameFD" prompt="Project Name" readOnly="true" viewName="InvoiceVO1" viewAttr="ProjectName"/>
+                           </ui:contents>
+                        </oa:messageComponentLayout>
+                        <oa:header id="InvoiceCustomerTitleRN" text="Customer Info"/>
+                        <oa:messageComponentLayout id="InvoiceCustomerRN" rows="6" columns="2">
+                           <ui:contents>
+                              <oa:messageLovInput id="BillToCustomerNumberFD" prompt="Bill to Cust Number" viewName="InvoiceVO1" viewAttr="CustomerNumber" externalListOfValues="/toppanmerrill/oracle/apps/xxtm/cb/invoice/webui/CustomerLovRN" required="yes">
+                                 <lovMappings>
+                                    <lovMap id="lovMapBillToCustomerNumberFD1" lovItem="CustAccountId" resultTo="CustomerIdFD"/>
+                                    <lovMap id="lovMapBillToCustomerNumberFD2" lovItem="PartyName" resultTo="BillToCustomerNameFD"/>
+                                    <lovMap id="lovMapBillToCustomerNumberFD3" lovItem="AccountNumber" criteriaFrom="BillToCustomerNumberFD" resultTo="BillToCustomerNumberFD"/>
+                                    <lovMap id="lovMapBillToCustomerNumberFD4" lovItem="PaymentTermId" resultTo="TermsFD"/>
+                                 </lovMappings>
+                              </oa:messageLovInput>
+                              <oa:messageLovInput id="SecondaryBillToCustomerNumberFD" prompt="Secondary Bill to Cust Num" viewName="InvoiceVO1" viewAttr="SecCustomerNumber" externalListOfValues="/toppanmerrill/oracle/apps/xxtm/cb/invoice/webui/CustomerLovRN">
+                                 <lovMappings>
+                                    <lovMap id="lovMapSecondaryBillToCustomerNumberFD1" lovItem="CustAccountId" resultTo="SecCustomerIdFD"/>
+                                    <lovMap id="lovMapSecondaryBillToCustomerNumberFD2" lovItem="PartyName" resultTo="SecondaryBillToCustomerNameFD"/>
+                                    <lovMap id="lovMapSecondaryBillToCustomerNumberFD3" lovItem="AccountNumber" criteriaFrom="SecondaryBillToCustomerNumberFD" resultTo="SecondaryBillToCustomerNumberFD"/>
+                                 </lovMappings>
+                              </oa:messageLovInput>
+                              <oa:messageLovInput id="AttendeeFD" prompt="Attendee" viewName="InvoiceVO1" viewAttr="ContactFullName" externalListOfValues="/toppanmerrill/oracle/apps/xxtm/cb/invoice/webui/CustomerContactLovRN">
+                                 <lovMappings>
+                                    <lovMap id="lovMapAttendeeFD1" lovItem="CustAccountRoleId" resultTo="BillToContactId"/>
+                                    <lovMap id="lovMapAttendeeFD2" lovItem="EmailAddress" resultTo="EmailFD"/>
+                                    <lovMap id="lovMapAttendeeFD3" lovItem="PersonFullName" criteriaFrom="AttendeeFD" resultTo="AttendeeFD"/>
+                                    <lovMap id="lovMapAttendeeFD4" lovItem="CustAccountId" criteriaFrom="CustomerIdFD" requiredForLOV="false"/>
+                                 </lovMappings>
+                              </oa:messageLovInput>
+                              <oa:messageTextInput id="EmailFD" prompt="Email" viewName="InvoiceVO1" viewAttr="EmailAddress" readOnly="true"/>
+                              <oa:messageLovInput id="BillerToAddressFD" prompt="Biller to Address" viewName="InvoiceVO1" viewAttr="Address1" externalListOfValues="/toppanmerrill/oracle/apps/xxtm/cb/invoice/webui/CustomerAddressLovRN" required="yes">
+                                 <lovMappings>
+                                    <lovMap id="lovMapBillerToAddressFD1" lovItem="Address1" resultTo="BillerToAddressFD" programmaticQuery="true"/>
+                                    <lovMap id="lovMapBillerToAddressFD2" lovItem="CustAcctSiteId" resultTo="BillerToAddressIdFD"/>
+                                    <lovMap id="lovMapBillerToAddressFD3" lovItem="CustAccountId" criteriaFrom="CustomerIdFD" requiredForLOV="false"/>
+                                 </lovMappings>
+                              </oa:messageLovInput>
+                              <oa:messageChoice id="TermsFD" prompt="Terms" pickListViewDef="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.PaymentTermLovVO" pickListDispAttr="Name" pickListValAttr="TermId" dataType="NUMBER" viewName="InvoiceVO1" viewAttr="TermId"/>
+                              <oa:messageTextInput id="BillToCustomerNameFD" prompt="Bill to Cust Name" viewName="InvoiceVO1" viewAttr="CustomerName" required="no" readOnly="true"/>
+                              <oa:messageTextInput id="SecondaryBillToCustomerNameFD" prompt="Secondary Bill to Cust Name" viewName="InvoiceVO1" viewAttr="SecCustomerName" readOnly="true"/>
+                              <oa:messageTextInput id="OtherAttendeeFD" prompt="Other Attendee" viewName="InvoiceVO1" viewAttr="Attendee"/>
+                              <oa:messageTextInput id="OtherEmailFD" prompt="Other Email" viewName="InvoiceVO1" viewAttr="AttendeeEmail"/>
+                              <oa:messageTextInput id="InvoiceAddressFD" prompt="Invoice Address" rows="6" viewName="InvoiceVO1" viewAttr="BillToAddress" readOnly="true"/>
+                           </ui:contents>
+                        </oa:messageComponentLayout>
+                        <oa:header id="InvoiceOthersTitleRN" text="Others"/>
+                        <oa:messageComponentLayout id="InvoiceOthersRN" columns="2" rows="5">
+                           <ui:contents>
+                              <oa:messageChoice id="ActiveBillerFD" prompt="Active Biller" pickListViewDef="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.ActiveBillerLovVO" pickListDispAttr="BillerName" pickListValAttr="BillerId" dataType="NUMBER" viewName="InvoiceVO1" viewAttr="ActiveBillerId" required="yes"/>
+                              <oa:messageTextInput id="CustomerOrderNumberFD" prompt="Customer Order Number" viewName="InvoiceVO1" viewAttr="CustomerOrderNumber"/>
+                              <oa:messageTextInput id="ProjectCompletionDateFD" prompt="Project Completion Date" dataType="DATE" viewName="InvoiceVO1" viewAttr="ProjectCompleteDate"/>
+                              <oa:messageTextInput id="MarginReportSendToSalesDateFD" prompt="Margin Report Send to Sales Date" dataType="DATE" viewName="InvoiceVO1" viewAttr="MarginReportSendDate"/>
+                              <oa:messageChoice id="OriginalBillerFD" prompt="Original Biller" pickListViewDef="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.ActiveBillerLovVO" pickListDispAttr="BillerName" pickListValAttr="BillerId" readOnly="true" dataType="NUMBER" viewName="InvoiceVO1" viewAttr="OwningBillerId" required="yes"/>
+                              <oa:messageTextInput id="DateReceivedDateFD" prompt="Date Received" dataType="DATE" viewName="InvoiceVO1" viewAttr="DateReceived"/>
+                              <oa:messageTextInput id="CostSummarySendToSalesDateFD" prompt="Cost Summary Send to Sales Date" dataType="DATE" viewName="InvoiceVO1" viewAttr="CostSumSendDate"/>
+                           </ui:contents>
+                        </oa:messageComponentLayout>
+                        <oa:stackLayout id="InvoiceBillerRemarkRN">
+                           <ui:contents>
+                              <oa:messageTextInput id="BillerRemarkFD" prompt="Biller Remark" rows="6" viewName="InvoiceVO1" viewAttr="BillRemark" columns="150"/>
+                           </ui:contents>
+                        </oa:stackLayout>
+                        <!--
+						   <oa:messageComponentLayout id="CustomerRemarkRN" columns="2">
+							  <ui:contents>
+								 <oa:messageStyledText id="Dummy2FD"/>
+							  </ui:contents>
+						   </oa:messageComponentLayout>
+						   -->
+                        <oa:header id="InvoiceCurrenyTitleRN" text="Curreny Info"/>
+                        <oa:messageComponentLayout id="InvoiceCurrenyRN" columns="2" rows="3">
+                           <ui:contents>
+                              <oa:messageChoice id="BaseCurrenyFD" readOnly="true" prompt="Base Currency" pickListViewDef="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.CurrencyLovVO" pickListDispAttr="CurrencyCode" pickListValAttr="CurrencyCode" viewName="InvoiceVO1" viewAttr="CurrencyCode" required="yes"/>
+                              <oa:messageTextInput id="ExchangeRateTypeFD" prompt="Exchange Rate Type" readOnly="true" viewName="InvoiceVO1" viewAttr="ExchangeRateType" required="yes"/>
+                              <oa:messageTextInput id="ExchangeRateFD" prompt="Exchange Rate" viewName="InvoiceVO1" viewAttr="ExchangeRate" required="yes"/>
+                              <oa:messageChoice id="EnteredCurrencyFD" prompt="Entered Currency" pickListViewDef="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.CurrencyLovVO" pickListDispAttr="CurrencyCode" pickListValAttr="CurrencyCode" viewName="InvoiceVO1" viewAttr="EnteredCurrencyCode"/>
+                              <oa:messageTextInput id="ExchangeRateDateFD" prompt="Exchange Rate Date" dataType="DATE" readOnly="true" viewName="InvoiceVO1" viewAttr="ExchangeDate"/>
+                           </ui:contents>
+                        </oa:messageComponentLayout>
+                        <oa:header id="InvoiceSalesRepTitleRN" text="Sales Representative"/>
+                        <oa:advancedTable id="InvoiceSalesRepTE" viewName="InvoiceSalesRepSplitsVO1" adminCustomizable="false" colFreezeEnabled="false" colResizeEnabled="false" colReorderEnabled="false" columnHideShowEnabled="false">
+                           <ui:contents>
+                              <oa:column id="SalesRepSplitsIdCN" rendered="false">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="SalesRepSplitsIdTH" prompt="Sales Rep Splits Id"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageStyledText id="SalesRepSplitsIdFD" viewAttr="RepSplitId"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="SalesRepIdCN" adminCustomizable="false">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="SalesRepTH" prompt="Sales Representative"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageChoice id="SalesRepFD" prompt="Sales" viewAttr="SalesrepId" dataType="NUMBER" pickListViewDef="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SalesRepLovVO" pickListDispAttr="SalesRepName" pickListValAttr="SalesRepId"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="SalesRepSplitsCN">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="SalesRepSplitsTH" prompt="Splits(%)"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="SalesRepSplitsFD" prompt="Splits(%)" viewAttr="SplitPercentage" dataType="NUMBER"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="SalesRepPrimaryFlayCN">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="SalesRepPrimaryFlagTH" prompt="Primary?"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageCheckBox id="SalesRepPrimaryFlagFD" checkedValue="Y" unCheckedValue="N" viewAttr="PrimaryFlag"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="SalesRepDelCN">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="SalesRepDelTH" prompt="Remove"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:image id="SalesRepDelBN" use="/oracle/apps/fnd/attributesets/Buttons/Delete" source="deleteicon_enabled.gif" prompt="" warnAboutChanges="false">
+                                       <ui:primaryClientAction>
+                                          <ui:firePartialAction unvalidated="false" event="DeleteInvoiceSalesRepSplits">
+                                             <ui:parameters>
+                                                <ui:parameter key="InvoiceSalesRepSplitsId" value="${oa.InvoiceSalesRepSplitsVO1.RepSplitId}"/>
+                                             </ui:parameters>
+                                          </ui:firePartialAction>
+                                       </ui:primaryClientAction>
+                                    </oa:image>
+                                 </ui:contents>
+                              </oa:column>
+                           </ui:contents>
+                           <ui:footer>
+                              <oa:tableFooter id="InvoiceSalesRepTF">
+                                 <ui:contents>
+                                    <oa:addTableRow id="InvoiceSalesRepAddRow" rows="1" text="Add" autoInsertion="false"/>
+                                 </ui:contents>
+                              </oa:tableFooter>
+                           </ui:footer>
+                        </oa:advancedTable>
+                        <oa:header id="InvoiceLineTitleRN" text="Invoice Line"/>
+                        <oa:advancedTable id="InvoiceLineTE" viewName="InvoiceLineVO1">
+                           <ui:contents>
+                              <oa:column id="InvoiceLineIdCN" rendered="false">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="InvoiceLineIdCH" prompt="Invoice Line Id"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageStyledText id="InvoiceLineIdFD" viewAttr="CustomerTrxLineId"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="InvoiceLineDescriptionCN">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="InvoiceLineDescriptionCH" prompt="Description"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="InvoiceLineDescriptionFD" viewAttr="LongDescription" columns="50"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="InvoiceLineSellQtyCN">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="InvoiceLineSellQtyTH" prompt="Sell Qty"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="InvoiceLineSellQtyFD" dataType="NUMBER" viewAttr="QuantitySell"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="InvoiceLineSellUnitCN">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="InvoiceLineSellUnitTH" prompt="Sell Unit"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="InvoiceLineSellUnitFD" dataType="NUMBER" viewAttr="UnitSell"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="InvoiceLineSellAmountCN">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="InvoiceLineSellAmountTH" prompt="Sell Amount"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="InvoiceLineSellAmountFD" viewAttr="SellAmount" dataType="NUMBER"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="InvoiceLineDelCN">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="InvoiceLineDelTH" prompt="Remove"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:image id="InvoiceLineDelBN" use="/oracle/apps/fnd/attributesets/Buttons/Delete" source="deleteicon_enabled.gif" prompt="" warnAboutChanges="false">
+                                       <ui:primaryClientAction>
+                                          <ui:firePartialAction unvalidated="false" event="DeleteInvoiceLine">
+                                             <ui:parameters>
+                                                <ui:parameter key="InvoiceLineId" value="${oa.InvoiceLineVO1.CustomerTrxLineId}"/>
+                                             </ui:parameters>
+                                          </ui:firePartialAction>
+                                       </ui:primaryClientAction>
+                                    </oa:image>
+                                 </ui:contents>
+                              </oa:column>
+                           </ui:contents>
+                           <ui:footer>
+                              <oa:tableFooter id="InvoiceLineTF">
+                                 <ui:contents>
+                                    <oa:addTableRow id="InvoiceLineAddRow" rows="1" text="Add" autoInsertion="false"/>
+                                 </ui:contents>
+                              </oa:tableFooter>
+                           </ui:footer>
+                        </oa:advancedTable>
+                     </ui:contents>
+                  </oa:stackLayout>
+                  <oa:stackLayout id="InvoiceControlTabRN" adminCustomizable="false">
+                     <ui:contents>
+                        <oa:header id="InvoiceControlHeaderRN" text="Invoice Control"/>
+                        <oa:messageComponentLayout id="InvoiceControlRN" columns="2" rows="7">
+                           <ui:contents>
+                              <oa:messageTextInput id="InvoiceStyleFD" viewName="InvoiceVO1" viewAttr="InvoiceStyleName" prompt="Invoice Style"/>
+                              <oa:messageCheckBox id="InvoiceDisplayLevel1FD" checkedValue="Y" viewName="InvoiceVO1" viewAttr="DisplayLevel1" unCheckedValue="N" prompt="" text=""/>
+                              <oa:messageCheckBox id="InvoiceDisplayLevel2FD" checkedValue="Y" viewName="InvoiceVO1" viewAttr="DisplayLevel2" unCheckedValue="N" prompt="" text=""/>
+                              <oa:messageCheckBox id="InvoiceDisplayLevel3FD" checkedValue="Y" viewName="InvoiceVO1" viewAttr="DisplayLevel3" unCheckedValue="N" prompt="" text=""/>
+                              <oa:messageCheckBox id="InvoicePreliminaryFD" checkedValue="Y" viewName="InvoiceVO1" viewAttr="Preliminary" unCheckedValue="N" prompt="" text=""/>
+                              <oa:messageTextInput id="InvoiceTaxDescription" viewName="InvoiceVO1" viewAttr="TaxDesc" prompt="Tax Description"/>
+                              <oa:messageTextInput id="InvoiceTaxAmountFD" viewName="InvoiceVO1" viewAttr="TaxAmount" prompt="Tax Amount"/>
+                              <oa:messageCheckBox id="InvoiceDisplaySalespersonFD" checkedValue="Y" viewName="InvoiceVO1" viewAttr="DisplaySalesperson" unCheckedValue="N" prompt="" text=""/>
+                              <oa:messageCheckBox id="InvoiceDisplayLevel1TotalFD" checkedValue="Y" viewName="InvoiceVO1" viewAttr="DisplayLevel1Total" unCheckedValue="N" prompt="" text=""/>
+                              <oa:messageCheckBox id="InvoiceDisplayLevel2TotalFD" checkedValue="Y" viewName="InvoiceVO1" viewAttr="DisplayLevel2Total" unCheckedValue="N" prompt="" text=""/>
+                              <oa:messageCheckBox id="InvoiceDisplayLevel3TotalFD" checkedValue="Y" viewName="InvoiceVO1" viewAttr="DisplayLevel3Total" unCheckedValue="N" prompt="" text=""/>
+                           </ui:contents>
+                        </oa:messageComponentLayout>
+                        <oa:stackLayout id="InvoiceControlOthersRN">
+                           <ui:contents>
+                              <oa:messageTextInput id="InvoiceTitleFD" columns="150" rows="6" prompt="Invoice Title" viewName="InvoiceVO1" viewAttr="InvoiceTitle"/>
+                              <oa:messageTextInput id="InvoiceFooterTopFD" viewName="InvoiceVO1" viewAttr="InvoiceFootTop" columns="150" rows="6" prompt="Invoice Footer Top"/>
+                              <oa:messageTextInput id="InvoiceFootBottomFD" viewName="InvoiceVO1" viewAttr="InvoiceFootBottom" prompt="Invoice Footer Bottom" columns="150" rows="6"/>
+                              <oa:messageTextInput id="InvoiceOneLineDescFD" viewName="InvoiceVO1" viewAttr="InvoiceDescOneLine" prompt="One Line Description" columns="150" rows="6"/>
+                           </ui:contents>
+                        </oa:stackLayout>
+                     </ui:contents>
+                  </oa:stackLayout>
+                  <oa:stackLayout id="InvoiceActivityHistoryTabRN" adminCustomizable="false">
+                     <ui:contents>
+                        <oa:header id="InvoiceActivityHistoryTitleRN" text="Activity History"/>
+                        <oa:advancedTable id="InvoiceActivityHistoryTE" viewName="InvoiceChangeActivityVO1" adminCustomizable="false">
+                           <ui:contents>
+                              <oa:column id="InvoiceActivityIdCN" rendered="false">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="InvoiceActivityIdCH" prompt="Activity Id" rendered="false"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="InvoiceActivityIdFD" viewAttr="TrxActivityId" rendered="true" readOnly="true" dataType="NUMBER"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="InvoiceActivityDateCN">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="InvoiceActivityDateCH" prompt="Activity Date"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="InvoiceActivityDateFD" viewAttr="ActivityDate" dataType="DATE" readOnly="true"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="InvoiceActivityTypeCN">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="InvoiceActivityTypeCH" prompt="Type"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="InvoiceActivityTypeFD" viewAttr="ActivityType" readOnly="true"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="InvoiceActivityPersonCN">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="InvoiceActivityPersonCH" prompt="Person"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="InvoiceActivityPersonFD" viewAttr="PersonName" readOnly="true"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="InvoiceActivityChangeFromCN">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="InvoiceActivityChangeFromCH" prompt="Change from"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="InvoiceActivityChangeFromFD" viewAttr="ChangeFrom" readOnly="true"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="InvoiceActivityChangeToCN">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="InvoiceActivityChangeToCH" prompt="Change To"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="InvoiceActivityChangeToFD" viewAttr="ChangeTo" readOnly="true"/>
+                                 </ui:contents>
+                              </oa:column>
+                           </ui:contents>
+                        </oa:advancedTable>
+                     </ui:contents>
+                  </oa:stackLayout>
+                  <oa:stackLayout id="InvoiceApprovalHistoryTabRN" adminCustomizable="false">
+                     <ui:contents>
+                        <oa:header id="InvoiceApprovalHistoryTitleRN" text="Approval History"/>
+                        <oa:advancedTable id="InvoiceApprovalHistoryTE" viewName="InvoiceApprovalActivityVO1" rendered="true">
+                           <ui:contents>
+                              <oa:column id="InvoiceApprovalActivityIdCN" rendered="false">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="InvoiceApprovalActivityIdCH" prompt="Activity Id" rendered="false"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="InvoiceApprovalActivityIdFD" viewAttr="TrxActivityId" rendered="true" readOnly="true" dataType="NUMBER"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="InvoiceApprovalActivityDateCN">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="InvoiceApprovalActivityDateCH" prompt="Activity Date"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="InvoiceApprovalActivityDateFD" viewAttr="ActivityDate" dataType="DATE" readOnly="true"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="InvoiceApprovalActivityTypeCN">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="InvoiceApprovalActivityTypeCH" prompt="Type"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="InvoiceApprovalActivityTypeFD" viewAttr="ActivityType" readOnly="true"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="InvoiceApprovalActivityPersonCN">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="InvoiceApprovalActivityPersonCH" prompt="Person"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="InvoiceApprovalActivityPersonFD" viewAttr="PersonName" readOnly="true"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="InvoiceApprovalActivityApprovalActionCN">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="InvoiceApprovalActivityApprovalActionCH" prompt="Approval Action"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="InvoiceApprovalActivityApprovalActionFD" viewAttr="ApprovalAction" readOnly="true"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="InvoiceApprovalActivityApprovelReasonCN">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="InvoiceApprovalActivityApprovelReasonCH" prompt="Approval Reason"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="InvoiceApprovalActivityApprovelReasonFD" viewAttr="ApprovalReason" readOnly="true"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="InvoiceApprovalActivityJusticationCN">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="InvoiceApprovalActivityJusticationCH" prompt="Justication"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="InvoiceApprovalActivityJusticationFD" viewAttr="Justification" readOnly="true"/>
+                                 </ui:contents>
+                              </oa:column>
+                           </ui:contents>
+                        </oa:advancedTable>
+                     </ui:contents>
+                  </oa:stackLayout>
+                  <!--
+                  <oa:stackLayout id="InvoiceAuditTabRN">
+                     <ui:contents>
+                        <oa:header id="InvoiceAuditTitleRN" text="Audit"/>
+                        <oa:advancedTable id="InvoiceAuditTE" viewName="InvoiceAuditVO1">
+                           <ui:contents>
+                              <oa:column id="InvoiceAuditIdCN" rendered="false">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="InvoiceAuditIdCH" prompt="Audit Id" rendered="false"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="InvoiceAuditIdFD" viewAttr="TrxAuditId" rendered="false" readOnly="true"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="InvoiceAudtProblemDescCN">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="InvoiceAuditProblemDescCH" prompt="Problem Description"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="InvoiceAuditProblemDescFD" readOnly="true" viewAttr="ProblemDesc"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="InvoiceAudtFixDescCN">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="InvoiceAuditFixDescCH" prompt="Fix Description"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="InvoiceAuditProblemDescFD" readOnly="true" viewAttr="FixDesc"/>
+                                 </ui:contents>
+                              </oa:column>
+                           </ui:contents>
+                        </oa:advancedTable>
+                     </ui:contents>
+                  </oa:stackLayout>
+				  -->
+                  <!--
+                  <oa:stackLayout id="InvoiceAttachmentTabRN">
+                     <ui:contents>
+                        <oa:header id="region1"/>
+						
+                        <oa:attachmentTable id="item1" viewName="InvoiceVO1">
+                           <oa:entityMappings>
+                              <oa:entityMap id="entityMap1" entityId="XXTM_CB" showAll="true">
+                                 <oa:primaryKeys>
+                                    <oa:primaryKey id="primaryKey1" viewAttr="CustomerTrxId"/>
+                                 </oa:primaryKeys>
+                              </oa:entityMap>
+                           </oa:entityMappings>
+                        </oa:attachmentTable>
+						
+                     </ui:contents>
+                  </oa:stackLayout>
+				  -->
+               </ui:contents>
+            </oa:subTabLayout>
+            <oa:pageButtonBar id="InvoiceButtonRN">
+               <ui:contents>
+                  <oa:submitButton id="SaveBN" text="Save" prompt="Save"/>
+                  <oa:submitButton id="BackToSearchBN" text="Back to Search" prompt="Back to Search" warnAboutChanges="true" rendered="false"/>
+               </ui:contents>
+            </oa:pageButtonBar>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>

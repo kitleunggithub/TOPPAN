@@ -1,0 +1,553 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="InvoiceReviseVO"
+   BindingStyle="OracleName"
+   CustomQuery="true"
+   RowClass="oracle.apps.fnd.framework.server.OAViewRowImpl"
+   ComponentClass="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceReviseVOImpl"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+SELECT 
+invoice.CUSTOMER_TRX_ID
+, invoice.PARENT_CUSTOMER_TRX_ID
+, invoice.AR_TRX_NUMBER
+, invoice.TRX_DATE
+, invoice.CURRENT_STATUS
+, (SELECT 
+        ffvt.description value_description
+        FROM 
+        fnd_flex_value_sets ffvs ,
+        fnd_flex_values ffv ,
+        fnd_flex_values_tl ffvt
+        WHERE
+        ffvs.flex_value_set_id = ffv.flex_value_set_id
+        AND ffv.flex_value_id = ffvt.flex_value_id
+        AND ffvt.language = 'US'
+        AND flex_value_set_name = 'XXBS_INVOICE_STATUS'
+        AND flex_value = invoice.CURRENT_STATUS
+	AND ffv.enabled_flag = 'Y'
+        AND NVL(ffv.end_date_active,SYSDATE) >= SYSDATE
+) CURRENT_STATUS_DESCRIPTION
+, invoice.INVOICE_CLASS
+, (SELECT 
+        ffvt.description value_description
+        FROM 
+        fnd_flex_value_sets ffvs ,
+        fnd_flex_values ffv ,
+        fnd_flex_values_tl ffvt
+        WHERE
+        ffvs.flex_value_set_id = ffv.flex_value_set_id
+        AND ffv.flex_value_id = ffvt.flex_value_id
+        AND ffvt.language = 'US'
+        AND flex_value_set_name = 'XXBS_INVOICE_CLASS'
+        AND flex_value = invoice.INVOICE_CLASS
+	AND ffv.enabled_flag = 'Y'
+        AND NVL(ffv.end_date_active,SYSDATE) >= SYSDATE
+) INVOICE_CLASS_DESCRIPTION
+, invoice.ORIGINAL_PROJECT_ID
+, invoice.BILL_TO_CUSTOMER_ID
+, invoice.PRIMARY_SALESREP_ID
+, invoice.ACTIVE_BILLER_ID
+, (
+select DESCRIPTION
+from fnd_user where USER_ID = invoice.ACTIVE_BILLER_ID
+) ACTIVE_BILLER_NAME
+, invoice.CREATED_BY
+, invoice.CREATION_DATE
+, invoice.LAST_UPDATED_BY
+, invoice.LAST_UPDATE_DATE
+, invoice.LAST_UPDATE_LOGIN
+, pa.PROJECT_ID
+, pa.SEGMENT1 PROJECT_NUMBER             
+, pa.LONG_NAME PROJECT_NAME                 
+, pa.DESCRIPTION PROJECT_DESCRIPTION          
+, cust.PARTY_ID CUSTOMER_ID
+, cust.PARTY_NAME CUSTOMER_NAME
+, acc.ACCOUNT_NUMBER CUSTOMER_NO
+, res.RESOURCE_ID PRIMAY_SALESREP_ID
+, res.RESOURCE_NAME PRIMAY_SALESREP_NAME
+, invoice.ORG_ID
+, invoice.PRIMARY_PROJECT_ORG_ID
+, invoice.CUST_TRX_TYPE_ID
+, trx_type.NAME TRX_TYPE_NAME
+FROM 
+PA_PROJECTS_ALL pa
+, XXBS_CUSTOMER_TRX invoice
+, HZ_PARTIES cust
+, HZ_CUST_ACCOUNTS_ALL acc
+, XXBS_REP_SPLITS salesrep
+, JTF_RS_DEFRESOURCES_V res
+, RA_CUST_TRX_TYPES_ALL trx_type
+
+WHERE invoice.ORIGINAL_PROJECT_ID = pa.project_id (+)
+AND invoice.BILL_TO_CUSTOMER_ID = acc.CUST_ACCOUNT_ID (+)
+AND acc.PARTY_ID = cust.PARTY_ID (+)
+AND invoice.CUSTOMER_TRX_ID = salesrep.CUSTOMER_TRX_ID (+) 
+AND salesrep.SALESREP_ID  = res.RESOURCE_ID (+) 
+AND salesrep.PRIMARY_FLAG (+) = 'Y'
+and invoice.CUST_TRX_TYPE_ID = trx_type.CUST_TRX_TYPE_ID (+)
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess" />
+   </DesignTime>
+   <ViewAttribute
+      Name="CustomerTrxId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="CUSTOMER_TRX_ID"
+      Expression="CUSTOMER_TRX_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ParentCustomerTrxId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="PARENT_CUSTOMER_TRX_ID"
+      Expression="PARENT_CUSTOMER_TRX_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ArTrxNumber"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="20"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="AR_TRX_NUMBER"
+      Expression="AR_TRX_NUMBER"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="20" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="TrxDate"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      AliasName="TRX_DATE"
+      Expression="TRX_DATE"
+      SQLType="DATE" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CurrentStatus"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="50"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CURRENT_STATUS"
+      Expression="CURRENT_STATUS"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="50" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CurrentStatusDescription"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CURRENT_STATUS_DESCRIPTION"
+      Expression="CURRENT_STATUS_DESCRIPTION"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="InvoiceClass"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="1"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="INVOICE_CLASS"
+      Expression="INVOICE_CLASS"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="1" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="InvoiceClassDescription"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="INVOICE_CLASS_DESCRIPTION"
+      Expression="INVOICE_CLASS_DESCRIPTION"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="OriginalProjectId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="ORIGINAL_PROJECT_ID"
+      Expression="ORIGINAL_PROJECT_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="BillToCustomerId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="BILL_TO_CUSTOMER_ID"
+      Expression="BILL_TO_CUSTOMER_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PrimarySalesrepId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="PRIMARY_SALESREP_ID"
+      Expression="PRIMARY_SALESREP_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ActiveBillerId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="ACTIVE_BILLER_ID"
+      Expression="ACTIVE_BILLER_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ActiveBillerName"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="ACTIVE_BILLER_NAME"
+      Expression="ACTIVE_BILLER_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreatedBy"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="CREATED_BY"
+      Expression="CREATED_BY"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreationDate"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      AliasName="CREATION_DATE"
+      Expression="CREATION_DATE"
+      SQLType="DATE" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdatedBy"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="LAST_UPDATED_BY"
+      Expression="LAST_UPDATED_BY"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdateDate"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      AliasName="LAST_UPDATE_DATE"
+      Expression="LAST_UPDATE_DATE"
+      SQLType="DATE" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdateLogin"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="LAST_UPDATE_LOGIN"
+      Expression="LAST_UPDATE_LOGIN"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ProjectId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="PROJECT_ID"
+      Expression="PROJECT_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ProjectNumber"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="25"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PROJECT_NUMBER"
+      Expression="PROJECT_NUMBER"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="25" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ProjectName"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PROJECT_NAME"
+      Expression="PROJECT_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ProjectDescription"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="250"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PROJECT_DESCRIPTION"
+      Expression="PROJECT_DESCRIPTION"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="250" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CustomerId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="CUSTOMER_ID"
+      Expression="CUSTOMER_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CustomerName"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="360"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CUSTOMER_NAME"
+      Expression="CUSTOMER_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="360" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CustomerNo"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CUSTOMER_NO"
+      Expression="CUSTOMER_NO"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PrimaySalesrepId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="PRIMAY_SALESREP_ID"
+      Expression="PRIMAY_SALESREP_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PrimaySalesrepName"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="360"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PRIMAY_SALESREP_NAME"
+      Expression="PRIMAY_SALESREP_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="360" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="OrgId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="ORG_ID"
+      Expression="ORG_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PrimaryProjectOrgId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="PRIMARY_PROJECT_ORG_ID"
+      Expression="PRIMARY_PROJECT_ORG_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CustTrxTypeId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="CUST_TRX_TYPE_ID"
+      Expression="CUST_TRX_TYPE_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="TrxTypeName"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="20"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="TRX_TYPE_NAME"
+      Expression="TRX_TYPE_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="20" />
+      </DesignTime>
+   </ViewAttribute>
+</ViewObject>

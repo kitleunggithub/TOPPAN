@@ -1,0 +1,278 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="InvoiceLineVO"
+   OrderBy="ORIG_CUSTOMER_TRX_NUMBER ASC NULLS FIRST, PROJECT_NAME, LINE_NUMBER, CUSTOMER_TRX_LINE_ID"
+   BindingStyle="OracleName"
+   CustomQuery="true"
+   RowClass="oracle.apps.fnd.framework.server.OAViewRowImpl"
+   ComponentClass="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceLineVOImpl"
+   FetchMode="FETCH_AS_NEEDED"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+SELECT InvoiceLineEO.CUSTOMER_TRX_LINE_ID, 
+       InvoiceLineEO.CUSTOMER_TRX_ID, 
+       InvoiceLineEO.ORIG_CUSTOMER_TRX_ID, 
+       InvoiceLineEO.ORIG_TRX_LINE_ID, 
+       InvoiceLineEO.PROJECT_ID, 
+       InvoiceLineEO.LINE_NUMBER, 
+       InvoiceLineEO.PROJECT_ORG_ID, 
+       InvoiceLineEO.QUANTITY_SELL, 
+       InvoiceLineEO.UNIT_SELL, 
+       InvoiceLineEO.SELL_AMOUNT, 
+       InvoiceLineEO.PRODUCT_TYPE_ID, 
+       InvoiceLineEO.LONG_DESCRIPTION, 
+       InvoiceLineEO.CREATED_BY, 
+       InvoiceLineEO.CREATION_DATE, 
+       InvoiceLineEO.LAST_UPDATED_BY, 
+       InvoiceLineEO.LAST_UPDATE_DATE, 
+       InvoiceLineEO.LAST_UPDATE_LOGIN, 
+       InvoiceLineEO.AR_TRX_LINE_NUMBER, 
+       InvoiceLineEO.LINE_TYPE, 
+       InvoiceLineEO.STATUS, 
+       InvoiceLineEO.LEVEL_1, 
+       InvoiceLineEO.LEVEL_2, 
+       InvoiceLineEO.LEVEL_3, 
+       InvoiceLineEO.ORG_ID,
+       PA.SEGMENT1 PROJECT_NUMBER,
+       PA.LONG_NAME PROJECT_NAME,
+       OrigInvoice.AR_TRX_NUMBER ORIG_CUSTOMER_TRX_NUMBER,
+       ML.NAME PRIMARY_PRODUCT_TYPE 
+FROM XXBS_CUSTOMER_TRX_LINES InvoiceLineEO, PA_PROJECTS_ALL PA, XXBS_CUSTOMER_TRX OrigInvoice, AR_MEMO_LINES_ALL_TL ML
+WHERE InvoiceLineEO.PROJECT_ID = PA.PROJECT_ID (+)
+AND InvoiceLineEO.ORIG_CUSTOMER_TRX_ID = OrigInvoice.CUSTOMER_TRX_ID (+)
+AND (InvoiceLineEO.PRODUCT_TYPE_ID = ML.MEMO_LINE_ID (+)
+     AND InvoiceLineEO.ORG_ID = ML.ORG_ID (+)
+     AND ML.LANGUAGE(+)='US')
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess" />
+   </DesignTime>
+   <EntityUsage
+      Name="InvoiceLineEO"
+      Entity="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceLineEO" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="false" />
+      </DesignTime>
+   </EntityUsage>
+   <ViewAttribute
+      Name="CustomerTrxLineId"
+      IsNotNull="true"
+      EntityAttrName="CustomerTrxLineId"
+      EntityUsage="InvoiceLineEO"
+      AliasName="CUSTOMER_TRX_LINE_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CustomerTrxId"
+      IsNotNull="true"
+      EntityAttrName="CustomerTrxId"
+      EntityUsage="InvoiceLineEO"
+      AliasName="CUSTOMER_TRX_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="OrigCustomerTrxId"
+      EntityAttrName="OrigCustomerTrxId"
+      EntityUsage="InvoiceLineEO"
+      AliasName="ORIG_CUSTOMER_TRX_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="OrigTrxLineId"
+      EntityAttrName="OrigTrxLineId"
+      EntityUsage="InvoiceLineEO"
+      AliasName="ORIG_TRX_LINE_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ProjectId"
+      IsNotNull="true"
+      EntityAttrName="ProjectId"
+      EntityUsage="InvoiceLineEO"
+      AliasName="PROJECT_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LineNumber"
+      EntityAttrName="LineNumber"
+      EntityUsage="InvoiceLineEO"
+      AliasName="LINE_NUMBER" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ProjectOrgId"
+      IsNotNull="true"
+      EntityAttrName="ProjectOrgId"
+      EntityUsage="InvoiceLineEO"
+      AliasName="PROJECT_ORG_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="QuantitySell"
+      IsNotNull="true"
+      EntityAttrName="QuantitySell"
+      EntityUsage="InvoiceLineEO"
+      AliasName="QUANTITY_SELL" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="UnitSell"
+      IsNotNull="true"
+      EntityAttrName="UnitSell"
+      EntityUsage="InvoiceLineEO"
+      AliasName="UNIT_SELL" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SellAmount"
+      IsNotNull="true"
+      EntityAttrName="SellAmount"
+      EntityUsage="InvoiceLineEO"
+      AliasName="SELL_AMOUNT" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ProductTypeId"
+      IsNotNull="true"
+      EntityAttrName="ProductTypeId"
+      EntityUsage="InvoiceLineEO"
+      AliasName="PRODUCT_TYPE_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LongDescription"
+      EntityAttrName="LongDescription"
+      EntityUsage="InvoiceLineEO"
+      AliasName="LONG_DESCRIPTION" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreatedBy"
+      IsNotNull="true"
+      EntityAttrName="CreatedBy"
+      EntityUsage="InvoiceLineEO"
+      AliasName="CREATED_BY" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreationDate"
+      IsNotNull="true"
+      EntityAttrName="CreationDate"
+      EntityUsage="InvoiceLineEO"
+      AliasName="CREATION_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdatedBy"
+      IsNotNull="true"
+      EntityAttrName="LastUpdatedBy"
+      EntityUsage="InvoiceLineEO"
+      AliasName="LAST_UPDATED_BY" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdateDate"
+      IsNotNull="true"
+      EntityAttrName="LastUpdateDate"
+      EntityUsage="InvoiceLineEO"
+      AliasName="LAST_UPDATE_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdateLogin"
+      IsNotNull="true"
+      EntityAttrName="LastUpdateLogin"
+      EntityUsage="InvoiceLineEO"
+      AliasName="LAST_UPDATE_LOGIN" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ArTrxLineNumber"
+      EntityAttrName="ArTrxLineNumber"
+      EntityUsage="InvoiceLineEO"
+      AliasName="AR_TRX_LINE_NUMBER" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LineType"
+      EntityAttrName="LineType"
+      EntityUsage="InvoiceLineEO"
+      AliasName="LINE_TYPE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Status"
+      EntityAttrName="Status"
+      EntityUsage="InvoiceLineEO"
+      AliasName="STATUS" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Level1"
+      EntityAttrName="Level1"
+      EntityUsage="InvoiceLineEO"
+      AliasName="LEVEL_1" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Level2"
+      EntityAttrName="Level2"
+      EntityUsage="InvoiceLineEO"
+      AliasName="LEVEL_2" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Level3"
+      EntityAttrName="Level3"
+      EntityUsage="InvoiceLineEO"
+      AliasName="LEVEL_3" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="OrgId"
+      IsNotNull="true"
+      EntityAttrName="OrgId"
+      EntityUsage="InvoiceLineEO"
+      AliasName="ORG_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ProjectNumber"
+      IsPersistent="false"
+      Precision="25"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PROJECT_NUMBER"
+      Expression="PROJECT_NUMBER"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="25" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ProjectName"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PROJECT_NAME"
+      Expression="PROJECT_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="OrigCustomerTrxNumber"
+      IsPersistent="false"
+      Precision="20"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="ORIG_CUSTOMER_TRX_NUMBER"
+      Expression="ORIG_CUSTOMER_TRX_NUMBER"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="20" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PrimaryProductType"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PRIMARY_PRODUCT_TYPE"
+      Expression="PRIMARY_PRODUCT_TYPE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="20" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewLinkAccessor
+      Name="InvoiceVO"
+      ViewLink="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceToInvoiceLineVL"
+      Type="oracle.jbo.Row"
+      Reversed="true"
+      IsUpdateable="false" >
+   </ViewLinkAccessor>
+</ViewObject>

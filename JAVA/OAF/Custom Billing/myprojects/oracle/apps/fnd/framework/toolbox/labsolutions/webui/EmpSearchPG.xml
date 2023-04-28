@@ -1,0 +1,111 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory -->
+<page xmlns="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:user="http://xmlns.oracle.com/jrad/user" version="10.1.3_1295" xml:lang="en-US" file-version="$Header: EmpSearchPG.xml 120.14 2010/12/10 13:21:30 sette ship $">
+   <content>
+      <oa:pageLayout windowTitle="Framework Toolbox Tutorial: Labs" helpTargetAppShortName="ak" id="PageLayoutRN" akRegionCode="FWK_TBX_LABS_EMPS_PAGE" regionName="Employee Search Page" title="Employees" amDefName="oracle.apps.fnd.framework.toolbox.labsolutions.server.EmployeeAM">
+         <ui:corporateBranding>
+            <oa:image id="corporateBranding" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:productBranding>
+            <oa:image id="productBranding" source="FNDTAPPBRAND.gif" shortDesc="OA Framework Toolbox Tutorial"/>
+         </ui:productBranding>
+         <ui:contents>
+            <oa:query id="QueryRN" mode="autoCustomizationCriteria" dispSimple="true" rendered="true">
+               <ui:contents>
+                  <oa:table akRegionCode="FWK_TBX_LABS_EMPS_TABLE" regionName="Results Table" blockSize="10" id="ResultsTable" width="100%" controllerClass="oracle.apps.fnd.framework.toolbox.labsolutions.webui.EmployeeResultsCO" shortDesc="Employees Table">
+                     <ui:contents>
+                        <oa:image prompt="Status" viewName="EmployeeSummaryVO1" viewAttr="EmployeeStatus" shortDesc="Current employment status" id="EmpStatus" promptTranslationExpansion="none" imageHeight="16" imageWidth="16" rendered="true"/>
+                        <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EmployeeId_Number" sortState="ascending" viewName="EmployeeSummaryVO1" viewAttr="EmployeeId" id="EmpNum" initSortSeq="first" promptTranslationExpansion="none" dataType="NUMBER"/>
+                        <oa:flowLayout id="EmpNameLayout" prompt="Emp Name">
+                           <ui:contents>
+                              <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FullName" viewName="EmployeeSummaryVO1" viewAttr="EmployeeName" id="EmpName" prompt="Name" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/labsolutions/webui/EmpDetailsPG&amp;empNum={@EmployeeId}&amp;empName={@EmployeeName}&amp;addBreadCrumb=Y&amp;retainAM=Y" warnAboutChanges="false" sortState="yes" popupRenderEvent="onHover" popupEnabled="true" popupId="EmpSummaryPopup"/>
+                              <oa:popUp id="EmpSummaryPopup" popupRegion="/oracle/apps/fnd/framework/toolbox/labsolutions/webui/EmpSummaryPopupRN" popupTitle="Employee Details" height="150" width="350"/>
+                           </ui:contents>
+                        </oa:flowLayout>
+                        <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/Position" viewName="EmployeeSummaryVO1" viewAttr="PositionCode" id="Position"/>
+                        <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FullName_Manager" viewName="EmployeeSummaryVO1" viewAttr="ManagerName" destination="mailto:{@ManagerEmail}" id="MgrName" promptTranslationExpansion="none"/>
+                        <oa:switcher akRegionCode="FWK_TBX_LABS_EMPS_SWITCHER" regionName="Toolbox Labs Employees Switcher" viewName="EmployeeSummaryVO1" viewAttr="DeleteSwitcher" id="DeleteSwitcher" promptTranslationExpansion="none" rendered="true" use="/oracle/apps/fnd/attributesets/Buttons/Delete">
+                           <ui:case name="DeleteEnabled" id="case1">
+                              <oa:image source="deleteicon_enabled.gif" shortDesc="Select to delete this employee." id="DeleteEnabled" imageHeight="24" imageWidth="24">
+                                 <ui:primaryClientAction>
+                                    <ui:fireAction event="delete">
+                                       <ui:parameters>
+                                          <ui:parameter key="empNum" value="${oa.EmployeeSummaryVO1.EmployeeId}"/>
+                                          <ui:parameter key="empName" value="${oa.EmployeeSummaryVO1.EmployeeName}"/>
+                                       </ui:parameters>
+                                    </ui:fireAction>
+                                 </ui:primaryClientAction>
+                              </oa:image>
+                           </ui:case>
+                           <ui:case name="DeleteDisabled" id="case2">
+                              <oa:image source="deleteicon_disabled.gif" shortDesc="Employee delete action is disabled." id="DeleteDisabled" imageHeight="24" imageWidth="24"/>
+                           </ui:case>
+                        </oa:switcher>
+                        <oa:image source="updateicon_enabled.gif" destination="" shortDesc="Select to update this employee." id="UpdateImage" imageHeight="24" imageWidth="24" rendered="true" use="/oracle/apps/fnd/attributesets/Buttons/Update">
+                           <ui:primaryClientAction>
+                              <ui:fireAction>
+                                 <ui:parameters>
+                                    <ui:parameter key="empNum" value="${oa.EmployeeSummaryVO1.EmployeeId}"/>
+                                    <ui:parameter key="empName" value="${oa.EmployeeSummaryVO1.EmployeeName}"/>
+                                 </ui:parameters>
+                              </ui:fireAction>
+                           </ui:primaryClientAction>
+                        </oa:image>
+                        <oa:flowLayout id="PopupLayout" prompt="Update Inline">
+                           <ui:contents>
+                              <oa:image id="EditInline" use="/oracle/apps/fnd/attributesets/Buttons/Edit" prompt="Update Inline" source="updateicon_enabled.gif" imageHeight="24" imageWidth="24" popupId="EmployeePopup" popupEnabled="true" popupRenderEvent="onClick"/>
+                              <oa:popUp id="EmployeePopup" popupRegion="/oracle/apps/fnd/framework/toolbox/labsolutions/webui/EmpPopupRN" height="190" width="380" popupTitle="Update Employee"/>
+                           </ui:contents>
+                        </oa:flowLayout>
+                        <oa:attachmentImage id="AttachmentImage" autoCommitEnabled="true" viewName="EmployeeSummaryVO1">
+                           <oa:entityMappings>
+                              <oa:entityMap id="entityMap1" entityId="EMPATTACH">
+                                 <oa:primaryKeys>
+                                    <oa:primaryKey id="primaryKey1" viewAttr="EmployeeId"/>
+                                 </oa:primaryKeys>
+                              </oa:entityMap>
+                           </oa:entityMappings>
+                        </oa:attachmentImage>
+                     </ui:contents>
+                     <ui:tableActions>
+                        <oa:flowLayout id="GlobalButtons">
+                           <ui:contents>
+                              <oa:submitButton use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/CreateEmployee" hAlign="end" text="Create Employee" dataType="VARCHAR2" id="Create" textTranslationExpansion="none" promptTranslationExpansion="none" rendered="true"/>
+                           </ui:contents>
+                        </oa:flowLayout>
+                     </ui:tableActions>
+                  </oa:table>
+               </ui:contents>
+               <oa:simpleSearchMappings>
+                  <oa:queryCriteriaMap id="EmpNameMap" criteriaItem="SearchEmpName" resultsItem="EmpName"/>
+                  <oa:queryCriteriaMap id="EmpNumMap" criteriaItem="SearchEmpNum" resultsItem="EmpNum"/>
+               </oa:simpleSearchMappings>
+               <oa:simpleSearchPanel>
+                  <oa:header text="Search" id="SimpleSearchHdr">
+                     <ui:contents>
+                        <oa:messageComponentLayout id="CustomSimpleSearch" searchRegion="true">
+                           <ui:contents>
+                              <oa:messageLovInput externalListOfValues="/oracle/apps/fnd/framework/toolbox/lov/webui/EmployeesLovRN" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FullName" readOnly="false" text="Employee Name" rows="1" styleClass="OraFieldText" maximumLength="240" id="SearchEmpName" styleLabelClass="OraPromptText" textTranslationExpansion="none" selectiveSearchCriteria="true" unvalidated="true">
+                                 <lovMappings>
+                                    <lovMap lovItem="EmpName" resultTo="SearchEmpName" requiredForLOV="false" id="ToFromEmpName" criteriaFrom="SearchEmpName"/>
+                                    <lovMap lovItem="EmpNum" resultTo="SearchEmpNum" requiredForLOV="false" id="ToEmpNum"/>
+                                 </lovMappings>
+                              </oa:messageLovInput>
+                              <oa:messageTextInput use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EmployeeId" readOnly="false" rows="1" secret="false" styleClass="OraFieldText" maximumLength="15" id="SearchEmpNum" dataType="NUMBER" selectiveSearchCriteria="true"/>
+                           </ui:contents>
+                        </oa:messageComponentLayout>
+                     </ui:contents>
+                  </oa:header>
+               </oa:simpleSearchPanel>
+            </oa:query>
+         </ui:contents>
+         <ui:pageStatus>
+            <oa:flowLayout id="PageStatusRN">
+               <ui:contents>
+                  <oa:staticStyledText styleClass="OraInstructionText" id="PageHelp" messageName="FWK_TBX_T_PAGE_GENERAL" messageAppShortName="AK"/>
+               </ui:contents>
+            </oa:flowLayout>
+         </ui:pageStatus>
+      </oa:pageLayout>
+   </content>
+</page>

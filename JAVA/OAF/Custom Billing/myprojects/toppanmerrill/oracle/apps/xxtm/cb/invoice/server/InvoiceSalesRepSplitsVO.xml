@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="InvoiceSalesRepSplitsVO"
+   OrderBy="REP_SPLIT_ID"
+   BindingStyle="OracleName"
+   CustomQuery="true"
+   RowClass="oracle.apps.fnd.framework.server.OAViewRowImpl"
+   ComponentClass="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceSalesRepSplitsVOImpl"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+SELECT InvoiceSalesRepSplitsEO.REP_SPLIT_ID, 
+       InvoiceSalesRepSplitsEO.CUSTOMER_TRX_ID, 
+       InvoiceSalesRepSplitsEO.SALESREP_ID, 
+       InvoiceSalesRepSplitsEO.PRIMARY_FLAG, 
+       InvoiceSalesRepSplitsEO.SPLIT_PERCENTAGE, 
+       InvoiceSalesRepSplitsEO.CREATED_BY, 
+       InvoiceSalesRepSplitsEO.CREATION_DATE, 
+       InvoiceSalesRepSplitsEO.LAST_UPDATED_BY, 
+       InvoiceSalesRepSplitsEO.LAST_UPDATE_DATE, 
+       InvoiceSalesRepSplitsEO.LAST_UPDATE_LOGIN, 
+       InvoiceSalesRepSplitsEO.ADJUSTMENT, 
+       InvoiceSalesRepSplitsEO.SALESPERSON_TYPE, 
+       InvoiceSalesRepSplitsEO.SEQUENCE_NUMBER,
+       SR.RESOURCE_NAME SALESREP_NAME
+FROM XXBS_REP_SPLITS InvoiceSalesRepSplitsEO, JTF_RS_DEFRESOURCES_V SR
+WHERE 
+InvoiceSalesRepSplitsEO.SALESREP_ID = SR.RESOURCE_ID (+)
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess" />
+   </DesignTime>
+   <EntityUsage
+      Name="InvoiceSalesRepSplitsEO"
+      Entity="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceSalesRepSplitsEO" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="true" />
+         <Attr Name="_queryOrderBy" Value="REP_SPLIT_ID" />
+      </DesignTime>
+   </EntityUsage>
+   <ViewAttribute
+      Name="RepSplitId"
+      EntityAttrName="RepSplitId"
+      EntityUsage="InvoiceSalesRepSplitsEO"
+      AliasName="REP_SPLIT_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CustomerTrxId"
+      EntityAttrName="CustomerTrxId"
+      EntityUsage="InvoiceSalesRepSplitsEO"
+      AliasName="CUSTOMER_TRX_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SalesrepId"
+      EntityAttrName="SalesrepId"
+      EntityUsage="InvoiceSalesRepSplitsEO"
+      AliasName="SALESREP_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PrimaryFlag"
+      EntityAttrName="PrimaryFlag"
+      EntityUsage="InvoiceSalesRepSplitsEO"
+      AliasName="PRIMARY_FLAG" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SplitPercentage"
+      EntityAttrName="SplitPercentage"
+      EntityUsage="InvoiceSalesRepSplitsEO"
+      AliasName="SPLIT_PERCENTAGE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreatedBy"
+      EntityAttrName="CreatedBy"
+      EntityUsage="InvoiceSalesRepSplitsEO"
+      AliasName="CREATED_BY" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreationDate"
+      EntityAttrName="CreationDate"
+      EntityUsage="InvoiceSalesRepSplitsEO"
+      AliasName="CREATION_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdatedBy"
+      EntityAttrName="LastUpdatedBy"
+      EntityUsage="InvoiceSalesRepSplitsEO"
+      AliasName="LAST_UPDATED_BY" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdateDate"
+      EntityAttrName="LastUpdateDate"
+      EntityUsage="InvoiceSalesRepSplitsEO"
+      AliasName="LAST_UPDATE_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdateLogin"
+      EntityAttrName="LastUpdateLogin"
+      EntityUsage="InvoiceSalesRepSplitsEO"
+      AliasName="LAST_UPDATE_LOGIN" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Adjustment"
+      EntityAttrName="Adjustment"
+      EntityUsage="InvoiceSalesRepSplitsEO"
+      AliasName="ADJUSTMENT" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SalespersonType"
+      EntityAttrName="SalespersonType"
+      EntityUsage="InvoiceSalesRepSplitsEO"
+      AliasName="SALESPERSON_TYPE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SequenceNumber"
+      EntityAttrName="SequenceNumber"
+      EntityUsage="InvoiceSalesRepSplitsEO"
+      AliasName="SEQUENCE_NUMBER" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SalesrepName"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="SALESREP_NAME"
+      Expression="SALESREP_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewLinkAccessor
+      Name="InvoiceVO"
+      ViewLink="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceToInvoiceSalesRepSplitVL"
+      Type="oracle.jbo.Row"
+      Reversed="true"
+      IsUpdateable="false" >
+   </ViewLinkAccessor>
+</ViewObject>

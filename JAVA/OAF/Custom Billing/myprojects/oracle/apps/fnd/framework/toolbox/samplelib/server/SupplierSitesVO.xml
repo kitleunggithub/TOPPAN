@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<!-- $Header: SupplierSitesVO.xml 120.8 2006/07/03 17:53:04 atgops1 noship $ -->
+
+<ViewObject
+   Name="SupplierSitesVO"
+   SelectList="SupplierSiteEO.SUPPLIER_ID, 
+       SupplierSiteEO.SUPPLIER_SITE_ID, 
+       SupplierSiteEO.SITE_NAME, 
+       SupplierSiteEO.PURCHASING_SITE_FLAG, 
+       SupplierSiteEO.START_DATE, 
+       SupplierSiteEO.END_DATE"
+   FromList="FWK_TBX_SUPPLIER_SITES SupplierSiteEO"
+   BindingStyle="Oracle"
+   CustomQuery="false"
+   RowClass="oracle.apps.fnd.framework.toolbox.samplelib.server.SupplierSitesVORowImpl"
+   ComponentClass="oracle.apps.fnd.framework.toolbox.samplelib.server.SupplierSitesVOImpl"
+   UseGlueCode="false" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.38.51" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll" />
+   </DesignTime>
+   <EntityUsage
+      Name="SupplierSiteEO"
+      Entity="oracle.apps.fnd.framework.toolbox.schema.server.SupplierSiteEO" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="false" />
+      </DesignTime>
+   </EntityUsage>
+   <ViewAttribute
+      Name="SupplierId"
+      EntityAttrName="SupplierId"
+      EntityUsage="SupplierSiteEO"
+      AliasName="SUPPLIER_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SupplierSiteId"
+      EntityAttrName="SupplierSiteId"
+      EntityUsage="SupplierSiteEO"
+      AliasName="SUPPLIER_SITE_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SiteName"
+      EntityAttrName="SiteName"
+      EntityUsage="SupplierSiteEO"
+      AliasName="SITE_NAME" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PurchasingSiteFlag"
+      EntityAttrName="PurchasingSiteFlag"
+      EntityUsage="SupplierSiteEO"
+      AliasName="PURCHASING_SITE_FLAG" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StartDate"
+      EntityAttrName="StartDate"
+      EntityUsage="SupplierSiteEO"
+      AliasName="START_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="EndDate"
+      EntityAttrName="EndDate"
+      EntityUsage="SupplierSiteEO"
+      AliasName="END_DATE" >
+   </ViewAttribute>
+   <ViewLinkAccessor
+      Name="SuppliersVO"
+      ViewLink="oracle.apps.fnd.framework.toolbox.samplelib.server.SupplierToSiteVL"
+      Type="oracle.jbo.Row"
+      Reversed="true"
+      IsUpdateable="false" >
+   </ViewLinkAccessor>
+</ViewObject>

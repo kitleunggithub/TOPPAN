@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE JboProject SYSTEM "jbo_03_01.dtd">
+
+<JboProject
+   Name="OAProject1"
+   SeparateXMLFiles="true"
+   PackageName="" >
+   <DesignTime>
+      <Attr Name="_appModuleNames26" Value="toppanmerrill.oracle.apps.xxtm.cb.invoicestyle.server.InvoiceStyleAM" />
+      <Attr Name="_appModuleNames25" Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineRequestAM" />
+      <Attr Name="_appModuleNames24" Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SearchInvoiceAM" />
+      <Attr Name="_appModuleNames23" Value="oracle.apps.fnd.framework.toolbox.samplelib.server.SampleBrowserAM" />
+      <Attr Name="_appModuleNames22" Value="oracle.apps.fnd.framework.toolbox.labsolutions.server.GanttAM" />
+      <Attr Name="_appModuleNames21" Value="oracle.apps.fnd.framework.toolbox.labsolutions.server.DebugBLabAM" />
+      <Attr Name="_appModuleNames20" Value="oracle.apps.fnd.framework.toolbox.labsolutions.server.SupplierSAM" />
+      <Attr Name="_ejbPackage" Value="false" />
+      <Attr Name="_NamedConnection" Value="TM_DEV" />
+      <Attr Name="_appModuleNames19" Value="oracle.apps.fnd.framework.toolbox.labsolutions.server.DebugALabAM" />
+      <Attr Name="_appModuleNames18" Value="oracle.apps.fnd.framework.toolbox.labsolutions.server.EmployeeAM" />
+      <Attr Name="_appModuleNames17" Value="oracle.apps.fnd.framework.toolbox.labsolutions.server.DebugLabAM" />
+      <Attr Name="_dataControlNames16" Value="HomeAMDataControl1" />
+      <Attr Name="_appModuleNames16" Value="oracle.apps.fnd.framework.toolbox.labsolutions.server.HomeAM" />
+      <Attr Name="_appModuleNames15" Value="oracle.apps.fnd.framework.toolbox.labsolutions.server.FlexfieldAM" />
+      <Attr Name="_appModuleNames14" Value="testing.oracle.apps.ak.hello.server.HelloAM" />
+      <Attr Name="_appModuleNames13" Value="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrderSAM" />
+      <Attr Name="_appModuleNames12" Value="oracle.apps.fnd.framework.toolbox.tutorial.server.MultistepCreateAM" />
+      <Attr Name="_appModuleNames11" Value="oracle.apps.fnd.framework.toolbox.tutorial.server.SearchAM" />
+      <Attr Name="_appModuleNames10" Value="oracle.apps.fnd.framework.toolbox.tutorial.server.DeleteAM" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+      <Attr Name="_appModuleNames9" Value="oracle.apps.fnd.framework.toolbox.tutorial.server.HomeAM" />
+      <Attr Name="_appModuleNames8" Value="oracle.apps.fnd.framework.toolbox.tutorial.server.PoSummaryAM" />
+      <Attr Name="_appModuleNames7" Value="oracle.apps.fnd.framework.toolbox.tutorial.server.CreateAM" />
+      <Attr Name="_appModuleNames6" Value="oracle.apps.fnd.framework.toolbox.tutorial.server.HelloWorldAM" />
+      <Attr Name="_appModuleNames5" Value="oracle.apps.fnd.framework.toolbox.tutorial.server.UpdateAM" />
+      <Attr Name="_appModuleNames4" Value="oracle.apps.fnd.framework.toolbox.lov.server.LabSolutionsLOVAM" />
+      <Attr Name="_appModuleNames3" Value="oracle.apps.fnd.framework.toolbox.lov.server.TutorialLOVAM" />
+      <Attr Name="_appModuleNames2" Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderVAM" />
+      <Attr Name="_jprName" Value="OAProject1.jpr" />
+      <Attr Name="_appModuleNames1" Value="oracle.apps.fnd.framework.toolbox.schema.server.SupplierVAM" />
+      <Attr Name="_appModuleNames0" Value="oracle.apps.fnd.framework.toolbox.schema.server.EmployeeVAM" />
+   </DesignTime>
+   <Containee
+      Name="server"
+      FullName="mycompany.oracle.apps.fnd.framework.toolbox.schema.server.server"
+      ObjectType="JboPackage" >
+   </Containee>
+   <Containee
+      Name="server"
+      FullName="mycompany.oracle.apps.fnd.framework.toolbox.tutorial.server.server"
+      ObjectType="JboPackage" >
+   </Containee>
+   <Containee
+      Name="server"
+      FullName="oracle.apps.fnd.framework.toolbox.labsolutions.server.server"
+      ObjectType="JboPackage" >
+   </Containee>
+   <Containee
+      Name="server"
+      FullName="oracle.apps.fnd.framework.toolbox.lov.server.server"
+      ObjectType="JboPackage" >
+   </Containee>
+   <Containee
+      Name="server"
+      FullName="oracle.apps.fnd.framework.toolbox.poplist.server.server"
+      ObjectType="JboPackage" >
+   </Containee>
+   <Containee
+      Name="server"
+      FullName="oracle.apps.fnd.framework.toolbox.samplelib.server.server"
+      ObjectType="JboPackage" >
+   </Containee>
+   <Containee
+      Name="server"
+      FullName="oracle.apps.fnd.framework.toolbox.schema.server.server"
+      ObjectType="JboPackage" >
+   </Containee>
+   <Containee
+      Name="server"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.server"
+      ObjectType="JboPackage" >
+   </Containee>
+   <Containee
+      Name="server"
+      FullName="testing.oracle.apps.ak.hello.server.server"
+      ObjectType="JboPackage" >
+   </Containee>
+   <Containee
+      Name="server"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.server"
+      ObjectType="JboPackage" >
+   </Containee>
+   <Containee
+      Name="server"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoicestyle.server.server"
+      ObjectType="JboPackage" >
+   </Containee>
+</JboProject>

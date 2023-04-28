@@ -1,0 +1,34 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath:~PROD:~PATH:~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath:~PROD:mds:directory  -->
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="9.0.3.8.7_942" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header: ProcessExamplePG.xml 120.7 2006/05/25 13:14:07 atgops1 noship $">
+   <content>
+      <!--*Scope: 
+      Usage: 
+             
+             
+             
+      @param distID   
+      @param locale   
+      @param submit   
+      @see 
+      @see-->
+      <oa:pageLayout id="PageLayoutRN" amDefName="oracle.apps.fnd.framework.toolbox.samplelib.server.SampleBrowserAM" windowTitle="OA Framework Toolbox Sample Library" title="Processing Page Flow" controllerClass="oracle.apps.fnd.framework.toolbox.samplelib.webui.ProcessExamplePageCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:returnNavigation>
+            <oa:link id="ReturnTo" text="Return to Sample Browser" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/samplelib/webui/SampleBrowserPG&amp;retainAM=Y"/>
+         </ui:returnNavigation>
+         <ui:contents>
+            <oa:pageButtonBar id="PageButtonsRN">
+               <ui:contents>
+                  <oa:submitButton id="ProcessLaunch" text="Start Process" prompt="Start Process" hAlign="end"/>
+               </ui:contents>
+            </oa:pageButtonBar>
+         </ui:contents>
+         <ui:productBranding>
+            <oa:image id="ProductBranding" source="FNDTAPPBRAND.gif" shortDesc="OA Framework Toolbox Tutorial"/>
+         </ui:productBranding>
+      </oa:pageLayout>
+   </content>
+</page>

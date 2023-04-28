@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+
+<ViewLink
+   Name="InvoiceCombineReqVL" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+   </DesignTime>
+   <ViewLinkDefEnd
+      Name="InvoiceCombineReqVO"
+      Cardinality="1"
+      Owner="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqVO"
+      Source="true" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqVO.CombineReqId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_finderName" Value="InvoiceCombineReqVO" />
+         <Attr Name="_accessor" Value="true" />
+         <Attr Name="_isUpdateable" Value="true" />
+      </DesignTime>
+   </ViewLinkDefEnd>
+   <ViewLinkDefEnd
+      Name="InvoiceCombineReqDtlVO"
+      Cardinality="-1"
+      Owner="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqDtlVO" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqDtlVO.CombineReqId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_finderName" Value="InvoiceCombineReqDtlVO" />
+         <Attr Name="_isUpdateable" Value="true" />
+      </DesignTime>
+   </ViewLinkDefEnd>
+</ViewLink>

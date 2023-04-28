@@ -1,0 +1,232 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!-- +======================================================================+ -->
+<!-- |    Copyright (c) 2005, 2014 Oracle and/or its affiliates.           | -->
+<!-- |                         All rights reserved.                         | -->
+<!-- |                           Version 12.0.0                             | -->
+<!-- +======================================================================+ -->
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<!-- $Header: PoLinesExpVO.xml 120.8.12020000.2 2014/09/18 14:09:33 spunam ship $ -->
+
+<ViewObject
+   Name="PoLinesExpVO"
+   BindingStyle="Oracle"
+   CustomQuery="true"
+   RowClass="oracle.apps.fnd.framework.toolbox.tutorial.server.PoLinesExpVORowImpl"
+   ComponentClass="oracle.apps.fnd.framework.toolbox.tutorial.server.PoLinesExpVOImpl"
+   FetchMode="FETCH_AS_NEEDED"
+   Passivate="All"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+select line.line_id AS LINE_ID,
+       line.header_id AS HEADER_ID,
+       line.line_number AS LINE_NUMBER,
+       line.item_id AS ITEM_ID,
+       line.item_description AS ITEM_DESCRIPTION,
+       line.quantity AS QUANTITY,
+       line.unit_price AS UNIT_PRICE,
+       line.unit_of_measure AS UNIT_OF_MEASURE,
+       nvl(line.quantity, 0) * nvl(line.unit_price, 0) AS LINE_TOTAL,
+       item.segment1 as ITEM_NAME,
+       item.ATTRIBUTE_CATEGORY,
+       item.ATTRIBUTE1,
+       item.ATTRIBUTE2,
+       item.ATTRIBUTE3,
+       item.ATTRIBUTE4,
+       shipment.need_by_date as NEED_BY_DATE
+from fwk_tbx_po_lines line,
+     fwk_tbx_po_shipments shipment,
+     fwk_tbx_items item
+where line.line_id = shipment.line_id
+and   line.item_id = item.item_id (+)
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll" />
+   </DesignTime>
+   <ViewAttribute
+      Name="LineId"
+      IsPersistent="false"
+      IsNotNull="true"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="LINE_ID"
+      Expression="LINE_ID"
+      SQLType="NUMERIC" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="HeaderId"
+      IsPersistent="false"
+      IsNotNull="true"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="HEADER_ID"
+      Expression="HEADER_ID"
+      SQLType="NUMERIC" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LineNumber"
+      IsPersistent="false"
+      IsNotNull="true"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="LINE_NUMBER"
+      Expression="LINE_NUMBER"
+      SQLType="NUMERIC" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ItemId"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="ITEM_ID"
+      Expression="ITEM_ID"
+      SQLType="NUMERIC" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ItemDescription"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="ITEM_DESCRIPTION"
+      Expression="ITEM_DESCRIPTION"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Quantity"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="QUANTITY"
+      Expression="QUANTITY"
+      SQLType="NUMERIC" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="UnitPrice"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="UNIT_PRICE"
+      Expression="UNIT_PRICE"
+      SQLType="NUMERIC" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="UnitOfMeasure"
+      IsPersistent="false"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="UNIT_OF_MEASURE"
+      Expression="UNIT_OF_MEASURE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LineTotal"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="LINE_TOTAL"
+      Expression="LINE_TOTAL"
+      SQLType="NUMERIC" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ItemName"
+      IsPersistent="false"
+      Precision="20"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="ITEM_NAME"
+      Expression="ITEM_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="20" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="AttributeCategory"
+      IsPersistent="false"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="ATTRIBUTE_CATEGORY"
+      Expression="ATTRIBUTE_CATEGORY"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute1"
+      IsPersistent="false"
+      Precision="150"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="ATTRIBUTE1"
+      Expression="ATTRIBUTE1"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute2"
+      IsPersistent="false"
+      Precision="150"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="ATTRIBUTE2"
+      Expression="ATTRIBUTE2"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute3"
+      IsPersistent="false"
+      Precision="150"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="ATTRIBUTE3"
+      Expression="ATTRIBUTE3"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute4"
+      IsPersistent="false"
+      Precision="150"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="ATTRIBUTE4"
+      Expression="ATTRIBUTE4"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="NeedByDate"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      AliasName="NEED_BY_DATE"
+      Expression="NEED_BY_DATE"
+      SQLType="DATE" >
+   </ViewAttribute>
+   <AttrArray Name="KeyAttributes">
+      <Item Value="LineId" />
+      <Item Value="HeaderId" />
+   </AttrArray>
+</ViewObject>

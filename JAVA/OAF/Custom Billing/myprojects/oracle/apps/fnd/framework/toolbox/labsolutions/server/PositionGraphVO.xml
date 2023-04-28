@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding='windows-1252'?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<!-- $Header: PositionGraphVO.xml 120.7 2005/07/12 11:04:25 atgops1 noship $ -->
+
+<ViewObject
+   Name="PositionGraphVO"
+   BindingStyle="Oracle"
+   CustomQuery="true"
+   RowClass="oracle.apps.fnd.framework.toolbox.labsolutions.server.PositionGraphVORowImpl"
+   ComponentClass="oracle.apps.fnd.framework.toolbox.labsolutions.server.PositionGraphVOImpl"
+   MsgBundleClass="oracle.jbo.common.JboResourceBundle"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+SELECT position_code, count(position_code)
+FROM fwk_tbx_employees
+GROUP BY position_code
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="9.0.3.12.25" />
+      <Attr Name="_CodeGenFlagNew" Value="36" />
+   </DesignTime>
+   <ViewAttribute
+      Name="PositionCode"
+      IsPersistent="false"
+      Precision="30"
+      Type="java.lang.String"
+      AliasName="POSITION_CODE"
+      ColumnType="VARCHAR2"
+      Expression="POSITION_CODE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CountPositionCode"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="VARCHAR2"
+      Expression="COUNT(POSITION_CODE)"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+</ViewObject>

@@ -1,0 +1,620 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<!-- $Header: PoDetailsFullExpVO.xml 120.8 2006/07/03 23:53:49 atgops1 noship $ -->
+
+<ViewObject
+   Name="PoDetailsFullExpVO"
+   BindingStyle="Oracle"
+   CustomQuery="true"
+   RowClass="oracle.apps.fnd.framework.toolbox.tutorial.server.PoDetailsFullExpVORowImpl"
+   ComponentClass="oracle.apps.fnd.framework.server.OAViewObjectImpl"
+   FetchMode="FETCH_AS_NEEDED"
+   Passivate="All"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+select po.header_id AS HEADER_ID,
+       po.description AS DESCRIPTION,
+       po.status_code AS STATUS_CODE,
+       lkp.meaning AS STATUS_DISPLAY,
+       po.currency_code AS CURRENCY_CODE,
+       po.supplier_id AS SUPPLIER_ID,
+       sup.name AS SUPPLIER_NAME,
+       po.supplier_site_id AS SUPPLIER_SITE_ID,
+       supsite.site_name AS SITE_NAME,
+       addr.address_line_1 AS SITE_ADDRESS_LINE_1,
+       addr.address_line_2 AS SITE_ADDRESS_LINE_2,
+       addr.address_line_3 AS SITE_ADDRESS_LINE_3,
+       addr.country AS SITE_COUNTRY,
+       addr.town_or_city AS SITE_TOWN_OR_CITY,
+       addr.postal_code AS SITE_POSTAL_CODE,
+       po.buyer_id AS BUYER_ID,
+       emp.full_name AS BUYER_NAME,
+       emp.email_address AS BUYER_EMAIL,
+       po.ship_to_address_id AS SHIP_TO_ADDRESS_ID,
+       po.bill_to_address_id AS BILL_TO_ADDRESS_ID,
+       addr1.address_name AS SHIPTO_ADDRESS_NAME,
+       addr1.address_line_1 AS SHIPTO_ADDRESS_LINE_1,
+       addr1.address_line_2 AS SHIPTO_ADDRESS_LINE_2,
+       addr1.address_line_3 AS SHIPTO_ADDRESS_LINE_3,
+       addr1.country AS SHIPTO_COUNTY,
+       addr1.postal_code AS SHIPTO_POSTAL_CODE,
+       addr1.town_or_city AS SHIPTO_TOWN_OR_CITY,
+       addr2.address_name AS BILLTO_ADDRESS_NAME,
+       addr2.address_line_1 AS BILLTO_ADDRESS_LINE_1,
+       addr2.address_line_2 AS BILLTO_ADDRESS_LINE_2,
+       addr2.address_line_3 AS BILLTO_ADDRESS_LINE_3,
+       addr2.country AS BILLTO_COUNTY,
+       addr2.postal_code AS BILLTO_POSTAL_CODE,
+       addr2.town_or_city AS BILLTO_TOWN_OR_CITY,
+       po.carrier_code AS CARRIER_CODE,
+       lkp1.meaning AS CARRIER_DISPLAY,
+       po.payment_terms_code AS PAYMENT_TERMS_CODE,
+       lkp2.meaning AS PAYMENT_TERMS_DISPLAY,    
+       (select sum(nvl(line.quantity, 0) * nvl(line.unit_price, 0))
+               from fwk_tbx_po_lines line
+               where po.header_id = line.header_id) AS ORDER_TOTAL
+from fwk_tbx_po_headers po,
+     fwk_tbx_suppliers sup,
+     fwk_tbx_employees emp,
+     fwk_tbx_supplier_sites supsite,
+     fwk_tbx_addresses addr,
+     fwk_tbx_addresses addr1,
+     fwk_tbx_addresses addr2,
+     fwk_tbx_lookup_codes_vl lkp,
+     fwk_tbx_lookup_codes_vl lkp1,
+     fwk_tbx_lookup_codes_vl lkp2
+where po.supplier_id = sup.supplier_id
+and   po.buyer_id = emp.employee_id
+and   po.status_code = lkp.lookup_code
+and   lkp.lookup_type = 'FWK_TBX_ORDER_STATUS'
+and   po.carrier_code = lkp1.lookup_code
+and   lkp1.lookup_type = 'FWK_TBX_CARRIER'
+and   po.payment_terms_code = lkp2.lookup_code
+and   lkp2.lookup_type = 'FWK_TBX_PAYMENT_TERMS'
+and   po.supplier_id = supsite.supplier_id
+and   po.supplier_site_id = supsite.supplier_site_id
+and   supsite.address_id = addr.address_id
+and   po.ship_to_address_id = addr1.address_id
+and   po.bill_to_address_id = addr2.address_id
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.38.51" />
+      <Attr Name="_codeGenFlag2" Value="Access" />
+   </DesignTime>
+   <ViewAttribute
+      Name="HeaderId"
+      IsQueriable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="HEADER_ID"
+      Expression="HEADER_ID"
+      SQLType="NUMERIC" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Description"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="DESCRIPTION"
+      Expression="DESCRIPTION"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StatusCode"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="STATUS_CODE"
+      Expression="STATUS_CODE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StatusDisplay"
+      IsQueriable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="80"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="STATUS_DISPLAY"
+      Expression="STATUS_DISPLAY"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CurrencyCode"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CURRENCY_CODE"
+      Expression="CURRENCY_CODE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SupplierId"
+      IsQueriable="false"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="SUPPLIER_ID"
+      Expression="SUPPLIER_ID"
+      SQLType="NUMERIC" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SupplierName"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="80"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="SUPPLIER_NAME"
+      Expression="SUPPLIER_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SupplierSiteId"
+      IsQueriable="false"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="SUPPLIER_SITE_ID"
+      Expression="SUPPLIER_SITE_ID"
+      SQLType="NUMERIC" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SiteName"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="20"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="SITE_NAME"
+      Expression="SITE_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="20" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SiteAddressLine1"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="60"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="SITE_ADDRESS_LINE_1"
+      Expression="SITE_ADDRESS_LINE_1"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="60" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SiteAddressLine2"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="60"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="SITE_ADDRESS_LINE_2"
+      Expression="SITE_ADDRESS_LINE_2"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="60" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SiteAddressLine3"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="60"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="SITE_ADDRESS_LINE_3"
+      Expression="SITE_ADDRESS_LINE_3"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="60" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SiteCountry"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="2"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="SITE_COUNTRY"
+      Expression="SITE_COUNTRY"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="2" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SiteTownOrCity"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="SITE_TOWN_OR_CITY"
+      Expression="SITE_TOWN_OR_CITY"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SitePostalCode"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="SITE_POSTAL_CODE"
+      Expression="SITE_POSTAL_CODE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="BuyerId"
+      IsQueriable="false"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="BUYER_ID"
+      Expression="BUYER_ID"
+      SQLType="NUMERIC" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="BuyerName"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="BUYER_NAME"
+      Expression="BUYER_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="BuyerEmail"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="BUYER_EMAIL"
+      Expression="BUYER_EMAIL"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ShipToAddressId"
+      IsQueriable="false"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="SHIP_TO_ADDRESS_ID"
+      Expression="SHIP_TO_ADDRESS_ID"
+      SQLType="NUMERIC" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="BillToAddressId"
+      IsQueriable="false"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="BILL_TO_ADDRESS_ID"
+      Expression="BILL_TO_ADDRESS_ID"
+      SQLType="NUMERIC" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ShiptoAddressName"
+      IsQueriable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="20"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="SHIPTO_ADDRESS_NAME"
+      Expression="SHIPTO_ADDRESS_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="20" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ShiptoAddressLine1"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="60"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="SHIPTO_ADDRESS_LINE_1"
+      Expression="SHIPTO_ADDRESS_LINE_1"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="60" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ShiptoAddressLine2"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="60"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="SHIPTO_ADDRESS_LINE_2"
+      Expression="SHIPTO_ADDRESS_LINE_2"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="60" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ShiptoAddressLine3"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="60"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="SHIPTO_ADDRESS_LINE_3"
+      Expression="SHIPTO_ADDRESS_LINE_3"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="60" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ShiptoCounty"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="2"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="SHIPTO_COUNTY"
+      Expression="SHIPTO_COUNTY"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="2" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ShiptoPostalCode"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="SHIPTO_POSTAL_CODE"
+      Expression="SHIPTO_POSTAL_CODE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ShiptoTownOrCity"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="SHIPTO_TOWN_OR_CITY"
+      Expression="SHIPTO_TOWN_OR_CITY"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="BilltoAddressName"
+      IsQueriable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="20"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="BILLTO_ADDRESS_NAME"
+      Expression="BILLTO_ADDRESS_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="20" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="BilltoAddressLine1"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="60"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="BILLTO_ADDRESS_LINE_1"
+      Expression="BILLTO_ADDRESS_LINE_1"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="60" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="BilltoAddressLine2"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="60"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="BILLTO_ADDRESS_LINE_2"
+      Expression="BILLTO_ADDRESS_LINE_2"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="60" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="BilltoAddressLine3"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="60"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="BILLTO_ADDRESS_LINE_3"
+      Expression="BILLTO_ADDRESS_LINE_3"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="60" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="BilltoCounty"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="2"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="BILLTO_COUNTY"
+      Expression="BILLTO_COUNTY"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="2" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="BilltoPostalCode"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="BILLTO_POSTAL_CODE"
+      Expression="BILLTO_POSTAL_CODE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="BilltoTownOrCity"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="BILLTO_TOWN_OR_CITY"
+      Expression="BILLTO_TOWN_OR_CITY"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CarrierCode"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CARRIER_CODE"
+      Expression="CARRIER_CODE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CarrierDisplay"
+      IsQueriable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="80"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CARRIER_DISPLAY"
+      Expression="CARRIER_DISPLAY"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PaymentTermsCode"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PAYMENT_TERMS_CODE"
+      Expression="PAYMENT_TERMS_CODE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PaymentTermsDisplay"
+      IsQueriable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="80"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PAYMENT_TERMS_DISPLAY"
+      Expression="PAYMENT_TERMS_DISPLAY"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="OrderTotal"
+      IsQueriable="false"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="ORDER_TOTAL"
+      Expression="ORDER_TOTAL"
+      SQLType="NUMERIC" >
+   </ViewAttribute>
+   <AttrArray Name="KeyAttributes">
+      <Item Value="HeaderId" />
+   </AttrArray>
+   <ViewLinkAccessor
+      Name="PoLinesExpVO"
+      ViewLink="oracle.apps.fnd.framework.toolbox.tutorial.server.PoHeaderToLinesVL"
+      Type="oracle.jbo.RowIterator"
+      IsUpdateable="false" >
+   </ViewLinkAccessor>
+</ViewObject>

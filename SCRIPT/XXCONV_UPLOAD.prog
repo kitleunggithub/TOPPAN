@@ -1,0 +1,67 @@
+#!/bin/bash
+#!/usr/bin/sh
+# --------------------------------------------------
+# Parameters
+#
+
+request_id=$4
+master_request_id=$5
+program_name=$6
+data_file_path=$7
+data_file_name=$8
+
+echo "Parameters"
+echo "----------"
+echo "1) Master Request ID: $master_request_id"
+echo "2) Program Name     : $program_name"
+echo "3) Data File Path   : $data_file_path"
+echo "4) Data File Name   : $data_file_name"
+echo ""
+
+if [ ! -f "$data_file_path/$data_file_name" ]
+then
+  echo "No such file or directory: $data_file_path/$data_file_name"
+  echo ""
+  exit 1;
+fi
+
+if [ -z "$master_request_id" ]
+then
+  data_request_id=$request_id
+else
+  data_request_id=$master_request_id
+fi
+
+export NLS_LANG=AMERICAN_AMERICA.UTF8
+
+cat $XXTM_TOP/bin/${program_name}_TEMPLATE.ctl | sed -e "s%\$P_REQUEST_ID%$data_request_id%" > $data_file_path/log/${program_name}.ctl
+
+sqlldr $FCP_LOGIN \
+data   =$data_file_path/$data_file_name \
+control=$data_file_path/log/${program_name}.ctl \
+log    =$data_file_path/log/${program_name}_$request_id.log \
+bad    =$data_file_path/log/${program_name}_$request_id.bad \
+discard=$data_file_path/log/${program_name}_$request_id.dsc \
+>       $data_file_path/log/${program_name}_$request_id.log
+
+retcode=`echo $?`
+
+mv $data_file_path/$data_file_name $data_file_path/archive/$data_file_name.$request_id
+#cp $data_file_path/$data_file_name $data_file_path/archive/$data_file_name.$request_id
+
+cat $data_file_path/log/${program_name}_$request_id.log
+
+if [ -f "$data_file_path/log/${program_name}_$request_id.bad" ]
+then
+  echo ""
+  echo "Bad File: $data_file_path/log/${program_name}_$request_id.bad"
+  echo "-----------------------------------------------------------------------------"
+  cat $data_file_path/log/${program_name}_$request_id.bad
+  echo "-----------------------------------------------------------------------------"
+  echo ""
+fi
+
+exit $retcode
+# --------------------------------------------------
+# EOF
+#

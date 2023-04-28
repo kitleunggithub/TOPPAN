@@ -1,0 +1,15 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory -->
+<oa:header akRegionCode="FWK_TBX_T_LSN8_QUICKLINKS" regionName="Home Links Region" xmlns="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:user="http://xmlns.oracle.com/jrad/user" version="9.0.3.8.3_762" xml:lang="en-US" file-version="$Header: HomeLinksRN.xml 120.5 2005/07/12 12:09:12 atgops1 noship $">
+   <ui:contents>
+      <oa:stackLayout id="StackRN">
+         <ui:contents>
+            <oa:flowLayout id="QLLink1" extends="/oracle/apps/fnd/framework/toolbox/tutorial/webui/HomeLinkRN" regionName="Side Nav Link Layout"/>
+            <oa:flowLayout id="QLLink2" extends="/oracle/apps/fnd/framework/toolbox/tutorial/webui/HomeLinkRN" regionName="Side Nav Link Layout"/>
+            <oa:flowLayout id="QLLink3" extends="/oracle/apps/fnd/framework/toolbox/tutorial/webui/HomeLinkRN" regionName="Side Nav Link Layout"/>
+            <oa:flowLayout id="QLLink4" extends="/oracle/apps/fnd/framework/toolbox/tutorial/webui/HomeLinkRN" regionName="Side Nav Link Layout"/>
+            <oa:flowLayout id="QLLink5" extends="/oracle/apps/fnd/framework/toolbox/tutorial/webui/HomeLinkRN" regionName="Side Nav Link Layout"/>
+         </ui:contents>
+      </oa:stackLayout>
+   </ui:contents>
+</oa:header>

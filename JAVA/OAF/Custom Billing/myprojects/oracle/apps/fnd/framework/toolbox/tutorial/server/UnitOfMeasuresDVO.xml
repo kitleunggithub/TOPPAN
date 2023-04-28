@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="UnitOfMeasuresDVO"
+   BindingStyle="JDBC"
+   CustomQuery="true"
+   RowClass="oracle.apps.fnd.framework.server.OAViewRowImpl"
+   ComponentClass="oracle.apps.fnd.framework.server.OAViewObjectImpl"
+   UseGlueCode="false" >
+   <Properties>
+      <Property Name ="RCS_ID" Value ="$Header: UnitOfMeasuresDVO.xml 120.5 2006/07/04 02:41:14 atgops1 noship $" />
+      <Property Name ="SVC_COMPONENT_CLASS" Value ="oracle.svc.DataObjectImpl" />
+      <Property Name ="SVC_DATA_OBJECT" Value ="UnitOfMeasureDomain" />
+      <Property Name ="SVC_DISPLAY_NAME" Value ="Unit Of Measure Domain" />
+      <Property Name ="SVC_DOCUMENTATION" Value ="Unit of measures data object." />
+      <Property Name ="SVC_FILTER.UnitOfMeasureDomainFilter.SVC_ATTRIBUTES" Value ="LookupCode,Meaning" />
+      <Property Name ="SVC_FILTER.UnitOfMeasureDomainFilter.SVC_COMPONENT_CLASS" Value ="oracle.svc.expression.ExpressionFilter" />
+      <Property Name ="SVC_FILTER.UnitOfMeasureDomainFilter.SVC_DISPLAY_NAME" Value ="Unit Of Measure Domain Filter" />
+      <Property Name ="SVC_FILTER.UnitOfMeasureDomainFilter.SVC_DOCUMENTATION" Value ="Filter for unit of measures domain." />
+      <Property Name ="SVC_FILTER.UnitOfMeasureDomainFilter.SVC_EXPRESSION" Value ="true" />
+      <Property Name ="SVC_FILTER.UnitOfMeasureDomainFilter.SVC_NAMESPACE" Value ="/oracle/apps/fnd/framework/toolbox/tutorial/" />
+      <Property Name ="SVC_FILTER.UnitOfMeasureDomainFilter.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_FILTER.UnitOfMeasureDomainFilter.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_FILTER.UnitOfMeasureDomainFilter.SVC_REP_PRODUCT" Value ="fnd" />
+      <Property Name ="SVC_FILTER.UnitOfMeasureDomainFilter.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_FILTERS" Value ="UnitOfMeasureDomainFilter" />
+      <Property Name ="SVC_IS_DOMAIN" Value ="true" />
+      <Property Name ="SVC_NAMESPACE" Value ="/oracle/apps/fnd/framework/toolbox/tutorial/" />
+      <Property Name ="SVC_OBJECT" Value ="SDO" />
+      <Property Name ="SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_REP_PRODUCT" Value ="fnd" />
+      <Property Name ="SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_VO_DEF" Value ="oracle.apps.fnd.framework.toolbox.tutorial.server.UnitOfMeasuresDVO" />
+   </Properties>
+   <SQLQuery><![CDATA[
+select lookup_code, meaning from FWK_TBX_LOOKUP_CODES_VL where lookup_type='FWK_TBX_UNIT_OF_MEASURE'
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.38.51" />
+      <Attr Name="_codeGenFlag2" Value="" />
+   </DesignTime>
+   <ViewAttribute
+      Name="LookupCode"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="LOOKUP_CODE"
+      Expression="LOOKUP_CODE"
+      SQLType="VARCHAR" >
+      <Properties>
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_SIZE" Value ="30" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Meaning"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="80"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="MEANING"
+      Expression="MEANING"
+      SQLType="VARCHAR" >
+      <Properties>
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_SIZE" Value ="80" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="80" />
+      </DesignTime>
+   </ViewAttribute>
+</ViewObject>

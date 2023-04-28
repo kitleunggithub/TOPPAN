@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<!-- $Header: DepartmentEmpsVO.xml 120.8 2006/07/03 16:39:34 atgops1 noship $ -->
+
+<ViewObject
+   Name="DepartmentEmpsVO"
+   BindingStyle="Oracle"
+   CustomQuery="true"
+   RowClass="oracle.apps.fnd.framework.toolbox.samplelib.server.DepartmentEmpsVORowImpl"
+   ComponentClass="oracle.apps.fnd.framework.toolbox.samplelib.server.DepartmentEmpsVOImpl"
+   UseGlueCode="false" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.38.51" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll" />
+   </DesignTime>
+   <ViewAttribute
+      Name="DepartmentId"
+      IsQueriable="false"
+      IsPersistent="false"
+      DefaultValue="1"
+      Precision="255"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="VARCHAR2"
+      AliasName="VIEW_ATTR"
+      SQLType="NUMERIC" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="EmployeeId"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="255"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="VARCHAR2"
+      AliasName="VIEW_ATTR"
+      SQLType="NUMERIC" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="EmployeeName"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="255"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="VIEW_ATTR"
+      SQLType="VARCHAR" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="EmployeeEmail"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="255"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="VIEW_ATTR"
+      SQLType="VARCHAR" >
+   </ViewAttribute>
+   <AttrArray Name="KeyAttributes">
+      <Item Value="DepartmentId" />
+      <Item Value="EmployeeId" />
+   </AttrArray>
+</ViewObject>

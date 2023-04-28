@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE JboPackage SYSTEM "jbo_03_01.dtd">
+
+<JboPackage
+   Name="server"
+   SeparateXMLFiles="true"
+   PackageName="toppanmerrill.oracle.apps.xxtm.cb.invoicestyle.server" >
+   <DesignTime>
+      <Attr Name="_ejbPackage" Value="false" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+   </DesignTime>
+   <Containee
+      Name="InvoiceStyleAM"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoicestyle.server.InvoiceStyleAM"
+      ObjectType="AppModule" >
+   </Containee>
+   <Containee
+      Name="InvoiceStyleEO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoicestyle.server.InvoiceStyleEO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="InvoiceStyleLangLovVO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoicestyle.server.InvoiceStyleLangLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="InvoiceStyleStatusLovVO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoicestyle.server.InvoiceStyleStatusLovVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="InvoiceStyleVO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoicestyle.server.InvoiceStyleVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="SearchInvoiceStyleVO"
+      FullName="toppanmerrill.oracle.apps.xxtm.cb.invoicestyle.server.SearchInvoiceStyleVO"
+      ObjectType="ViewObject" >
+   </Containee>
+</JboPackage>

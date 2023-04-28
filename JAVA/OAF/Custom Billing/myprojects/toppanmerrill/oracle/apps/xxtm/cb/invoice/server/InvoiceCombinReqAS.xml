@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+
+<Association
+   Name="InvoiceCombinReqAS" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+   </DesignTime>
+   <AssociationEnd
+      Name="InvoiceCombineReqEO1"
+      Cardinality="1"
+      Source="true"
+      Owner="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqEO"
+      CascadeDelete="true"
+      LockTopContainer="false" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqEO.CombineReqId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_finderName" Value="InvoiceCombineReqEO1" />
+         <Attr Name="_aggregation" Value="0" />
+         <Attr Name="_minCardinality" Value="1" />
+         <Attr Name="_isUpdateable" Value="true" />
+      </DesignTime>
+   </AssociationEnd>
+   <AssociationEnd
+      Name="InvoiceCombineReqDtlEO1"
+      Cardinality="-1"
+      Owner="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqDtlEO"
+      HasOwner="true" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqDtlEO.CombineReqId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_finderName" Value="InvoiceCombineReqDtlEO1" />
+         <Attr Name="_aggregation" Value="0" />
+         <Attr Name="_isUpdateable" Value="true" />
+      </DesignTime>
+   </AssociationEnd>
+</Association>

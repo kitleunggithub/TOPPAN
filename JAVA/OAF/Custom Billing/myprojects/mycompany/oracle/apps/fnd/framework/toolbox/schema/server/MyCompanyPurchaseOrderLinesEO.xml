@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding='windows-1252'?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+
+<Entity
+   Name="MyCompanyPurchaseOrderLinesEO"
+   Extends="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderLineEO"
+   DBObjectType="table"
+   DBObjectName="FWK_TBX_PO_LINES"
+   AliasName="MyCompanyPurchaseOrderLinesEO"
+   BindingStyle="Oracle"
+   UseGlueCode="false"
+   CodeGenFlag="0"
+   RowClass="mycompany.oracle.apps.fnd.framework.toolbox.schema.server.MyCompanyPurchaseOrderLinesEOImpl"
+   DefClass="oracle.apps.fnd.framework.server.OAEntityDefImpl"
+   CollClass="oracle.apps.fnd.framework.server.OAEntityCache" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="9.0.3.11.64" />
+      <AttrArray Name="_publishEvents">
+      </AttrArray>
+   </DesignTime>
+</Entity>

@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory  -->
+<!-- Following  attribute sets for the FWK_TBX_SUPLIER_SITES displayable columns. It would be nice if you add some message tips to some attribute sets -->
+<!-- Followed by region header attribute sets, add as many as you need -->
+<!-- Followed by UI standards, object specific button attribute sets, use Buttons.xml for shared, no object specific buttons. Add as many as you need -->
+<package xmlns="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:jrad="http://xmlns.oracle.com/jrad" version="9.0.3.8.6_889" xml:lang="en-US" file-version="$Header: FwkTbxSupplierSites.xml 120.5 2005/07/12 12:05:09 atgops1 noship $">
+   <jrad:attributeSet docName="SiteName" comment="Supplier site name." prompt="Site Name" columns="20"/>
+   <jrad:attributeSet docName="PurchasingSiteFlag" comment="Flag indicating whether purchase orders may be placed for this site." prompt="Purchasing Site" columns="30"/>
+   <jrad:attributeSet docName="StartDate" comment="Site activation start date." prompt="Start Date" columns="30"/>
+   <jrad:attributeSet docName="EndDate" comment="Date after which site is disabled." prompt="End Date" columns="30"/>
+   <jrad:attributeSet docName="CreateSite" comment="UI Standards 'Create xxx' button or icon." prompt="Create Site" shortDesc="Select to create a supplier site."/>
+   <jrad:attributeSet docName="UpdateSite" comment="UI Standards 'Update xxx' button or icon." prompt="Update Site" shortDesc="Select to update this supplier site."/>
+   <jrad:attributeSet docName="SiteName_Site" columns="20" comment="Supplier site name." prompt="Site"/>
+   <attributeSet docName="SupplierSiteId" comment="Supplier site unique identifier." columns="15" prompt="Supplier Site Id"/>
+   <attributeSet docName="PaymentTermsCode" comment="Negotiated payment terms for this site." columns="40" prompt="Payment Terms"/>
+   <attributeSet docName="CarrierCode" comment="Negotiated carrier for this site." columns="40" prompt="Carrier"/>
+   <attributeSet docName="AddressId" comment="Default shipping address unique identifier." columns="15" prompt="Address Id"/>
+</package>

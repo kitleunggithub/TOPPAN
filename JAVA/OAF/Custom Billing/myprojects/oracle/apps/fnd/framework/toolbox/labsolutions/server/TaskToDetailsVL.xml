@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding='windows-1252'?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+
+<!-- $Header: TaskToDetailsVL.xml 120.7 2005/07/12 11:05:05 atgops1 noship $ -->
+
+<ViewLink
+   Name="TaskToDetailsVL"
+   Where=":1 = PROJECT_ID and top_task_id = task_id" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="9.0.3.12.25" />
+   </DesignTime>
+   <ViewLinkDefEnd
+      Name="TaskListVO"
+      Cardinality="0"
+      Owner="oracle.apps.fnd.framework.toolbox.labsolutions.server.TaskListVO"
+      Source="true" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.labsolutions.server.TaskListVO.ProjectId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_isUpdateable" Value="true" />
+      </DesignTime>
+   </ViewLinkDefEnd>
+   <ViewLinkDefEnd
+      Name="TaskDetailsVO"
+      Cardinality="-1"
+      Owner="oracle.apps.fnd.framework.toolbox.labsolutions.server.TaskDetailsVO" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.labsolutions.server.TaskDetailsVO.ProjectId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_isUpdateable" Value="true" />
+      </DesignTime>
+   </ViewLinkDefEnd>
+</ViewLink>

@@ -1,0 +1,30 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath:~PROD:~PATH:~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath:~PROD:mds:directory  -->
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="9.0.3.9.1_1593" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header: ContextInfoPG.xml 120.8 2006/08/01 20:37:21 atgops1 noship $">
+   <content>
+      <oa:pageLayout amDefName="oracle.apps.fnd.framework.toolbox.samplelib.server.SampleBrowserAM" id="PageLayoutRN" title="Contextual Information" windowTitle="OA Framework Toolbox Sample Library" controllerClass="oracle.apps.fnd.framework.toolbox.samplelib.webui.ContextInfoCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:separator id="InfoSeparator"/>
+         </ui:contents>
+         <ui:returnNavigation>
+            <oa:link id="ReturnTo" text="Return to Sample Browser" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/samplelib/webui/SampleBrowserPG&amp;retainAM=Y"/>
+         </ui:returnNavigation>
+         <ui:productBranding>
+            <oa:image id="ProductBranding" source="FNDTAPPBRAND.gif" shortDesc="OA Framework Toolbox Tutorial"/>
+         </ui:productBranding>
+         <ui:pageStatus>
+            <oa:messageComponentLayout id="PageStatusRN" columns="2" rows="2">
+               <ui:contents>
+                  <oa:messageStyledText id="EmpName" prompt="Employee" styleClass="OraDataText" viewName="EmployeesVO1" viewAttr="FullName"/>
+                  <oa:messageStyledText id="EmpNum" prompt="Number" styleClass="OraDataText" dataType="NUMBER" viewName="EmployeesVO1" viewAttr="EmployeeId"/>
+                  <oa:messageStyledText id="Email" prompt="Email" styleClass="OraDataText" viewName="EmployeesVO1" viewAttr="EmailAddress"/>
+                  <oa:messageStyledText id="StartDate" prompt="Hire Date" styleClass="OraDataText" dataType="DATETIME" viewName="EmployeesVO1" viewAttr="StartDate"/>
+               </ui:contents>
+            </oa:messageComponentLayout>
+         </ui:pageStatus>
+      </oa:pageLayout>
+   </content>
+</page>

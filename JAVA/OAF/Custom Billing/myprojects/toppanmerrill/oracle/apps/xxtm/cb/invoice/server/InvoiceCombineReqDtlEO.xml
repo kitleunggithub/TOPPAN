@@ -1,0 +1,247 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+
+<Entity
+   Name="InvoiceCombineReqDtlEO"
+   DBObjectType="synonym"
+   DBObjectName="XXBS_COMBINE_REQ_DTL"
+   AliasName="InvoiceCombineReqDtlEO"
+   BindingStyle="OracleName"
+   UseGlueCode="false"
+   RowClass="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqDtlEOImpl"
+   DefClass="oracle.apps.fnd.framework.server.OAEntityDefImpl"
+   CollClass="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqDtlEOCollImpl" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+      <AttrArray Name="_publishEvents">
+      </AttrArray>
+      <Attr Name="_panelSchema" Value="table|alias" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll" />
+   </DesignTime>
+   <Attribute
+      Name="CombineReqDtlId"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      ColumnName="COMBINE_REQ_DTL_ID"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXBS_COMBINE_REQ_DTL"
+      PrimaryKey="true" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="CombineReqId"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      ColumnName="COMBINE_REQ_ID"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXBS_COMBINE_REQ_DTL" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="ChildCustomerTrxId"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      ColumnName="CHILD_CUSTOMER_TRX_ID"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXBS_COMBINE_REQ_DTL" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="CreatedBy"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      ColumnName="CREATED_BY"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXBS_COMBINE_REQ_DTL" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="CreationDate"
+      IsNotNull="true"
+      ColumnName="CREATION_DATE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="TIMESTAMP"
+      TableName="XXBS_COMBINE_REQ_DTL" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LastUpdatedBy"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      ColumnName="LAST_UPDATED_BY"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXBS_COMBINE_REQ_DTL" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LastUpdateDate"
+      IsNotNull="true"
+      ColumnName="LAST_UPDATE_DATE"
+      Type="oracle.jbo.domain.Date"
+      ColumnType="DATE"
+      SQLType="TIMESTAMP"
+      TableName="XXBS_COMBINE_REQ_DTL" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </Attribute>
+   <Attribute
+      Name="LastUpdateLogin"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      ColumnName="LAST_UPDATE_LOGIN"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      SQLType="NUMERIC"
+      TableName="XXBS_COMBINE_REQ_DTL" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </Attribute>
+   <AccessorAttribute
+      Name="InvoiceCombineReqEO1"
+      Association="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombinReqAS"
+      AssociationEnd="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombinReqAS.InvoiceCombineReqEO1"
+      AssociationOtherEnd="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombinReqAS.InvoiceCombineReqDtlEO1"
+      Type="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqEOImpl" >
+   </AccessorAttribute>
+   <Key
+      Name="SysC00292699" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqDtlEO.CombineReqDtlId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;COMBINE_REQ_DTL_ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00292699" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00292700" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqDtlEO.CombineReqId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;COMBINE_REQ_ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00292700" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00292701" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqDtlEO.ChildCustomerTrxId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CHILD_CUSTOMER_TRX_ID&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00292701" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00292702" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqDtlEO.CreatedBy" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATED_BY&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00292702" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00292703" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqDtlEO.CreationDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;CREATION_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00292703" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00292704" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqDtlEO.LastUpdatedBy" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;LAST_UPDATED_BY&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00292704" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00292705" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqDtlEO.LastUpdateDate" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;LAST_UPDATE_DATE&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00292705" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="SysC00292706" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqDtlEO.LastUpdateLogin" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_checkCondition" Value="&#34;LAST_UPDATE_LOGIN&#34; IS NOT NULL" />
+         <Attr Name="_isCheck" Value="true" />
+         <Attr Name="_DBObjectName" Value="SYS_C00292706" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="XxbsCombineReqDtlIdU1" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqDtlEO.CombineReqDtlId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_isPrimary" Value="true" />
+         <Attr Name="_DBObjectName" Value="XXBS_COMBINE_REQ_DTL_ID_U1" />
+      </DesignTime>
+   </Key>
+   <Key
+      Name="XxbsCombineReqDtlFk" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqDtlEO.CombineReqId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_referencedKey" Value="XXBS_COMBINE_REQ_ID_U1" />
+         <Attr Name="_isForeign" Value="true" />
+         <Attr Name="_DBObjectName" Value="XXBS_COMBINE_REQ_DTL_FK" />
+      </DesignTime>
+   </Key>
+</Entity>

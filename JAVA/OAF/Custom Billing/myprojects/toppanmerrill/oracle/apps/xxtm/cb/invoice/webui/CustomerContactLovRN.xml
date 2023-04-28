@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oa:listOfValues version="10.1.3_" xml:lang="en-US" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <ui:contents>
+      <oa:table name="CustomerContactLovRN" id="CustomerContactLovVO1">
+         <ui:contents>
+            <oa:messageStyledText id="CustAccountId" dataType="NUMBER" prompt="CustAccountId" viewName="CustomerContactLovVO1" viewAttr="CustAccountId" maximumLength="15" rendered="false"/>
+            <oa:messageStyledText id="CustAcctSiteId" dataType="NUMBER" prompt="CustAcctSiteId" viewName="CustomerContactLovVO1" viewAttr="CustAcctSiteId" maximumLength="15" rendered="false"/>
+			<oa:messageStyledText id="OrgId" dataType="NUMBER" prompt="OrgId" viewName="CustomerContactLovVO1" viewAttr="OrgId" maximumLength="15" rendered="false"/>
+            <oa:messageStyledText id="CustAccountRoleId" dataType="NUMBER" prompt="CustAccountRoleId" viewName="CustomerContactLovVO1" viewAttr="CustAccountRoleId" maximumLength="15" rendered="false"/>
+            <oa:messageStyledText id="PersonProfileId" dataType="NUMBER" prompt="PersonProfileId" viewName="CustomerContactLovVO1" viewAttr="PersonProfileId" maximumLength="15" rendered="false"/>
+			
+            <oa:messageStyledText id="PersonFirstName" dataType="VARCHAR2" prompt="First Name" viewName="CustomerContactLovVO1" viewAttr="PersonFirstName" maximumLength="150" queryable="true"/>
+            <oa:messageStyledText id="PersonMiddleName" dataType="VARCHAR2" prompt="Middle Name" viewName="CustomerContactLovVO1" viewAttr="PersonMiddleName" maximumLength="60" queryable="true"/>
+            <oa:messageStyledText id="PersonLastName" dataType="VARCHAR2" prompt="Last Name" viewName="CustomerContactLovVO1" viewAttr="PersonLastName" maximumLength="150" queryable="true"/>
+            <oa:messageStyledText id="PersonFullName" dataType="VARCHAR2" prompt="Full Name" viewName="CustomerContactLovVO1" viewAttr="PersonFullName" maximumLength="362" queryable="true"/>
+            <oa:messageStyledText id="EmailAddress" dataType="VARCHAR2" prompt="Email Address" viewName="CustomerContactLovVO1" viewAttr="EmailAddress" maximumLength="2000"/>
+            <oa:messageStyledText id="EmailPrimaryFlag" dataType="VARCHAR2" prompt="Email Primary Flag" viewName="CustomerContactLovVO1" viewAttr="EmailPrimaryFlag" maximumLength="1" rendered="false"/>
+         </ui:contents>
+      </oa:table>
+   </ui:contents>
+</oa:listOfValues>

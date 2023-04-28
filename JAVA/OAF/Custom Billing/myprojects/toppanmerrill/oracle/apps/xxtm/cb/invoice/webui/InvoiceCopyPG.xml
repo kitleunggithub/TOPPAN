@@ -1,0 +1,32 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <content>
+      <oa:pageLayout id="pageLayout" amDefName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SearchInvoiceAM" controllerClass="toppanmerrill.oracle.apps.xxtm.cb.invoice.webui.InvoiceCopyCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:formValue id="OrganizationIdFD" viewName="InvoiceVO1" viewAttr="OrgId" dataType="NUMBER"/>
+            <oa:formValue id="SetOfBooksIdFD" viewName="InvoiceVO1" viewAttr="CustomerTrxId" dataType="NUMBER"/>
+            <oa:formValue id="ProjectIdFD" viewName="InvoiceVO1" viewAttr="OriginalProjectId" dataType="NUMBER"/>
+            <oa:formValue id="TransactionTypeIdFD" viewName="InvoiceVO1" viewAttr="CustTrxTypeId" dataType="NUMBER"/>
+            <oa:formValue id="CustomerIdFD" viewName="InvoiceVO1" viewAttr="BillToCustomerId" dataType="NUMBER"/>
+            <oa:formValue id="BillerToAddressIdFD" viewName="InvoiceVO1" viewAttr="BillToAddressId" dataType="NUMBER"/>
+            <oa:formValue id="SecCustomerIdFD" viewName="InvoiceVO1" viewAttr="SecBillToCustomerId" dataType="NUMBER"/>
+            <oa:formValue id="BillToContactId" viewName="InvoiceVO1" viewAttr="BillToContactId" dataType="NUMBER"/>
+            <oa:messageComponentLayout id="InvoiceCopyRN">
+               <ui:contents>
+                  <oa:messageTextInput id="TransactionNumberFD" prompt="Source Transaction Number" readOnly="true" viewName="InvoiceVO1" viewAttr="ArTrxNumber" required="yes"/>
+                  <oa:messageChoice id="TransactionTypeFD" prompt="Target Transaction Type" readOnly="false" required="yes" pickListViewName="InvoiceTrxTypeLovVO1" pickListDispAttr="Name" pickListValAttr="CustTrxTypeId"/>
+               </ui:contents>
+            </oa:messageComponentLayout>
+            <oa:rowLayout id="InvoiceCopyBN">
+               <ui:contents>
+                  <oa:submitButton id="CopyBN" text="Proceed to Copy" prompt="Proceed to Copy"/>
+                  <oa:submitButton id="CancelCopyBN" text="Cancel" prompt="Cancel" unvalidated="true" serverUnvalidated="true"/>
+               </ui:contents>
+            </oa:rowLayout>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>

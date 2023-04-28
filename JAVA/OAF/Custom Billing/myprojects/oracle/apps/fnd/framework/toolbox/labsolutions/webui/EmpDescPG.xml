@@ -1,0 +1,35 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory -->
+<page xmlns="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:user="http://xmlns.oracle.com/jrad/user" version="9.0.3.8.9_1008" xml:lang="en-US" file-version="$Header: EmpDescPG.xml 120.7 2006/05/25 13:09:45 atgops1 noship $">
+   <content>
+      <oa:pageLayout windowTitle="Framework Toolbox Tutorial: Labs" helpTargetAppShortName="ak" id="PageLayoutRN" akRegionCode="FWK_TBX_LABS_EMP_STEP1_PAGE" regionName="Describe Employee Page" amDefName="oracle.apps.fnd.framework.toolbox.labsolutions.server.EmployeeAM" title="Update Employee: Details" warnAboutChanges="true" controllerClass="oracle.apps.fnd.framework.toolbox.labsolutions.webui.EmployeeDescriptionCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBranding" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:productBranding>
+            <oa:image id="productBranding" source="FNDTAPPBRAND.gif" shortDesc="OA Framework Toolbox Tutorial"/>
+         </ui:productBranding>
+         <ui:location>
+            <oa:train id="TrainRN" extends="/oracle/apps/fnd/framework/toolbox/labsolutions/webui/UpdateEmpTrainRN"/>
+         </ui:location>
+         <ui:contents>
+            <oa:pageButtonBar id="PageButtons" extends="/oracle/apps/fnd/framework/toolbox/labsolutions/webui/UpdateEmployeeFootRN"/>
+            <oa:messageComponentLayout id="MainRN">
+               <ui:contents>
+                  <oa:messageStyledText id="EmpId" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EmployeeId" dataType="NUMBER" viewName="EmployeeFullVO1" viewAttr="EmployeeId" styleClass="OraDataText"/>
+                  <oa:messageTextInput id="FirstName" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FirstName" dataType="VARCHAR2" viewName="EmployeeFullVO1" viewAttr="FirstName" maximumLength="20" required="yes" styleClass="OraFieldText"/>
+                  <oa:messageTextInput id="LastName" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/LastName" dataType="VARCHAR2" viewName="EmployeeFullVO1" viewAttr="LastName" maximumLength="40" required="yes" styleClass="OraFieldText"/>
+                  <oa:messageTextInput id="EmpEmail" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EmailAddress" dataType="VARCHAR2" viewName="EmployeeFullVO1" viewAttr="EmployeeEmail" maximumLength="240" styleClass="OraFieldText"/>
+               </ui:contents>
+            </oa:messageComponentLayout>
+         </ui:contents>
+         <ui:pageStatus>
+            <oa:flowLayout id="PageStatusRN">
+               <ui:contents>
+                  <oa:tableLayout id="RequiredKey" extends="/oracle/apps/fnd/framework/webui/OAReqFieldDescRG" width="100%"/>
+               </ui:contents>
+            </oa:flowLayout>
+         </ui:pageStatus>
+      </oa:pageLayout>
+   </content>
+</page>

@@ -1,0 +1,266 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+
+<AppModule
+   Name="SupplierSAM"
+   ComponentClass="oracle.apps.fnd.framework.toolbox.labsolutions.server.SupplierSAMImpl"
+   LoadComponentsLazily="true" >
+   <Properties>
+      <Property Name ="RCS_ID" Value ="$Header: SupplierSAM.xml 120.19 2006/05/25 00:04:37 atgops1 noship $" />
+      <Property Name ="SVC_AM_DEF" Value ="oracle.apps.fnd.framework.toolbox.labsolutions.server.SupplierSAM" />
+      <Property Name ="SVC_DATASOURCE.Supplier.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.labsolutions.Supplier" />
+      <Property Name ="SVC_DATASOURCE.Supplier.SVC_METHODS_GENERATED" Value ="true" />
+      <Property Name ="SVC_DATASOURCE.Supplier.SVC_QUALIFIED_NAME" Value ="/oracle/apps/fnd/framework/toolbox/labsolutions/Supplier" />
+      <Property Name ="SVC_DATASOURCE.Supplier.SVC_SINGULAR_NAME" Value ="Supplier" />
+      <Property Name ="SVC_DATASOURCE.SupplierSite.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.labsolutions.SupplierSite" />
+      <Property Name ="SVC_DATASOURCE.SupplierSite.SVC_METHODS_GENERATED" Value ="true" />
+      <Property Name ="SVC_DATASOURCE.SupplierSite.SVC_QUALIFIED_NAME" Value ="/oracle/apps/fnd/framework/toolbox/labsolutions/SupplierSite" />
+      <Property Name ="SVC_DATASOURCE.SupplierSite.SVC_SINGULAR_NAME" Value ="Suppliersite" />
+      <Property Name ="SVC_DELETEABLE_DATA_SOURCES" Value ="Supplier,SupplierSite" />
+      <Property Name ="SVC_DISPLAY_NAME" Value ="Supplier Service" />
+      <Property Name ="SVC_DOCUMENTATION" Value ="This is the SupplierService. &lt;i&gt;This is a sample JavaDoc&lt;/i&gt;&#xa;&lt;p&gt;&#xa;Using this service you can perfrom operations on a supplier such as:&#xa;&lt;ul&gt;&#xa;&lt;li&gt; Query&#xa;&lt;li&gt; Create&#xa;&lt;li&gt; Update&#xa;&lt;li&gt; Merge&#xa;&lt;li&gt; Delete&#xa;&lt;/ul&gt;" />
+      <Property Name ="SVC_INSERTABLE_DATA_SOURCES" Value ="Supplier,SupplierSite" />
+      <Property Name ="SVC_MERGEABLE_DATA_SOURCES" Value ="Supplier,SupplierSite" />
+      <Property Name ="SVC_METHOD_PARAM.createSupplier.0.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.labsolutions.Supplier" />
+      <Property Name ="SVC_METHOD_PARAM.createSupplier.0.SVC_DOCUMENTATION" Value ="The created Supplier data object with the primary keys populated.&#xa;" />
+      <Property Name ="SVC_METHOD_PARAM.createSupplier.0.SVC_NAME" Value ="supplier" />
+      <Property Name ="SVC_METHOD_PARAM.createSupplier.1.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.labsolutions.Supplier" />
+      <Property Name ="SVC_METHOD_PARAM.createSupplier.1.SVC_DOCUMENTATION" Value ="The Supplier data object." />
+      <Property Name ="SVC_METHOD_PARAM.createSupplier.1.SVC_NAME" Value ="supplier" />
+      <Property Name ="SVC_METHOD_PARAM.createSuppliersite.0.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.labsolutions.SupplierSite" />
+      <Property Name ="SVC_METHOD_PARAM.createSuppliersite.0.SVC_DOCUMENTATION" Value ="The created SupplierSite data object with the primary keys populated." />
+      <Property Name ="SVC_METHOD_PARAM.createSuppliersite.0.SVC_NAME" Value ="supplierSite" />
+      <Property Name ="SVC_METHOD_PARAM.createSuppliersite.1.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.labsolutions.SupplierSite" />
+      <Property Name ="SVC_METHOD_PARAM.createSuppliersite.1.SVC_DOCUMENTATION" Value ="The SupplierSite data object." />
+      <Property Name ="SVC_METHOD_PARAM.createSuppliersite.1.SVC_NAME" Value ="supplierSite" />
+      <Property Name ="SVC_METHOD_PARAM.deleteSupplier.1.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.labsolutions.Supplier" />
+      <Property Name ="SVC_METHOD_PARAM.deleteSupplier.1.SVC_DOCUMENTATION" Value ="The data object which identifies the Supplier." />
+      <Property Name ="SVC_METHOD_PARAM.deleteSupplier.1.SVC_NAME" Value ="supplier" />
+      <Property Name ="SVC_METHOD_PARAM.deleteSuppliersite.1.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.labsolutions.SupplierSite" />
+      <Property Name ="SVC_METHOD_PARAM.deleteSuppliersite.1.SVC_DOCUMENTATION" Value ="The data object which identifies the SupplierSite." />
+      <Property Name ="SVC_METHOD_PARAM.deleteSuppliersite.1.SVC_NAME" Value ="supplierSite" />
+      <Property Name ="SVC_METHOD_PARAM.disableSupplier.1.SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+      <Property Name ="SVC_METHOD_PARAM.disableSupplier.1.SVC_DOCUMENTATION" Value ="Supplier id." />
+      <Property Name ="SVC_METHOD_PARAM.disableSupplier.1.SVC_NAME" Value ="supplierId" />
+      <Property Name ="SVC_METHOD_PARAM.disableSupplier.2.SVC_DATATYPE" Value ="java.lang.String" />
+      <Property Name ="SVC_METHOD_PARAM.disableSupplier.2.SVC_DOCUMENTATION" Value ="A String object" />
+      <Property Name ="SVC_METHOD_PARAM.disableSupplier.2.SVC_NAME" Value ="supplierName" />
+      <Property Name ="SVC_METHOD_PARAM.disableSupplierSite.1.SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+      <Property Name ="SVC_METHOD_PARAM.disableSupplierSite.1.SVC_DOCUMENTATION" Value ="A Number object" />
+      <Property Name ="SVC_METHOD_PARAM.disableSupplierSite.1.SVC_NAME" Value ="supplierId" />
+      <Property Name ="SVC_METHOD_PARAM.disableSupplierSite.2.SVC_DATATYPE" Value ="java.lang.String" />
+      <Property Name ="SVC_METHOD_PARAM.disableSupplierSite.2.SVC_DOCUMENTATION" Value ="A String object" />
+      <Property Name ="SVC_METHOD_PARAM.disableSupplierSite.2.SVC_NAME" Value ="supplierName" />
+      <Property Name ="SVC_METHOD_PARAM.disableSupplierSite.3.SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+      <Property Name ="SVC_METHOD_PARAM.disableSupplierSite.3.SVC_DOCUMENTATION" Value ="A Number object" />
+      <Property Name ="SVC_METHOD_PARAM.disableSupplierSite.3.SVC_NAME" Value ="supplierSiteId" />
+      <Property Name ="SVC_METHOD_PARAM.disableSupplierSite.4.SVC_DATATYPE" Value ="java.lang.String" />
+      <Property Name ="SVC_METHOD_PARAM.disableSupplierSite.4.SVC_DOCUMENTATION" Value ="A String object" />
+      <Property Name ="SVC_METHOD_PARAM.disableSupplierSite.4.SVC_NAME" Value ="siteName" />
+      <Property Name ="SVC_METHOD_PARAM.getSupplier.0.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.labsolutions.Supplier" />
+      <Property Name ="SVC_METHOD_PARAM.getSupplier.0.SVC_DOCUMENTATION" Value ="The Supplier data object." />
+      <Property Name ="SVC_METHOD_PARAM.getSupplier.0.SVC_NAME" Value ="supplier" />
+      <Property Name ="SVC_METHOD_PARAM.getSupplier.1.SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+      <Property Name ="SVC_METHOD_PARAM.getSupplier.1.SVC_DOCUMENTATION" Value ="Supplier unique identifier.This is the supplier number." />
+      <Property Name ="SVC_METHOD_PARAM.getSupplier.1.SVC_NAME" Value ="SupplierId" />
+      <Property Name ="SVC_METHOD_PARAM.getSuppliersite.0.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.labsolutions.SupplierSite" />
+      <Property Name ="SVC_METHOD_PARAM.getSuppliersite.0.SVC_DOCUMENTATION" Value ="The SupplierSite data object." />
+      <Property Name ="SVC_METHOD_PARAM.getSuppliersite.0.SVC_NAME" Value ="supplierSite" />
+      <Property Name ="SVC_METHOD_PARAM.getSuppliersite.1.SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+      <Property Name ="SVC_METHOD_PARAM.getSuppliersite.1.SVC_DOCUMENTATION" Value ="Supplier site unique identifier.This is the supplier site id." />
+      <Property Name ="SVC_METHOD_PARAM.getSuppliersite.1.SVC_NAME" Value ="supplierSiteId" />
+      <Property Name ="SVC_METHOD_PARAM.getSuppliersite.2.SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+      <Property Name ="SVC_METHOD_PARAM.getSuppliersite.2.SVC_DOCUMENTATION" Value ="Supplier unique identifier." />
+      <Property Name ="SVC_METHOD_PARAM.getSuppliersite.2.SVC_NAME" Value ="supplierId1" />
+      <Property Name ="SVC_METHOD_PARAM.isSupplierOnHold.0.SVC_DATATYPE" Value ="java.lang.Boolean" />
+      <Property Name ="SVC_METHOD_PARAM.isSupplierOnHold.0.SVC_DOCUMENTATION" Value ="true if the supplier is on hold." />
+      <Property Name ="SVC_METHOD_PARAM.isSupplierOnHold.0.SVC_NAME" Value ="boolean" />
+      <Property Name ="SVC_METHOD_PARAM.isSupplierOnHold.1.SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+      <Property Name ="SVC_METHOD_PARAM.isSupplierOnHold.1.SVC_DOCUMENTATION" Value ="The supplier id." />
+      <Property Name ="SVC_METHOD_PARAM.isSupplierOnHold.1.SVC_NAME" Value ="supplierId" />
+      <Property Name ="SVC_METHOD_PARAM.isSupplierOnHold.2.SVC_DATATYPE" Value ="java.lang.String" />
+      <Property Name ="SVC_METHOD_PARAM.isSupplierOnHold.2.SVC_DOCUMENTATION" Value ="The supplier name." />
+      <Property Name ="SVC_METHOD_PARAM.isSupplierOnHold.2.SVC_NAME" Value ="supplierName" />
+      <Property Name ="SVC_METHOD_PARAM.mergeSupplier.0.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.labsolutions.Supplier" />
+      <Property Name ="SVC_METHOD_PARAM.mergeSupplier.0.SVC_DOCUMENTATION" Value ="The created Supplier data object with the primary keys populated.&#xa;" />
+      <Property Name ="SVC_METHOD_PARAM.mergeSupplier.0.SVC_NAME" Value ="supplier" />
+      <Property Name ="SVC_METHOD_PARAM.mergeSupplier.1.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.labsolutions.Supplier" />
+      <Property Name ="SVC_METHOD_PARAM.mergeSupplier.1.SVC_DOCUMENTATION" Value ="The Supplier data object." />
+      <Property Name ="SVC_METHOD_PARAM.mergeSupplier.1.SVC_NAME" Value ="supplier" />
+      <Property Name ="SVC_METHOD_PARAM.mergeSuppliersite.0.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.labsolutions.SupplierSite" />
+      <Property Name ="SVC_METHOD_PARAM.mergeSuppliersite.0.SVC_DOCUMENTATION" Value ="The created SupplierSite data object with the primary keys populated." />
+      <Property Name ="SVC_METHOD_PARAM.mergeSuppliersite.0.SVC_NAME" Value ="supplierSite" />
+      <Property Name ="SVC_METHOD_PARAM.mergeSuppliersite.1.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.labsolutions.SupplierSite" />
+      <Property Name ="SVC_METHOD_PARAM.mergeSuppliersite.1.SVC_DOCUMENTATION" Value ="The SupplierSite data object." />
+      <Property Name ="SVC_METHOD_PARAM.mergeSuppliersite.1.SVC_NAME" Value ="supplierSite" />
+      <Property Name ="SVC_METHOD_PARAM.processDataSource.0.SVC_DATATYPE" Value ="oracle.svc.DataObject" />
+      <Property Name ="SVC_METHOD_PARAM.processDataSource.0.SVC_DOCUMENTATION" Value ="returns a root data object with one of the following:&#xa;&lt;ul&gt;&#xa;&lt;li&gt;a list of fully populated data objects if return mode in control is {@link ProcessControl#RETURN_FULL RETURN_FULL}&lt;/li&gt;&#xa;&lt;li&gt;a list of data objects with just primary keys if return mode in control is {@link ProcessControl#RETURN_KEY RETURN_KEY}&lt;/li&gt;&#xa;&lt;li&gt;an empty list if return mode in control is {@link ProcessControl#RETURN_NONE RETURN_NONE}&lt;/li&gt;&#xa;&lt;/ul&gt;" />
+      <Property Name ="SVC_METHOD_PARAM.processDataSource.0.SVC_NAME" Value ="supplierServiceRoot" />
+      <Property Name ="SVC_METHOD_PARAM.processDataSource.1.SVC_DATATYPE" Value ="java.lang.String" />
+      <Property Name ="SVC_METHOD_PARAM.processDataSource.1.SVC_DOCUMENTATION" Value ="The name of the data source to process." />
+      <Property Name ="SVC_METHOD_PARAM.processDataSource.1.SVC_NAME" Value ="dataSourceName" />
+      <Property Name ="SVC_METHOD_PARAM.processDataSource.2.SVC_DATATYPE" Value ="java.lang.String" />
+      <Property Name ="SVC_METHOD_PARAM.processDataSource.2.SVC_DOCUMENTATION" Value ="The opertion to perform. Can be one of the following:&#xa;&lt;ul&gt;&#xa;&lt;li&gt;{@link #OPERATION_CREATE Create}&#xa;&lt;li&gt;{@link #OPERATION_UPDATE Update}&#xa;&lt;li&gt;{@link #OPERATION_DELETE Delete}&#xa;&lt;li&gt;{@link #OPERATION_MERGE Merge}&#xa;&lt;/ul&gt;" />
+      <Property Name ="SVC_METHOD_PARAM.processDataSource.2.SVC_NAME" Value ="operation" />
+      <Property Name ="SVC_METHOD_PARAM.processDataSource.3.SVC_DATATYPE" Value ="oracle.svc.ProcessControl" />
+      <Property Name ="SVC_METHOD_PARAM.processDataSource.3.SVC_DOCUMENTATION" Value ="control the post control object. If null, a default control object&#xa;will be used with the following settings:&#xa;return mode set to {@link ProcessControl#RETURN_NONE RETURN_NONE} and&#xa;exeception return mode set to {@link ProcessControl#RETURN_KEY RETURN_KEY}" />
+      <Property Name ="SVC_METHOD_PARAM.processDataSource.3.SVC_NAME" Value ="processControl" />
+      <Property Name ="SVC_METHOD_PARAM.processDataSource.4.SVC_DATATYPE" Value ="oracle.svc.DataObject" />
+      <Property Name ="SVC_METHOD_PARAM.processDataSource.4.SVC_DOCUMENTATION" Value ="The root data object containing a list of data objects to be processed." />
+      <Property Name ="SVC_METHOD_PARAM.processDataSource.4.SVC_NAME" Value ="supplierServiceRoot" />
+      <Property Name ="SVC_METHOD_PARAM.queryDataSource.0.SVC_DATATYPE" Value ="oracle.svc.DataObject" />
+      <Property Name ="SVC_METHOD_PARAM.queryDataSource.0.SVC_DOCUMENTATION" Value ="A root data object containg a list of data objects that statisfy the criteria." />
+      <Property Name ="SVC_METHOD_PARAM.queryDataSource.0.SVC_NAME" Value ="supplierServiceRoot" />
+      <Property Name ="SVC_METHOD_PARAM.queryDataSource.1.SVC_DATATYPE" Value ="java.lang.String" />
+      <Property Name ="SVC_METHOD_PARAM.queryDataSource.1.SVC_DOCUMENTATION" Value ="The name of the data source to query." />
+      <Property Name ="SVC_METHOD_PARAM.queryDataSource.1.SVC_NAME" Value ="dataSourceName" />
+      <Property Name ="SVC_METHOD_PARAM.queryDataSource.2.SVC_DATATYPE" Value ="oracle.svc.DataCriteria" />
+      <Property Name ="SVC_METHOD_PARAM.queryDataSource.2.SVC_DOCUMENTATION" Value ="The {@link DataCriteria DataCriteria} for filtering, paging, and&#xa;sorting the returned data objects." />
+      <Property Name ="SVC_METHOD_PARAM.queryDataSource.2.SVC_NAME" Value ="dataCriteria" />
+      <Property Name ="SVC_METHOD_PARAM.queryDataSource.3.SVC_DATATYPE" Value ="oracle.svc.QueryControl" />
+      <Property Name ="SVC_METHOD_PARAM.queryDataSource.3.SVC_DOCUMENTATION" Value ="The {@link QueryControl QueryControl} object that contain the control switches for query." />
+      <Property Name ="SVC_METHOD_PARAM.queryDataSource.3.SVC_NAME" Value ="queryControl" />
+      <Property Name ="SVC_METHOD_PARAM.setSupplierOnHold.1.SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+      <Property Name ="SVC_METHOD_PARAM.setSupplierOnHold.1.SVC_DOCUMENTATION" Value ="The supplier name." />
+      <Property Name ="SVC_METHOD_PARAM.setSupplierOnHold.1.SVC_NAME" Value ="supplierId" />
+      <Property Name ="SVC_METHOD_PARAM.setSupplierOnHold.2.SVC_DATATYPE" Value ="java.lang.String" />
+      <Property Name ="SVC_METHOD_PARAM.setSupplierOnHold.2.SVC_DOCUMENTATION" Value ="If true, the supplier will be put on hold, otherwise the hold &#xa;is released." />
+      <Property Name ="SVC_METHOD_PARAM.setSupplierOnHold.2.SVC_NAME" Value ="supplierName" />
+      <Property Name ="SVC_METHOD_PARAM.setSupplierOnHold.3.SVC_DATATYPE" Value ="java.lang.Boolean" />
+      <Property Name ="SVC_METHOD_PARAM.setSupplierOnHold.3.SVC_DOCUMENTATION" Value ="A Boolean object" />
+      <Property Name ="SVC_METHOD_PARAM.setSupplierOnHold.3.SVC_NAME" Value ="onHold" />
+      <Property Name ="SVC_METHOD_PARAM.updateSupplier.0.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.labsolutions.Supplier" />
+      <Property Name ="SVC_METHOD_PARAM.updateSupplier.0.SVC_DOCUMENTATION" Value ="The updated Supplier data object with the primary keys populated.&#xa;" />
+      <Property Name ="SVC_METHOD_PARAM.updateSupplier.0.SVC_NAME" Value ="supplier" />
+      <Property Name ="SVC_METHOD_PARAM.updateSupplier.1.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.labsolutions.Supplier" />
+      <Property Name ="SVC_METHOD_PARAM.updateSupplier.1.SVC_DOCUMENTATION" Value ="The Supplier data object." />
+      <Property Name ="SVC_METHOD_PARAM.updateSupplier.1.SVC_NAME" Value ="supplier" />
+      <Property Name ="SVC_METHOD_PARAM.updateSuppliersite.0.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.labsolutions.SupplierSite" />
+      <Property Name ="SVC_METHOD_PARAM.updateSuppliersite.0.SVC_DOCUMENTATION" Value ="The updated SupplierSite data object with the primary keys populated." />
+      <Property Name ="SVC_METHOD_PARAM.updateSuppliersite.0.SVC_NAME" Value ="supplierSite" />
+      <Property Name ="SVC_METHOD_PARAM.updateSuppliersite.1.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.labsolutions.SupplierSite" />
+      <Property Name ="SVC_METHOD_PARAM.updateSuppliersite.1.SVC_DOCUMENTATION" Value ="The SupplierSite data object." />
+      <Property Name ="SVC_METHOD_PARAM.updateSuppliersite.1.SVC_NAME" Value ="supplierSite" />
+      <Property Name ="SVC_METHOD.createSupplier.SVC_CONTEXT" Value ="RESP" />
+      <Property Name ="SVC_METHOD.createSupplier.SVC_DISPLAY_NAME" Value ="create Supplier" />
+      <Property Name ="SVC_METHOD.createSupplier.SVC_DOCUMENTATION" Value ="Creates a new Supplier." />
+      <Property Name ="SVC_METHOD.createSupplier.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_METHOD.createSupplier.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_METHOD.createSupplier.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_METHOD.createSuppliersite.SVC_CONTEXT" Value ="RESP" />
+      <Property Name ="SVC_METHOD.createSuppliersite.SVC_DISPLAY_NAME" Value ="create Suppliersite" />
+      <Property Name ="SVC_METHOD.createSuppliersite.SVC_DOCUMENTATION" Value ="Creates a new SupplierSite." />
+      <Property Name ="SVC_METHOD.createSuppliersite.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_METHOD.createSuppliersite.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_METHOD.createSuppliersite.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_METHOD.deleteSupplier.SVC_CONTEXT" Value ="RESP" />
+      <Property Name ="SVC_METHOD.deleteSupplier.SVC_DISPLAY_NAME" Value ="delete Supplier" />
+      <Property Name ="SVC_METHOD.deleteSupplier.SVC_DOCUMENTATION" Value ="Deletes a Supplier.&#xa;The record is located using the primary key set on the passed data object.&#xa;If the primary key is not set, then the record is located using the&#xa;alternate key sets in the data object in sequence." />
+      <Property Name ="SVC_METHOD.deleteSupplier.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_METHOD.deleteSupplier.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_METHOD.deleteSupplier.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_METHOD.deleteSuppliersite.SVC_CONTEXT" Value ="RESP" />
+      <Property Name ="SVC_METHOD.deleteSuppliersite.SVC_DISPLAY_NAME" Value ="delete Suppliersite" />
+      <Property Name ="SVC_METHOD.deleteSuppliersite.SVC_DOCUMENTATION" Value ="Deletes a SupplierSite.&#xa;The record is located using the primary key set on the passed data object.&#xa;If the primary key is not set, then the record is located using the&#xa;alternate key sets in the data object in sequence." />
+      <Property Name ="SVC_METHOD.deleteSuppliersite.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_METHOD.deleteSuppliersite.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_METHOD.deleteSuppliersite.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_METHOD.disableSupplier.SVC_CONTEXT" Value ="RESP" />
+      <Property Name ="SVC_METHOD.disableSupplier.SVC_DISPLAY_NAME" Value ="disable Supplier" />
+      <Property Name ="SVC_METHOD.disableSupplier.SVC_DOCUMENTATION" Value ="Disabled the supplier. You can pass the supplier id or name." />
+      <Property Name ="SVC_METHOD.disableSupplier.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_METHOD.disableSupplier.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_METHOD.disableSupplier.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_METHOD.disableSupplierSite.SVC_CONTEXT" Value ="RESP" />
+      <Property Name ="SVC_METHOD.disableSupplierSite.SVC_DISPLAY_NAME" Value ="disable Supplier Site" />
+      <Property Name ="SVC_METHOD.disableSupplierSite.SVC_DOCUMENTATION" Value ="Sets the supplier on hold. You can pass the supplier id or name." />
+      <Property Name ="SVC_METHOD.disableSupplierSite.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_METHOD.disableSupplierSite.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_METHOD.disableSupplierSite.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_METHOD.getSupplier.SVC_CONTEXT" Value ="RESP" />
+      <Property Name ="SVC_METHOD.getSupplier.SVC_DISPLAY_NAME" Value ="get Supplier" />
+      <Property Name ="SVC_METHOD.getSupplier.SVC_DOCUMENTATION" Value ="Gets a Supplier based on its primary key attributes." />
+      <Property Name ="SVC_METHOD.getSupplier.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_METHOD.getSupplier.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_METHOD.getSupplier.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_METHOD.getSuppliersite.SVC_CONTEXT" Value ="RESP" />
+      <Property Name ="SVC_METHOD.getSuppliersite.SVC_DISPLAY_NAME" Value ="get Suppliersite" />
+      <Property Name ="SVC_METHOD.getSuppliersite.SVC_DOCUMENTATION" Value ="Gets a SupplierSite based on its primary key attributes." />
+      <Property Name ="SVC_METHOD.getSuppliersite.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_METHOD.getSuppliersite.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_METHOD.getSuppliersite.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_METHOD.isSupplierOnHold.SVC_CONTEXT" Value ="RESP" />
+      <Property Name ="SVC_METHOD.isSupplierOnHold.SVC_DISPLAY_NAME" Value ="is Supplier On Hold" />
+      <Property Name ="SVC_METHOD.isSupplierOnHold.SVC_DOCUMENTATION" Value ="Checks if the supplier is on hold. You can pass the supplier id or name." />
+      <Property Name ="SVC_METHOD.isSupplierOnHold.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_METHOD.isSupplierOnHold.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_METHOD.isSupplierOnHold.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_METHOD.mergeSupplier.SVC_CONTEXT" Value ="RESP" />
+      <Property Name ="SVC_METHOD.mergeSupplier.SVC_DISPLAY_NAME" Value ="merge Supplier" />
+      <Property Name ="SVC_METHOD.mergeSupplier.SVC_DOCUMENTATION" Value ="Updates or creates a Supplier.&#xa;If the passed Supplier exists, it will be updated,&#xa;otherwise a new one is created.&#xa;The record is located using the primary key of the Supplier.&#xa;If the primary key is not set, then the record is located using&#xa;the alternate key sets defined for this data object.&#xa;" />
+      <Property Name ="SVC_METHOD.mergeSupplier.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_METHOD.mergeSupplier.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_METHOD.mergeSupplier.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_METHOD.mergeSuppliersite.SVC_CONTEXT" Value ="RESP" />
+      <Property Name ="SVC_METHOD.mergeSuppliersite.SVC_DISPLAY_NAME" Value ="merge Suppliersite" />
+      <Property Name ="SVC_METHOD.mergeSuppliersite.SVC_DOCUMENTATION" Value ="Updates or creates a SupplierSite.&#xa;If the passed SupplierSite exists, it will be updated,&#xa;otherwise a new one is created.&#xa;The record is located using the primary key of the SupplierSite.&#xa;If the primary key is not set, then the record is located using&#xa;the alternate key sets defined for this data object." />
+      <Property Name ="SVC_METHOD.mergeSuppliersite.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_METHOD.mergeSuppliersite.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_METHOD.mergeSuppliersite.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_METHOD.processDataSource.SVC_CONTEXT" Value ="RESP" />
+      <Property Name ="SVC_METHOD.processDataSource.SVC_DISPLAY_NAME" Value ="process Data Source" />
+      <Property Name ="SVC_METHOD.processDataSource.SVC_DOCUMENTATION" Value ="Processes a root data object containing a list of data objects applied to a data source." />
+      <Property Name ="SVC_METHOD.processDataSource.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_METHOD.processDataSource.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_METHOD.processDataSource.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_METHOD.queryDataSource.SVC_CONTEXT" Value ="RESP" />
+      <Property Name ="SVC_METHOD.queryDataSource.SVC_DISPLAY_NAME" Value ="query Data Source" />
+      <Property Name ="SVC_METHOD.queryDataSource.SVC_DOCUMENTATION" Value ="Gets root data object containing a list of data objects from the data source based on criteria." />
+      <Property Name ="SVC_METHOD.queryDataSource.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_METHOD.queryDataSource.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_METHOD.queryDataSource.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_METHOD.setSupplierOnHold.SVC_CONTEXT" Value ="RESP" />
+      <Property Name ="SVC_METHOD.setSupplierOnHold.SVC_DISPLAY_NAME" Value ="set Supplier On Hold" />
+      <Property Name ="SVC_METHOD.setSupplierOnHold.SVC_DOCUMENTATION" Value ="Sets the supplier on hold. You can pass the supplier id or name." />
+      <Property Name ="SVC_METHOD.setSupplierOnHold.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_METHOD.setSupplierOnHold.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_METHOD.setSupplierOnHold.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_METHOD.updateSupplier.SVC_CONTEXT" Value ="RESP" />
+      <Property Name ="SVC_METHOD.updateSupplier.SVC_DISPLAY_NAME" Value ="update Supplier" />
+      <Property Name ="SVC_METHOD.updateSupplier.SVC_DOCUMENTATION" Value ="Updates a Supplier.&#xa;The record is located using the primary key of the Supplier.&#xa;If the primary key is not set, then the record is located using&#xa;the alternate key sets defined for this data object.&#xa;" />
+      <Property Name ="SVC_METHOD.updateSupplier.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_METHOD.updateSupplier.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_METHOD.updateSupplier.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_METHOD.updateSuppliersite.SVC_CONTEXT" Value ="RESP" />
+      <Property Name ="SVC_METHOD.updateSuppliersite.SVC_DISPLAY_NAME" Value ="update Suppliersite" />
+      <Property Name ="SVC_METHOD.updateSuppliersite.SVC_DOCUMENTATION" Value ="Updates a SupplierSite.&#xa;The record is located using the primary key of the SupplierSite.&#xa;If the primary key is not set, then the record is located using&#xa;the alternate key sets defined for this data object." />
+      <Property Name ="SVC_METHOD.updateSuppliersite.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_METHOD.updateSuppliersite.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_METHOD.updateSuppliersite.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_METHODS" Value ="disableSupplier,setSupplierOnHold,isSupplierOnHold,disableSupplierSite,createSupplier,updateSupplier,mergeSupplier,deleteSupplier,getSupplier,createSuppliersite,updateSuppliersite,mergeSuppliersite,deleteSuppliersite,getSuppliersite,queryDataSource,processDataSource" />
+      <Property Name ="SVC_NAME" Value ="SupplierService" />
+      <Property Name ="SVC_NAMESPACE" Value ="/oracle/apps/fnd/framework/toolbox/labsolutions/" />
+      <Property Name ="SVC_OBJECT" Value ="SVC" />
+      <Property Name ="SVC_PARENTS" Value ="oracle.svc.DataProcessorService" />
+      <Property Name ="SVC_QUERYABLE_DATA_SOURCES" Value ="SupplierSite,Supplier" />
+      <Property Name ="SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_REP_PRODUCT" Value ="fnd" />
+      <Property Name ="SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_SERVICE_INTERFACE" Value ="oracle.apps.fnd.framework.toolbox.labsolutions.SupplierService" />
+      <Property Name ="SVC_UPDATEABLE_DATA_SOURCES" Value ="Supplier,SupplierSite" />
+   </Properties>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="9.0.3.13.88" />
+      <Attr Name="_deployType" Value="0" />
+   </DesignTime>
+   <ViewUsage
+      Name="Supplier"
+      ViewObjectName="oracle.apps.fnd.framework.toolbox.labsolutions.server.SuppliersSVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="SupplierSite"
+      ViewObjectName="oracle.apps.fnd.framework.toolbox.labsolutions.server.SupplierSitesSVO" >
+   </ViewUsage>
+</AppModule>

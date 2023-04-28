@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE JboPackage SYSTEM "jbo_03_01.dtd">
+
+<!-- $Header: server.xml 120.14 2006/05/25 00:04:27 atgops1 noship $ -->
+
+<JboPackage
+   Name="server"
+   SeparateXMLFiles="true"
+   PackageName="oracle.apps.fnd.framework.toolbox.labsolutions.server" >
+   <DesignTime>
+      <Attr Name="_ejbPackage" Value="false" />
+      <Attr Name="_version" Value="9.0.3.13.88" />
+   </DesignTime>
+   <Containee
+      Name="EmployeeAM"
+      FullName="oracle.apps.fnd.framework.toolbox.labsolutions.server.EmployeeAM"
+      ObjectType="AppModule" >
+   </Containee>
+   <Containee
+      Name="HomeAM"
+      FullName="oracle.apps.fnd.framework.toolbox.labsolutions.server.HomeAM"
+      ObjectType="AppModule" >
+   </Containee>
+   <Containee
+      Name="EmployeeSummaryVO"
+      FullName="oracle.apps.fnd.framework.toolbox.labsolutions.server.EmployeeSummaryVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="EmployeeFullVO"
+      FullName="oracle.apps.fnd.framework.toolbox.labsolutions.server.EmployeeFullVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="EmployeePVO"
+      FullName="oracle.apps.fnd.framework.toolbox.labsolutions.server.EmployeePVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="DebugALabAM"
+      FullName="oracle.apps.fnd.framework.toolbox.labsolutions.server.DebugALabAM"
+      ObjectType="AppModule" >
+   </Containee>
+   <Containee
+      Name="DebugBLabAM"
+      FullName="oracle.apps.fnd.framework.toolbox.labsolutions.server.DebugBLabAM"
+      ObjectType="AppModule" >
+   </Containee>
+   <Containee
+      Name="DebugLabAM"
+      FullName="oracle.apps.fnd.framework.toolbox.labsolutions.server.DebugLabAM"
+      ObjectType="AppModule" >
+   </Containee>
+   <Containee
+      Name="DebugLabEmpFullVO"
+      FullName="oracle.apps.fnd.framework.toolbox.labsolutions.server.DebugLabEmpFullVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="DebugLabEmpSummaryVO"
+      FullName="oracle.apps.fnd.framework.toolbox.labsolutions.server.DebugLabEmpSummaryVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="SuppliersSVO"
+      FullName="oracle.apps.fnd.framework.toolbox.labsolutions.server.SuppliersSVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="SupplierSitesSVO"
+      FullName="oracle.apps.fnd.framework.toolbox.labsolutions.server.SupplierSitesSVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="SupplierSAM"
+      FullName="oracle.apps.fnd.framework.toolbox.labsolutions.server.SupplierSAM"
+      ObjectType="AppModule" >
+   </Containee>
+   <Containee
+      Name="SupplierToSitesSVL"
+      FullName="oracle.apps.fnd.framework.toolbox.labsolutions.server.SupplierToSitesSVL"
+      ObjectType="ViewLink" >
+   </Containee>
+   <Containee
+      Name="PositionGraphVO"
+      FullName="oracle.apps.fnd.framework.toolbox.labsolutions.server.PositionGraphVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="TaskListVO"
+      FullName="oracle.apps.fnd.framework.toolbox.labsolutions.server.TaskListVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="TaskDetailsVO"
+      FullName="oracle.apps.fnd.framework.toolbox.labsolutions.server.TaskDetailsVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="GanttAM"
+      FullName="oracle.apps.fnd.framework.toolbox.labsolutions.server.GanttAM"
+      ObjectType="AppModule" >
+   </Containee>
+   <Containee
+      Name="TaskToDetailsVL"
+      FullName="oracle.apps.fnd.framework.toolbox.labsolutions.server.TaskToDetailsVL"
+      ObjectType="ViewLink" >
+   </Containee>
+   <Containee
+      Name="FlexfieldAM"
+      FullName="oracle.apps.fnd.framework.toolbox.labsolutions.server.FlexfieldAM"
+      ObjectType="AppModule" >
+   </Containee>
+   <Containee
+      Name="ItemSummaryVO"
+      FullName="oracle.apps.fnd.framework.toolbox.labsolutions.server.ItemSummaryVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="ItemDetailsVO"
+      FullName="oracle.apps.fnd.framework.toolbox.labsolutions.server.ItemDetailsVO"
+      ObjectType="ViewObject" >
+   </Containee>
+</JboPackage>

@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE JboPackage SYSTEM "jbo_03_01.dtd">
+<!-- $Header: server.xml 120.9.12010000.3 2008/10/14 06:20:21 sette ship $ -->
+
+<JboPackage
+   Name="server"
+   SeparateXMLFiles="true"
+   PackageName="oracle.apps.fnd.framework.toolbox.samplelib.server" >
+   <DesignTime>
+      <Attr Name="_ejbPackage" Value="false" />
+      <Attr Name="_version" Value="10.1.3.38.51" />
+   </DesignTime>
+   <Containee
+      Name="DepartmentEmpsVO"
+      FullName="oracle.apps.fnd.framework.toolbox.samplelib.server.DepartmentEmpsVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="EmployeesVO"
+      FullName="oracle.apps.fnd.framework.toolbox.samplelib.server.EmployeesVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="LookupCodesVO"
+      FullName="oracle.apps.fnd.framework.toolbox.samplelib.server.LookupCodesVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="ManagerToEmployeesVL"
+      FullName="oracle.apps.fnd.framework.toolbox.samplelib.server.ManagerToEmployeesVL"
+      ObjectType="ViewLink" >
+   </Containee>
+   <Containee
+      Name="PurchaseOrderHeadersVO"
+      FullName="oracle.apps.fnd.framework.toolbox.samplelib.server.PurchaseOrderHeadersVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="PurchaseOrderPPRVO"
+      FullName="oracle.apps.fnd.framework.toolbox.samplelib.server.PurchaseOrderPPRVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="SampleBrowserAM"
+      FullName="oracle.apps.fnd.framework.toolbox.samplelib.server.SampleBrowserAM"
+      ObjectType="AppModule" >
+   </Containee>
+   <Containee
+      Name="SampleBrowserPVO"
+      FullName="oracle.apps.fnd.framework.toolbox.samplelib.server.SampleBrowserPVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="SimpleEmployeesVO"
+      FullName="oracle.apps.fnd.framework.toolbox.samplelib.server.SimpleEmployeesVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="SupplierSitesVO"
+      FullName="oracle.apps.fnd.framework.toolbox.samplelib.server.SupplierSitesVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="SuppliersVO"
+      FullName="oracle.apps.fnd.framework.toolbox.samplelib.server.SuppliersVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="SupplierToSiteVL"
+      FullName="oracle.apps.fnd.framework.toolbox.samplelib.server.SupplierToSiteVL"
+      ObjectType="ViewLink" >
+   </Containee>
+</JboPackage>

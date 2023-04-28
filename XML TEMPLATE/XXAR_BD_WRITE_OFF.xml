@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Header: XXAR_BD_WRITE_OFF.xml 2016/06 $ -->
+<!-- V1.2   08/16/2016   lmahone   ER1880- include manual invoices -->
+
+<dataTemplate name="XXAR_BD_WRITE_OFF" defaultPackage="" description="XXAR Adjustments by Category">
+  <properties>
+    <property name="include_parameters" value="true"/>
+    <property name="include_null_Element" value="true"/>
+    <property name="xml_tag_case" value="upper"/>
+    <property name="db_fetch_size" value="100"/>
+    <property name="scalable_mode" value="off"/>
+    <property name="include_rowsettag" value="false"/>
+    <property name="debug_mode" value="on"/>
+  </properties>
+  <parameters>
+    <parameter name="p_from_gl_date" dataType="character" include_in_output="true"/>
+    <parameter name="p_to_gl_date" dataType="character" include_in_output="true"/>
+    <parameter name="p_from_activity_name" dataType="character" include_in_output="true"/>
+    <parameter name="p_to_activity_name" dataType="character" include_in_output="true"/>
+    <parameter name="p_bu" dataType="character" include_in_output="true"/>
+  </parameters>
+  <lexicals/>
+  <dataQuery>
+    <sqlStatement name="Q1" dataSourceRef="">
+      <![CDATA[
+SELECT
+   '' business_unit,
+   trx.trx_number inv_num,
+   to_char(trx.trx_date, 'mm/dd/rrrr') inv_date,
+   rc.customer_name cust_name,
+   rc.customer_number cust_num,
+   adj.amount,
+   adj.amount_due_original,
+   adj.tax_original,
+   adj.invoice_currency_code invoice_curr,
+   adj.acctd_amount functional_curr_amount,
+   g.currency_code functional_currency_code ,
+   ras.name  rep_name,
+   class_codes.business_type,
+   tt.name transaction_type ,
+   to_char(adj.apply_date, 'mm/dd/rrrr') apply_date,
+   to_char(adj.gl_date, 'mm/dd/rrrr') gl_date,
+   adj.activity_name act_name,
+   trx.interface_header_attribute13 coll_status,
+   rec_glc.segment1||'.'||rec_glc.segment3 bus,
+   adj_glc.segment1||'.'||adj_glc.segment2||'.'||adj_glc.segment3||'.'||adj_glc.segment4||'.'||adj_glc.segment5||'.'||adj_glc.segment6 gl_account
+  ,addr.state
+  ,addr.country
+FROM ra_customer_trx trx,
+   ar_adjustments_v adj,
+   ar_customers rc,
+   (SELECT csu.site_use_id, loc.state, loc.country
+    FROM hz_cust_site_uses_all csu
+      JOIN hz_cust_acct_sites_all cas ON ( cas.cust_acct_site_id = csu.cust_acct_site_id )
+      JOIN hz_party_sites ps on ( ps.party_site_id = cas.party_site_id )
+      JOIN hz_locations   loc ON ( loc.location_id = ps.location_id )
+    WHERE csu.site_use_code ='BILL_TO'
+   ) addr,
+   gl_code_combinations adj_glc ,
+   ra_cust_trx_types tt,
+   xxbs_customer_trx b,
+   gl_code_combinations rec_glc,
+   ra_cust_trx_line_gl_dist dist,
+   hr_organization_information hi,
+   gl_ledgers g,
+   ra_salesreps ras,
+   (select name class_code, description business_type,j.memo_line_id
+    from ar_memo_lines_all_tl i, ar_memo_lines_all_b j
+    where i.memo_line_id = j.memo_line_id
+    AND i.org_id = j.org_id
+    AND attribute1 = 'Y' 
+    AND i.org_id = fnd_global.org_id) class_codes
+WHERE rec_glc.code_combination_id = dist.code_combination_id
+  AND dist.account_class = 'REC'
+  AND tt.cust_trx_type_id = trx.cust_trx_type_id
+  AND dist.latest_rec_flag = 'Y'
+  AND dist.customer_trx_id = trx.customer_trx_id
+  AND g.ledger_id = hi.org_information3
+  AND trx.org_id = hi.organization_id
+  AND trx.primary_salesrep_id = ras.salesrep_id
+  AND adj_glc.code_combination_id = adj.CODE_COMBINATION_ID
+  AND trx.customer_trx_id = adj.customer_trx_id
+  AND trx.bill_to_site_use_id = addr.site_use_id
+  --AND class_codes.class_code(+) = b.primary_product_type_id
+  and class_codes.memo_line_Id(+) = b.primary_product_type_id  --Use the join when table xxbs_customer_trx is ready by ShinhGor
+  AND trx.bill_to_customer_id = rc.customer_id
+  AND b.customer_trx_id(+) = trx.interface_header_attribute1
+  AND adj.activity_name BETWEEN nvl(:p_from_activity_name,adj.activity_name) 
+                            AND NVL(nvl(:p_to_activity_name,:p_from_activity_name),adj.activity_name)
+  AND (:p_from_gl_date is null or to_date(:p_from_gl_date,'YYYY/MM/DD HH24:MI:SS') <= adj.gl_date)
+  AND (:p_to_gl_date is null or  to_date(:p_to_gl_date,'YYYY/MM/DD HH24:MI:SS') >= adj.gl_date)
+  --AND (:p_bu is null or :p_bu = xxcm_common.get_business_unit (rec_glc.segment2))
+ORDER BY adj.activity_name,
+         trx.trx_number,
+         trx.trx_date,
+         rc.customer_name
+      ]]>
+    </sqlStatement>
+  </dataQuery>
+  <dataStructure>
+    <group name="G_REPORT" source="Q1" groupFilter="">
+      <element name="Business_Unit"       value="business_unit" function=""/>
+      <element name="Customer_Name"       value="cust_name" function=""/>
+      <element name="Customer_Number"     value="cust_num" function=""/>
+      <element name="State"               value="state" function=""/>
+      <element name="Country"             value="country" function=""/>
+      <element name="Invoice_Number"      value="inv_num" function=""/>
+      <element name="Invoice_Date"        value="inv_date" function=""/>
+      <element name="Amount"              value="amount" function=""/>
+      <element name="Orig_Amount"         value="amount_due_original" function=""/>
+      <element name="Orig_Tax"            value="tax_original" function=""/>
+      <element name="Invoice_Curr"        value="invoice_curr" function=""/>
+      <element name="Functional_Amount"   value="functional_curr_amount" function=""/>
+      <element name="Functional_Curr"     value="functional_currency_code" function=""/>
+      <element name="Trx_Type"            value="transaction_type" function=""/>
+      <element name="SalesRep_Name"       value="rep_name" function=""/>
+      <element name="Business_Type"       value="business_type" function=""/>
+      <element name="Activity_Name"       value="act_name" function=""/>
+      <element name="Adjustment_GL_Date"  value="gl_date" function=""/>
+      <element name="Collection_Status"   value="coll_status" function=""/>
+      <element name="Date_Set_To_Stage_1" value="apply_date" function=""/>
+      <element name="Business_Site"       value="bus" function=""/>
+      <element name="GL_Account"          value="gl_account" function=""/>
+    </group>
+  </dataStructure>
+</dataTemplate>

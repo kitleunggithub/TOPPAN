@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory -->
+<oa:messageComponentLayout version="10.1.3_1286" xml:lang="en-US" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header: EmpSummaryPopupRN.xml 120.3 2010/12/10 13:22:02 sette noship $" amDefName="oracle.apps.fnd.framework.toolbox.labsolutions.server.EmployeeAM">
+   <ui:contents>
+      <oa:messageLayout id="messageLayout1">
+         <ui:contents>
+            <oa:spacer id="Spacer" height="1"/>
+         </ui:contents>
+      </oa:messageLayout>
+      <oa:messageStyledText id="EmployeeId" viewName="EmployeeSummaryVO1" viewAttr="EmployeeId" prompt="Employee Number" styleClass="OraDataText"/>
+      <oa:messageStyledText id="EmployeeName" viewName="EmployeeSummaryVO1" viewAttr="EmployeeName" prompt="Name" styleClass="OraDataText"/>
+      <oa:messageStyledText id="EmployeeEmail" viewName="EmployeeSummaryVO1" viewAttr="EmployeeEmail" styleClass="OraDataText" prompt="Email" cellNoWrapFormat="true"/>
+      <oa:messageStyledText id="Salary" viewName="EmployeeSummaryVO1" viewAttr="Salary" prompt="Salary" styleClass="OraDataText"/>
+      <oa:messageStyledText id="HireDate" viewName="EmployeeSummaryVO1" viewAttr="StartDate" prompt="Hire Date" styleClass="OraDataText"/>
+      <oa:messageStyledText id="EndDate" viewName="EmployeeSummaryVO1" viewAttr="EndDate" prompt="End Date" styleClass="OraDataText"/>
+   </ui:contents>
+</oa:messageComponentLayout>

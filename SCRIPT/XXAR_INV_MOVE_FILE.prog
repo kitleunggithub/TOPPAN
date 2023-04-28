@@ -1,0 +1,59 @@
+#!/bin/bash
+#!/usr/bin/sh
+# --------------------------------------------------
+# Parameters
+#
+#EBS self Request Job ID
+request_id=$4
+
+#Para1 RequestID pass in for Invoice Print Out
+inv_print_req_id=$5
+p_ar_trx_num=$6
+p_sftp_userid=$7
+p_sftp_server=$8
+
+echo "Parameters"
+echo "----------"
+echo "1)request_id : $request_id"
+echo "2)inv_print_req_id : $inv_print_req_id"
+echo "3)p_ar_trx_num : $p_ar_trx_num"
+echo "4)p_sftp_userid : $p_sftp_userid"
+echo "5)p_sftp_server : $p_sftp_server"
+echo ""
+
+echo "cd $APPLCSF/out"
+cd $APPLCSF/out
+echo  "ls -l *$inv_print_req_id*.PDF"
+ls -l *$inv_print_req_id*.PDF
+
+if [ ! -f "XXAR_INV_PRINT_${inv_print_req_id}_1.PDF" ]
+then
+  echo "No such file XXAR_INV_PRINT_${inv_print_req_id}_1.PDF for this Invoice Print Request ID : " $inv_print_req_id
+  echo ""
+  exit 1;
+else
+ echo "File"  "XXAR_INV_PRINT_${inv_print_req_id}_1.PDF" " exists for Invoice Print Request ID."
+ #AR_INV_PDF_FILENAME is the original standard output file name in EBS.
+ #cp it to another name as ~/OracleApps/DSO_AR_Files/$p_ar_trx_num.PDF before put to DSO folder.
+ AR_INV_PDF_FILENAME="XXAR_INV_PRINT_${inv_print_req_id}_1.PDF"
+ echo $AR_INV_PDF_FILENAME
+ echo "cp -p $AR_INV_PDF_FILENAME ~/OracleApps/DSO_AR_Files/$p_ar_trx_num.PDF"
+ cp -p $AR_INV_PDF_FILENAME ~/OracleApps/DSO_AR_Files/$p_ar_trx_num.PDF
+ 
+ ###############################################################################
+ # sftp the invoice print out file to DSO required folder and rename as required.
+ ################################################################################
+ echo "+ Start sftp to DSO site for puting the AR Ivoice PDF file +"
+sftp $p_sftp_userid@$p_sftp_server <<EOF
+lcd ~/OracleApps/DSO_AR_Files
+cd /MYDSOMANAGER  
+put $p_ar_trx_num.PDF
+bye
+EOF
+ echo "+ End of sftp to DSO site for puting the AR Ivoice PDF file +"
+fi
+
+#remove PDF file after sftp.
+echo "rm ~/OracleApps/DSO_AR_Files/$p_ar_trx_num.PDF"
+rm ~/OracleApps/DSO_AR_Files/$p_ar_trx_num.PDF
+

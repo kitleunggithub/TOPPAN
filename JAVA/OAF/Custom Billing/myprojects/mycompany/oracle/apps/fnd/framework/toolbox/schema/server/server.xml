@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE JboPackage SYSTEM "jbo_03_01.dtd">
+
+<JboPackage
+   Name="server"
+   SeparateXMLFiles="true"
+   PackageName="mycompany.oracle.apps.fnd.framework.toolbox.schema.server" >
+   <DesignTime>
+      <Attr Name="_ejbPackage" Value="false" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+   </DesignTime>
+   <Containee
+      Name="MyCompanyPurchaseOrderHeaderEO"
+      FullName="mycompany.oracle.apps.fnd.framework.toolbox.schema.server.MyCompanyPurchaseOrderHeaderEO"
+      ObjectType="Entity" >
+   </Containee>
+   <Containee
+      Name="MyCompanyPurchaseOrderLinesEO"
+      FullName="mycompany.oracle.apps.fnd.framework.toolbox.schema.server.MyCompanyPurchaseOrderLinesEO"
+      ObjectType="Entity" >
+   </Containee>
+</JboPackage>

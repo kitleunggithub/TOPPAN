@@ -1,0 +1,268 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<!-- $Header: PoSummaryVO.xml 120.8 2006/07/04 00:55:05 atgops1 noship $ -->
+
+<ViewObject
+   Name="PoSummaryVO"
+   BindingStyle="Oracle"
+   CustomQuery="true"
+   RowClass="oracle.apps.fnd.framework.toolbox.tutorial.server.PoSummaryVORowImpl"
+   ComponentClass="oracle.apps.fnd.framework.toolbox.tutorial.server.PoSummaryVOImpl"
+   FetchMode="FETCH_AS_NEEDED"
+   Passivate="All"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+SELECT PurchaseOrderHeaderEO.HEADER_ID, 
+       PurchaseOrderHeaderEO.DESCRIPTION, 
+       PurchaseOrderHeaderEO.STATUS_CODE, 
+       PurchaseOrderHeaderEO.SUPPLIER_ID, 
+       PurchaseOrderHeaderEO.CURRENCY_CODE, 
+       PurchaseOrderHeaderEO.CREATION_DATE, 
+       SupplierEO.NAME AS SUPPLIER_NAME, 
+       SupplierEO.SUPPLIER_ID AS SUPPLIER_ID1, 
+       EmployeeEO.FULL_NAME AS BUYER_NAME, 
+       EmployeeEO.EMPLOYEE_ID, 
+       PurchaseOrderHeaderEO.BUYER_ID,
+       EmployeeEO.EMAIL_ADDRESS AS BUYER_EMAIL,
+       (select sum(nvl(line.quantity, 0) * nvl(line.unit_price, 0))
+               from fwk_tbx_po_lines line
+               where line.header_id = PurchaseOrderHeaderEO.HEADER_ID) AS ORDER_TOTAL,
+       decode(PurchaseOrderHeaderEO.STATUS_CODE, 
+              'APPROVED', 'okind_status.gif',
+              'COMPLETE', 'completeind_status.gif',
+              'REJECTED', 'criticalind_status.gif', 'inprogressind_status.gif') AS STATUS_IMAGE,
+     LookupCodeEO.MEANING AS STATUS_DISPLAY,
+     decode(PurchaseOrderHeaderEO.STATUS_CODE,
+            'COMPLETE', 'DeleteDisabled', 
+            'APPROVED', 'DeleteDisabled', 'DeleteEnabled') AS DELETE_IMAGE,
+     decode(PurchaseOrderHeaderEO.STATUS_CODE,
+            'COMPLETE', 'UpdateDisabled', 
+            'APPROVED', 'UpdateDisabled', 'UpdateEnabled') AS UPDATE_IMAGE,
+     decode(PurchaseOrderHeaderEO.STATUS_CODE, 
+           'COMPLETE', 'Y', 
+           'APPROVED', 'Y', 'N') AS APPROVE_DISABLED
+FROM FWK_TBX_PO_HEADERS PurchaseOrderHeaderEO, 
+     FWK_TBX_SUPPLIERS SupplierEO, 
+     FWK_TBX_EMPLOYEES EmployeeEO,
+     FWK_TBX_LOOKUP_CODES_VL LookupCodeEO
+WHERE 
+ PurchaseOrderHeaderEO.SUPPLIER_ID = SupplierEO.SUPPLIER_ID
+AND PurchaseOrderHeaderEO.BUYER_ID = EmployeeEO.EMPLOYEE_ID
+AND PurchaseOrderHeaderEO.STATUS_CODE = LookupCodeEO.LOOKUP_CODE
+AND LookupCodeEO.LOOKUP_TYPE = 'FWK_TBX_ORDER_STATUS'
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.38.51" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll" />
+   </DesignTime>
+   <EntityUsage
+      Name="PurchaseOrderHeaderEO"
+      Entity="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderHeaderEO" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="false" />
+      </DesignTime>
+   </EntityUsage>
+   <EntityUsage
+      Name="SupplierEO"
+      Entity="oracle.apps.fnd.framework.toolbox.schema.server.SupplierEO"
+      SourceUsage="oracle.apps.fnd.framework.toolbox.tutorial.server.PoSummaryVO.PurchaseOrderHeaderEO"
+      ReadOnly="true"
+      Reference="true" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="false" />
+         <AttrArray Name="_dstAttributes">
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.SupplierEO.SupplierId" />
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.SupplierEO.LastUpdateDate" />
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.SupplierEO.LastUpdatedBy" />
+         </AttrArray>
+         <AttrArray Name="_srcAttributes">
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderHeaderEO.SupplierId" />
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderHeaderEO.LastUpdateDate" />
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderHeaderEO.LastUpdatedBy" />
+         </AttrArray>
+      </DesignTime>
+   </EntityUsage>
+   <EntityUsage
+      Name="EmployeeEO"
+      Entity="oracle.apps.fnd.framework.toolbox.schema.server.EmployeeEO"
+      SourceUsage="oracle.apps.fnd.framework.toolbox.tutorial.server.PoSummaryVO.SupplierEO"
+      ReadOnly="true"
+      Reference="true" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="false" />
+         <AttrArray Name="_dstAttributes">
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.EmployeeEO.StartDate" />
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.EmployeeEO.EndDate" />
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.EmployeeEO.LastUpdateDate" />
+         </AttrArray>
+         <AttrArray Name="_srcAttributes">
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.SupplierEO.StartDate" />
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.SupplierEO.EndDate" />
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.SupplierEO.LastUpdateDate" />
+         </AttrArray>
+      </DesignTime>
+   </EntityUsage>
+   <ViewAttribute
+      Name="HeaderId"
+      IsUpdateable="while_insert"
+      EntityAttrName="HeaderId"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="HEADER_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Description"
+      EntityAttrName="Description"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="DESCRIPTION" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StatusCode"
+      EntityAttrName="StatusCode"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="STATUS_CODE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SupplierId"
+      EntityAttrName="SupplierId"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="SUPPLIER_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CurrencyCode"
+      IsUpdateable="while_insert"
+      EntityAttrName="CurrencyCode"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="CURRENCY_CODE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreationDate"
+      IsNotNull="true"
+      EntityAttrName="CreationDate"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="CREATION_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SupplierName"
+      IsUpdateable="false"
+      EntityAttrName="Name"
+      EntityUsage="SupplierEO"
+      AliasName="NAME" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SupplierId1"
+      IsUpdateable="false"
+      EntityAttrName="SupplierId"
+      EntityUsage="SupplierEO"
+      AliasName="SUPPLIER_ID1" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="BuyerName"
+      IsUpdateable="false"
+      EntityAttrName="FullName"
+      EntityUsage="EmployeeEO"
+      AliasName="FULL_NAME" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="EmployeeId"
+      IsUpdateable="false"
+      EntityAttrName="EmployeeId"
+      EntityUsage="EmployeeEO"
+      AliasName="EMPLOYEE_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="BuyerId"
+      EntityAttrName="BuyerId"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="BUYER_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SelectFlag"
+      IsQueriable="false"
+      IsPersistent="false"
+      Type="java.lang.String"
+      ColumnType="$none$"
+      AliasName="SELECT_FLAG"
+      SQLType="VARCHAR" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="BuyerEmail"
+      IsUpdateable="false"
+      EntityAttrName="EmailAddress"
+      EntityUsage="EmployeeEO"
+      AliasName="EMAIL_ADDRESS" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="OrderTotal"
+      IsQueriable="false"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="ORDER_TOTAL"
+      Expression="NULL"
+      SQLType="NUMERIC" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StatusImage"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="24"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="STATUS_IMAGE"
+      Expression="NULL"
+      SQLType="VARCHAR" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StatusDisplay"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="255"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="STATUS_DISPLAY"
+      Expression="NULL"
+      SQLType="VARCHAR" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="DeleteImage"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="23"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="DELETE_IMAGE"
+      Expression="NULL"
+      SQLType="VARCHAR" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="UpdateImage"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="23"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="UPDATE_IMAGE"
+      Expression="NULL"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="23" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ApproveDisabled"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="23"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="APPROVE_DISABLED"
+      Expression="NULL"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="1" />
+      </DesignTime>
+   </ViewAttribute>
+</ViewObject>

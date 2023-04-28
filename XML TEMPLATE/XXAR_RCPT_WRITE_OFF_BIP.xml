@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+07/26/16 akaplan Enh Req 1560 - Created
+-->
+<dataTemplate name="XXAR_RCPT_WRITE_OFF_BIP" defaultPackage="" description="XXBS Receipt Write Offs BIP">
+   <properties>
+      <property name="include_parameters" value="true"/>
+      <property name="include_null_Element" value="true"/>
+      <property name="xml_tag_case" value="upper"/>
+      <property name="db_fetch_size" value="100"/>
+      <property name="scalable_mode" value="off"/>
+      <property name="include_rowsettag" value="false"/>
+      <property name="debug_mode" value="on"/>
+   </properties>
+   <parameters>
+      <parameter name="P_ORG"             dataType="character" />
+      <parameter name="P_DATE_TYPE"       dataType="character" />
+      <parameter name="P_FROM_DATE"       dataType="date" />
+      <parameter name="P_TO_DATE"         dataType="date" />
+      <parameter name="P_FROM_NAME"       dataType="character" />
+      <parameter name="P_TO_NAME"         dataType="character" />
+   </parameters>
+  <lexicals/>
+
+  <dataQuery>
+    <sqlStatement name="Q_REPORT" dataSourceRef="">
+      <![CDATA[
+SELECT
+       xxcm_common.get_org_name(acr.org_id)    org_name
+     , art.name                                wo_name
+     , cust.account_number||' '                customer_number
+     , party.party_name                        customer_name
+     , acrh.batch_id                           batch_number
+     , acr.receipt_number||' '                 receipt_number
+     , acr.currency_code
+     , acr.amount                              receipt_amount
+     , to_char(app.apply_date,'DD-MON-YYYY')   write_off_date
+     , to_char(acr.deposit_date,'DD-MON-YYYY') deposit_date
+     , to_char(ps.gl_date, 'DD-MON-YYYY')      gl_date
+     , SUM (CASE WHEN app.status = 'ACTIVITY' AND applied_payment_schedule_id = -3
+              THEN NVL (app.amount_applied_from, app.amount_applied)
+              ELSE 0
+            END )                              written_off_amount
+FROM ar_cash_receipts              acr
+  JOIN ar_payment_schedules         ps ON ( ps.cash_receipt_id = acr.cash_receipt_id )
+  JOIN ar_receivable_applications  app ON ( app.cash_receipt_id = acr.cash_receipt_id )
+  JOIN ar_cash_receipt_history    acrh ON ( acrh.cash_receipt_id = acr.cash_receipt_id )
+  JOIN ar_receivables_trx          art ON ( art.receivables_trx_id = app.receivables_trx_id )
+  JOIN hz_cust_accounts           cust ON ( cust.cust_account_id = acr.pay_from_customer )
+  JOIN hz_parties                party ON ( party.party_id = cust.party_id )
+WHERE art.TYPE = 'WRITEOFF'
+  AND (:P_ORG IS NULL OR acr.org_id = :P_ORG )
+  AND (CASE :P_DATE_TYPE
+         WHEN 'DEPOSIT'
+           THEN trunc(acr.deposit_date)
+         WHEN 'APPLIED'
+           THEN trunc(app.apply_date)
+       END      BETWEEN :P_FROM_DATE 
+                    AND :P_TO_DATE
+      )
+  AND (art.name BETWEEN nvl(:P_FROM_NAME,art.name) and nvl(:P_TO_NAME,art.name))
+GROUP BY xxcm_common.get_org_name(acr.org_id)  
+     , art.name                                
+     , cust.account_number                     
+     , party.party_name                        
+     , acrh.batch_id                           
+     , acr.receipt_number                      
+     , acr.currency_code
+     , acr.amount                              
+     , to_char(app.apply_date,'DD-MON-YYYY')   
+     , to_char(acr.deposit_date,'DD-MON-YYYY') 
+     , ps.gl_date
+ORDER BY wo_name, deposit_date, receipt_number
+   ]]>
+    </sqlStatement>
+   </dataQuery>
+  <dataStructure>
+    <group name="G_REPORT" source="Q_REPORT" groupFilter="">
+      <element name="org_name"            value="org_name" />
+      <element name="wo_name"             value="wo_name" />
+      <element name="batch_number"        value="batch_number" />
+      <element name="receipt_number"      value="receipt_number" />
+      <element name="currency_code"       value="currency_code" />
+      <element name="receipt_amount"      value="receipt_amount" />
+      <element name="written_off_amount"  value="written_off_amount" />
+      <element name="write_off_date"      value="write_off_date" />
+      <element name="deposit_date"        value="deposit_date" />
+      <element name="gl_date"             value="gl_date" />
+      <element name="customer_number"     value="customer_number" />
+      <element name="customer_name"       value="customer_name" />
+    </group>
+  </dataStructure>
+</dataTemplate>
+

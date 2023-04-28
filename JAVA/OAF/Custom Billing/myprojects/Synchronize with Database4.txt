@@ -1,0 +1,8 @@
+The following Synchronization Actions were performed successfully:
+
+Entity :InvoiceEO
+  Attribute :OrganizationId
+    Change Mandatory to:false
+  Create Attribute for column: ORG_ID
+  Remove Key Constraint: SysC00277886
+  Create Key for Constraint: SYS_C00285742

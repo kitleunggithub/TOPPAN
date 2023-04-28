@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Header: DATA_TEMPLATE_XXBS_USD_CURRENCY_MAP.xml 115.1 2014/02/18 10:19:55 xdouser noship $ -->
+<!--V1.0   24/09/2015  Fujitsu      For R12 upgrade,added order_num,description parameters,country column and commented case_caption,deponent-->
+<!--V1.2   08/17/2017  lmahone      Add last payment amt and date-->
+<!-- dbdrv: none -->
+<dataTemplate name="XXAR_PAST_DUE" version="1.0" description="" defaultPackage="" >
+   <properties>
+      <property name="include_parameters" value="true"/>
+      <property name="include_null_Element" value="true"/>
+      <property name="xml_tag_case" value="upper"/>
+      <property name="db_fetch_size" value="100"/>
+      <property name="scalable_mode" value="off"/>
+      <property name="include_rowsettag" value="false"/>
+      <property name="debug_mode" value="on"/>
+   </properties>
+   <parameters>
+      <parameter name="p_from_days_late" include_in_output="true" dataType="character"/>
+      <parameter name="p_to_days_late" include_in_output="true" dataType="character"/>
+      <parameter name="p_from_balance_due" include_in_output="true" dataType="character"/>
+      <parameter name="p_from_customer" include_in_output="true" dataType="character"/>
+      <parameter name="p_to_customer" include_in_output="true" dataType="character"/>
+      <parameter name="p_from_salesrep" include_in_output="true" dataType="character"/>
+      <parameter name="p_to_salesrep" include_in_output="true" dataType="character"/>
+      <parameter name="p_from_bu" include_in_output="true" dataType="character"/>
+      <parameter name="p_to_bu" include_in_output="true" dataType="character"/>
+      <parameter name="p_from_site" include_in_output="true" dataType="character"/>
+      <parameter name="p_to_site" include_in_output="true" dataType="character"/>
+      <parameter name="p_collection_status" include_in_output="true" dataType="character"/>
+      <parameter name="p_invoice_status" include_in_output="true" dataType="character" />
+      <parameter name="p_from_txn_type" include_in_output="true" dataType="character"/>
+      <parameter name="p_to_txn_type" include_in_output="true" dataType="character"/>
+      <parameter name="p_from_legal_entity" include_in_output="true" dataType="character"/>
+      <parameter name="p_to_legal_entity" include_in_output="true" dataType="character"/>
+      <parameter name="p_from_inv_date" include_in_output="true" dataType="date"/>
+      <parameter name="p_to_inv_date" include_in_output="true" dataType="date"/>
+      <parameter name="p_order_num" include_in_output="true" dataType="character"/>
+      <parameter name="p_description" include_in_output="true" dataType="character"/>
+      <parameter name="p_bill_to_contact" include_in_output="true" dataType="character"/>
+   </parameters>
+   <lexicals/>
+   <dataQuery>
+      <sqlStatement name="Q1" dataSourceRef="">
+         <![CDATA[
+   SELECT glc.segment3 site,
+       cust.account_number cust_number,
+       TRANSLATE (party.party_name, CHR (10) || CHR (13), '  ') cust_name,
+       trx.trx_number inv_number,
+       TYPE.name inv_type,
+       glc.segment1 LE,   ---replaced segment6 with segment1 for R12 Upgrade
+       TO_CHAR (trx.trx_date, 'DD-MON-YYYY') inv_date,
+       TO_CHAR (pay.due_date, 'DD-MON-YYYY') due_date,
+       pay.amount_due_original orig_amt,
+       pay.tax_original tax_amt,
+       pay.amount_due_remaining cur_bal,
+       TRUNC (SYSDATE) - TRUNC (pay.due_date) days_past_due,
+       TRANSLATE (rep.name, CHR (10) || CHR (13), '  ') rep_name,
+       TRANSLATE (
+          addr.address1 || ' ' || addr.address2 || ' ' || addr.address3,
+          CHR (10) || CHR (13),
+          '  ')                                                 address,
+       TRANSLATE (addr.city, CHR (10) || CHR (13), '  ') city,
+       TRANSLATE (addr.state, CHR (10) || CHR (13), '  ') state,
+       TRANSLATE (addr.country, CHR (10) || CHR (13), '  ') country, ---added for r12upgrade
+       TRANSLATE (addr.postal_code, CHR (10) || CHR (13), '  ') zip,
+       trx.interface_header_attribute13 col_status,
+       REPLACE (
+            TRANSLATE (xtrx.customer_order_number, CHR (10) || CHR (13), '  '),
+            CHR (9),
+            '')
+            client_matter_num, ---added for r12upgrade due to strip the hidden tabs and carriage returns
+       --TRANSLATE (xtrx.bill_to_contact_id, CHR (10) || CHR (13), '  ')  contact,
+	   TRANSLATE (xtrx.attendee, CHR (10) || CHR (13), '  ')   contact,
+       pay.invoice_currency_code curr,
+       --xtrx.order_number order_number,
+	   trx.INTERFACE_HEADER_ATTRIBUTE1 order_number,
+       --TRANSLATE (xtrx.description, CHR (10) || CHR (13), '  ') description,
+	   (select TRANSLATE(name, CHR (10) || CHR (13), '  ') from pa_projects_all where project_id = trx.INTERFACE_HEADER_ATTRIBUTE2) description,
+       cust.attribute6 managed_customer,
+       cust.attribute7 large_legal_customer,
+       xxcm_common.get_flex_value_field ('XXAR_INVOICE_STATUS', pay.status)
+       invoice_status,
+       TO_CHAR(xxar_getpaid_pkg.fnc_lastpayment_date(cust.cust_account_id),'DD-MON-YYYY') last_payment_date,
+       RTRIM(LTRIM(TO_CHAR(xxar_getpaid_pkg.fnc_lastpayment_amt(cust.cust_account_id),'999999D00'))) last_payment_amount
+   FROM hz_parties party
+      JOIN hz_party_sites          partysite ON ( partysite.party_id = party.party_id )
+      JOIN hz_cust_accounts             cust ON ( cust.party_id = party.party_id )
+      JOIN hz_cust_acct_sites      cust_site ON ( cust_site.cust_account_id = cust.cust_account_id
+                                              AND cust_site.party_site_id   = partysite.party_site_id )
+      JOIN hz_cust_site_uses         siteuse ON ( siteuse.cust_acct_site_id = cust_site.cust_acct_site_id )
+      JOIN hz_locations                 addr ON ( addr.location_id = partysite.location_id )
+      JOIN ra_customer_trx               trx ON ( trx.bill_to_site_use_id = siteuse.site_use_id )
+      JOIN ra_customer_trx_all2_dfv     trxv ON ( trxv.row_id = trx.ROWID )
+      JOIN ra_cust_trx_types            TYPE ON ( TYPE.cust_trx_type_id = trx.cust_trx_type_id
+                                              AND TYPE.TYPE IN ('INV', 'CM') )
+      JOIN ar_payment_schedules          pay ON ( pay.customer_trx_id = trx.customer_trx_id )
+      JOIN ra_cust_trx_line_gl_dist     dist ON ( dist.customer_trx_id = trx.customer_trx_id
+                                              AND dist.account_class   = 'REC'
+                                              AND dist.latest_rec_flag = 'Y' )
+      JOIN gl_code_combinations          glc ON ( glc.code_combination_id = dist.code_combination_id )
+      LEFT JOIN ra_salesreps             rep ON ( rep.salesrep_id = trx.primary_salesrep_id )
+      LEFT JOIN xxbs_customer_trx       xtrx ON ( xtrx.ar_trx_number       = trx.trx_number
+                                              --AND xtrx.organization_id     = trx.org_id
+											  AND xtrx.org_id     = trx.org_id
+                                              AND xtrx.bill_to_customer_id = pay.customer_id
+                                                )
+   WHERE 1=1
+     AND (   :p_from_days_late IS NULL
+          OR TRUNC (SYSDATE) - TRUNC (pay.due_date) >= :p_from_days_late)
+     AND (   :p_to_days_late IS NULL
+          OR TRUNC (SYSDATE) - TRUNC (pay.due_date) <= :p_to_days_late)
+     AND (   :p_from_balance_due IS NULL
+          OR pay.amount_due_remaining >= :p_from_balance_due)
+     AND (   :p_from_customer IS NULL
+          OR (SELECT customer_name
+              FROM ar_customers
+              WHERE customer_number = :p_from_customer) <= party.party_name)
+     AND (   :p_to_customer IS NULL
+          OR (SELECT customer_name
+              FROM ar_customers
+              WHERE customer_number = :p_to_customer) >= party.party_name)
+     AND (:p_from_salesrep IS NULL OR :p_from_salesrep <= rep.salesrep_id)
+     AND (:p_to_salesrep IS NULL OR :p_to_salesrep >= rep.salesrep_id)
+     --AND (   NVL (:p_from_bu, 'ALL') = 'ALL'
+     --     OR :p_from_bu <= Xxcm_common.get_business_unit (glc.segment2)) ---replaced segment1 with BU function for R12 Upgrade
+     --AND (   NVL (:p_to_bu, 'ALL') = 'ALL'
+     --    OR :p_to_bu >= Xxcm_common.get_business_unit (glc.segment2))
+     AND (NVL (:p_from_site, 'ALL') = 'ALL' OR :p_from_site <= glc.segment3)
+     AND (NVL (:p_to_site, 'ALL') = 'ALL' OR :p_to_site >= glc.segment3)
+     AND (   :p_collection_status IS NULL
+          OR :p_collection_status = trx.interface_header_attribute13)
+     AND (:p_from_txn_type IS NULL OR :p_from_txn_type <= TYPE.name)
+     AND (:p_to_txn_type IS NULL OR :p_to_txn_type >= TYPE.name)
+     AND (   NVL (:p_from_legal_entity, 'X') = 'X'
+          OR :p_from_legal_entity <= glc.segment1) ---replaced segment6 with segment1 for R12 Upgrade
+     AND (   NVL (:p_to_legal_entity, 'X') = 'X'
+          OR :p_to_legal_entity >= glc.segment1)
+     AND (:p_invoice_status = 'ALL' OR pay.status = :p_invoice_status)
+     AND (:p_from_inv_date IS NULL OR trx.trx_date >= :p_from_inv_date)
+     AND (:p_to_inv_date IS NULL OR trx.trx_date <= :p_to_inv_date)
+     AND (   :p_order_num IS NULL
+          --OR UPPER (xtrx.ORDER_NUMBER) LIKE UPPER (:p_order_num || '%')) ---added for r12upgrade
+		  OR UPPER (trx.INTERFACE_HEADER_ATTRIBUTE1) LIKE UPPER (:p_order_num || '%')) ---added for r12upgrade
+     AND (   :p_description IS NULL
+          OR UPPER (xtrx.DESCRIPTION) LIKE UPPER (:p_description || '%')) ---added for r12upgrade
+     --AND (   :p_bill_to_contact IS NULL OR UPPER (trxv.bill_to_contact) LIKE UPPER (:p_bill_to_contact || '%'))
+	 AND (   :p_bill_to_contact IS NULL OR UPPER (xtrx.attendee) LIKE UPPER (:p_bill_to_contact || '%'))
+ORDER BY party.party_name,
+         cust.account_number,
+         TRUNC (SYSDATE) - TRUNC (pay.due_date),
+         trx.trx_number
+]]>
+      </sqlStatement>
+   </dataQuery>
+   <dataStructure>
+      <group name="G_ROWS" source="Q1" groupFilter="">
+         <element name="SITE"                 value="site"                 function=""/>
+         <element name="CUST_NUMBER"          value="cust_number"          function=""/>
+         <element name="CUST_NAME"            value="cust_name"            function=""/>
+         <element name="INV_NUMBER"           value="inv_number"           function=""/>
+         <element name="INV_TYPE"             value="inv_type"             function=""/>
+         <element name="LE"                   value="LE"                   function=""/>
+         <element name="INV_DATE"             value="inv_date"             function=""/>
+         <element name="DUE_DATE"             value="due_date"             function=""/>
+         <element name="ORIG_AMT"             value="orig_amt"             function=""/>
+         <element name="TAX_AMT"              value="tax_amt"              function=""/>
+         <element name="CUR_BAL"              value="cur_bal"              function=""/>
+         <element name="DAYS_PAST_DUE"        value="days_past_due"        function=""/>
+         <element name="REP_NAME"             value="rep_name"             function=""/>
+         <element name="ADDRESS"              value="address"              function=""/>
+         <element name="CITY"                 value="city"                 function=""/>
+         <element name="STATE"                value="state"                function=""/>
+         <element name="ZIP"                  value="zip"                  function=""/>
+         <element name="COL_STATUS"           value="col_status"           function=""/>
+         <element name="CLIENT_MATTER_NUM"    value="client_matter_num"    function=""/>
+         <element name="CONTACT"              value="contact"              function=""/>
+         <element name="CURR"                 value="curr"                 function=""/>
+         <element name="ORDER_NUMBER"         value="order_number"         function=""/>
+         <element name="DESCRIPTION"          value="description"          function=""/>
+         <element name="MANAGED_CUSTOMER"     value="managed_customer"     function=""/>
+         <element name="LARGE_LEGAL_CUSTOMER" value="large_legal_customer" function=""/>
+         <element name="INVOICE_STATUS"       value="invoice_status"       function=""/>
+         <element name="COUNTRY"              value="country"              function=""/>
+         <element name="LAST_PAYMENT_DATE"    value="last_payment_date"    function=""/>
+         <element name="LAST_PAYMENT_AMOUNT"  value="last_payment_amount"  function=""/>
+      </group>
+   </dataStructure>
+</dataTemplate>

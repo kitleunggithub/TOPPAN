@@ -1,0 +1,152 @@
+#!/bin/ksh
+#--------------------------------------------------------------------------
+#
+# FILENAME        xxcm_get_one_file
+#
+# DESCRIPTION     Get all files from ftp_server, but only process one at a time
+#                 Need multiple iterations to actually process them all.
+#
+# BY              Ari Kaplan
+#
+# REQUIREMENTS    
+#
+# USAGE          Parameters passed via valueset (XXCM_FTP_FILES)
+#
+# CALLED BY
+#
+# NOTES
+#
+# HISTORY
+#
+# akaplan  02/18/2016 Created
+#
+#--------------------------------------------------------------------------
+
+# $0 is a unix variable referencing the local file name
+this_script_name="`basename $0`"
+
+. $XXTM_TOP/bin/xxcm_lib.sh
+
+get_parameters 4 "$@"
+
+#folder to hold the bank statement files get from sftp server
+bank_stmt_base_dir=${param[1]}
+#The static bank statement file name to be copied as and to be proessed onward.
+bank_stmt_fileName=${param[2]}
+#sftp server connection info
+sftp_userid=${param[3]}
+sftp_source_srv=${param[4]}
+
+#archiveDir="archive"
+typeset -i tmp_cnt=0
+
+stage_dir=${bank_stmt_base_dir}/stage
+done_dir=${bank_stmt_base_dir}/orig
+
+echo "*****************************"
+echo "Parameters:"
+echo "bank_stmt_base_dir = $bank_stmt_base_dir"
+echo "stage_dir = $stage_dir"
+echo "done_dir = $done_dir"
+echo "bank_stmt_fileName = $bank_stmt_fileName"
+echo "sftp_userid       = $sftp_userid"
+echo "sftp_source_srv      = $sftp_source_srv"
+echo "*****************************"
+
+
+# Remove file $bank_stmt_fileName if exists
+cd $stage_dir
+if [ -f $bank_stmt_fileName ]; then
+	echo "Has file $bank_stmt_fileName exists under folder $stage_dir.  Remove it first."
+    echo "rm -f $bank_stmt_fileName"
+else
+    echo "No file $bank_stmt_fileName exists under folder $stage_dir"
+fi
+
+#Also remove any residual *.bai file under stage folder before each new  run.
+echo "Remove any residual *.bai file under folder $stage_dir if any."
+cd $stage_dir
+echo "ls -ltr *.bai"
+ls -ltr *.bai
+rm *.bai
+
+
+# ftp_get "$remotedir" "$filename" "$localdir"
+# if [ $? -eq 0 ]; then
+   # ftp_del "$remotedir" "$filename"
+# fi
+
+#############################################################################################
+# 20210309 : Add Sftp to Bank of America site to get the bank statement files  (*.bai) files.
+# get -P to preserve the original file timestamp.
+#############################################################################################
+echo "+ Start sftp to BOA site get bank statement files +"
+sftp $sftp_userid@$sftp_source_srv <<EOF 
+lcd $stage_dir
+cd /outgoing
+ls -al *.bai
+get -P *.bai
+bye
+EOF
+echo "+ End of Start sftp to BOA site get bank statement files +"
+
+################################################################################
+# 20210324:  After Get *.bai files, Loop the files just get from BOA sftp server that placed at $stage_dir folder (ie /home/applsit/OracleApps/BOA_STMT/stage)
+#            Check if those files just get from BOA server already exist in folder $done_dir (ie /home/applsit/OracleApps/BOA_STMT/orig)
+#            If exists, means that file has been gte from sftp previously,  need to remove it from $stage_dir to avoid duplicated processing.
+################################################################################
+for tfiles in `ls -tr *.bai`; do
+	echo "Processing file [$tfiles] ...."
+	cd $stage_dir
+	if [ -f ${tfiles} ] ; then
+		echo "File ${tfiles} exists under $stage_dir folder."
+	fi
+	
+	cd $done_dir
+	ls ${tfiles} > ChkExists.log
+	
+	if [ -s ChkExists.log ] ; then
+	  # ChkExists.log file size > 0, mean has that file already exists under $done_dir folder.
+	  echo "File ${tfiles} already exist in $done_dir folder. Need to remove it from $stage_dir folder."
+	  echo "cd $stage_dir"
+	  cd $stage_dir
+	  echo "rm ${tfiles}"
+	  rm ${tfiles}
+	else
+	  echo "File ${tfiles} not exist in $done_dir folder. Keep it for processsing."
+	fi 
+done	
+
+
+# Walk through files, but only process one of them that has the least file timestamp
+cd $stage_dir
+ls -ltr *.bai
+
+for file in `ls -tr *.bai`; do
+
+   tmp_cnt=$tmp_cnt+1
+   if [ $tmp_cnt == 1 ] ; then
+	   echo "File [$file] copied and renamed to [$bank_stmt_fileName]"
+	   echo "cp $file $bank_stmt_fileName"
+	   cp -p $file $bank_stmt_fileName
+	   
+	   echo "mv $file $done_dir"
+	    mv $file $done_dir
+	   
+	   
+	   #archive_file $file $archiveDir
+	   # Exit after first file is found
+	   #exit
+	else
+	   echo "File [$file] is redundant and will be removed."
+	
+	fi
+done
+
+if [ $tmp_cnt == 0 ] ; then
+	echo ""
+	echo ""
+	echo "No files found to be processed."
+	exit 0
+fi
+

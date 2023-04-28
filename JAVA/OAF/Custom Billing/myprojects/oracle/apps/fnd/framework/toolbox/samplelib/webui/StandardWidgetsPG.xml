@@ -1,0 +1,93 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- +======================================================================+ -->
+<!-- |    Copyright (c) 2005, 2015 Oracle and/or its affiliates.           | -->
+<!-- |                         All rights reserved.                         | -->
+<!-- |                           Version 12.0.0                             | -->
+<!-- +======================================================================+ -->
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath:~PROD:~PATH:~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath:~PROD:mds:directory  -->
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="9.0.3.9.1_1444" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header: StandardWidgetsPG.xml 120.8.12020000.2 2015/09/07 06:10:53 spunam ship $">
+   <content>
+      <oa:pageLayout amDefName="oracle.apps.fnd.framework.toolbox.samplelib.server.SampleBrowserAM" id="PageLayoutRN" windowTitle="OA Framework Toolbox Sample Library" title="Standard Web Widgets" quickLinksShown="false" controllerClass="oracle.apps.fnd.framework.toolbox.samplelib.webui.StandardWidgetsCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:messageComponentLayout id="MainRN" columns="2" rows="8">
+               <ui:contents>
+                  <oa:messageTextInput id="TextField" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EmployeeId" dataType="NUMBER" required="yes" tipType="none" viewName="EmployeesVO1" viewAttr="EmployeeId" styleClass="OraFieldText" prompt="Text Input"/>
+                  <oa:messageStyledText id="DisplayField" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FullName" styleClass="OraDataText" viewName="EmployeesVO1" viewAttr="FullName" prompt="Read Only Field"/>
+                  <oa:messageTextInput id="TextArea" prompt="Text Area" rows="4" vAlign="top"/>
+                  <oa:messageCheckBox id="SingleCheckBox" text="Single Checkbox" prompt="Single Checkbox" checked="false"/>
+                  <oa:messageRadioButton id="SingleRadioButton" prompt="Single Radio Button"/>
+                  <oa:messageLayout id="CheckboxSetLayout" prompt="Favorite Fruits">
+                     <ui:contents>
+                        <oa:messageCheckBox id="SetCheckbox1" text="Apples" prompt="Apples" vAlign="top"/>
+                        <oa:messageCheckBox id="SetCheckbox2" text="Oranges" prompt="Oranges" vAlign="top"/>
+                        <oa:messageCheckBox id="SetCheckbox3" prompt="Grapes" vAlign="top"/>
+                     </ui:contents>
+                  </oa:messageLayout>
+                  <oa:messageChoice id="Poplist" prompt="Poplist" pickListDispAttr="Meaning" pickListValAttr="LookupCode" defaultValue="APPROVED" pickListViewName="PositionsVO1"/>
+                  <oa:messageLayout id="SubmitLinkLayout">
+                     <ui:contents>
+                        <oa:link id="SubmitFormLink" text="Link that Submits the Form">
+                           <ui:primaryClientAction>
+                              <ui:fireAction event="SF" id="fireAction1">
+                                 <ui:parameters>
+                                    <ui:parameter key="FixedValue" value="SOMEVALUE"/>
+                                    <ui:parameter key="BoundValue" value="${oa.EmployeesVO1.EmployeeId}"/>
+                                 </ui:parameters>
+                              </ui:fireAction>
+                           </ui:primaryClientAction>
+                        </oa:link>
+                     </ui:contents>
+                  </oa:messageLayout>
+                  <oa:messageLayout id="FormattedTextLayout">
+                     <ui:contents>
+                        <oa:formattedText id="FormattedText" text="This is &lt;b>formatted text&lt;/b>." styleClass="OraPageStampText"/>
+                     </ui:contents>
+                  </oa:messageLayout>
+                  <oa:messageCheckBox id="FormSubmitCheckBox" text="Form Submit Checkbox" prompt="Form Submit Checkbox">
+                     <ui:primaryClientAction>
+                        <ui:fireAction event="checkboxChecked"/>
+                     </ui:primaryClientAction>
+                  </oa:messageCheckBox>
+                  <oa:messageLayout id="ListBoxLayout" prompt="List Box"/>
+                  <oa:messageRadioGroup id="RadioGroup" prompt="Radio Group" pickListViewDef="oracle.apps.fnd.framework.toolbox.poplist.server.PaymentTermsVO" pickListDispAttr="Meaning" pickListValAttr="LookupCode" defaultValue="IMMEDIATE" pickListViewName="PaymentTermsVO1"/>
+                  <oa:messageLayout id="CombinedFieldsLayout" prompt="Combined Fields">
+                     <ui:contents>
+                        <oa:rowLayout id="CombinedFieldsRN">
+                           <ui:contents>
+                              <oa:messageChoice id="CombinedPoplist" pickListViewName="PositionsVO1" pickListDispAttr="Meaning" pickListValAttr="LookupCode" defaultValue="PRESIDENT" shortDesc="Combined Field Poplist"/>
+                              <oa:messageTextInput id="CombinedTextField" required="validaterOnly" columns="30" dataType="NUMBER" shortDesc="Combined Field Text Input"/>
+                           </ui:contents>
+                        </oa:rowLayout>
+                     </ui:contents>
+                  </oa:messageLayout>
+               </ui:contents>
+            </oa:messageComponentLayout>
+            <oa:header id="RadioButtonsHdr" text="Radio Buttons (Configured As a Group)"/>
+            <oa:messageComponentLayout id="RadioButtons" rows="1" width="100%" columns="4">
+               <ui:contents>
+                  <oa:messageRadioButton id="GroupButtonOne" prompt="Apples"/>
+                  <oa:messageRadioButton id="GroupButtonTwo" prompt="Oranges"/>
+                  <oa:messageRadioButton id="GroupButtonThree" prompt="Grapes"/>
+                  <oa:messageRadioButton id="GroupButtonFour" prompt="Plums"/>
+               </ui:contents>
+            </oa:messageComponentLayout>
+         </ui:contents>
+         <ui:returnNavigation>
+            <oa:link id="ReturnTo" text="Return to Sample Browser" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/samplelib/webui/SampleBrowserPG&amp;retainAM=Y"/>
+         </ui:returnNavigation>
+         <ui:productBranding>
+            <oa:image id="ProductBranding" source="FNDTAPPBRAND.gif" shortDesc="OA Framework Toolbox Tutorial"/>
+         </ui:productBranding>
+		 <ui:pageStatus>
+            <oa:flowLayout id="pageStatusRN">
+               <ui:contents>
+                  <oa:staticStyledText id="PageHelp" messageName="FWK_TBX_T_PAGE_GENERAL" messageAppShortName="AK" styleClass="OraInstructionText"/>
+               </ui:contents>
+            </oa:flowLayout>
+         </ui:pageStatus>
+      </oa:pageLayout>
+   </content>
+</page>

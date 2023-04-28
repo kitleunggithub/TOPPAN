@@ -1,0 +1,206 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath:~PROD:~PATH:~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath:~PROD:mds:directory  -->
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_1311" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header: AdvancedTablePG.xml 120.11 2010/10/27 06:23:55 sette ship $">
+   <content>
+      <oa:pageLayout id="MainRN" title="Advanced Table" windowTitle="OA Framework Toolbox Sample Library" amDefName="oracle.apps.fnd.framework.toolbox.samplelib.server.SampleBrowserAM" controllerClass="oracle.apps.fnd.framework.toolbox.samplelib.webui.AdvTablePageCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:returnNavigation>
+            <oa:link id="ReturnTo" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/samplelib/webui/SampleBrowserPG&amp;retainAM=Y" text="Return to Sample Browser"/>
+         </ui:returnNavigation>
+         <ui:productBranding>
+            <oa:image id="ProductBrand" source="FNDTAPPBRAND.gif" shortDesc="OA Famework Toolbox Tutorial"/>
+         </ui:productBranding>
+         <ui:contents>
+            <oa:hideShowHeader id="AdvTableHdr" text="Advanced Table Example 1">
+               <ui:contents>
+                  <oa:advancedTable id="TableRN" viewName="EmployeesVO1" shortDesc="Advanced Table Example 1" tableBanding="rowBanding" width="100%" detailViewAttr="DetailFlag" blockSize="5" text="Toolbox Employees">
+                     <ui:contents>
+                        <oa:columnGroup id="EmpNameColGrp">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="EmpNameHdr" prompt="Employee Name"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:column id="FirstNameCol" columnDataFormat="textFormat">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="FirstNameHdr" required="yes" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FirstName"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="FirstName" viewAttr="FirstName" required="yes" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FirstName" maximumLength="20"/>
+                                 </ui:contents>
+                              </oa:column>
+                              <oa:column id="LastNameCol" columnDataFormat="textFormat">
+                                 <ui:columnHeader>
+                                    <oa:sortableHeader id="LastNameHdr" required="yes" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/LastName"/>
+                                 </ui:columnHeader>
+                                 <ui:contents>
+                                    <oa:messageTextInput id="LastName" viewAttr="LastName" required="yes" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/LastName" maximumLength="40"/>
+                                 </ui:contents>
+                              </oa:column>
+                           </ui:contents>
+                        </oa:columnGroup>
+                        <oa:column id="SalaryCol" totalValue="true" columnDataFormat="numberFormat">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="SalaryHdr" required="yes" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/Salary"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageTextInput id="Salary" viewAttr="Salary" dataType="NUMBER" maximumLength="10" required="yes" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/Salary"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="EndDateCol">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="EndDateHdr" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EndDate"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageTextInput id="EndDate" required="no" viewAttr="EndDate" dataType="DATE" tipType="dateFormat" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EndDate"/>
+                           </ui:contents>
+                        </oa:column>
+                     </ui:contents>
+                     <ui:footer>
+                        <oa:tableFooter id="TableFooter">
+                           <ui:total>
+                              <oa:totalRow id="SalaryTotal"/>
+                           </ui:total>
+                           <ui:contents>
+                              <oa:addTableRow id="addEmpRow"/>
+                              <oa:submitButton id="saveEmp" text="Save" prompt="Save" shortDesc="Save new employee record"/>
+                           </ui:contents>
+                        </oa:tableFooter>
+                     </ui:footer>
+                     <ui:detail>
+                        <oa:messageComponentLayout id="DetailRN">
+                           <ui:contents>
+                              <oa:messageChoice id="Position" viewAttr="PositionCode" required="no" pickListDispAttr="Meaning" pickListValAttr="LookupCode" pickListViewName="PositionsVO1" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/Position" viewName="EmployeesVO1" defaultValue="BUYER"/>
+                              <oa:messageLovInput id="ManagerId" viewAttr="ManagerId" dataType="NUMBER" externalListOfValues="/oracle/apps/fnd/framework/toolbox/lov/webui/EmployeesLovRN" columns="15" viewName="EmployeesVO1" prompt="Manager Id" translatableDefaultValue="5">
+                                 <lovMappings>
+                                    <lovMap id="NumMap" lovItem="EmpNum" resultTo="ManagerId" criteriaFrom="ManagerId"/>
+                                 </lovMappings>
+                              </oa:messageLovInput>
+                              <oa:messageTextInput id="EmailAddress" viewAttr="EmailAddress" dataType="VARCHAR2" viewName="EmployeesVO1" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EmailAddress" maximumLength="240"/>
+                           </ui:contents>
+                        </oa:messageComponentLayout>
+                     </ui:detail>
+                  </oa:advancedTable>
+               </ui:contents>
+            </oa:hideShowHeader>
+            <oa:hideShowHeader id="AdvTable2Hdr" text="Advanced Table Example 2">
+               <ui:contents>
+                  <oa:advancedTable id="Table2RN" shortDesc="Advanced Table Example 1" blockSize="5" width="100%" viewName="LookupCodesVO1" text="Toolbox Lookup Codes">
+                     <ui:contents>
+                        <oa:column id="LookupTypeCol" bandingShade="dark">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="LookupTypeHdr" prompt="Lookup Type" required="yes"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageChoice id="LookupType" prompt="Lookup Type" viewAttr="LookupType" pickListDispAttr="DisplayName" pickListValAttr="LookupType" pickListViewDef="oracle.apps.fnd.framework.toolbox.poplist.server.LookupTypesVO"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="LookupCodeCol" bandingShade="dark">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="LookupCodeHdr" prompt="Lookup Code" required="yes"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageTextInput id="LookupCode" maximumLength="30" viewAttr="LookupCode"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="MeaningCol" bandingShade="light">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="MeaningHdr" prompt="Display Value" required="yes"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageTextInput id="Meaning" viewAttr="Meaning" maximumLength="80"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="DescriptionCol" bandingShade="light">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="DescriptionHdr" prompt="Description"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageTextInput id="Description" maximumLength="240" viewAttr="Description"/>
+                           </ui:contents>
+                        </oa:column>
+                     </ui:contents>
+                     <ui:footer>
+                        <oa:tableFooter id="tableFooter1">
+                           <ui:contents>
+                              <oa:addTableRow id="addTableRow1" shortDesc="Select to create a lookup code."/>
+                           </ui:contents>
+                        </oa:tableFooter>
+                     </ui:footer>
+                     <ui:tableSelection>
+                        <oa:singleSelection id="singleSelection1" text="Select Lookup Code:" viewAttr="SelectRow">
+                           <ui:contents>
+                              <oa:flowLayout id="FlowLayoutRN">
+                                 <ui:contents>
+                                    <oa:submitButton id="SomeAction" text="Perform Some Action" prompt="Perform Some Action"/>
+                                 </ui:contents>
+                              </oa:flowLayout>
+                           </ui:contents>
+                        </oa:singleSelection>
+                     </ui:tableSelection>
+                  </oa:advancedTable>
+               </ui:contents>
+            </oa:hideShowHeader>
+            <oa:hideShowHeader id="AdvTable3Hdr" text="Advanced Table Example 3">
+               <ui:contents>
+                  <oa:advancedTable id="Table3RN" viewName="EmployeesVO2" text="Toolbox Tutorial : Employees" blockSize="5" width="100%" shortDesc="Advanced Table Example 3" tableBanding="columnBanding" rowHeaderViewAttr="EmployeeId">
+                     <ui:contents>
+                        <oa:column id="Tbl3FirstName" bandingShade="none" width="250">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="Tbl3FirstNameHdr" sortState="no" prompt="First Name"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText id="Tbl3FirstNameCol" viewAttr="FirstName"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="Tbl3LastName" bandingShade="none" columnDataFormat="textFormat" width="100">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="Tbl3LastNameHdr" prompt="Last Name"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText id="Tbl3LastNameCol" viewAttr="LastName"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="Tbl3Salary" columnDataFormat="textFormat">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="Tbl3SalaryHdr" prompt="Salary" sortState="ascending"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText id="Tbl3SalaryCol" dataType="NUMBER" viewAttr="Salary"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="Tbl3StartDate" columnDataFormat="textFormat">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="Tbl3StartDateHdr" prompt="Start Date"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText id="Tbl3StartDateCol" dataType="DATE" viewAttr="StartDate"/>
+                           </ui:contents>
+                        </oa:column>
+                     </ui:contents>
+                     <ui:tableSelection>
+                        <oa:multipleSelection id="Tbl3MultipleSelection" viewAttr="DetailFlag" text="Select Multiple And">
+                           <ui:contents>
+                              <oa:flowLayout id="Tbl3FlowLayoutRN">
+                                 <ui:contents>
+                                    <oa:submitButton id="Tbl3Submit" text="Perform Some Action" prompt="Perform Some Action"/>
+                                 </ui:contents>
+                              </oa:flowLayout>
+                           </ui:contents>
+                        </oa:multipleSelection>
+                     </ui:tableSelection>
+                  </oa:advancedTable>
+               </ui:contents>
+            </oa:hideShowHeader>
+         </ui:contents>
+         <ui:pageStatus>
+            <oa:flowLayout id="PageStatusRN">
+               <ui:contents>
+                  <oa:tableLayout id="RequiredKey" extends="/oracle/apps/fnd/framework/webui/OAReqFieldDescRG" hAlign="center" width="100%"/>
+               </ui:contents>
+            </oa:flowLayout>
+         </ui:pageStatus>
+      </oa:pageLayout>
+   </content>
+</page>

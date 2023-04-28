@@ -1,0 +1,9 @@
+The following Synchronization Actions were performed successfully:
+
+Entity :InvoiceLineEO
+  Set transient, as column missing for attribute OrganizationId
+  Create Attribute for column: ORG_ID
+  Key :SysC00277837
+    Remove key attribute OrganizationId
+    Add attribute to key for column ORG_ID
+    Change Check Constraint Condition to:"ORG_ID" IS NOT NULL

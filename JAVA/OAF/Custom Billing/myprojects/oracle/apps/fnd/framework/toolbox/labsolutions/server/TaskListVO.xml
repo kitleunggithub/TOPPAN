@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding='windows-1252'?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<!-- $Header: TaskListVO.xml 120.7 2005/07/12 11:05:00 atgops1 noship $ -->
+
+<ViewObject
+   Name="TaskListVO"
+   BindingStyle="Oracle"
+   CustomQuery="true"
+   RowClass="oracle.apps.fnd.framework.toolbox.labsolutions.server.TaskListVORowImpl"
+   ComponentClass="oracle.apps.fnd.framework.toolbox.labsolutions.server.TaskListVOImpl"
+   MsgBundleClass="oracle.jbo.common.JboResourceBundle"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+SELECT project_id, name, start_date,
+       completion_date, start_date start_from,
+      'summary' task_type, completion_date end_to,
+      '' text_right 
+FROM fwk_tbx_project_headers 
+WHERE project_id = 1
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="9.0.3.12.25" />
+      <Attr Name="_CodeGenFlagNew" Value="36" />
+   </DesignTime>
+   <ViewAttribute
+      Name="ProjectId"
+      IsUpdateable="while_insert"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="255"
+      Type="oracle.jbo.domain.Number"
+      AliasName="PROJECT_ID"
+      ColumnType="VARCHAR2"
+      Expression="PROJECT_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Name"
+      IsPersistent="false"
+      Precision="240"
+      Type="java.lang.String"
+      AliasName="NAME"
+      ColumnType="VARCHAR2"
+      Expression="NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StartDate"
+      IsPersistent="false"
+      Precision="255"
+      Type="oracle.jbo.domain.Date"
+      AliasName="START_DATE"
+      ColumnType="VARCHAR2"
+      Expression="START_DATE"
+      SQLType="DATE" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CompletionDate"
+      IsPersistent="false"
+      Precision="255"
+      Type="oracle.jbo.domain.Date"
+      AliasName="COMPLETION_DATE"
+      ColumnType="VARCHAR2"
+      Expression="COMPLETION_DATE"
+      SQLType="DATE" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StartFrom"
+      IsPersistent="false"
+      Precision="255"
+      Type="oracle.jbo.domain.Date"
+      AliasName="START_FROM"
+      ColumnType="VARCHAR2"
+      Expression="START_FROM"
+      SQLType="DATE" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="TaskType"
+      IsPersistent="false"
+      Precision="7"
+      Type="java.lang.String"
+      AliasName="TASK_TYPE"
+      ColumnType="VARCHAR2"
+      Expression="TASK_TYPE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="EndTo"
+      IsPersistent="false"
+      Precision="255"
+      Type="oracle.jbo.domain.Date"
+      AliasName="END_TO"
+      ColumnType="VARCHAR2"
+      Expression="END_TO"
+      SQLType="DATE" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="TextRight"
+      IsPersistent="false"
+      Precision="255"
+      Type="java.lang.String"
+      AliasName="TEXT_RIGHT"
+      ColumnType="VARCHAR2"
+      Expression="TEXT_RIGHT"
+      SQLType="VARCHAR" >
+   </ViewAttribute>
+   <AttrArray Name="KeyAttributes">
+      <Item Value="ProjectId" />
+   </AttrArray>
+   <ViewLinkAccessor
+      Name="TaskDetailsVO"
+      ViewLink="oracle.apps.fnd.framework.toolbox.labsolutions.server.TaskToDetailsVL"
+      Type="oracle.jbo.RowIterator"
+      IsUpdateable="false" >
+   </ViewLinkAccessor>
+</ViewObject>

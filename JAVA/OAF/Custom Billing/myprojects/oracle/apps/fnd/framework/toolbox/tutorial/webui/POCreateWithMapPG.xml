@@ -1,0 +1,104 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- +======================================================================+ -->
+<!-- |    Copyright (c) 2005, 2015 Oracle and/or its affiliates.           | -->
+<!-- |                         All rights reserved.                         | -->
+<!-- |                           Version 12.0.0                             | -->
+<!-- +======================================================================+ -->
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory -->
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header: POCreateWithMapPG.xml 120.0.12020000.3 2015/03/19 07:49:31 lmodugul noship $">
+   <content>
+      <oa:pageLayout id="region1" controllerClass="oracle.apps.fnd.framework.toolbox.tutorial.webui.POCreateWithMapCO" amDefName="oracle.apps.fnd.framework.toolbox.tutorial.server.MultistepCreateAM" windowTitle="Create Purchase Order">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:messageComponentLayout id="MainRN">
+               <ui:contents>
+                  <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderId" viewName="PoDetailsFullVO1" viewAttr="HeaderId" styleClass="OraDataText" id="HeaderId" prompt="Order Number" dataType="NUMBER"/>
+                  <oa:messageLovInput externalListOfValues="/oracle/apps/fnd/framework/toolbox/lov/webui/BuyersLovRN" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FullName" readOnly="false" required="yes" text="Buyer" rows="1" viewName="PoDetailsFullVO1" viewAttr="FullName" styleClass="OraFieldText" maximumLength="240" id="BuyerName" styleLabelClass="OraPromptText" textTranslationExpansion="none" promptTranslationExpansion="none" prompt="Buyer" translatableDefaultValue="">
+                     <lovMappings>
+                        <lovMap lovItem="BuyerName" id="ToFromBuyerName" resultTo="BuyerName" criteriaFrom="BuyerName"/>
+                        <lovMap lovItem="EmpId" id="ToBuyerId" resultTo="BuyerId"/>
+                     </lovMappings>
+                  </oa:messageLovInput>
+                  <oa:messageTextInput readOnly="false" secret="false" viewName="PoDetailsFullVO1" viewAttr="Description" styleClass="OraFieldText" maximumLength="240" id="Description" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/Description"/>
+                  <oa:messageLovInput externalListOfValues="/oracle/apps/fnd/framework/toolbox/lov/webui/SuppliersLovRN" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSuppliers/SupplierName_Supplier" readOnly="false" required="yes" text="Supplier" rows="1" viewName="PoDetailsFullVO1" viewAttr="Name" styleClass="OraFieldText" maximumLength="80" id="SupplierName" styleLabelClass="OraPromptText" textTranslationExpansion="none">
+                     <lovMappings>
+                        <lovMap lovItem="SupplierName" resultTo="SupplierName" requiredForLOV="false" id="ToFromSupplierName" criteriaFrom="SupplierName"/>
+                        <lovMap lovItem="SupplierId" resultTo="SupplierId" requiredForLOV="false" id="ToSupplierId"/>
+                     </lovMappings>
+                  </oa:messageLovInput>
+                  <oa:messageLovInput externalListOfValues="/oracle/apps/fnd/framework/toolbox/lov/webui/SupplierSitesLovRN" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSupplierSites/SiteName" readOnly="false" required="yes" text="Suplier Site" rows="1" viewName="PoDetailsFullVO1" viewAttr="SiteName" styleClass="OraFieldText" maximumLength="20" id="SupplierSiteName" styleLabelClass="OraPromptText" tipType="shortTip" tipMessageAppShortName="AK" textTranslationExpansion="none" promptTranslationExpansion="none" tipMessageName="FWK_TBX_T_PO_SUP_BEFORE_SITE">
+                     <lovMappings>
+                        <lovMap lovItem="SiteName" id="ToFromSiteName" resultTo="SupplierSiteName" criteriaFrom="SupplierSiteName"/>
+                        <lovMap lovItem="SiteId" id="ToSiteId" resultTo="SiteId"/>
+                        <lovMap lovItem="SupplierId" id="FromSupplierId" programmaticQuery="false" criteriaFrom="SupplierId"/>
+                        <lovMap lovItem="SupplierName" id="FromSupplierName" requiredForLOV="true" programmaticQuery="true" criteriaFrom="SupplierName"/>
+                     </lovMappings>
+                  </oa:messageLovInput>
+                  <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/CurrencyCode" viewName="PoDetailsFullVO1" viewAttr="CurrencyCode" styleClass="OraDataText" id="CurrencyCode"/>
+                  <oa:messageChoice use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/PaymentTermsCode" readOnly="false" required="yes" viewName="PoDetailsFullVO1" viewAttr="PaymentTermsCode" styleClass="OraFieldText" pickListViewDef="oracle.apps.fnd.framework.toolbox.poplist.server.PaymentTermsVO" pickListDispAttr="Meaning" pickListValAttr="LookupCode" id="PaymentTerms"/>
+                  <oa:messageChoice use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/CarrierCode" readOnly="false" required="yes" viewName="PoDetailsFullVO1" viewAttr="CarrierCode" styleClass="OraFieldText" pickListViewDef="oracle.apps.fnd.framework.toolbox.poplist.server.CarriersVO" pickListDispAttr="Meaning" pickListValAttr="LookupCode" id="Carrier" defaultValue="FEDEX"/>
+                  <oa:messageLayout id="HiddenFieldLayout">
+                     <ui:contents>
+                        <oa:formValue viewName="PoDetailsFullVO1" viewAttr="BuyerId" id="BuyerId" prompt="Employee Number" dataType="NUMBER"/>
+                        <oa:formValue viewName="PoDetailsFullVO1" viewAttr="SupplierSiteId" id="SiteId" prompt="Supplier Site ID" dataType="NUMBER"/>
+                        <oa:formValue viewName="PoDetailsFullVO1" viewAttr="SupplierId" id="SupplierId" prompt="Supplier ID" dataType="NUMBER"/>
+                     </ui:contents>
+                  </oa:messageLayout>
+                  <oa:messageFileUpload id="Attachment" prompt="Attachment"/>
+               </ui:contents>
+            </oa:messageComponentLayout>
+            <oa:tableLayout id="shippingAddressRN" hAlign="center" width="100%">
+               <ui:contents>
+                  <oa:rowLayout id="shippingAddressRow" hAlign="end" vAlign="middle">
+                     <ui:contents>
+                        <oa:cellFormat id="cellFomat3" width="23%"/>
+                        <oa:cellFormat id="cellFormat1" vAlign="top" hAlign="right" width="21%">
+                           <ui:contents>
+                              <oa:header id="shippingDetailsHeader" text="Shipping Address">
+                                 <ui:contents>
+                                    <oa:messageComponentLayout id="shippingDetailsContainer">
+                                       <ui:contents>
+                                          <oa:messageLayout id="messageLayout1">
+                                             <ui:contents>
+                                                <oa:button id="populateAddressButton" text="Use Current Location" prompt="Use Current Location" hAlign="right" destination="javascript:getLocation('currentLocationDetails')"/>
+                                                <oa:spacer id="spacer2"/>
+                                             </ui:contents>
+                                          </oa:messageLayout>
+                                          <oa:messageTextInput id="addressLine1" prompt="Address Line 1" shortDesc="Street Address, P.O. Box, Company Name"/>
+                                          <oa:messageTextInput id="addressLine2" prompt="Address Line 2"/>
+                                          <oa:messageTextInput id="city" prompt="City"/>
+                                          <oa:messageTextInput id="state" prompt="State/Province/Region"/>
+                                          <oa:messageTextInput id="zipCode" prompt="ZIP / Postal Code" dataType="NUMBER"/>
+                                          <oa:messageTextInput id="country" prompt="Country"/>
+                                       </ui:contents>
+                                    </oa:messageComponentLayout>
+                                 </ui:contents>
+                              </oa:header>
+                           </ui:contents>
+                        </oa:cellFormat>
+                        <oa:cellFormat id="cellFormat2" vAlign="top" hAlign="start" width="40%">
+                           <ui:contents>
+                              <oa:stackLayout id="mapLayout">
+                                 <ui:contents>
+                                    <oa:spacer id="spacer1" width="20"/>
+                                    <oa:formattedText id="mapholder"/>
+                                 </ui:contents>
+                              </oa:stackLayout>
+                           </ui:contents>
+                        </oa:cellFormat>
+                     </ui:contents>
+                  </oa:rowLayout>
+               </ui:contents>
+            </oa:tableLayout>
+            <oa:pageButtonBar id="pageButtonBarRN">
+               <ui:contents>
+                  <oa:submitButton id="Submit" text="Submit" prompt="Submit" hAlign="right"/>
+                  <oa:submitButton id="Cancel" text="Cancel" prompt="Cancel" hAlign="right" serverUnvalidated="true" unvalidated="true"/>
+               </ui:contents>
+            </oa:pageButtonBar>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>

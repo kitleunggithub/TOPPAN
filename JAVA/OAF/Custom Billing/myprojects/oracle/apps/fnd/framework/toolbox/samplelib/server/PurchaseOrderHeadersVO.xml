@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<!-- $Header: PurchaseOrderHeadersVO.xml 120.8 2006/07/03 17:14:04 atgops1 noship $ -->
+
+<ViewObject
+   Name="PurchaseOrderHeadersVO"
+   SelectList="PurchaseOrderHeaderEO.HEADER_ID, 
+       PurchaseOrderHeaderEO.DESCRIPTION, 
+       PurchaseOrderHeaderEO.STATUS_CODE, 
+       PurchaseOrderHeaderEO.SUPPLIER_ID, 
+       PurchaseOrderHeaderEO.SUPPLIER_SITE_ID"
+   FromList="FWK_TBX_PO_HEADERS PurchaseOrderHeaderEO"
+   BindingStyle="Oracle"
+   CustomQuery="false"
+   RowClass="oracle.apps.fnd.framework.toolbox.samplelib.server.PurchaseOrderHeadersVORowImpl"
+   ComponentClass="oracle.apps.fnd.framework.toolbox.samplelib.server.PurchaseOrderHeadersVOImpl"
+   FetchMode="FETCH_AS_NEEDED"
+   UseGlueCode="false" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.38.51" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll" />
+   </DesignTime>
+   <EntityUsage
+      Name="PurchaseOrderHeaderEO"
+      Entity="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderHeaderEO" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="false" />
+      </DesignTime>
+   </EntityUsage>
+   <ViewAttribute
+      Name="HeaderId"
+      IsUpdateable="while_insert"
+      IsNotNull="true"
+      EntityAttrName="HeaderId"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="HEADER_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Description"
+      EntityAttrName="Description"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="DESCRIPTION" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StatusCode"
+      IsNotNull="true"
+      EntityAttrName="StatusCode"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="STATUS_CODE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SupplierId"
+      IsNotNull="true"
+      EntityAttrName="SupplierId"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="SUPPLIER_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SupplierSiteId"
+      IsNotNull="true"
+      EntityAttrName="SupplierSiteId"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="SUPPLIER_SITE_ID" >
+   </ViewAttribute>
+</ViewObject>

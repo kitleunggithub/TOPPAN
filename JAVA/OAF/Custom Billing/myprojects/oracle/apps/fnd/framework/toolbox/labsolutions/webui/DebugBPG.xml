@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath:~PROD:~PATH:~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath:~PROD:mds:directory  -->
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="9.0.3.8.3_736" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header: DebugBPG.xml 120.7 2006/05/25 13:09:06 atgops1 noship $">
+   <content>
+      <oa:pageLayout id="PageLayout" amDefName="oracle.apps.fnd.framework.toolbox.labsolutions.server.DebugBLabAM" windowTitle="OA Framework Toolbox Tutorial Debug Lab" title="Debug Lab (AM State Page B)" controllerClass="oracle.apps.fnd.framework.toolbox.labsolutions.webui.DebugBPageCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:pageButtonBar id="PageButtons">
+               <ui:contents>
+                  <oa:submitButton id="PageARetain" text="Page A (Retain AM)" prompt="Page A (Retain AM)"/>
+                  <oa:submitButton id="PageANoRetain" text="Page A" prompt="Page A"/>
+               </ui:contents>
+            </oa:pageButtonBar>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>

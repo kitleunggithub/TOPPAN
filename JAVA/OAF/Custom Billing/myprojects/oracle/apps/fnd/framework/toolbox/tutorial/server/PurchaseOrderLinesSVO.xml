@@ -1,0 +1,203 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="PurchaseOrderLinesSVO"
+   SelectList="PurchaseOrderLineEO.LINE_ID, 
+       PurchaseOrderLineEO.HEADER_ID, 
+       PurchaseOrderLineEO.LINE_NUMBER, 
+       PurchaseOrderLineEO.ITEM_ID, 
+       PurchaseOrderLineEO.ITEM_DESCRIPTION, 
+       PurchaseOrderLineEO.UNIT_OF_MEASURE, 
+       PurchaseOrderLineEO.QUANTITY, 
+       PurchaseOrderLineEO.UNIT_PRICE"
+   FromList="FWK_TBX_PO_LINES PurchaseOrderLineEO"
+   BindingStyle="Oracle"
+   CustomQuery="false"
+   RowClass="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrderLinesSVORowImpl"
+   ComponentClass="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrderLinesSVOImpl"
+   UseGlueCode="false" >
+   <Properties>
+      <Property Name ="RCS_ID" Value ="$Header: PurchaseOrderLinesSVO.xml 120.23 2006/07/04 01:18:35 atgops1 noship $" />
+      <Property Name ="SVC_ATTR.PurchaseOrderShipment.SVC_DATATYPE" Value ="java.util.List" />
+      <Property Name ="SVC_ATTR.PurchaseOrderShipment.SVC_INNERTYPE.0.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.tutorial.PurchaseOrderShipment" />
+      <Property Name ="SVC_ATTR.PurchaseOrderShipment.SVC_INNERTYPE.0.SVC_QUALIFIED_NAME" Value ="/oracle/apps/fnd/framework/toolbox/tutorial/PurchaseOrderShipment" />
+      <Property Name ="SVC_ATTR.PurchaseOrderShipment.SVC_QUALIFIED_NAME" Value ="/java/util/List" />
+      <Property Name ="SVC_COMPONENT_CLASS" Value ="oracle.apps.fnd.framework.toolbox.tutorial.PurchaseOrderLine" />
+      <Property Name ="SVC_DATA_OBJECT" Value ="PurchaseOrderLine" />
+      <Property Name ="SVC_DISPLAY_NAME" Value ="Purchase Order Line Document" />
+      <Property Name ="SVC_DOCUMENTATION" Value ="A data object representing a purchase order line document." />
+      <Property Name ="SVC_DOMAIN.UnitOfMeasureDomain" Value ="oracle.apps.fnd.framework.toolbox.tutorial.server.UnitOfMeasuresDVO" />
+      <Property Name ="SVC_DOMAIN.UnitOfMeasureDomain.SVC_ATTRIBUTES" Value ="UnitOfMeasure" />
+      <Property Name ="SVC_DOMAIN.UnitOfMeasureDomain.SVC_DOMAIN_CRITERIA" Value ="LookupCode=UnitOfMeasure" />
+      <Property Name ="SVC_DOMAIN.UnitOfMeasureDomain.SVC_DOMAIN_RESULTS" Value ="UnitOfMeasure=LookupCode" />
+      <Property Name ="SVC_DOMAIN.UnitOfMeasureDomain.SVC_FILTER" Value ="UnitOfMeasureDomainFilter" />
+      <Property Name ="SVC_DOMAINS" Value ="UnitOfMeasureDomain" />
+      <Property Name ="SVC_FILTER_ATTR.PurchaseOrderLineFilter.PurchaseOrderShipment.OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoLines/PurchaseOrderShipments" />
+      <Property Name ="SVC_FILTER_ATTR.PurchaseOrderLineFilter.PurchaseOrderShipment.SVC_INNERFILTER" Value ="oracle.apps.fnd.framework.toolbox.tutorial.PurchaseOrderShipmentFilter" />
+      <Property Name ="SVC_FILTER_ATTR.PurchaseOrderLineFilter.PurchaseOrderShipment.SVC_INNERFILTER.SVC_NAME" Value ="PurchaseOrderShipmentFilter" />
+      <Property Name ="SVC_FILTER_ATTR.PurchaseOrderLineFilter.PurchaseOrdersSVO.OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoLines/PurchaseOrdersSVO" />
+      <Property Name ="SVC_FILTER_ATTR.PurchaseOrderLineFilter.PurchaseOrdersSVO.SVC_INNERFILTER" Value ="oracle.apps.fnd.framework.toolbox.tutorial.PurchaseOrderFilter" />
+      <Property Name ="SVC_FILTER.PurchaseOrderLineFilter.SVC_ATTRIBUTES" Value ="LineId,PoNumber,LineNumber,ItemId,ItemDescription,Quantity,UnitPrice,PurchaseOrderShipment,PurchaseOrdersSVO" />
+      <Property Name ="SVC_FILTER.PurchaseOrderLineFilter.SVC_COMPONENT_CLASS" Value ="oracle.apps.fnd.framework.toolbox.tutorial.PurchaseOrderLineFilter" />
+      <Property Name ="SVC_FILTER.PurchaseOrderLineFilter.SVC_DISPLAY_NAME" Value ="Purchase Order Line Flexible Filter" />
+      <Property Name ="SVC_FILTER.PurchaseOrderLineFilter.SVC_DOCUMENTATION" Value ="A standard expression filter for purchase order lines." />
+      <Property Name ="SVC_FILTER.PurchaseOrderLineFilter.SVC_EXPRESSION" Value ="true" />
+      <Property Name ="SVC_FILTER.PurchaseOrderLineFilter.SVC_NAMESPACE" Value ="/oracle/apps/fnd/framework/toolbox/tutorial/" />
+      <Property Name ="SVC_FILTER.PurchaseOrderLineFilter.SVC_NESTED_FILTERS" Value ="PurchaseOrderLineFilter" />
+      <Property Name ="SVC_FILTER.PurchaseOrderLineFilter.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_FILTER.PurchaseOrderLineFilter.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_FILTER.PurchaseOrderLineFilter.SVC_REP_PRODUCT" Value ="fnd" />
+      <Property Name ="SVC_FILTER.PurchaseOrderLineFilter.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_FILTER.PurchaseOrderLineFilter.SVC_SUPER_CLASS" Value ="oracle.svc.expression.ExpressionFilter" />
+      <Property Name ="SVC_FILTERS" Value ="PurchaseOrderLineFilter" />
+      <Property Name ="SVC_KEY_SET.ByNumber" Value ="LineId.1.PoNumber,LineNumber" />
+      <Property Name ="SVC_KEY_SETS" Value ="ByNumber" />
+      <Property Name ="SVC_NAMESPACE" Value ="/oracle/apps/fnd/framework/toolbox/tutorial/" />
+      <Property Name ="SVC_OBJECT" Value ="SDO" />
+      <Property Name ="SVC_PARTIAL_FAILURE_ENABLED" Value ="true" />
+      <Property Name ="SVC_PRIMARY_KEYS" Value ="LineId" />
+      <Property Name ="SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_REP_PRODUCT" Value ="fnd" />
+      <Property Name ="SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_SUPER_CLASS" Value ="oracle.svc.DataObjectImpl" />
+      <Property Name ="SVC_VO_DEF" Value ="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrderLinesSVO" />
+   </Properties>
+   <DesignTime>
+      <Attr Name="_rowSuperClassName" Value="oracle.apps.fnd.framework.server.OAViewRowImpl" />
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.38.51" />
+      <Attr Name="_objectSuperClassName" Value="oracle.apps.fnd.framework.server.OAViewObjectImpl" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll" />
+   </DesignTime>
+   <EntityUsage
+      Name="PurchaseOrderLineEO"
+      Entity="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderLineEO" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="false" />
+      </DesignTime>
+   </EntityUsage>
+   <ViewAttribute
+      Name="LineId"
+      IsUpdateable="while_insert"
+      IsNotNull="true"
+      EntityAttrName="LineId"
+      EntityUsage="PurchaseOrderLineEO"
+      AliasName="LINE_ID" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoLines/LineId" />
+         <Property Name ="SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+         <Property Name ="SVC_DISPLAY_NAME" Value ="Line ID" />
+         <Property Name ="SVC_DOCUMENTATION" Value ="The purchase order line id." />
+         <Property Name ="SVC_SIZE" Value ="0" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PoNumber"
+      IsNotNull="true"
+      EntityAttrName="HeaderId"
+      EntityUsage="PurchaseOrderLineEO"
+      AliasName="HEADER_ID" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderId" />
+         <Property Name ="SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+         <Property Name ="SVC_SIZE" Value ="0" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LineNumber"
+      IsUpdateable="while_insert"
+      IsNotNull="true"
+      EntityAttrName="LineNumber"
+      EntityUsage="PurchaseOrderLineEO"
+      AliasName="LINE_NUMBER" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoLines/LineNumber" />
+         <Property Name ="SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+         <Property Name ="SVC_DISPLAY_NAME" Value ="Line Number" />
+         <Property Name ="SVC_DOCUMENTATION" Value ="The purchase order line number" />
+         <Property Name ="SVC_SIZE" Value ="0" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ItemId"
+      EntityAttrName="ItemId"
+      EntityUsage="PurchaseOrderLineEO"
+      AliasName="ITEM_ID" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoLines/ItemId" />
+         <Property Name ="SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+         <Property Name ="SVC_SIZE" Value ="0" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ItemDescription"
+      IsNotNull="true"
+      EntityAttrName="ItemDescription"
+      EntityUsage="PurchaseOrderLineEO"
+      AliasName="ITEM_DESCRIPTION" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoLines/ItemDescription" />
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_SIZE" Value ="240" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="UnitOfMeasure"
+      IsNotNull="true"
+      EntityAttrName="UnitOfMeasure"
+      EntityUsage="PurchaseOrderLineEO"
+      AliasName="UNIT_OF_MEASURE" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoLines/UnitOfMeasure" />
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_SIZE" Value ="30" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Quantity"
+      IsNotNull="true"
+      EntityAttrName="Quantity"
+      EntityUsage="PurchaseOrderLineEO"
+      AliasName="QUANTITY" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoLines/Quantity" />
+         <Property Name ="SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+         <Property Name ="SVC_SIZE" Value ="0" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="UnitPrice"
+      IsNotNull="true"
+      EntityAttrName="UnitPrice"
+      EntityUsage="PurchaseOrderLineEO"
+      AliasName="UNIT_PRICE" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoLines/UnitPrice" />
+         <Property Name ="SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+         <Property Name ="SVC_SIZE" Value ="0" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewLinkAccessor
+      Name="PurchaseOrder"
+      ViewLink="oracle.apps.fnd.framework.toolbox.tutorial.server.PoHeaderToLinesSVL"
+      Type="oracle.jbo.Row"
+      Reversed="true"
+      IsUpdateable="false" >
+   </ViewLinkAccessor>
+   <ViewLinkAccessor
+      Name="PurchaseOrderShipment"
+      ViewLink="oracle.apps.fnd.framework.toolbox.tutorial.server.PoLineToShipmentsSVL"
+      Type="oracle.jbo.RowIterator"
+      IsUpdateable="false" >
+   </ViewLinkAccessor>
+</ViewObject>

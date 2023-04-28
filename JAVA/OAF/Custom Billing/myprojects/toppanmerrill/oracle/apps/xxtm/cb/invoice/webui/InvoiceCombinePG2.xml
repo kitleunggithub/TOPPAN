@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <content>
+      <oa:pageLayout id="PageLayoutRN" amDefName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SearchInvoiceAM" controllerClass="toppanmerrill.oracle.apps.xxtm.cb.invoice.webui.InvoiceCombineCO" amStateRequired="true">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:advancedTable id="CombineReqDtlTH" viewName="InvoiceCombineReqDtlVO1"/>
+            <oa:pageButtonBar id="CombineReqDtlPB" extends="/toppanmerrill/oracle/apps/xxtm/cb/invoice/webui/InvoiceCombineNavRN"/>
+         </ui:contents>
+         <ui:location>
+            <oa:train id="CombineReqDtlTN" extends="/toppanmerrill/oracle/apps/xxtm/cb/invoice/webui/InvoiceCombineTrainRN"/>
+         </ui:location>
+      </oa:pageLayout>
+   </content>
+</page>

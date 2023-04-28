@@ -1,0 +1,22 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory -->
+<oa:messageComponentLayout version="10.1.3_1286" xml:lang="en-US" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header: EmpPopupRN.xml 120.0.12010000.2 2009/07/22 11:41:05 sette noship $">
+   <ui:contents>
+      <oa:messageTextInput id="EmpNumPopup" rendered="false" viewName="EmployeeSummaryVO1" viewAttr="EmployeeId"/>
+      <oa:messageTextInput id="EmployeeName" viewName="EmployeeSummaryVO1" viewAttr="EmployeeName" prompt="Name" rendered="true" maximumLength="240" styleClass="OraFieldText"/>
+      <oa:messageTextInput id="EmployeeEmail" viewName="EmployeeSummaryVO1" viewAttr="EmployeeEmail" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxAddresses/EmailAddress" styleClass="OraFieldText" maximumLength="240" columns="30"/>
+      <oa:messageLovInput id="ManagerName" viewName="EmployeeSummaryVO1" viewAttr="ManagerName" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FullName_Manager" externalListOfValues="/oracle/apps/fnd/framework/toolbox/lov/webui/EmployeesLovRN" maximumLength="240" styleClass="OraFieldText" columns="27">
+         <lovMappings>
+            <lovMap id="ToFromMgrName" lovItem="EmpName" resultTo="ManagerName" criteriaFrom="ManagerName"/>
+         </lovMappings>
+      </oa:messageLovInput>
+      <oa:messageChoice id="PositionDisplay" viewName="EmployeeSummaryVO1" viewAttr="PositionCode" prompt="Position" pickListViewDef="oracle.apps.fnd.framework.toolbox.poplist.server.PositionsVO" pickListValAttr="LookupCode" pickListDispAttr="Meaning" required="no" serverUnvalidated="true" styleClass="OraFieldText"/>
+      <oa:messageTextInput id="Salary" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/Salary" required="yes" dataType="NUMBER" maximumLength="15" viewName="EmployeeSummaryVO1" viewAttr="Salary" styleClass="OraFieldText"/>
+      <oa:messageTextInput id="EndDate" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EndDate" dataType="DATE" viewName="EmployeeSummaryVO1" viewAttr="EndDate" tipType="dateFormat" styleClass="OraFieldText"/>
+      <oa:messageLayout id="messageLayout1">
+         <ui:contents>
+            <oa:submitButton id="Save" text="Submit" prompt="Submit" viewName="EmployeeSummaryVO1"/>
+         </ui:contents>
+      </oa:messageLayout>
+   </ui:contents>
+</oa:messageComponentLayout>

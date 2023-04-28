@@ -1,0 +1,300 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="CustomerContactLovVO"
+   BindingStyle="OracleName"
+   CustomQuery="true"
+   RowClass="oracle.apps.fnd.framework.server.OAViewRowImpl"
+   ComponentClass="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.CustomerContactLovVOImpl"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+SELECT 
+    hcar.CUST_ACCOUNT_ID
+    ,hcar.CUST_ACCT_SITE_ID
+    ,hcas.ORG_ID
+    ,hcar.CUST_ACCOUNT_ROLE_ID
+    ,hcar.PARTY_ID
+    ,hcar.CURRENT_ROLE_STATE
+    ,hcar.PRIMARY_FLAG
+    ,hcar.ROLE_TYPE
+    ,act.account_number
+        ,hoc.org_contact_id
+        ,hoc.contact_number
+        ,hpsub.PARTY_NAME
+        ,hpsub.PERSON_FIRST_NAME
+        ,hpsub.PERSON_MIDDLE_NAME
+        ,hpsub.PERSON_LAST_NAME
+        ,hpsub.PERSON_FIRST_NAME||' '||hpsub.PERSON_MIDDLE_NAME||NVL2(hpsub.PERSON_MIDDLE_NAME,' ','')||hpsub.PERSON_LAST_NAME PERSON_FULL_NAME
+        ,hprel.EMAIL_ADDRESS
+FROM HZ_CUST_ACCOUNT_ROLES hcar
+, HZ_PARTIES hpsub
+, HZ_PARTIES hprel
+, HZ_PARTIES hpobj
+--, HZ_PERSON_PROFILES hpp
+, HZ_ORG_CONTACTS hoc
+, HZ_RELATIONSHIPS hr
+, HZ_PARTY_SITES hps
+,hz_cust_accounts act
+,HZ_CUST_ACCT_SITES_ALL hcas
+WHERE 1=1 
+AND hcar.ROLE_TYPE = 'CONTACT'
+AND hcar.PARTY_ID = hr.PARTY_ID
+AND hr.PARTY_ID = hprel.PARTY_ID
+AND hr.SUBJECT_ID = hpsub.PARTY_ID
+AND hr.OBJECT_ID = hpobj.PARTY_ID
+--AND hpsub.PARTY_ID = hpp.PARTY_ID (+)
+AND hoc.PARTY_RELATIONSHIP_ID = hr.RELATIONSHIP_ID
+AND hcar.cust_account_id =act.cust_account_id
+AND act.party_id = hr.object_id
+AND hps.PARTY_ID(+) = hprel.PARTY_ID
+AND nvl(hps.IDENTIFYING_ADDRESS_FLAG(+), 'Y') = 'Y'
+AND nvl(hps.STATUS(+), 'A') = 'A'
+AND hcar.CUST_ACCT_SITE_ID = hcas.CUST_ACCT_SITE_ID
+AND hcar.CURRENT_ROLE_STATE = 'A'
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess" />
+   </DesignTime>
+   <ViewAttribute
+      Name="CustAccountId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="CUST_ACCOUNT_ID"
+      Expression="CUST_ACCOUNT_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CustAcctSiteId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="CUST_ACCT_SITE_ID"
+      Expression="CUST_ACCT_SITE_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="OrgId"
+      IsPersistent="false"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="ORG_ID"
+      Expression="ORG_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CustAccountRoleId"
+      IsPersistent="false"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="CUST_ACCOUNT_ROLE_ID"
+      Expression="CUST_ACCOUNT_ROLE_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PartyId"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="PARTY_ID"
+      Expression="PARTY_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CurrentRoleState"
+      IsPersistent="false"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CURRENT_ROLE_STATE"
+      Expression="CURRENT_ROLE_STATE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PrimaryFlag"
+      IsPersistent="false"
+      Precision="1"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PRIMARY_FLAG"
+      Expression="PRIMARY_FLAG"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="1" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="RoleType"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="ROLE_TYPE"
+      Expression="ROLE_TYPE"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="AccountNumber"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="ACCOUNT_NUMBER"
+      Expression="ACCOUNT_NUMBER"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="OrgContactId"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="15"
+      Scale="0"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="ORG_CONTACT_ID"
+      Expression="ORG_CONTACT_ID"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ContactNumber"
+      IsPersistent="false"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CONTACT_NUMBER"
+      Expression="CONTACT_NUMBER"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PartyName"
+      IsPersistent="false"
+      IsNotNull="true"
+      Precision="360"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PARTY_NAME"
+      Expression="PARTY_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="360" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PersonFirstName"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="150"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PERSON_FIRST_NAME"
+      Expression="PERSON_FIRST_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PersonMiddleName"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="60"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PERSON_MIDDLE_NAME"
+      Expression="PERSON_MIDDLE_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="60" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PersonLastName"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="150"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PERSON_LAST_NAME"
+      Expression="PERSON_LAST_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PersonFullName"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="362"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PERSON_FULL_NAME"
+      Expression="PERSON_FULL_NAME"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="362" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="EmailAddress"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="2000"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="EMAIL_ADDRESS"
+      Expression="EMAIL_ADDRESS"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="2000" />
+      </DesignTime>
+   </ViewAttribute>
+</ViewObject>

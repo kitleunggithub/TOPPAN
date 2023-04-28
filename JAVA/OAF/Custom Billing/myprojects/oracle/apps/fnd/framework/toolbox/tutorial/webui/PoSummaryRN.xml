@@ -1,0 +1,76 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory -->
+<!--*Controller for: oracle.apps.fnd.framework.toolbox.tutorial.webui.PoSummaryRN
+
+Scope: public 
+
+Usage: Displays a summary table of purchase orders with configurable control over whether associated actions are displayed to the user.
+
+ 
+@param showDelete passed as request parameter, indicates whether to show the Delete action (if applicable). Valid values are "Y" and "N."  If not specified, or specified incorrectly, "Y" is assumed and the Delete action is displayed.
+@param showUpdate passed as a request parameter, indicates whether to show the Update action (if applicable).  Valid values are "Y" and "N." If not specified, or specified incorrectly, "Y" is assumed and the Update action is displayed.
+@param showApprove passed as a request parameter, indicates whether to show the Approve action (if applicable).  Valid values are "Y" and "N." If not specified, or specified incorrectly, "Y" is assumed and the Approve action is displayed.
+@param showCreate passed as a request parameter, indicates whether to show the Create action (if applicable).  Valid values are "Y" and "N." If not specified, or specified incorrectly, "Y" is assumed and the Create action is displayed.-->
+<oa:stackLayout akRegionCode="FWK_TBX_T_ORDERS" regionName="Toolbox Orders" amDefName="oracle.apps.fnd.framework.toolbox.tutorial.server.PoSummaryAM" controllerClass="oracle.apps.fnd.framework.toolbox.tutorial.webui.PoSummaryCO" standalone="true" xmlns="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:user="http://xmlns.oracle.com/jrad/user" version="9.0.3.8.7_942" xml:lang="en-US" file-version="$Header: PoSummaryRN.xml 120.12 2006/05/25 13:17:47 atgops1 noship $">
+   <ui:contents>
+      <oa:table akRegionCode="FWK_TBX_T_ORDERS_TABLE" regionName="Purchase Orders Table" blockSize="25" standalone="true" id="OrdersTable" width="100%" messageName="FWK_TBX_T_NO_POS_FOUND" messageAppShortName="AK" shortDesc="Purchase Orders Table">
+         <ui:contents>
+            <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderId_Order" sortState="ascending" viewName="PoSummaryVO1" viewAttr="HeaderId" id="OrderNum" initSortSeq="first" promptTranslationExpansion="none" dataType="NUMBER"/>
+
+            <oa:flowLayout akRegionCode="FWK_TBX_T_PO_STATUS_RGN" regionName="Toolbox PO Status Rgn" standalone="true" id="Status" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/StatusCode">
+               <ui:contents>
+                  <oa:image shortDesc="Purchase order status" id="StatusImage" imageHeight="16" imageWidth="16"/>
+                  <oa:messageStyledText viewName="PoSummaryVO1" viewAttr="StatusDisplay" id="StatusText"/>
+               </ui:contents>
+            </oa:flowLayout>
+            <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/Description" viewName="PoSummaryVO1" viewAttr="Description" id="Description"/>
+            <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FullName" viewName="PoSummaryVO1" viewAttr="BuyerName" destination="mailto:{@BuyerEmail}" id="Buyer" promptTranslationExpansion="none" prompt="Buyer"/>
+            <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSuppliers/SupplierName_Supplier" viewName="PoSummaryVO1" viewAttr="SupplierName" id="Supplier"/>
+            <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/CurrencyCode" viewName="PoSummaryVO1" viewAttr="CurrencyCode" id="Currency"/>
+            <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/OrderTotal" viewName="PoSummaryVO1" viewAttr="OrderTotal" id="OrderTotal" promptTranslationExpansion="none"/>
+            <oa:switcher akRegionCode="FWK_TBX_T_ORDERS_DELETE_SWITCH" regionName="Toolbox Orders Delete Switch" standalone="true" viewName="PoSummaryVO1" viewAttr="DeleteImage" id="DeleteSwitcher" promptTranslationExpansion="none" use="/oracle/apps/fnd/attributesets/Buttons/Delete">
+               <ui:case name="DeleteEnabled" id="case1">
+                  <oa:image id="DeleteEnabled" source="deleteicon_enabled.gif" imageHeight="24" imageWidth="24" shortDesc="Select to delete information.">
+                     <ui:primaryClientAction>
+                        <ui:fireAction event="delete">
+                           <ui:parameters>
+                              <ui:parameter key="poHeaderId" value="${oa.PoSummaryVO1.HeaderId}"/>
+                           </ui:parameters>
+                        </ui:fireAction>
+                     </ui:primaryClientAction>
+                  </oa:image>
+               </ui:case>
+               <ui:case name="case2" id="case2">
+                  <oa:image source="deleteicon_disabled.gif" shortDesc="Delete functionality disabled." id="DeleteDisabled" imageHeight="24" imageWidth="24"/>
+               </ui:case>
+            </oa:switcher>
+            <oa:switcher akRegionCode="FWK_TBX_T_ORDERS_UPDATE_SWITCH" regionName="Toolbox Orders Update Switch" standalone="true" viewName="PoSummaryVO1" viewAttr="UpdateImage" id="UpdateSwitcher" promptTranslationExpansion="none" use="/oracle/apps/fnd/attributesets/Buttons/Update">
+               <ui:case name="case3" id="case3">
+                  <oa:image source="updateicon_enabled.gif" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/tutorial/webui/PurchaseOrderPG&amp;retainAM=Y&amp;headerId={@HeaderId}&amp;addBreadCrumb=Y" shortDesc="Select to update information." id="UpdateEnabled" imageHeight="24" imageWidth="24"/>
+               </ui:case>
+               <ui:case name="case4" id="case4">
+                  <oa:image source="updateicon_disabled.gif" shortDesc="Update functionality disabled" id="UpdateDisabled" imageHeight="24" imageWidth="24"/>
+               </ui:case>
+            </oa:switcher>
+         </ui:contents>
+         <ui:tableSelection>
+            <oa:multipleSelection viewName="PoSummaryVO1" viewAttr="SelectFlag" id="Select">
+               <ui:contents>
+                  <oa:selectionButton text="Approve" dataType="VARCHAR2" shortDesc="Select to approve purchase order" id="Approve" textTranslationExpansion="none"/>
+               </ui:contents>
+            </oa:multipleSelection>
+         </ui:tableSelection>
+         <ui:tableActions>
+            <oa:flowLayout id="GlobalButtons">
+               <ui:contents>
+                  <oa:submitButton id="Create" text="Create Purchase Order (Basic Train)" prompt="Create Purchase Order (Basic Train)" shortDesc="Select to create a purchase order."/>
+                  <oa:spacer id="item1" width="5"/>
+                  <oa:submitButton id="CreateIT" text="Create Purchase Order (Interactive Train)" prompt="Create Purchase Order (Interactive Train)" shortDesc="Select to create a purchase order with Interactive Train"/>
+               </ui:contents>
+            </oa:flowLayout>
+         </ui:tableActions>
+      </oa:table>
+      <oa:formParameter id="poEvent"/>
+      <oa:formParameter id="poHeaderId"/>
+   </ui:contents>
+</oa:stackLayout>

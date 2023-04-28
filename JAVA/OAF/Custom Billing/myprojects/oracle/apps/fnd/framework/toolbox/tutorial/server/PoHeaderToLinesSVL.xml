@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+
+<!-- $Header: PoHeaderToLinesSVL.xml 120.13 2006/07/04 00:12:19 atgops1 noship $ -->
+
+<ViewLink
+   Name="PoHeaderToLinesSVL" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.38.51" />
+   </DesignTime>
+   <ViewLinkDefEnd
+      Name="PurchaseOrder"
+      Cardinality="0"
+      Owner="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrdersSVO"
+      Source="true" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrdersSVO.PoNumber" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_finderName" Value="PurchaseOrder" />
+         <Attr Name="_accessor" Value="true" />
+         <Attr Name="_isUpdateable" Value="true" />
+      </DesignTime>
+   </ViewLinkDefEnd>
+   <ViewLinkDefEnd
+      Name="PurchaseOrderLine"
+      Cardinality="-1"
+      Owner="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrderLinesSVO" >
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrderLinesSVO.PoNumber" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_finderName" Value="PurchaseOrderLine" />
+         <Attr Name="_accessor" Value="true" />
+         <Attr Name="_isUpdateable" Value="true" />
+      </DesignTime>
+   </ViewLinkDefEnd>
+</ViewLink>

@@ -1,0 +1,130 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath:~PROD:~PATH:~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath:~PROD:mds:directory  -->
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="9.0.3.8.7_942" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header: ListsOfValuesPG.xml 120.10 2006/05/25 13:13:38 atgops1 noship $">
+   <content>
+      <oa:pageLayout id="PageLayoutRN" amDefName="oracle.apps.fnd.framework.toolbox.samplelib.server.SampleBrowserAM" windowTitle="OA Framework Toolbox Sample Library" title="Lists of Values" controllerClass="oracle.apps.fnd.framework.toolbox.samplelib.webui.ListOfValuesCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:hideShowHeader id="TextLovHdr" text="Text LOV Examples" disclosed="true">
+               <ui:contents>
+                  <oa:messageComponentLayout id="TextLovRN">
+                     <ui:contents>
+                        <oa:messageLovInput id="ExternalLov" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FullName" externalListOfValues="/oracle/apps/fnd/framework/toolbox/lov/webui/EmployeesLovRN" unvalidated="false">
+                           <lovMappings>
+                              <lovMap id="ENameMap" lovItem="EmpName" resultTo="ExternalLov" criteriaFrom="ExternalLov" useForValidation="yes"/>
+                              <lovMap id="ENumMap" lovItem="EmpNum" resultTo="HiddenEmpNum"/>
+                           </lovMappings>
+                        </oa:messageLovInput>
+                        <oa:messageLayout id="HiddenFieldslayout">
+                           <ui:contents>
+                              <oa:formValue id="HiddenEmpNum" dataType="NUMBER"/>
+                           </ui:contents>
+                        </oa:messageLayout>
+                     </ui:contents>
+                  </oa:messageComponentLayout>
+               </ui:contents>
+            </oa:hideShowHeader>
+            <oa:hideShowHeader id="LovChoiceHdr" text="LOV Choice Example">
+               <ui:contents>
+                  <oa:messageComponentLayout id="LovChoiceRN">
+                     <ui:contents>
+                        <oa:messageLovChoice id="EmpChoice" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FullName" externalListOfValues="/oracle/apps/fnd/framework/toolbox/lov/webui/EmployeesLovRN" pickListDispAttr="EmployeeName" pickListValAttr="EmployeeNumber" defaultValue="1" dataType="NUMBER">
+                           <lovMappings>
+                              <lovMap id="ChoiceMap" lovItem="EmpNum" resultTo="EmpChoice" useForValidation="default"/>
+                           </lovMappings>
+                        </oa:messageLovChoice>
+                        <oa:messageLovChoice id="EmpChoicePersonalizable" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FullName" externalListOfValues="/oracle/apps/fnd/framework/toolbox/lov/webui/EmployeesLovRN" pickListDispAttr="EmployeeName" pickListValAttr="EmployeeNumber" defaultValue="" dataType="NUMBER" prompt="Employee Name (Personalizable)" userEditableList="true">
+                           <lovMappings>
+                              <lovMap id="ChoiceMap1" lovItem="EmpNum" resultTo="EmpChoicePersonalizable" useForValidation="default"/>
+                           </lovMappings>
+                        </oa:messageLovChoice>
+                     </ui:contents>
+                  </oa:messageComponentLayout>
+               </ui:contents>
+            </oa:hideShowHeader>
+            <oa:hideShowHeader id="MultiselectLovRN" text="Multiselect LOV (for a Table)">
+               <ui:contents>
+                  <oa:advancedTable id="EmpTable" width="100%" shortDesc="Employees Table" viewName="DepartmentEmpsVO1" text="Employee Assignments to Department XYZ">
+                     <ui:tableActions>
+                        <oa:flowLayout id="TableActionsRN">
+                           <ui:contents>
+                              <oa:lovActionButton id="LovAction" externalListOfValues="/oracle/apps/fnd/framework/toolbox/lov/webui/EmployeesLovRN" prompt="Add Employees" shortDesc="Select to add employees.">
+                                 <lovActionMappings>
+                                    <lovActionMap id="EmpNumMap" lovItem="EmpNum" resultTo="EmpNumT"/>
+                                    <lovActionMap id="EmpNameMap" lovItem="EmpName" resultTo="EmpNameT"/>
+                                    <lovActionMap id="EmpEmailMap" lovItem="Email" resultTo="EmpEmailT"/>
+                                 </lovActionMappings>
+                              </oa:lovActionButton>
+                           </ui:contents>
+                        </oa:flowLayout>
+                     </ui:tableActions>
+                     <ui:contents>
+                        <oa:column id="EmpNumCol">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="EmpNumHdr" prompt="Number"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText id="EmpNumT" dataType="NUMBER" viewAttr="EmployeeId"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="EmpNameCol">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="EmpNameHdr" prompt="Name"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText id="EmpNameT" viewAttr="EmployeeName"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="EmpEmailCol">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="EmpEmailHdr" prompt="Email"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText id="EmpEmailT" viewAttr="EmployeeEmail"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:formValue id="Dept" viewAttr="DepartmentId"/>
+                     </ui:contents>
+                  </oa:advancedTable>
+               </ui:contents>
+            </oa:hideShowHeader>
+            <oa:hideShowHeader id="LovChoiceInTableRN" text="Personalizable LOV Choice In a Table">
+               <ui:contents>
+                  <oa:advancedTable id="EmpTable1" width="100%" shortDesc="Employees Table" viewName="EmployeesVO6" text="Employees Table">
+                     <ui:contents>
+                        <oa:column id="EmployeeNameCol">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="sortableHeader1" prompt="Employee Name"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageStyledText id="EmployeeName" viewAttr="FullName" prompt="Employee Name"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="ManagerNameCol1">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="ManagerNameHdr1" prompt="Manager Name"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageLovChoice id="ManagerChoicePersonalizable1" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FullName" externalListOfValues="/oracle/apps/fnd/framework/toolbox/lov/webui/EmployeesLovRN" pickListDispAttr="EmployeeName" pickListValAttr="EmployeeNumber" defaultValue="1" dataType="NUMBER" prompt="Manager Name" userEditableList="true" viewAttr="ManagerId">
+                                 <lovMappings>
+                                    <lovMap id="ChoiceMap11" lovItem="EmpNum" resultTo="ManagerChoicePersonalizable1" useForValidation="default"/>
+                                 </lovMappings>
+                              </oa:messageLovChoice>
+                           </ui:contents>
+                        </oa:column>
+                     </ui:contents>
+                  </oa:advancedTable>
+               </ui:contents>
+            </oa:hideShowHeader>
+         </ui:contents>
+         <ui:productBranding>
+            <oa:image id="ProductBranding" source="FNDTAPPBRAND.gif" shortDesc="OA Framework Toolbox Tutorial"/>
+         </ui:productBranding>
+         <ui:returnNavigation>
+            <oa:link id="ReturnTo" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/samplelib/webui/SampleBrowserPG&amp;retainAM=Y" text="Return to Sample Browser"/>
+         </ui:returnNavigation>
+      </oa:pageLayout>
+   </content>
+</page>

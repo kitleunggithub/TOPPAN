@@ -1,0 +1,66 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- +======================================================================+ -->
+<!-- |    Copyright (c) 2005, 2018 Oracle and/or its affiliates.           | -->
+<!-- |                         All rights reserved.                         | -->
+<!-- |                           Version 12.0.0                             | -->
+<!-- +======================================================================+ -->
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath:~PROD:~PATH:~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath:~PROD:mds:directory  -->
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header: SampleBrowserPG.xml 120.9.12020000.3 2018/08/14 07:08:21 lmodugul ship $">
+   <content>
+      <oa:pageLayout amDefName="oracle.apps.fnd.framework.toolbox.samplelib.server.SampleBrowserAM" id="PageLayoutRN" windowTitle="OA Framework Toolbox Sample Library" title="Sample Browser" quickLinksShown="false">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:productBranding>
+            <oa:image id="ProductBranding" source="FNDTAPPBRAND.gif" shortDesc="OA Framework Toolbox Tutorial"/>
+         </ui:productBranding>
+         <ui:contents>
+            <oa:hideShowHeader id="BasicStructRN" text="Basic Page Structure" disclosed="true">
+               <ui:contents>
+                  <oa:bulletedList id="BasicListRN" rows="5">
+                     <ui:contents>
+                        <oa:link id="CoBrandLink" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/samplelib/webui/BasicStructPG&amp;retainAM=Y&amp;addBreadCrumb=Y" text="Branding (Co-Branding)"/>
+                        <oa:link id="ContentContainLink" text="Content Container" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/samplelib/webui/BasicStructPG&amp;retainAM=Y&amp;addBreadCrumb=Y"/>
+                        <oa:link id="HeadersLink" text="Headers and Subheaders" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/samplelib/webui/BasicStructPG&amp;retainAM=Y&amp;addBreadCrumb=Y"/>
+                        <oa:link id="BreadcrumbsLink" text="Locator Element: Breadcrumbs" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/samplelib/webui/BasicStructPG&amp;retainAM=Y&amp;addBreadCrumb=Y"/>
+                        <oa:link id="TrainLink" text="Locator Element: Train (Select Create Purchase Order to see the train)" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/tutorial/webui/PoSummaryCreatePG"/>
+                        <oa:link id="PageStampsLink" text="Page Stamps" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/samplelib/webui/BasicStructPG&amp;retainAM=Y&amp;addBreadCrumb=Y"/>
+                        <oa:link id="QuickLinksLink" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/samplelib/webui/BasicStructPG&amp;retainAM=Y&amp;addBreadCrumb=Y" text="Quick Links"/>
+                        <oa:link id="ReturnNavLink" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/samplelib/webui/BasicStructPG&amp;retainAM=Y&amp;addBreadCrumb=Y" text="Return Navigation (&quot;Return to...&lt; Previous Page >&quot;)"/>
+                        <oa:link id="SubtabsLink" text="Subtab Navigation" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/samplelib/webui/SubTabsPG&amp;retainAM=Y&amp;addBreadCrumb=Y"/>
+                     </ui:contents>
+                  </oa:bulletedList>
+               </ui:contents>
+            </oa:hideShowHeader>
+            <oa:hideShowHeader id="PageContentRN" text="Page Content" disclosed="true">
+               <ui:contents>
+                  <oa:bulletedList id="ContentListRN" rows="5">
+                     <ui:contents>
+                        <oa:link id="AdvancedTableLink" text="Advanced Table" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/samplelib/webui/AdvancedTablePG&amp;retainAM=Y&amp;addBreadCrumb=Y"/>
+                        <oa:link id="ContextInfoLink" text="Contextual Information" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/samplelib/webui/ContextInfoPG&amp;retainAM=Y&amp;addBreadCrumb=Y"/>
+                        <oa:link id="HGridLink" text="HGrid" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/samplelib/webui/HGridPG&amp;retainAM=Y&amp;addBreadCrumb=Y"/>
+                        <oa:link id="ListOfValuesLink" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/samplelib/webui/ListsOfValuesPG&amp;retainAM=Y&amp;addBreadCrumb=Y" text="List Of Values (LOV)"/>
+                        <oa:link id="PprLink" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/samplelib/webui/PartialPageExamplePG&amp;retainAM=Y&amp;addBreadCrumb=Y" text="Partial Page Rendering (PPR)"/>
+                        <oa:link id="SearchRSBLink" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/samplelib/webui/SearchRBSPG&amp;retainAM=Y&amp;addBreadCrumb=Y" text="Search (Mode - Results Based Search)"/>
+                        <oa:link id="SearchACCLink" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/samplelib/webui/SearchACCPG&amp;retainAM=Y&amp;addBreadCrumb=Y" text="Search (Mode - Auto Customization Criteria)"/>
+                        <oa:link id="StandardWidgetsLink" text="Standard Web Widgets (fields, poplists...)" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/samplelib/webui/StandardWidgetsPG&amp;retainAM=Y&amp;addBreadCrumb=Y"/>
+                        <oa:link id="TreeLink" text="Tree (in 3-Frame JSP)" destination="OAFrame.jsp?OAFunc=FWK_TBX_TREE_CENTERFRAME:FWK_TBX_TREE_STARTFRAME:FWK_TBX_TREE_CENTERFRAME&amp;OAHP=FWK_TOOLBOX_TUTORIAL_APP&amp;OASF=FWK_TOOLBOX_SAMPLE_BROWSE&amp;OAFRDIM=30p:15p"/>
+                        <oa:link id="TableUserPersonalizationLink" text="Table User Personalization" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/samplelib/webui/TableUserPersonalizationPG"/>
+                     </ui:contents>
+                  </oa:bulletedList>
+               </ui:contents>
+            </oa:hideShowHeader>
+            <oa:hideShowHeader id="StandardPagesRN" text="Standard Pages / Flows" disclosed="true">
+               <ui:contents>
+                  <oa:bulletedList id="StandardListRN">
+                     <ui:contents>
+                        <oa:link id="ProcessingPageLink" text="Processing Page" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/samplelib/webui/ProcessExamplePG&amp;retainAM=Y&amp;addBreadCrumb=Y"/>
+                        <oa:link id="WorkflowWorklistLink" text="Workflow Worklist" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/samplelib/webui/WorklistPG&amp;retainAM=Y&amp;addBreadCrumb=Y"/>
+                     </ui:contents>
+                  </oa:bulletedList>
+               </ui:contents>
+            </oa:hideShowHeader>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>

@@ -1,0 +1,38 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath:~PROD:~PATH:~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath:~PROD:mds:directory  -->
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="9.0.3.8.8_985" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header: DebugLabSearchPG.xml 120.7 2006/05/25 13:09:26 atgops1 noship $">
+   <content>
+      <oa:pageLayout id="PageLayoutRN" windowTitle="OA Framework Toolbox Tutorial Debug Lab" title="Search (Debug Lab)" amDefName="oracle.apps.fnd.framework.toolbox.labsolutions.server.DebugLabAM">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:defaultSingleColumn id="SearchRN" text="Search" controllerClass="oracle.apps.fnd.framework.toolbox.labsolutions.webui.DebugSearchCO">
+               <ui:contents>
+                  <oa:messageLovInput id="EmpName" selectiveSearchCriteria="true" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FullName" externalListOfValues="/oracle/apps/fnd/framework/toolbox/lov/webui/EmployeesLovRN" unvalidated="true">
+                     <lovMappings>
+                        <lovMap id="ToFromName" lovItem="EmpName" resultTo="EmpName" criteriaFrom="EmpName"/>
+                        <lovMap id="ToNumber" lovItem="EmpNum" resultTo="EmpNum"/>
+                     </lovMappings>
+                  </oa:messageLovInput>
+                  <oa:messageTextInput id="EmpNum" selectiveSearchCriteria="true" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EmployeeId" dataType="NUMBER" styleClass="OraFieldText"/>
+                  <oa:submitButton id="Go" text="Go" use="/oracle/apps/fnd/attributesets/Buttons/Go"/>
+                  <oa:separator id="Separator"/>
+                  <oa:table id="ResultsTable" width="100%" controllerClass="oracle.apps.fnd.framework.toolbox.labsolutions.webui.DebugSearchResultsCO" shortDesc="Employees Table">
+                     <ui:contents>
+                        <oa:messageStyledText id="ResultsEmpNum" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EmployeeId_Number" dataType="NUMBER" viewName="DebugLabEmpSummaryVO1" viewAttr="EmployeeId" sortState="ascending" initSortSeq="first"/>
+                        <oa:messageStyledText id="ResultsEmpName" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FullName" dataType="VARCHAR2" viewName="DebugLabEmpSummaryVO1" viewAttr="EmployeeName" maximumLength="240"/>
+                        <oa:messageStyledText id="Position" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/Position" dataType="VARCHAR2" viewName="DebugLabEmpSummaryVO1" viewAttr="PositionDisplay" maximumLength="80"/>
+                     </ui:contents>
+                  </oa:table>
+               </ui:contents>
+            </oa:defaultSingleColumn>
+            <oa:pageButtonBar id="PageButtons">
+               <ui:contents>
+                  <oa:submitButton id="Create" use="/oracle/apps/fnd/attributesets/Buttons/Create"/>
+               </ui:contents>
+            </oa:pageButtonBar>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>

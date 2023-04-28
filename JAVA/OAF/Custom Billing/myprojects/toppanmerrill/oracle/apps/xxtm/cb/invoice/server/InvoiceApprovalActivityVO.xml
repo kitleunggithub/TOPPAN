@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="InvoiceApprovalActivityVO"
+   OrderBy="ACTIVITY_DATE DESC , TRX_ACTIVITY_ID DESC"
+   BindingStyle="OracleName"
+   CustomQuery="true"
+   RowClass="oracle.apps.fnd.framework.server.OAViewRowImpl"
+   ComponentClass="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceApprovalActivityVOImpl"
+   FetchMode="FETCH_AS_NEEDED"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+SELECT InvoiceActivityEO.TRX_ACTIVITY_ID 
+       ,InvoiceActivityEO.CUSTOMER_TRX_ID 
+       ,InvoiceActivityEO.ACTIVITY_DATE 
+       ,InvoiceActivityEO.ACTIVITY_TYPE 
+       ,InvoiceActivityEO.PERSON 
+       ,InvoiceActivityEO.CHANGE_FROM 
+       ,InvoiceActivityEO.CHANGE_TO 
+       ,InvoiceActivityEO.APPROVAL_ACTION 
+       ,InvoiceActivityEO.APPROVAL_REASON 
+       ,InvoiceActivityEO.JUSTIFICATION 
+       ,InvoiceActivityEO.CREATED_BY 
+       ,InvoiceActivityEO.CREATION_DATE
+       ,InvoiceActivityEO.LAST_UPDATED_BY 
+       ,InvoiceActivityEO.LAST_UPDATE_DATE
+       ,InvoiceActivityEO.LAST_UPDATE_LOGIN
+       ,Usr.DESCRIPTION PERSON_NAME
+FROM XXBS_TRX_ACTIVITY InvoiceActivityEO, FND_USER Usr
+WHERE InvoiceActivityEO.APPROVAL_ACTION IS NOT NULL
+AND InvoiceActivityEO.PERSON = Usr.USER_ID (+)
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isExpertMode" Value="true" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess" />
+   </DesignTime>
+   <EntityUsage
+      Name="InvoiceActivityEO"
+      Entity="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceActivityEO" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="false" />
+      </DesignTime>
+   </EntityUsage>
+   <ViewAttribute
+      Name="TrxActivityId"
+      IsNotNull="true"
+      EntityAttrName="TrxActivityId"
+      EntityUsage="InvoiceActivityEO"
+      AliasName="TRX_ACTIVITY_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CustomerTrxId"
+      IsNotNull="true"
+      EntityAttrName="CustomerTrxId"
+      EntityUsage="InvoiceActivityEO"
+      AliasName="CUSTOMER_TRX_ID" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ActivityDate"
+      IsNotNull="true"
+      EntityAttrName="ActivityDate"
+      EntityUsage="InvoiceActivityEO"
+      AliasName="ACTIVITY_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ActivityType"
+      IsNotNull="true"
+      EntityAttrName="ActivityType"
+      EntityUsage="InvoiceActivityEO"
+      AliasName="ACTIVITY_TYPE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Person"
+      IsNotNull="true"
+      EntityAttrName="Person"
+      EntityUsage="InvoiceActivityEO"
+      AliasName="PERSON" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ChangeFrom"
+      EntityAttrName="ChangeFrom"
+      EntityUsage="InvoiceActivityEO"
+      AliasName="CHANGE_FROM" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ChangeTo"
+      EntityAttrName="ChangeTo"
+      EntityUsage="InvoiceActivityEO"
+      AliasName="CHANGE_TO" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ApprovalAction"
+      EntityAttrName="ApprovalAction"
+      EntityUsage="InvoiceActivityEO"
+      AliasName="APPROVAL_ACTION" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ApprovalReason"
+      EntityAttrName="ApprovalReason"
+      EntityUsage="InvoiceActivityEO"
+      AliasName="APPROVAL_REASON" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Justification"
+      EntityAttrName="Justification"
+      EntityUsage="InvoiceActivityEO"
+      AliasName="JUSTIFICATION" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreatedBy"
+      IsNotNull="true"
+      EntityAttrName="CreatedBy"
+      EntityUsage="InvoiceActivityEO"
+      AliasName="CREATED_BY" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreationDate"
+      IsNotNull="true"
+      EntityAttrName="CreationDate"
+      EntityUsage="InvoiceActivityEO"
+      AliasName="CREATION_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdatedBy"
+      IsNotNull="true"
+      EntityAttrName="LastUpdatedBy"
+      EntityUsage="InvoiceActivityEO"
+      AliasName="LAST_UPDATED_BY" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdateDate"
+      IsNotNull="true"
+      EntityAttrName="LastUpdateDate"
+      EntityUsage="InvoiceActivityEO"
+      AliasName="LAST_UPDATE_DATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdateLogin"
+      IsNotNull="true"
+      EntityAttrName="LastUpdateLogin"
+      EntityUsage="InvoiceActivityEO"
+      AliasName="LAST_UPDATE_LOGIN" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PersonName"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="255"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PERSON_NAME"
+      Expression="PERSON_NAME"
+      SQLType="VARCHAR" >
+   </ViewAttribute>
+   <ViewLinkAccessor
+      Name="InvoiceVO1"
+      ViewLink="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceToInvoiceApprovalActivityVL"
+      Type="oracle.jbo.Row"
+      Reversed="true"
+      IsUpdateable="false" >
+   </ViewLinkAccessor>
+</ViewObject>

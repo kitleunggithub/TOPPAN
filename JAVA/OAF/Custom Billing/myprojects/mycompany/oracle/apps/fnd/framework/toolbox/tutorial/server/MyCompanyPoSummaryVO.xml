@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding='windows-1252'?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="MyCompanyPoSummaryVO"
+   Extends="oracle.apps.fnd.framework.toolbox.tutorial.server.PoSummaryVO"
+   BindingStyle="Oracle"
+   CustomQuery="true"
+   RowClass="mycompany.oracle.apps.fnd.framework.toolbox.tutorial.server.MyCompanyPoSummaryVORowImpl"
+   ComponentClass="oracle.apps.fnd.framework.toolbox.tutorial.server.PoSummaryVOImpl"
+   MsgBundleClass="oracle.jbo.common.JboResourceBundle"
+   UseGlueCode="false" >
+   <SQLQuery><![CDATA[
+SELECT PurchaseOrderHeaderEO.HEADER_ID, 
+       PurchaseOrderHeaderEO.DESCRIPTION, 
+       PurchaseOrderHeaderEO.STATUS_CODE, 
+       PurchaseOrderHeaderEO.SUPPLIER_ID, 
+       PurchaseOrderHeaderEO.CURRENCY_CODE, 
+       PurchaseOrderHeaderEO.CREATION_DATE, 
+       SupplierEO.NAME AS SUPPLIER_NAME, 
+       SupplierEO.SUPPLIER_ID AS SUPPLIER_ID1, 
+       EmployeeEO.FULL_NAME AS BUYER_NAME, 
+       EmployeeEO.EMPLOYEE_ID, 
+       PurchaseOrderHeaderEO.BUYER_ID,
+       EmployeeEO.EMAIL_ADDRESS AS BUYER_EMAIL,
+       (select sum(nvl(line.quantity, 0) * nvl(line.unit_price, 0))
+               from fwk_tbx_po_lines line
+               where line.header_id = PurchaseOrderHeaderEO.HEADER_ID) AS ORDER_TOTAL,
+       decode(PurchaseOrderHeaderEO.STATUS_CODE, 
+              'APPROVED', 'okind_status.gif',
+              'COMPLETE', 'completeind_status.gif',
+              'REJECTED', 'criticalind_status.gif', 'inprogressind_status.gif') AS STATUS_IMAGE,
+     LookupCodeEO.MEANING AS STATUS_DISPLAY,
+     decode(PurchaseOrderHeaderEO.STATUS_CODE,
+            'COMPLETE', 'DeleteDisabled', 
+            'APPROVED', 'DeleteDisabled', 'DeleteEnabled') AS DELETE_IMAGE,
+     decode(PurchaseOrderHeaderEO.STATUS_CODE,
+            'COMPLETE', 'UpdateDisabled', 
+            'APPROVED', 'UpdateDisabled', 'UpdateEnabled') AS UPDATE_IMAGE,
+     decode(PurchaseOrderHeaderEO.STATUS_CODE, 
+           'COMPLETE', 'Y', 
+           'APPROVED', 'Y', 'N') AS APPROVE_DISABLED,
+SupplierSiteEO.SUPPLIER_SITE_ID,
+SupplierSiteEO.SITE_NAME 
+FROM FWK_TBX_PO_HEADERS PurchaseOrderHeaderEO, 
+     FWK_TBX_SUPPLIERS SupplierEO, 
+     FWK_TBX_EMPLOYEES EmployeeEO,
+     FWK_TBX_LOOKUP_CODES_VL LookupCodeEO,
+             FWK_TBX_SUPPLIER_SITES SupplierSiteEO 
+WHERE 
+ PurchaseOrderHeaderEO.SUPPLIER_ID = SupplierEO.SUPPLIER_ID
+AND PurchaseOrderHeaderEO.BUYER_ID = EmployeeEO.EMPLOYEE_ID
+AND PurchaseOrderHeaderEO.STATUS_CODE = LookupCodeEO.LOOKUP_CODE
+AND LookupCodeEO.LOOKUP_TYPE = 'FWK_TBX_ORDER_STATUS'
+AND SupplierEO.SUPPLIER_ID = SupplierSiteEO.SUPPLIER_ID
+
+   ]]></SQLQuery>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="9.0.3.12.25" />
+      <Attr Name="_CodeGenFlagNew" Value="4" />
+   </DesignTime>
+   <EntityUsage
+      Name="SupplierSiteEO"
+      Entity="oracle.apps.fnd.framework.toolbox.schema.server.SupplierSiteEO"
+      Association="oracle.apps.fnd.framework.toolbox.schema.server.SupplierToSiteAO"
+      AssociationEnd="oracle.apps.fnd.framework.toolbox.schema.server.SupplierToSiteAO.SupplierSiteEO"
+      SourceUsage="oracle.apps.fnd.framework.toolbox.tutorial.server.PoSummaryVO.PurchaseOrderHeaderEO"
+      ReadOnly="true"
+      Reference="true" >
+      <DesignTime>
+         <Attr Name="_EntireObjectTable" Value="false" />
+         <Attr Name="_queryClause" Value="false" />
+         <AttrArray Name="_srcAttributes">
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.SupplierEO.SupplierId" />
+         </AttrArray>
+         <AttrArray Name="_dstAttributes">
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.SupplierSiteEO.SupplierId" />
+         </AttrArray>
+
+
+
+      </DesignTime>
+   </EntityUsage>
+   <ViewAttribute
+      Name="SelectFlag"
+      IsQueriable="false"
+      IsPersistent="false"
+      Type="java.lang.String"
+      AliasName="SELECT_FLAG"
+      ColumnType="$none$"
+
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_OverrideAttr" Value="true" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="OrderTotal"
+      IsQueriable="false"
+      IsPersistent="false"
+      Type="oracle.jbo.domain.Number"
+
+      AliasName="ORDER_TOTAL"
+      ColumnType="NUMBER"
+      Expression="NULL"
+      SQLType="NUMERIC" >
+      <DesignTime>
+         <Attr Name="_OverrideAttr" Value="true" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StatusImage"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="24"
+      Type="java.lang.String"
+
+      AliasName="STATUS_IMAGE"
+      ColumnType="VARCHAR2"
+      Expression="NULL"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_OverrideAttr" Value="true" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StatusDisplay"
+      IsUpdateable="false"
+      IsPersistent="false"
+      Precision="255"
+      Type="java.lang.String"
+
+      AliasName="STATUS_DISPLAY"
+      ColumnType="VARCHAR2"
+      Expression="NULL"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_OverrideAttr" Value="true" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="DeleteImage"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="23"
+      Type="java.lang.String"
+
+      AliasName="DELETE_IMAGE"
+      ColumnType="VARCHAR2"
+      Expression="NULL"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_OverrideAttr" Value="true" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="UpdateImage"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="23"
+      Type="java.lang.String"
+
+      AliasName="UPDATE_IMAGE"
+      ColumnType="VARCHAR2"
+      Expression="NULL"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_OverrideAttr" Value="true" />
+         <Attr Name="_DisplaySize" Value="23" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ApproveDisabled"
+      IsQueriable="false"
+      IsPersistent="false"
+      Precision="23"
+      Type="java.lang.String"
+
+      AliasName="APPROVE_DISABLED"
+      ColumnType="VARCHAR2"
+      Expression="NULL"
+      SQLType="VARCHAR" >
+      <DesignTime>
+         <Attr Name="_OverrideAttr" Value="true" />
+         <Attr Name="_DisplaySize" Value="1" />
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SupplierSiteId"
+      EntityAttrName="SupplierSiteId"
+      EntityUsage="SupplierSiteEO"
+      AliasName="SUPPLIER_SITE_ID"
+      ColumnType="VARCHAR2" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SiteName"
+      EntityAttrName="SiteName"
+      EntityUsage="SupplierSiteEO"
+      AliasName="SITE_NAME"
+      ColumnType="VARCHAR2" >
+   </ViewAttribute>
+</ViewObject>

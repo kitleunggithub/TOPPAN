@@ -1,0 +1,8 @@
+The following Synchronization Actions were performed successfully:
+
+Entity :InvoiceSalesRepSplitsEO
+  Attribute :RepSplitId
+    Change Mandatory to:true
+  Key :XxbsRepSplitsU1
+    Change Disabled Constraint to:false
+  Create Key for Constraint: XXBS_REP_SPLITS2TRX_FK

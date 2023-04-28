@@ -1,0 +1,37 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath:~PROD:~PATH:~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath:~PROD:mds:directory  -->
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_747" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header: ItemDetailsPG.xml 120.8 2006/08/28 02:52:34 atgops1 noship $">
+   <content>
+      <oa:pageLayout id="PageLayoutRN" amDefName="oracle.apps.fnd.framework.toolbox.labsolutions.server.FlexfieldAM" windowTitle="Framework Toolbox Tutorial: Flexfield Labs" title="Item Details" controllerClass="oracle.apps.fnd.framework.toolbox.labsolutions.webui.ItemDetailsCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:productBranding>
+            <oa:image id="ProdBrand" shortDesc="Tutorial Application" source="FNDTAPPBRAND.gif"/>
+         </ui:productBranding>
+         <ui:contents>
+            <oa:messageComponentLayout id="MainRN">
+               <ui:contents>
+                  <oa:messageTextInput id="ItemId" dataType="NUMBER" viewName="ItemDetailsVO1" viewAttr="ItemId" styleClass="OraFieldText" columns="10" prompt="Item Number" maximumLength="22" readOnly="true"/>
+                  <oa:messageTextInput id="ItemDescription" prompt="Item Description" viewName="ItemDetailsVO1" viewAttr="ItemDescription" styleClass="OraFieldText" columns="40" maximumLength="240"/>
+                  <oa:messageTextInput id="StartDateActive" dataType="DATE" styleClass="OraFieldText" prompt="Start Date Active" viewName="ItemDetailsVO1" viewAttr="StartDateActive" tipType="dateFormat"/>
+                  <oa:messageTextInput id="EndDateActive" dataType="DATE" styleClass="OraFieldText" prompt="End Date Active" viewName="ItemDetailsVO1" viewAttr="EndDateActive" tipType="dateFormat"/>
+                  <oa:messageLayout id="KeyFlexLayout">
+                     <ui:contents>
+                        <oa:flex id="KeyFF" viewName="ItemDetailsVO1" prompt="Key Flexfield" styleClass="OraFieldText" flexName="FWK" flexStyle="key" flexFieldAppShortName="AK"/>
+                     </ui:contents>
+                  </oa:messageLayout>
+                  <oa:messageLayout id="DescFlexLayout">
+                     <ui:contents>
+                        <oa:flex id="DescFF" viewName="ItemDetailsVO1" prompt="Descriptive Flexfield" styleClass="OraFieldText" flexFieldAppShortName="AK" flexName="FWK_ITEM_DFF"/>
+                     </ui:contents>
+                  </oa:messageLayout>
+               </ui:contents>
+            </oa:messageComponentLayout>
+         </ui:contents>
+         <ui:returnNavigation>
+            <oa:link id="ReturnLink" text="Return to Item Search" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/labsolutions/webui/ItemSearchPG&amp;retainAM=Y"/>
+         </ui:returnNavigation>
+      </oa:pageLayout>
+   </content>
+</page>

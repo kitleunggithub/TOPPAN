@@ -1,0 +1,33 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory -->
+<page xmlns="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:user="http://xmlns.oracle.com/jrad/user" version="9.0.3.8.9_1008" xml:lang="en-US" file-version="$Header: EmpReviewPG.xml 120.7 2006/05/25 13:10:24 atgops1 noship $">
+   <content>
+      <oa:pageLayout windowTitle="Framework Toolbox Tutorial: Labs" helpTargetAppShortName="ak" id="PageLayoutRN" akRegionCode="FWK_TBX_LABS_EMP_STEP3_PAGE" regionName="Employee Direct Reports Page" amDefName="oracle.apps.fnd.framework.toolbox.labsolutions.server.EmployeeAM" title="Review and Submit: Employee" warnAboutChanges="true" controllerClass="oracle.apps.fnd.framework.toolbox.labsolutions.webui.EmployeeReviewCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBranding" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:productBranding>
+            <oa:image id="productBranding" source="FNDTAPPBRAND.gif" shortDesc="OA Framework Toolbox Tutorial"/>
+         </ui:productBranding>
+         <ui:location>
+            <oa:train id="TrainRN" extends="/oracle/apps/fnd/framework/toolbox/labsolutions/webui/UpdateEmpTrainRN"/>
+         </ui:location>
+         <ui:contents>
+            <oa:pageButtonBar id="PageButtons" extends="/oracle/apps/fnd/framework/toolbox/labsolutions/webui/UpdateEmployeeFootRN"/>
+            <oa:messageComponentLayout id="MainRN" columns="2" rows="5">
+               <ui:contents>
+                  <oa:messageStyledText id="EmpId" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EmployeeId" dataType="NUMBER" viewName="EmployeeFullVO1" viewAttr="EmployeeId" styleClass="OraDataText"/>
+                  <oa:messageStyledText id="FirstName" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FirstName" dataType="VARCHAR2" viewName="EmployeeFullVO1" viewAttr="FirstName" maximumLength="20" styleClass="OraDataText"/>
+                  <oa:messageStyledText id="LastName" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/LastName" dataType="VARCHAR2" viewName="EmployeeFullVO1" viewAttr="LastName" maximumLength="40" styleClass="OraDataText"/>
+                  <oa:messageStyledText id="EmpEmail" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EmailAddress" dataType="VARCHAR2" viewName="EmployeeFullVO1" viewAttr="EmployeeEmail" maximumLength="240" styleClass="OraDataText"/>
+                  <oa:messageStyledText id="PositionDisplay" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/Position" dataType="VARCHAR2" viewName="EmployeeFullVO1" viewAttr="PositionDisplay" maximumLength="80" styleClass="OraDataText"/>
+                  <oa:messageStyledText id="Salary" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/Salary" dataType="NUMBER" viewName="EmployeeFullVO1" viewAttr="Salary" styleClass="OraDataText"/>
+                  <oa:messageStyledText id="MgrName" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FullName_Manager" dataType="VARCHAR2" viewName="EmployeeFullVO1" viewAttr="ManagerName" maximumLength="240" styleClass="OraDataText"/>
+                  <oa:messageStyledText id="StartDate" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/StartDate" dataType="DATE" viewName="EmployeeFullVO1" viewAttr="StartDate" styleClass="OraDataText"/>
+                  <oa:messageStyledText id="EndDate" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EndDate" dataType="DATE" viewName="EmployeeFullVO1" viewAttr="EndDate" styleClass="OraDataText"/>
+               </ui:contents>
+            </oa:messageComponentLayout>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>

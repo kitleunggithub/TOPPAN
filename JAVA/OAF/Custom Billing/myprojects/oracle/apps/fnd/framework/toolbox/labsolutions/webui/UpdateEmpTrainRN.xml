@@ -1,0 +1,9 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory -->
+<oa:train akRegionCode="FWK_TBX_LABS_UPDATE_TRAIN" regionName="Update Employee Train" xmlns="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:user="http://xmlns.oracle.com/jrad/user" version="9.0.3.5.0" xml:lang="en-US" file-version="$Header: UpdateEmpTrainRN.xml 120.5 2005/07/12 12:06:58 atgops1 noship $" formSubmitted="true">
+   <ui:contents>
+      <oa:link text="Employee Details" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/labsolutions/webui/EmpDescPG" id="TrainStep1" textTranslationExpansion="none" warnAboutChanges="false"/>
+      <oa:link text="Assignment" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/labsolutions/webui/EmpAssignPG" id="TrainStep2" textTranslationExpansion="none" warnAboutChanges="false"/>
+      <oa:link text="Review and Submit" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/labsolutions/webui/EmpReviewPG" id="TrainStep3" textTranslationExpansion="none" warnAboutChanges="false"/>
+   </ui:contents>
+</oa:train>

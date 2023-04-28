@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<!-- $Header: PurchaseOrderPPRVO.xml 120.2 2012/04/02 07:13:00 lmodugul ship $ -->
+
+<ViewObject
+   Name="PurchaseOrderPPRVO"
+   SelectList="PurchaseOrderPPREO.CURRENCY_CODE, 
+       PurchaseOrderPPREO.RATE, 
+       PurchaseOrderPPREO.ROWID"
+   FromList="FWK_TBX_PO_HEADERS PurchaseOrderPPREO"
+   BindingStyle="JDBC"
+   CustomQuery="false"
+   RowClass="oracle.apps.fnd.framework.server.OAViewRowImpl"
+   ComponentClass="oracle.apps.fnd.framework.toolbox.samplelib.server.PurchaseOrderPPRVOImpl"
+   UseGlueCode="false" >
+   <DesignTime>
+      <Attr Name="_version" Value="10.1.3.38.51" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll" />
+   </DesignTime>
+   <EntityUsage
+      Name="PurchaseOrderPPREO"
+      Entity="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderPPREO" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="false" />
+      </DesignTime>
+   </EntityUsage>
+   <ViewAttribute
+      Name="CurrencyCode"
+      EntityAttrName="CurrencyCode"
+      EntityUsage="PurchaseOrderPPREO"
+      AliasName="CURRENCY_CODE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Rate"
+      EntityAttrName="Rate"
+      EntityUsage="PurchaseOrderPPREO"
+      AliasName="RATE" >
+   </ViewAttribute>
+   <ViewAttribute
+      Name="RowID"
+      IsUpdateable="false"
+      EntityAttrName="RowID"
+      EntityUsage="PurchaseOrderPPREO"
+      AliasName="ROWID" >
+   </ViewAttribute>
+</ViewObject>

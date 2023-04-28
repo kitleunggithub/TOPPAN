@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oa:listOfValues version="10.1.3_" xml:lang="en-US" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <ui:contents>
+      <oa:table name="ActiveBillerLovRN" id="ActiveBillerLovVO1">
+         <ui:contents>
+            <oa:messageStyledText id="BillerId" dataType="NUMBER" prompt="BillerId" viewName="ActiveBillerLovVO1" viewAttr="BillerId" maximumLength="15" rendered="false"/>
+            <oa:messageStyledText id="BillerName" dataType="VARCHAR2" prompt="Biller Name" viewName="ActiveBillerLovVO1" viewAttr="BillerName" maximumLength="240" queryable="true"/>
+         </ui:contents>
+      </oa:table>
+   </ui:contents>
+</oa:listOfValues>

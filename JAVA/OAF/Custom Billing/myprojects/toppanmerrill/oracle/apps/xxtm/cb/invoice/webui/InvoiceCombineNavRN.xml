@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oa:pageButtonBar version="10.1.3_" xml:lang="en-US" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <ui:contents>
+      <oa:submitButton id="NavSaveBN" text="Save" prompt="Save" warnAboutChanges="false"/>
+      <oa:navigationBar id="InvoiceCombineBarRN" maxValue="3">
+         <ui:contents>
+            <oa:link id="NavLink1" destination="OA.jsp?page=/toppanmerrill/oracle/apps/xxtm/cb/invoice/webui/InvoiceCombinePG1" text="Step 1 of 3"/>
+            <oa:link id="NavLink2" destination="OA.jsp?page=/toppanmerrill/oracle/apps/xxtm/cb/invoice/webui/InvoiceCombinePG2" text="Step 2 of 3"/>
+            <oa:link id="NavLink3" destination="OA.jsp?page=/toppanmerrill/oracle/apps/xxtm/cb/invoice/webui/InvoiceCombinePG3" text="Step 3 of 3"/>
+         </ui:contents>
+      </oa:navigationBar>
+      <oa:submitButton id="NavCancelBN" text="Cancel" prompt="Cancel" warnAboutChanges="true" unvalidated="true"/>
+   </ui:contents>
+</oa:pageButtonBar>

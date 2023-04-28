@@ -1,0 +1,32 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory -->
+<page xmlns="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:user="http://xmlns.oracle.com/jrad/user" version="9.0.3.8.3_762" xml:lang="en-US" file-version="$Header: EmpDetailsPG.xml 120.7 2006/05/25 13:09:55 atgops1 noship $">
+   <content>
+      <oa:pageLayout windowTitle="Framework Toolbox Tutorial: Labs" helpTargetAppShortName="ak" id="PageLayoutRN" akRegionCode="FWK_TBX_LABS_EMPSRO_PAGE" regionName="Employee Details Page" amDefName="oracle.apps.fnd.framework.toolbox.labsolutions.server.EmployeeAM" controllerClass="oracle.apps.fnd.framework.toolbox.labsolutions.webui.EmployeeDetailsCO" title="Employee:">
+         <ui:corporateBranding>
+            <oa:image id="corporateBranding" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:productBranding>
+            <oa:image id="productBranding" source="FNDTAPPBRAND.gif" shortDesc="OA Framework Toolbox Tutorial"/>
+         </ui:productBranding>
+         <ui:contents>
+            <oa:messageComponentLayout id="MainRN">
+               <ui:contents>
+                  <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EmployeeId_Number" viewName="EmployeeFullVO1" viewAttr="EmployeeId" styleClass="OraDataText" id="EmpNum" promptTranslationExpansion="none" dataType="NUMBER"/>
+                  <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FirstName" viewName="EmployeeFullVO1" viewAttr="FirstName" styleClass="OraDataText" id="FirstName"/>
+                  <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/LastName" viewName="EmployeeFullVO1" viewAttr="LastName" styleClass="OraDataText" id="LastName"/>
+                  <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EmailAddress" viewName="EmployeeFullVO1" viewAttr="EmployeeEmail" styleClass="OraLinkText" destination="mailto:{@EmployeeEmail}" id="EmailAddress"/>
+                  <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/Position" viewName="EmployeeFullVO1" viewAttr="PositionDisplay" styleClass="OraDataText" id="Position"/>
+                  <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FullName_Manager" viewName="EmployeeFullVO1" viewAttr="ManagerName" styleClass="OraLinkText" destination="mailto:{@ManagerEmail}" id="MgrName" promptTranslationExpansion="none"/>
+                  <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/Salary" viewName="EmployeeFullVO1" viewAttr="Salary" styleClass="OraDataText" id="Salary" dataType="NUMBER"/>
+                  <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/StartDate" viewName="EmployeeFullVO1" viewAttr="StartDate" styleClass="OraDataText" id="HireDate" dataType="DATE"/>
+                  <oa:messageStyledText use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EndDate" viewName="EmployeeFullVO1" viewAttr="EndDate" styleClass="OraDataText" id="EndDate" dataType="DATE"/>
+               </ui:contents>
+            </oa:messageComponentLayout>
+         </ui:contents>
+         <ui:returnNavigation>
+            <oa:link id="returnLink" destination="OA.jsp?page=/oracle/apps/fnd/framework/toolbox/labsolutions/webui/EmpSearchPG&amp;retainAM=Y" text="Return to Employee Search"/>
+         </ui:returnNavigation>
+      </oa:pageLayout>
+   </content>
+</page>

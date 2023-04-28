@@ -1,0 +1,12 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oa:listOfValues version="10.1.3_" xml:lang="en-US" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <ui:contents>
+      <oa:table name="PaymentTermLovRN" id="PaymentTermLovVO1">
+         <ui:contents>
+            <oa:messageStyledText id="PaymentTermId" dataType="NUMBER" prompt="TermId" viewName="PaymentTermLovVO1" viewAttr="TermId" maximumLength="15" rendered="false"/>
+            <oa:messageStyledText id="PaymentTermName" dataType="VARCHAR2" prompt="Name" viewName="PaymentTermLovVO1" viewAttr="Name" maximumLength="15" queryable="true"/>
+            <oa:messageStyledText id="PaymentTermDesc" dataType="VARCHAR2" prompt="Description" viewName="PaymentTermLovVO1" viewAttr="Description" maximumLength="240" queryable="true"/>
+         </ui:contents>
+      </oa:table>
+   </ui:contents>
+</oa:listOfValues>

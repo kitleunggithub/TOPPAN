@@ -1,0 +1,37 @@
+CREATE TABLE APPS.XXCONV_SUPPLIER_BANKS
+(
+    SEQ_NUM             NUMBER,
+    OPERATING_UNIT_NAME VARCHAR2(50 CHAR),
+    VENDOR_NUMBER	    VARCHAR2(10 CHAR),
+    VENDOR_NAME		    VARCHAR2(240 CHAR),
+    VENDOR_SITE_CODE	VARCHAR2(15 CHAR),
+    START_DATE	        DATE,
+    END_DATE	        DATE,
+    PRIORITY	        VARCHAR2(1 CHAR),
+    COUNTRY_CODE        VARCHAR2(2 CHAR),	
+    ALLOW_INT_PAYMENTS  VARCHAR2(1 CHAR),
+    BANK_NAME           VARCHAR2(80 CHAR),
+    BANK_NAME_ALT       VARCHAR2(320 CHAR),
+    BANK_NUMBER         VARCHAR2(30 CHAR),
+    BRANCH_NAME	        VARCHAR2(80 CHAR),
+    BRANCH_NAME_ALT	    VARCHAR2(80 CHAR),
+    BRANCH_NUMBER           VARCHAR2(30 CHAR),
+    BIC          VARCHAR2(30 CHAR),
+    BRANCH_TYPE           VARCHAR2(25 CHAR),
+    BANK_ACCOUNT_NUM         VARCHAR2(100 CHAR),
+    BANK_ACCOUNT_NAME       VARCHAR2(80 CHAR),
+    BANK_ACCOUNT_CURRENCY   VARCHAR2(15 CHAR),
+    BANK_ACCOUNT_TYPE       VARCHAR2(25 CHAR),
+    ACCOUNT_OWNERS      VARCHAR2(360 CHAR),
+    PRIMARY             VARCHAR2(1 CHAR),
+    OWNER_END_DATE      DATE,
+    CREATION_DATE                DATE,
+    REQUEST_ID                   NUMBER,
+    STATUS_FLAG                  VARCHAR2(1 CHAR)    DEFAULT 'N',
+    ERROR_MESSAGE                VARCHAR2(1000 CHAR)    
+) tablespace apps_ts_interface;
+
+create or replace public synonym XXCONV_SUPPLIER_BANKS for apps.XXCONV_SUPPLIER_BANKS;
+
+create index apps.xxconv_supplier_banks_n1 on apps.XXCONV_SUPPLIER_BANKS (request_id)
+tablespace apps_ts_interface;

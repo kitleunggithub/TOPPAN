@@ -1,0 +1,69 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath:~PROD:~PATH:~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath:~PROD:mds:directory  -->
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="9.0.3.8.9_1047" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header: ConfigHomePG.xml 120.7 2006/05/25 13:08:47 atgops1 noship $">
+   <content>
+      <oa:pageLayout id="PageLayoutRN" amDefName="oracle.apps.fnd.framework.toolbox.labsolutions.server.HomeAM" windowTitle="Framework Toolbox Tutorial: Lab Solution">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:productBranding>
+            <oa:image id="ProdBrand" source="FNDTAPPBRAND.gif" shortDesc="OA Framework Toolbox Tutorial"/>
+         </ui:productBranding>
+         <ui:contents>
+            <oa:flexibleLayout id="MainRN" title="Main Layout" columns="2">
+               <ui:contents>
+                  <oa:flexibleLayout id="NtfRN" title="Notifications Layout" userOperations="disclose"/>
+                  <oa:flexibleLayout id="InfoRN" title="Info Layout" userOperations="disclose"/>
+               </ui:contents>
+            </oa:flexibleLayout>
+         </ui:contents>
+         <oa:flexibleContents>
+            <oa:flexibleContentList id="flexibleContentList">
+               <ui:contents>
+                  <oa:flexibleContent id="NtfFlexContRN" flexibleLayoutRef="NtfRN" title="Notifications Content" userOperations="disclose">
+                     <ui:contents>
+                        <oa:header id="NotificationsRN" text="Notifications" controllerClass="oracle.apps.fnd.framework.toolbox.labsolutions.webui.HomeNotificationsCO">
+                           <ui:contents>
+                              <oa:stackLayout id="Notifications" extends="/oracle/apps/fnd/wf/worklist/webui/AdvancWorklistRG"/>
+                           </ui:contents>
+                        </oa:header>
+                     </ui:contents>
+                  </oa:flexibleContent>
+                  <oa:flexibleContent id="AncFlexContRN" flexibleLayoutRef="InfoRN" title="Ancillary Content" userOperations="disclose">
+                     <ui:contents>
+                        <oa:contentContainer id="AncContainRN" text="Ancillary Content" icon="bullseyeicon_cctitle.gif" width="220">
+                           <ui:contents>
+                              <oa:bulletedList id="AncBulListRN">
+                                 <ui:contents>
+                                    <oa:link id="Yahoo1" destination="http://www.yahoo.com" text="Visit Yahoo!"/>
+                                    <oa:link id="Yahoo2" destination="http://www.yahoo.com" text="Visit Yahoo!"/>
+                                    <oa:link id="Yahoo3" destination="http://www.yahoo.com" text="Visit Yahoo!"/>
+                                    <oa:link id="Yahoo4" destination="http://www.yahoo.com" text="Visit Yahoo!"/>
+                                 </ui:contents>
+                              </oa:bulletedList>
+                           </ui:contents>
+                        </oa:contentContainer>
+                     </ui:contents>
+                  </oa:flexibleContent>
+                  <oa:flexibleContent id="RiFlexContRN" title="Related Info" userOperations="disclose">
+                     <ui:contents>
+                        <oa:contentContainer id="RiContainRN" text="Related Info" icon="bullseyeicon_cctitle.gif" width="220">
+                           <ui:contents>
+                              <oa:bulletedList id="RiBulListRN">
+                                 <ui:contents>
+                                    <oa:link id="Oracle1" destination="http://www.myoracle.com" text="Go to My Oracle"/>
+                                    <oa:link id="Oracle2" destination="http://www.myoracle.com" text="Go to My Oracle"/>
+                                    <oa:link id="Oracle3" destination="http://www.myoracle.com" text="Go to My Oracle"/>
+                                    <oa:link id="Oracle4" destination="http://www.myoracle.com" text="Go to My Oracle"/>
+                                 </ui:contents>
+                              </oa:bulletedList>
+                           </ui:contents>
+                        </oa:contentContainer>
+                     </ui:contents>
+                  </oa:flexibleContent>
+               </ui:contents>
+            </oa:flexibleContentList>
+         </oa:flexibleContents>
+      </oa:pageLayout>
+   </content>
+</page>

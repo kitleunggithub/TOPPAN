@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--============================================================================ -->
+<!-- 					TOPPAN MERRILL - R12 12.2.4 							 -->
+<!--      		MERRILL TECHNOLOGIES INDIA PRIVATE LIMITED 						 -->
+<!--============================================================================ -->
+<!-- File Name : XXFA_DTL_GBL_AST_LST_BIP.xml 									 -->
+<!-- 																			 -->
+<!-- Description : XXFA Detailed Global Asset Listing Report 					 -->
+<!-- -->
+<!-- Usage : To extract the Fixed Asset Details in Excel  based on Book Type 	 -->
+<!-- -->
+<!-- Development and Maintenance history 										 -->
+<!--																			 -->
+<!-- Date      Author             Version   Description -->
+<!-- ========= ================== ========= ================================= 	 -->
+<!-- xx-xxx-xx xxxxxxxxxxxxxx     1.0       Initial Devlopment 					 -->
+<!-- 01-Oct-19 Nagaraj S          1.1 CR    Enh. Request# 2590 				     -->
+<!-- 03-OCT-19 SenthilNathan R    1.2 CR    Enh. Request# 2578 				     -->
+<!-- **************************************************************************  -->
+
+<dataTemplate name="XXFA_DTL_GBL_AST_LST_BIP" defaultPackage="XXFA_DTL_GBL_AST_LST_BIP_PKG" description="XXFA Detailed Global Asset Listing Report">   
+
+   <properties>      
+      <property name="include_parameters" value="true"/>      
+      <property name="include_null_Element" value="true"/>      
+      <property name="xml_tag_case" value="upper"/>      
+      <property name="db_fetch_size" value="100"/>      
+      <property name="scalable_mode" value="off"/>      
+      <property name="include_rowsettag" value="false"/>      
+      <property name="debug_mode" value="on"/>   
+   </properties>     
+   
+   <parameters>     
+      <parameter name="P_BOOK_TYPE" dataType="character" include_in_output="true"/>    <!-- BOOK TYPE -->
+	  <parameter name="P_BOOK_TYPE_CODE" dataType="character" include_in_output="true"/>    <!-- BOOK TYPE CODE -->
+      <parameter name="P_PERIOD_NAME" dataType="character" include_in_output="true"/>    <!-- PERIOD TYPE-->	   
+   </parameters>   
+   
+   <lexicals/>   
+   
+   <dataQuery>  
+   
+   <sqlStatement name="HDR" dataSourceRef="">   
+      <![CDATA[
+	     SELECT TO_CHAR(SYSDATE,'DD-MON-YY HH24:MI:SS') RUN_DATE,
+		        TO_CHAR(SYSDATE,'DD-MON-YY HH24:MI:SS') G2_RUN_DATE,
+		        :P_BOOK_TYPE							G2_BOOK_TYPE,
+				:P_BOOK_TYPE_CODE						G2_BOOK_TYPE_CODE,
+				:P_PERIOD_NAME							G2_PERIOD_NAME
+		 FROM DUAL
+	  ]]>               
+   </sqlStatement> 
+   
+   <sqlStatement name="Q1" dataSourceRef="">
+      <![CDATA[
+	  
+  SELECT asset_id,
+         asset_number,
+         description,
+         CONCAT (asset_natural_account, ' ') asset_natural_account,
+         CONCAT (reserve_natural_account, ' ') reserve_natural_account,
+         asset_major_category,
+         asset_minor_category,
+         serial_number,
+         tag_number,
+         life_in_months,
+         fiscal_year,
+		 period_entered, --#Added by Nagaraj S on 26-Aug-19 as part of bug fix
+         period_name,
+         asset_book,
+         date_placed_in_service,
+         CONCAT (le, ' ') le,
+         CONCAT (pl, ' ') pl,
+         CONCAT (site, ' ') site,
+         CONCAT (cc, ' ') cc,
+         CONCAT (account, ' ') account,
+         country,
+         state,
+         city,
+         address,
+         units_assigned,
+         current_units,
+         asset_currency,
+         ROUND (cost, 2) cost,
+         ROUND (current_month_depreciation, 2) current_month_depreciation,
+         ROUND (ytd_depreciation, 2) ytd_depreciation,
+         ROUND (accum_deprec, 2) accum_deprec,
+         ROUND (net_book_value, 2) net_book_value,
+         NVL (TO_CHAR (exchange_rate), 'Not Available') exchange_rate,
+         ROUND ( (cost * NVL (exchange_rate, 0)), 2) cost_usd,
+         ROUND ( (current_month_depreciation * NVL (exchange_rate, 0)), 2)
+            current_month_depreciation_usd,
+         ROUND ( (ytd_depreciation * NVL (exchange_rate, 0)), 2)
+            ytd_depreciation_usd,
+         ROUND ( (accum_deprec * NVL (exchange_rate, 0)), 2) accum_deprec_usd,
+         ROUND ( (net_book_value * NVL (exchange_rate, 0)), 2)
+            net_book_value_usd
+    FROM (SELECT DISTINCT
+                 fa.asset_id,
+                 fa.asset_number,
+                 fa.description,
+                 cb.asset_cost_acct asset_natural_account,
+                 cb.deprn_reserve_acct reserve_natural_account,
+                 fac.segment1 asset_major_category,       --category_segment1,
+                 fac.segment2 asset_minor_category,
+                 fa.serial_number,
+                 fa.tag_number,
+                 books.life_in_months,
+                 --fa_fy.fiscal_year, #commented by Nagaraj S on 26-Aug-19 as part of bug fix
+				 fficv.fiscal_year, --#Added by Nagaraj S on 26-Aug-19 as part of bug fix
+				 fficv.PERIOD_ENTERED, --#Added by Nagaraj S on 26-Aug-19 as part of bug fix
+                 pd.period_name,
+                 books.book_type_code asset_book,
+                 TO_CHAR (books.date_placed_in_service, 'DD-Mon-YY')
+                    date_placed_in_service,
+                 gl_deprn_exp.segment1 le,
+                 gl_deprn_exp.segment2 pl,
+                 gl_deprn_exp.segment3 site,
+                 gl_deprn_exp.segment4 cc,
+                 gl_deprn_exp.segment5 account,
+                 loc.segment1 country,
+                 loc.segment2 state,
+                 loc.segment3 city,
+                 loc.segment4 address,
+                 dh.assigned_to,
+                 dh.units_assigned,
+                 fa.current_units,
+                 period_v.currency_code asset_currency,
+                 dd_bonus.cost,
+				 --999 cost,
+                 DECODE (
+                    dd_bonus.period_counter,
+                    period_v.upc,   dd_bonus.deprn_amount
+                                  - dd_bonus.bonus_deprn_amount,
+                    0)
+                    current_month_depreciation,
+                 DECODE (SIGN (period_v.tpc - dd_bonus.period_counter),
+                         1, 0,
+                         dd_bonus.ytd_deprn - dd_bonus.bonus_ytd_deprn)
+                    ytd_depreciation,
+                 (dd_bonus.deprn_reserve - dd_bonus.bonus_deprn_reserve)
+                    accum_deprec,
+                 (dd_bonus.COST - dd_bonus.deprn_reserve) net_book_value,
+                 CASE
+                    --WHEN period_v.currency_code = 'USD'
+					WHEN period_v.currency_code = 'HKD'
+                    THEN
+                       1
+                    ELSE
+                       (SELECT gdr.conversion_rate
+                          FROM gl_daily_rates gdr,
+                               gl_daily_conversion_types gdct
+                         WHERE     1 = 1
+                               AND gdr.conversion_type = gdct.conversion_type
+                               --AND gdct.user_conversion_type ='Merrill Period End Rate'  --BC 20210114
+							   AND gdct.user_conversion_type ='Period End'
+                               AND gdr.from_currency = period_v.currency_code
+                               AND gdr.to_currency = 'HKD'
+                               AND gdr.conversion_date =
+                                      LAST_DAY ('1-' || pd.period_name))
+                 END
+                    exchange_rate
+            FROM fa_additions fa,
+                 fa_categories fac,
+                 fa_books books,
+                 fa_deprn_periods pd,
+                 fa_deprn_detail dd_bonus,
+                 fa_distribution_history dh,
+                 fa_locations loc,
+                 fa_transaction_headers th_rt,
+                 fa_transaction_headers th,
+                 fa_asset_history ah,
+                 fa_category_books cb,
+                 --fa_fiscal_year fa_fy, #commented by Nagaraj S on 26-Aug-19 as part of bug fix
+				 fa_financial_inquiry_cost_v fficv, --#Added by Nagaraj S on 26-Aug-19 as part of bug fix
+                 gl_code_combinations_kfv gl_deprn_exp,
+                 (  SELECT bc.distribution_source_book dbk,
+                           bc.book_type_code,      -- added for book parameter
+                           bc.book_class,
+                           NVL (dp.period_close_date, SYSDATE) ucd,
+                           dp.period_counter upc,
+                           MIN (dp_fy.period_open_date) tod,
+                           MIN (dp_fy.period_counter) tpc,
+                           dp.period_name,
+                           gl_led.currency_code
+                      FROM fa_deprn_periods dp,
+                           fa_deprn_periods dp_fy,
+                           fa_book_controls bc,
+                           gl_ledgers gl_led
+                     WHERE     1 = 1
+                           AND dp.book_type_code = dp_fy.book_type_code
+                           AND dp.period_name = :P_PERIOD_NAME
+                           AND dp_fy.book_type_code = bc.book_type_code
+                           AND dp_fy.fiscal_year = dp.fiscal_year
+                           AND bc.set_of_books_id = gl_led.ledger_id
+                           AND bc.BOOK_CLASS = :P_BOOK_TYPE
+						   AND bc.BOOK_TYPE_CODE = :P_BOOK_TYPE_CODE  --BC 20210120
+                  GROUP BY bc.distribution_source_book,
+                           bc.book_type_code,
+                           dp.period_close_date,
+                           dp.period_counter,
+                           dp.period_name,
+                           gl_led.currency_code,
+                           bc.book_class) period_v
+           WHERE     1 = 1
+                 AND fa.asset_category_id = fac.category_id
+                 AND books.asset_id = fa.asset_id
+                 AND books.book_type_code = pd.book_type_code
+                 AND books.asset_id = dd_bonus.asset_id
+                 AND dd_bonus.book_type_code = pd.book_type_code
+                 AND pd.period_name = period_v.period_name
+                 AND pd.book_type_code = period_v.book_type_code
+                 AND dd_bonus.asset_id = dh.asset_id
+                 AND dd_bonus.distribution_id = dh.distribution_id
+                 AND NVL (books.period_counter_fully_retired, period_v.upc) >=
+                        period_v.tpc
+                 AND dd_bonus.period_counter =
+                        (SELECT MAX (dd_sub.period_counter)
+                           FROM fa_deprn_detail dd_sub
+                          WHERE     1 = 1
+                                AND dd_sub.book_type_code =
+                                       dd_bonus.book_type_code
+                                -- added for book parameter
+                                AND dd_sub.asset_id = dd_bonus.asset_id
+                                AND dd_sub.distribution_id =
+                                       dd_bonus.distribution_id
+                                AND dd_sub.period_counter <= period_v.upc)
+                 --AND dh.date_effective <= pd.period_close_date
+                 AND NVL (dh.date_ineffective, SYSDATE) > period_v.tod
+                 AND loc.location_id = dh.location_id
+                 AND th_rt.book_type_code = books.book_type_code
+                 AND th_rt.transaction_header_id =
+                        books.transaction_header_id_in
+                 AND th.book_type_code(+) = dh.book_type_code
+                 AND th.transaction_header_id(+) = dh.transaction_header_id_out
+                 AND AH.ASSET_ID = DD_BONUS.ASSET_ID                 --7721457
+                 AND AH.DATE_EFFECTIVE < period_v.ucd
+                 AND NVL (AH.DATE_INEFFECTIVE, SYSDATE) >= period_v.ucd
+                 AND AH.ASSET_TYPE = 'CAPITALIZED'
+                 AND cb.category_id = ah.category_id
+                 AND pd.book_type_code = cb.book_type_code
+                 /* #commented by Nagaraj S on 26-Aug-19 as part of bug fix
+				 AND fa_fy.fiscal_year_name = 'FISCAL'
+                 AND books.date_placed_in_service BETWEEN fa_fy.START_DATE
+                                                      AND fa_fy.END_DATE */
+				 AND fficv.BOOK_TYPE_CODE = pd.book_type_code --#Added by Nagaraj S on 26-Aug-19 as part of bug fix
+				 AND fficv.ASSET_ID = fa.asset_id	--#Added by Nagaraj S on 26-Aug-19 as part of bug fix	 
+				 AND fficv.transaction_type = 'Addition'
+                 AND dh.code_combination_id = gl_deprn_exp.code_combination_id
+                 AND NVL (BOOKS.PERIOD_COUNTER_FULLY_RETIRED, upc) >=
+                        period_v.tpc
+                 AND BOOKS.DATE_EFFECTIVE <= period_v.ucd
+                 AND NVL (BOOKS.DATE_INEFFECTIVE, SYSDATE + 1) > period_v.ucd
+				 AND NVL(DH.DATE_INEFFECTIVE, sysdate)  > period_v.tod --Added Dt.17SEP15
+				 AND DH.DATE_EFFECTIVE                             <= period_v.ucd  --Added Dt.17SEP15
+                 AND NVL(DH.DATE_INEFFECTIVE, sysdate)             > period_v.tod   --Added Dt.17SEP15
+                 AND NVL(DH.DATE_INEFFECTIVE, ucd + 1) > period_v.ucd --17497948    --Added Dt.17SEP15
+                 --AND dd_bonus.cost > 0 --Commented Dt.17SEP15
+                 --AND fa.asset_number = :P_ASSET_ID
+                 AND period_v.book_class = :P_BOOK_TYPE
+                 AND pd.period_name = :P_PERIOD_NAME)
+       ORDER BY asset_number
+				 ]]>     
+				 
+   </sqlStatement> 
+   
+   <sqlStatement name="Q2" dataSourceRef="">
+      <![CDATA[
+	  
+  SELECT asset_id asset_id1,
+         asset_number asset_number1,
+		 po_number po_number1,
+         description description1,
+         CONCAT (asset_natural_account, ' ') asset_natural_account1,
+         CONCAT (reserve_natural_account, ' ') reserve_natural_account1,
+         asset_major_category asset_major_category1,
+         asset_minor_category asset_minor_category1,
+         serial_number serial_number1,
+         tag_number tag_number1,
+         life_in_months life_in_months1,
+         fiscal_year fiscal_year1,
+		 period_entered period_entered1,
+         period_name period_name1,
+         asset_book asset_book1,
+         date_placed_in_service date_placed_in_service1,
+         CONCAT (le, ' ') le1,
+         CONCAT (pl, ' ') pl1,
+         CONCAT (site, ' ') site1,
+         CONCAT (cc, ' ') cc1,
+         CONCAT (account, ' ') account1,
+         country country1,
+         state state1,
+         city city1,
+         address address1,
+         units_assigned units_assigned1,
+         current_units current_units1,
+         asset_currency asset_currency1,
+         ROUND (cost, 2) cost1,
+         ROUND (current_month_depreciation, 2) current_month_depreciation1,
+         ROUND (ytd_depreciation, 2) ytd_depreciation1,
+         ROUND (accum_deprec, 2) accum_deprec1,
+         ROUND (net_book_value, 2) net_book_value1,
+         NVL (TO_CHAR (exchange_rate), 'Not Available') exchange_rate1,
+         ROUND ( (cost * NVL (exchange_rate, 0)), 2) cost_usd1,
+         ROUND ( (current_month_depreciation * NVL (exchange_rate, 0)), 2)
+            current_month_depr_usd1,
+         ROUND ( (ytd_depreciation * NVL (exchange_rate, 0)), 2)
+            ytd_depreciation_usd1,
+         ROUND ( (accum_deprec * NVL (exchange_rate, 0)), 2) accum_deprec_usd1,
+         ROUND ( (net_book_value * NVL (exchange_rate, 0)), 2)
+            net_book_value_usd1
+    FROM (SELECT DISTINCT
+                 fa.asset_id,
+                 fa.asset_number,
+				 fai.po_number,
+                 fa.description,
+                 cb.asset_cost_acct asset_natural_account,
+                 cb.deprn_reserve_acct reserve_natural_account,
+                 fac.segment1 asset_major_category,       --category_segment1,
+                 fac.segment2 asset_minor_category,
+                 fa.serial_number,
+                 fa.tag_number,
+                 books.life_in_months,
+              -- fa_fy.fiscal_year,
+				 fficv.fiscal_year,
+				 fficv.period_entered, 
+                 pd.period_name,
+                 books.book_type_code asset_book,
+                 TO_CHAR (books.date_placed_in_service, 'DD-Mon-YY')
+                    date_placed_in_service,
+                 gl_deprn_exp.segment1 le,
+                 gl_deprn_exp.segment2 pl,
+                 gl_deprn_exp.segment3 site,
+                 gl_deprn_exp.segment4 cc,
+                 gl_deprn_exp.segment5 account,
+                 loc.segment1 country,
+                 loc.segment2 state,
+                 loc.segment3 city,
+                 loc.segment4 address,
+                 dh.assigned_to,
+                 dh.units_assigned,
+                 fa.current_units,
+                 period_v.currency_code asset_currency,
+                 dd_bonus.cost,
+                 DECODE (
+                    dd_bonus.period_counter,
+                    period_v.upc,   dd_bonus.deprn_amount
+                                  - dd_bonus.bonus_deprn_amount,
+                    0)
+                    current_month_depreciation,
+                 DECODE (SIGN (period_v.tpc - dd_bonus.period_counter),
+                         1, 0,
+                         dd_bonus.ytd_deprn - dd_bonus.bonus_ytd_deprn)
+                    ytd_depreciation,
+                 (dd_bonus.deprn_reserve - dd_bonus.bonus_deprn_reserve)
+                    accum_deprec,
+                 (dd_bonus.COST - dd_bonus.deprn_reserve) net_book_value,
+                 CASE
+                    --WHEN period_v.currency_code = 'USD'
+					WHEN period_v.currency_code = 'HKD'
+                    THEN
+                       1
+                    ELSE
+                       (SELECT gdr.conversion_rate
+                          FROM gl_daily_rates gdr,
+                               gl_daily_conversion_types gdct
+                         WHERE     1 = 1
+                               AND gdr.conversion_type = gdct.conversion_type
+                               --AND gdct.user_conversion_type = 'Merrill Period End Rate'
+							   AND gdct.user_conversion_type = 'Period End'
+                               AND gdr.from_currency = period_v.currency_code
+                               AND gdr.to_currency = 'HKD'
+                               AND gdr.conversion_date =
+                                      LAST_DAY ('1-' || pd.period_name))
+                 END
+                    exchange_rate
+            FROM fa_additions fa,
+			    (SELECT DISTINCT 
+						asset_id, 
+						po_number 
+				   FROM fa_asset_invoices 
+				  WHERE po_number IS NOT NULL) fai,
+				 -- fa_asset_invoices fai,
+                 fa_categories fac,
+                 fa_books books,
+                 fa_deprn_periods pd,
+                 fa_deprn_detail dd_bonus,
+                 fa_distribution_history dh,
+                 fa_locations loc,
+                 fa_transaction_headers th_rt,
+                 fa_transaction_headers th,
+                 fa_asset_history ah,
+                 fa_category_books cb,
+              -- fa_fiscal_year fa_fy,
+				 fa_financial_inquiry_cost_v fficv, 
+                 gl_code_combinations_kfv gl_deprn_exp,
+                 (  SELECT bc.distribution_source_book dbk,
+                           bc.book_type_code,      -- added for book parameter
+                           bc.book_class,
+                           NVL (dp.period_close_date, SYSDATE) ucd,
+                           dp.period_counter upc,
+                           MIN (dp_fy.period_open_date) tod,
+                           MIN (dp_fy.period_counter) tpc,
+                           dp.period_name,
+                           gl_led.currency_code
+                      FROM fa_deprn_periods dp,
+                           fa_deprn_periods dp_fy,
+                           fa_book_controls bc,
+                           gl_ledgers gl_led
+                     WHERE     1 = 1
+                           AND dp.book_type_code = dp_fy.book_type_code
+                           AND dp.period_name = :P_PERIOD_NAME
+                           AND dp_fy.book_type_code = bc.book_type_code
+                           AND dp_fy.fiscal_year = dp.fiscal_year
+                           AND bc.set_of_books_id = gl_led.ledger_id
+                           AND bc.BOOK_CLASS = :P_BOOK_TYPE
+						   AND bc.book_type_code = :P_BOOK_TYPE_CODE  --BC 20210120
+                  GROUP BY bc.distribution_source_book,
+                           bc.book_type_code,
+                           dp.period_close_date,
+                           dp.period_counter,
+                           dp.period_name,
+                           gl_led.currency_code,
+                           bc.book_class) period_v
+           WHERE     1 = 1
+                 AND fa.asset_category_id = fac.category_id
+                 AND books.asset_id = fa.asset_id
+				 AND fa.asset_id = fai.asset_id(+)
+                 AND books.book_type_code = pd.book_type_code
+                 AND books.asset_id = dd_bonus.asset_id
+                 AND dd_bonus.book_type_code = pd.book_type_code
+                 AND pd.period_name = period_v.period_name
+                 AND pd.book_type_code = period_v.book_type_code
+                 AND dd_bonus.asset_id = dh.asset_id
+                 AND dd_bonus.distribution_id = dh.distribution_id
+                 AND NVL (books.period_counter_fully_retired, period_v.upc) >=
+                        period_v.tpc
+                 AND dd_bonus.period_counter =
+                        (SELECT MAX (dd_sub.period_counter)
+                           FROM fa_deprn_detail dd_sub
+                          WHERE     1 = 1
+                                AND dd_sub.book_type_code =
+                                       dd_bonus.book_type_code
+                                -- added for book parameter
+                                AND dd_sub.asset_id = dd_bonus.asset_id
+                                AND dd_sub.distribution_id =
+                                       dd_bonus.distribution_id
+                                AND dd_sub.period_counter <= period_v.upc)
+                 --AND dh.date_effective <= pd.period_close_date
+                 AND NVL (dh.date_ineffective, SYSDATE) > period_v.tod
+                 AND loc.location_id = dh.location_id
+                 AND th_rt.book_type_code = books.book_type_code
+                 AND th_rt.transaction_header_id =
+                        books.transaction_header_id_in
+                 AND th.book_type_code(+) = dh.book_type_code
+                 AND th.transaction_header_id(+) = dh.transaction_header_id_out
+                 AND AH.asset_id = DD_BONUS.asset_id                 --7721457
+                 AND AH.DATE_EFFECTIVE < period_v.ucd
+                 AND NVL (AH.DATE_INEFFECTIVE, SYSDATE) >= period_v.ucd
+                 AND AH.ASSET_TYPE = 'CAPITALIZED'
+                 AND cb.category_id = ah.category_id
+                 AND pd.book_type_code = cb.book_type_code
+                 /* AND fa_fy.fiscal_year_name = 'FISCAL'
+                 AND books.date_placed_in_service BETWEEN fa_fy.START_DATE
+                                                      AND fa_fy.END_DATE */
+				 AND fficv.book_type_code = pd.book_type_code
+				 AND fficv.asset_id = fa.asset_id
+				 AND fficv.transaction_type = 'Addition'
+                 AND dh.code_combination_id = gl_deprn_exp.code_combination_id
+                 AND NVL (BOOKS.PERIOD_COUNTER_FULLY_RETIRED, upc) >=
+                        period_v.tpc
+                 AND BOOKS.DATE_EFFECTIVE <= period_v.ucd
+                 AND NVL (BOOKS.DATE_INEFFECTIVE, SYSDATE + 1) > period_v.ucd
+				 AND NVL(DH.DATE_INEFFECTIVE, sysdate)  > period_v.tod --Added Dt.17SEP15
+				 AND DH.DATE_EFFECTIVE                             <= period_v.ucd  --Added Dt.17SEP15
+                 AND NVL(DH.DATE_INEFFECTIVE, sysdate)             > period_v.tod   --Added Dt.17SEP15
+                 AND NVL(DH.DATE_INEFFECTIVE, ucd + 1) > period_v.ucd --17497948    --Added Dt.17SEP15
+                 --AND dd_bonus.cost > 0 --Commented Dt.17SEP15
+                 --AND fa.asset_number = :P_ASSET_ID
+                 AND period_v.book_class = :P_BOOK_TYPE
+                 AND pd.period_name = :P_PERIOD_NAME)
+       ORDER BY asset_number
+				 ]]>    
+				 
+   </sqlStatement> 
+   
+   </dataQuery>
+   
+   <dataTrigger name="beforeReport" source="XXFA_DTL_GBL_AST_LST_BIP_PKG.beforereport()"/>
+   
+   <dataStructure>  
+   
+   <group name="G_HEADR" source="HDR" groupFilter="">  
+	 <element name="RUN_DATE" value="RUN_DATE" function=""/>
+	 <element name="G2_RUN_DATE" value="G2_RUN_DATE" function=""/> 
+	 <element name="G2_BOOK_TYPE" value="G2_BOOK_TYPE" function=""/> 
+	 <element name="G2_BOOK_TYPE_CODE" value="G2_BOOK_TYPE_CODE" function=""/> 
+     <element name="G2_PERIOD_NAME" value="G2_PERIOD_NAME" function=""/> 	 
+   </group>
+   
+   <group name="G_REPORT" source="Q1" groupFilter="">  
+       <element name="ASSET_ID" value="asset_id" function=""/>   
+	   <element name="ASSET_NUMBER" value="asset_number" function=""/>
+	   <element name="DESCRIPTION" value="description" function=""/>
+	   <element name="ASSET_NATURAL_ACCOUNT" value="asset_natural_account" function=""/>
+	   <element name="RESERVE_NATURAL_ACCOUNT" value="reserve_natural_account" function=""/>
+	   <element name="ASSET_MAJOR_CATEGORY" value="asset_major_category" function=""/>
+	   <element name="ASSET_MINOR_CATEGORY" value="asset_minor_category" function=""/>
+	   <element name="SERIAL_NUMBER" value="serial_number" function=""/>
+	   <element name="TAG_NUMBER" value="tag_number" function=""/>
+	   <element name="LIFE_IN_MONTHS" value="life_in_months" function=""/>
+	   <element name="FISCAL_YEAR" value="fiscal_year" function=""/>
+	   <element name="PERIOD_ENTERED" value="period_entered" function=""/> 	   
+	   <element name="ASSET_BOOK" value="asset_book" function=""/>
+	   <element name="DATE_PLACED_IN_SERVICE" value="date_placed_in_service" function=""/>
+	   <element name="LE" value="le" function=""/>
+	   <element name="PL" value="pl" function=""/>
+	   <element name="SITE" value="site" function=""/>
+	   <element name="CC" value="cc" function=""/>
+	   <element name="ACCOUNT" value="account" function=""/>
+	   <element name="COUNTRY" value="country" function=""/>
+	   <element name="STATE" value="state" function=""/>
+	   <element name="CITY" value="city" function=""/>
+	   <element name="ADDRESS" value="address" function=""/>
+	   <element name="UNITS_ASSIGNED" value="units_assigned" function=""/>
+	   <element name="CURRENT_UNITS" value="current_units" function=""/>
+	   <element name="ASSET_CURRENCY" value="asset_currency" function=""/>
+	   <element name="COST" value="cost" function=""/>
+	   <element name="CURRENT_MONTH_DEPRECIATION" value="current_month_depreciation" function=""/>
+	   <element name="YTD_DEPRECIATION" value="ytd_depreciation" function=""/>
+	   <element name="ACCUM_DEPREC" value="accum_deprec" function=""/>
+	   <element name="NET_BOOK_VALUE" value="net_book_value" function=""/>
+	   <element name="EXCHANGE_RATE" value="exchange_rate" function=""/>
+	   <element name="COST_USD" value="cost_usd" function=""/>
+	   <element name="CURRENT_MONTH_DEPRECIATION_USD" value="current_month_depreciation_usd" function=""/>
+	    <element name="YTD_DEPRECIATION_USD" value="ytd_depreciation_usd" function=""/>
+	   <element name="ACCUM_DEPREC_USD" value="accum_deprec_usd" function=""/>
+	   <element name="NET_BOOK_VALUE_USD" value="net_book_value_usd" function=""/>
+   </group>
+   
+   <group name="G_REPORT1" source="Q2" groupFilter="">  
+       <element name="ASSET_ID1" value="asset_id1" function=""/>   
+	   <element name="ASSET_NUMBER1" value="asset_number1" function=""/>
+	   <element name="PO_NUMBER1" value="po_number1" function=""/>
+	   <element name="DESCRIPTION1" value="description1" function=""/>
+	   <element name="ASSET_NATURAL_ACCOUNT1" value="asset_natural_account1" function=""/>
+	   <element name="RESERVE_NATURAL_ACCOUNT1" value="reserve_natural_account1" function=""/>
+	   <element name="ASSET_MAJOR_CATEGORY1" value="asset_major_category1" function=""/>
+	   <element name="ASSET_MINOR_CATEGORY1" value="asset_minor_category1" function=""/>
+	   <element name="SERIAL_NUMBER1" value="serial_number1" function=""/>
+	   <element name="TAG_NUMBER1" value="tag_number1" function=""/>
+	   <element name="LIFE_IN_MONTHS1" value="life_in_months1" function=""/>
+	   <element name="FISCAL_YEAR1" value="fiscal_year1" function=""/>
+	   <element name="PERIOD_ENTERED1" value="period_entered1" function=""/> 
+	   <element name="ASSET_BOOK1" value="asset_book1" function=""/>
+	   <element name="DATE_PLACED_IN_SERVICE1" value="date_placed_in_service1" function=""/>
+	   <element name="LE1" value="le1" function=""/>
+	   <element name="PL1" value="pl1" function=""/>
+	   <element name="SITE1" value="site1" function=""/>
+	   <element name="CC1" value="cc1" function=""/>
+	   <element name="ACCOUNT1" value="account1" function=""/>
+	   <element name="COUNTRY1" value="country1" function=""/>
+	   <element name="STATE1" value="state1" function=""/>
+	   <element name="CITY1" value="city1" function=""/>
+	   <element name="ADDRESS1" value="address1" function=""/>
+	   <element name="UNITS_ASSIGNED1" value="units_assigned1" function=""/>
+	   <element name="CURRENT_UNITS1" value="current_units1" function=""/>
+	   <element name="ASSET_CURRENCY1" value="asset_currency1" function=""/>
+	   <element name="COST1" value="cost1" function=""/>
+	   <element name="CURRENT_MONTH_DEPRECIATION1" value="current_month_depreciation1" function=""/>
+	   <element name="YTD_DEPRECIATION1" value="ytd_depreciation1" function=""/>
+	   <element name="ACCUM_DEPREC1" value="accum_deprec1" function=""/>
+	   <element name="NET_BOOK_VALUE1" value="net_book_value1" function=""/>
+	   <element name="EXCHANGE_RATE1" value="exchange_rate1" function=""/>
+	   <element name="COST_USD1" value="cost_usd1" function=""/>
+	   <element name="CURRENT_MONTH_DEPR_USD1" value="current_month_depr_usd1" function=""/>
+	   <element name="YTD_DEPRECIATION_USD1" value="ytd_depreciation_usd1" function=""/>
+	   <element name="ACCUM_DEPREC_USD1" value="accum_deprec_usd1" function=""/>
+	   <element name="NET_BOOK_VALUE_USD1" value="net_book_value_usd1" function=""/>
+   </group>
+   
+   <element name="CS_COST_USD" value="G_REPORT.COST_USD" dataType="number" function="sum"/>
+   <element name="CS_CURRENT_MONTH_DEPRECIATION_USD" value="G_REPORT.CURRENT_MONTH_DEPRECIATION_USD" dataType="number" function="sum"/>
+   <element name="CS_YTD_DEPRECIATION_USD" value="G_REPORT.YTD_DEPRECIATION_USD" dataType="number" function="sum"/>
+   <element name="CS_ACCUM_DEPREC_USD" value="G_REPORT.ACCUM_DEPREC_USD" dataType="number" function="sum"/>
+   <element name="CS_NET_BOOK_VALUE_USD" value="G_REPORT.NET_BOOK_VALUE_USD" dataType="number" function="sum"/>
+   
+   <element name="CS_COST_USD1" value="G_REPORT1.COST_USD1" dataType="number" function="sum"/>
+   <element name="CS_CURRENT_MONTH_DEPRECIATION_USD1" value="G_REPORT1.CURRENT_MONTH_DEPRECIATION_USD1" dataType="number" function="sum"/>
+   <element name="CS_YTD_DEPRECIATION_USD1" value="G_REPORT1.YTD_DEPRECIATION_USD1" dataType="number" function="sum"/>
+   <element name="CS_ACCUM_DEPREC_USD1" value="G_REPORT1.ACCUM_DEPREC_USD1" dataType="number" function="sum"/>
+   <element name="CS_NET_BOOK_VALUE_USD1" value="G_REPORT1.NET_BOOK_VALUE_USD1" dataType="number" function="sum"/>
+   
+   </dataStructure>
+   
+</dataTemplate>

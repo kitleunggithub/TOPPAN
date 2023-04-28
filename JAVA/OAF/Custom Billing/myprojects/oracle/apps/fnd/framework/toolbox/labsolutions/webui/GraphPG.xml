@@ -1,0 +1,40 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath:~PROD:~PATH:~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath:~PROD:mds:directory  -->
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="9.0.3.8.8_978" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header: GraphPG.xml 120.7 2006/05/25 13:11:03 atgops1 noship $">
+   <content>
+      <oa:pageLayout id="PageLayoutRN" amDefName="oracle.apps.fnd.framework.toolbox.labsolutions.server.EmployeeAM" windowTitle="Framework Toolbox Tutorial: Labs" title="Position Graphs">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:productBranding>
+            <oa:image id="ProdBrand" source="FNDTAPPBRAND.gif" shortDesc="Tutorial Application"/>
+         </ui:productBranding>
+         <ui:contents>
+            <oa:graphTable id="GraphTableRN" renderStyle="both" controllerClass="oracle.apps.fnd.framework.toolbox.labsolutions.webui.GraphCO">
+               <oa:graphs>
+                  <graph id="PositionBarGraph" size="large" title="Positions Bar Graph" xAxisLabel="Number of Employees">
+                     <dataMap>
+                        <graphData id="YAxisData" viewName="PositionGraphVO1" viewAttr="CountPositionCode"/>
+                        <graphData id="XAxisData" graphAs="groupLabels" viewName="PositionGraphVO1" viewAttr="PositionCode"/>
+                     </dataMap>
+                  </graph>
+                  <graph id="PositionPieGraph" size="large" graphType="pie" title="Positions Pie Graph" xAxisLabel="Number of Employees">
+                     <dataMap>
+                        <graphData id="PieYAxisData" viewName="PositionGraphVO1" viewAttr="CountPositionCode"/>
+                        <graphData id="PieXAxisData" graphAs="groupLabels" viewName="PositionGraphVO1" viewAttr="PositionCode"/>
+                     </dataMap>
+                  </graph>
+               </oa:graphs>
+               <oa:tabularFormat>
+                  <oa:table id="PositionsDataTable" text="Positions Data Table" width="100%" shortDesc="Positions Table">
+                     <ui:contents>
+                        <oa:messageStyledText id="Position" viewName="PositionGraphVO1" viewAttr="PositionCode" styleClass="OraDataText" use="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/Position"/>
+                        <oa:messageStyledText id="PositionCount" viewName="PositionGraphVO1" viewAttr="CountPositionCode" styleClass="OraDataText" prompt="Count"/>
+                     </ui:contents>
+                  </oa:table>
+               </oa:tabularFormat>
+            </oa:graphTable>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>

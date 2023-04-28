@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+
+<Association
+   Name="InvoiceToInvoiceSalesRepSplitsAS" >
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.43.6" />
+   </DesignTime>
+   <AssociationEnd
+      Name="InvoiceEO"
+      Cardinality="1"
+      Source="true"
+      Owner="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceEO"
+      CascadeDelete="true"
+      DeleteContainee="true"
+      LockTopContainer="false" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceEO.CustomerTrxId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_finderName" Value="InvoiceEO" />
+         <Attr Name="_aggregation" Value="0" />
+         <Attr Name="_isUpdateable" Value="true" />
+      </DesignTime>
+   </AssociationEnd>
+   <AssociationEnd
+      Name="InvoiceSalesRepSplitsEO"
+      Cardinality="-1"
+      Owner="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceSalesRepSplitsEO"
+      HasOwner="true" >
+      <AttrArray Name="Attributes">
+         <Item Value="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceSalesRepSplitsEO.CustomerTrxId" />
+      </AttrArray>
+      <DesignTime>
+         <Attr Name="_finderName" Value="InvoiceSalesRepSplitsEO" />
+         <Attr Name="_aggregation" Value="0" />
+         <Attr Name="_isUpdateable" Value="true" />
+      </DesignTime>
+   </AssociationEnd>
+</Association>

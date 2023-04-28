@@ -1,0 +1,35 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath:~PROD:~PATH:~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath:~PROD:mds:directory  -->
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="9.0.3.8.7_942" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header: GanttPG.xml 120.7 2006/05/25 13:10:53 atgops1 noship $">
+   <content>
+      <oa:pageLayout id="PageLayoutRN" amDefName="oracle.apps.fnd.framework.toolbox.labsolutions.server.GanttAM" windowTitle="Framework Toolbox Tutorial: Labs" title="Gantt Chart">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:productBranding>
+            <oa:image id="ProdBrand" shortDesc="Tutorial Application" source="FNDTAPPBRAND.gif"/>
+         </ui:productBranding>
+         <ui:contents>
+            <oa:header id="HeaderRN" text="Gantt Region" controllerClass="oracle.apps.fnd.framework.toolbox.labsolutions.webui.GanttCO">
+               <ui:contents>
+                  <oa:gantt id="GanttRN" barStartViewAttr="StartFrom" barFinishViewAttr="EndTo" startTimeViewAttr="StartDate" endTimeViewAttr="CompletionDate" barTypeViewAttr="TaskType" rightTextViewAttr="TextRight">
+                     <ui:contents>
+                        <oa:tree usage="hGrid" id="DummyTree" text="Project/Task Name">
+                           <members>
+                              <oa:nodeDef id="nodeDef1" viewName="TaskListVO1" viewAttr="Name" shortDesc="Project/Task Name"/>
+                              <oa:childNode id="childNode1" viewLink="TaskToDetailsVL1">
+                                 <members>
+                                    <oa:nodeDef id="nodeDef2" viewName="TaskDetailsVO2" viewAttr="TaskName"/>
+                                    <oa:childNode id="childNode2"/>
+                                 </members>
+                              </oa:childNode>
+                           </members>
+                        </oa:tree>
+                     </ui:contents>
+                  </oa:gantt>
+               </ui:contents>
+            </oa:header>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>

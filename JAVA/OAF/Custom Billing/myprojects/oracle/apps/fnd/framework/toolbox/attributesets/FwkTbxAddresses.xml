@@ -1,0 +1,22 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory  -->
+<!-- Following  attribute sets for the FWK_TBX_ADDRESSES displayable columns. It would be nice if you add some message tips to some attribute sets -->
+<!-- Followed by region header attribute sets, add as many as you need -->
+<!-- Followed by UI standards, object specific button attribute sets, use Buttons.xml for shared, no object specific buttons. Add as many as you need -->
+<package xmlns="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:jrad="http://xmlns.oracle.com/jrad" version="9.0.3.8.3_752" xml:lang="en-US" file-version="$Header: FwkTbxAddresses.xml 120.5 2005/07/12 12:04:35 atgops1 noship $">
+   <jrad:attributeSet docName="AddressName" comment="Used for the name associated with the address" prompt="Name" shortDesc="Address Name" columns="20"/>
+   <jrad:attributeSet docName="AddressLine1" comment="Address line 1" prompt="Address" columns="40"/>
+   <jrad:attributeSet docName="AddressLine2" comment="Address line 2" columns="40"/>
+   <jrad:attributeSet docName="AddressLine3" comment="Address line 3" columns="40"/>
+   <jrad:attributeSet docName="Description" comment="Description for this address" prompt="Description" shortDesc="Address Description" columns="40" rows="3"/>
+   <jrad:attributeSet docName="EmailAddress" comment="Email address" prompt="Email Address" columns="40"/>
+   <jrad:attributeSet docName="Country" comment="Address country" prompt="Country" columns="2"/>
+   <jrad:attributeSet docName="TownOrCity" comment="When locale uses City in address" prompt="City" columns="20"/>
+   <jrad:attributeSet docName="TownOrCity_Town" comment="When locale uses Town in address" prompt="Town" columns="20"/>
+   <jrad:attributeSet docName="PostalCode" comment="When locale uses Zip Code in address" prompt="Zip Code" columns="15"/>
+   <jrad:attributeSet docName="PostalCode_Postal" comment="When locale uses Postal Code in address" prompt="Postal Code" columns="15"/>
+   <jrad:attributeSet docName="TelephoneNumber1" comment="Work phone number" prompt="Work Phone Number" columns="15"/>
+   <jrad:attributeSet docName="TelephoneNumber2" comment="Home phone number" prompt="Home Phone Number" columns="15"/>
+   <jrad:attributeSet docName="TelephoneNumber3" comment="Fax number" prompt="Fax Number" columns="15"/>
+   <jrad:attributeSet docName="FwkTbxAddresses" comment="Used as a header for an address region" prompt="Address"/>
+</package>

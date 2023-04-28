@@ -1,0 +1,236 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="PurchaseOrderReceiptsSVO"
+   SelectList="PurchaseOrderHeaderEO.HEADER_ID, 
+       PurchaseOrderLineEO.LINE_ID, 
+       PurchaseOrderLineEO.HEADER_ID AS HEADER_ID1, 
+       PurchaseOrderShipmentEO.SHIPMENT_ID, 
+       PurchaseOrderShipmentEO.LINE_ID AS LINE_ID1, 
+       PurchaseOrderShipmentEO.SHIPMENT_NUMBER, 
+       PurchaseOrderLineEO.LINE_NUMBER, 
+       PurchaseOrderShipmentEO.NEED_BY_DATE, 
+       PurchaseOrderShipmentEO.RECEIPT_QUANTITY, 
+       PurchaseOrderShipmentEO.ORDER_QUANTITY, 
+       PurchaseOrderShipmentEO.RECEIPT_DATE"
+   FromList="FWK_TBX_PO_HEADERS PurchaseOrderHeaderEO, FWK_TBX_PO_LINES PurchaseOrderLineEO, FWK_TBX_PO_SHIPMENTS PurchaseOrderShipmentEO"
+   Where="(PurchaseOrderHeaderEO.HEADER_ID = PurchaseOrderLineEO.HEADER_ID) AND (PurchaseOrderLineEO.LINE_ID = PurchaseOrderShipmentEO.LINE_ID)"
+   BindingStyle="Oracle"
+   CustomQuery="false"
+   RowClass="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrderReceiptsSVORowImpl"
+   ComponentClass="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrderReceiptsSVOImpl"
+   FetchMode="FETCH_AS_NEEDED"
+   UseGlueCode="false" >
+   <Properties>
+      <Property Name ="RCS_ID" Value ="$Header: PurchaseOrderReceiptsSVO.xml 120.17 2006/07/04 01:29:49 atgops1 noship $" />
+      <Property Name ="SVC_COMPONENT_CLASS" Value ="oracle.apps.fnd.framework.toolbox.tutorial.PurchaseOrderReceipt" />
+      <Property Name ="SVC_DATA_OBJECT" Value ="PurchaseOrderReceipt" />
+      <Property Name ="SVC_DISPLAY_NAME" Value ="Purchase Order Receipt document" />
+      <Property Name ="SVC_DOCUMENTATION" Value ="A data object representing a purchase order receipt document." />
+      <Property Name ="SVC_KEY_SET.ByNumber" Value ="PoNumber,LineId,ShipmentId.1.PoNumber,LineNumber,ShipmentNumber" />
+      <Property Name ="SVC_KEY_SETS" Value ="ByNumber" />
+      <Property Name ="SVC_NAMESPACE" Value ="/oracle/apps/fnd/framework/toolbox/tutorial/" />
+      <Property Name ="SVC_OBJECT" Value ="SDO" />
+      <Property Name ="SVC_PRIMARY_KEYS" Value ="PoNumber,LineId,ShipmentId" />
+      <Property Name ="SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_REP_PRODUCT" Value ="fnd" />
+      <Property Name ="SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_SUPER_CLASS" Value ="oracle.svc.DataObjectImpl" />
+      <Property Name ="SVC_VO_DEF" Value ="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrderReceiptsSVO" />
+   </Properties>
+   <DesignTime>
+      <Attr Name="_rowSuperClassName" Value="oracle.apps.fnd.framework.server.OAViewRowImpl" />
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.38.51" />
+      <Attr Name="_objectSuperClassName" Value="oracle.apps.fnd.framework.server.OAViewObjectImpl" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll" />
+   </DesignTime>
+   <EntityUsage
+      Name="PurchaseOrderHeaderEO"
+      Entity="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderHeaderEO" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="false" />
+      </DesignTime>
+   </EntityUsage>
+   <EntityUsage
+      Name="PurchaseOrderLineEO"
+      Entity="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderLineEO"
+      Association="oracle.apps.fnd.framework.toolbox.schema.server.PoHeadToPoLineAO"
+      AssociationEnd="oracle.apps.fnd.framework.toolbox.schema.server.PoHeadToPoLineAO.PurchaseOrderLineEO"
+      SourceUsage="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrderReceiptsSVO.PurchaseOrderHeaderEO"
+      ReadOnly="true"
+      Reference="true" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="false" />
+         <AttrArray Name="_dstAttributes">
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderLineEO.HeaderId" />
+         </AttrArray>
+         <AttrArray Name="_srcAttributes">
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderHeaderEO.HeaderId" />
+         </AttrArray>
+      </DesignTime>
+   </EntityUsage>
+   <EntityUsage
+      Name="PurchaseOrderShipmentEO"
+      Entity="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO"
+      Association="oracle.apps.fnd.framework.toolbox.schema.server.PoLineToPoShipAO"
+      AssociationEnd="oracle.apps.fnd.framework.toolbox.schema.server.PoLineToPoShipAO.PurchaseOrderShipmentEO"
+      SourceUsage="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrderReceiptsSVO.PurchaseOrderLineEO"
+      ReadOnly="true"
+      Reference="true" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="false" />
+         <AttrArray Name="_dstAttributes">
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderShipmentEO.LineId" />
+         </AttrArray>
+         <AttrArray Name="_srcAttributes">
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderLineEO.LineId" />
+         </AttrArray>
+      </DesignTime>
+   </EntityUsage>
+   <ViewAttribute
+      Name="PoNumber"
+      IsUpdateable="while_insert"
+      IsNotNull="true"
+      EntityAttrName="HeaderId"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="HEADER_ID" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderId" />
+         <Property Name ="SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+         <Property Name ="SVC_SIZE" Value ="0" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LineId"
+      IsUpdateable="while_insert"
+      IsNotNull="true"
+      EntityAttrName="LineId"
+      EntityUsage="PurchaseOrderLineEO"
+      AliasName="LINE_ID" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoLines/LineId" />
+         <Property Name ="SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+         <Property Name ="SVC_SIZE" Value ="0" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="HeaderId1"
+      IsQueriable="false"
+      IsNotNull="true"
+      EntityAttrName="HeaderId"
+      EntityUsage="PurchaseOrderLineEO"
+      AliasName="HEADER_ID1" >
+      <Properties>
+         <Property Name ="SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+         <Property Name ="SVC_IS_PRIVATE" Value ="true" />
+         <Property Name ="SVC_SIZE" Value ="0" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ShipmentId"
+      IsUpdateable="while_insert"
+      IsNotNull="true"
+      EntityAttrName="ShipmentId"
+      EntityUsage="PurchaseOrderShipmentEO"
+      AliasName="SHIPMENT_ID" >
+      <Properties>
+         <Property Name ="SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+         <Property Name ="SVC_SIZE" Value ="0" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LineId1"
+      IsQueriable="false"
+      IsNotNull="true"
+      EntityAttrName="LineId"
+      EntityUsage="PurchaseOrderShipmentEO"
+      AliasName="LINE_ID1" >
+      <Properties>
+         <Property Name ="SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+         <Property Name ="SVC_IS_PRIVATE" Value ="true" />
+         <Property Name ="SVC_SIZE" Value ="0" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ShipmentNumber"
+      IsUpdateable="while_insert"
+      IsNotNull="true"
+      EntityAttrName="ShipmentNumber"
+      EntityUsage="PurchaseOrderShipmentEO"
+      AliasName="SHIPMENT_NUMBER" >
+      <Properties>
+         <Property Name ="SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+         <Property Name ="SVC_IS_SORTABLE" Value ="true" />
+         <Property Name ="SVC_SIZE" Value ="0" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LineNumber"
+      IsUpdateable="while_insert"
+      IsNotNull="true"
+      EntityAttrName="LineNumber"
+      EntityUsage="PurchaseOrderLineEO"
+      AliasName="LINE_NUMBER" >
+      <Properties>
+         <Property Name ="SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+         <Property Name ="SVC_SIZE" Value ="0" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="NeedByDate"
+      EntityAttrName="NeedByDate"
+      EntityUsage="PurchaseOrderShipmentEO"
+      AliasName="NEED_BY_DATE" >
+      <Properties>
+         <Property Name ="SVC_DATATYPE" Value ="oracle.jbo.domain.Date" />
+         <Property Name ="SVC_IS_SORTABLE" Value ="true" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ReceiptQuantity"
+      EntityAttrName="ReceiptQuantity"
+      EntityUsage="PurchaseOrderShipmentEO"
+      AliasName="RECEIPT_QUANTITY" >
+      <Properties>
+         <Property Name ="SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+         <Property Name ="SVC_IS_SORTABLE" Value ="true" />
+         <Property Name ="SVC_SIZE" Value ="0" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="OrderQuantity"
+      IsNotNull="true"
+      EntityAttrName="OrderQuantity"
+      EntityUsage="PurchaseOrderShipmentEO"
+      AliasName="ORDER_QUANTITY" >
+      <Properties>
+         <Property Name ="SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+         <Property Name ="SVC_IS_SORTABLE" Value ="true" />
+         <Property Name ="SVC_SIZE" Value ="0" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ReceiptDate"
+      EntityAttrName="ReceiptDate"
+      EntityUsage="PurchaseOrderShipmentEO"
+      AliasName="RECEIPT_DATE" >
+      <Properties>
+         <Property Name ="SVC_DATATYPE" Value ="oracle.jbo.domain.Date" />
+         <Property Name ="SVC_IS_SORTABLE" Value ="true" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+</ViewObject>

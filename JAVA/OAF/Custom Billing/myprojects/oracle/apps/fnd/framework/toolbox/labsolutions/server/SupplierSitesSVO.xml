@@ -1,0 +1,250 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="SupplierSitesSVO"
+   SelectList="SupplierSiteEO.SUPPLIER_ID, 
+       SupplierSiteEO.SUPPLIER_SITE_ID, 
+       SupplierSiteEO.SITE_NAME, 
+       SupplierSiteEO.PURCHASING_SITE_FLAG, 
+       SupplierSiteEO.PAYMENT_TERMS_CODE, 
+       SupplierSiteEO.CARRIER_CODE, 
+       SupplierSiteEO.ADDRESS_ID, 
+       SupplierSiteEO.START_DATE, 
+       SupplierSiteEO.END_DATE, 
+       SupplierEO.SUPPLIER_ID AS SUPPLIER_ID1, 
+       SupplierEO.NAME"
+   FromList="FWK_TBX_SUPPLIER_SITES SupplierSiteEO, FWK_TBX_SUPPLIERS SupplierEO"
+   Where="SupplierSiteEO.SUPPLIER_ID = SupplierEO.SUPPLIER_ID"
+   BindingStyle="Oracle"
+   CustomQuery="false"
+   RowClass="oracle.apps.fnd.framework.toolbox.labsolutions.server.SupplierSitesSVORowImpl"
+   ComponentClass="oracle.apps.fnd.framework.toolbox.labsolutions.server.SupplierSitesSVOImpl"
+   MsgBundleClass="oracle.jbo.common.JboResourceBundle"
+   FetchMode="FETCH_AS_NEEDED"
+   UseGlueCode="false" >
+   <Properties>
+      <Property Name ="RCS_ID" Value ="$Header: SupplierSitesSVO.xml 120.17 2006/05/25 00:08:54 atgops1 noship $" />
+      <Property Name ="SVC_COMPONENT_CLASS" Value ="oracle.apps.fnd.framework.toolbox.labsolutions.SupplierSite" />
+      <Property Name ="SVC_DATA_OBJECT" Value ="SupplierSite" />
+      <Property Name ="SVC_DESCRIPTION" Value ="Provides services to create/update/insert/delete and perform operations on a Supplier." />
+      <Property Name ="SVC_DISPLAY_NAME" Value ="Supplier Site" />
+      <Property Name ="SVC_DOCUMENTATION" Value ="This is the Supplier Site document value object." />
+      <Property Name ="SVC_FILTER.SupplierSiteFilter.SVC_ATTRIBUTES" Value ="SupplierId,SupplierSiteId,SiteName,PurchasingSiteFlag,PaymentTermsCode,CarrierCode,AddressId,StartDate,EndDate,Name" />
+      <Property Name ="SVC_FILTER.SupplierSiteFilter.SVC_COMPONENT_CLASS" Value ="oracle.apps.fnd.framework.toolbox.labsolutions.SupplierSiteFilter" />
+      <Property Name ="SVC_FILTER.SupplierSiteFilter.SVC_DISPLAY_NAME" Value ="Supplier Site Filter" />
+      <Property Name ="SVC_FILTER.SupplierSiteFilter.SVC_DOCUMENTATION" Value ="This is supplier site filter." />
+      <Property Name ="SVC_FILTER.SupplierSiteFilter.SVC_EXPRESSION" Value ="true" />
+      <Property Name ="SVC_FILTER.SupplierSiteFilter.SVC_NAMESPACE" Value ="/oracle/apps/fnd/framework/toolbox/labsolutions/" />
+      <Property Name ="SVC_FILTER.SupplierSiteFilter.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_FILTER.SupplierSiteFilter.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_FILTER.SupplierSiteFilter.SVC_REP_PRODUCT" Value ="fnd" />
+      <Property Name ="SVC_FILTER.SupplierSiteFilter.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_FILTER.SupplierSiteFilter.SVC_SUPER_CLASS" Value ="oracle.svc.expression.ExpressionFilter" />
+      <Property Name ="SVC_FILTERS" Value ="SupplierSiteFilter" />
+      <Property Name ="SVC_KEY_SET.ByName" Value ="SupplierSiteId,SupplierId1.1.SiteName,Name" />
+      <Property Name ="SVC_KEY_SETS" Value ="ByName" />
+      <Property Name ="SVC_NAMESPACE" Value ="/oracle/apps/fnd/framework/toolbox/labsolutions/" />
+      <Property Name ="SVC_OBJECT" Value ="SDO" />
+      <Property Name ="SVC_PRIMARY_KEYS" Value ="SupplierSiteId,SupplierId1" />
+      <Property Name ="SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_REP_PRODUCT" Value ="fnd" />
+      <Property Name ="SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_SUPER_CLASS" Value ="oracle.svc.DataObjectImpl" />
+      <Property Name ="SVC_VO_DEF" Value ="oracle.apps.fnd.framework.toolbox.labsolutions.server.SupplierSitesSVO" />
+   </Properties>
+   <DesignTime>
+      <Attr Name="_rowSuperClassName" Value="oracle.apps.fnd.framework.server.OAViewRowImpl" />
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="9.0.3.13.88" />
+      <Attr Name="_objectSuperClassName" Value="oracle.apps.fnd.framework.server.OAViewObjectImpl" />
+      <Attr Name="_CodeGenFlagNew" Value="32" />
+   </DesignTime>
+   <EntityUsage
+      Name="SupplierSiteEO"
+      Entity="oracle.apps.fnd.framework.toolbox.schema.server.SupplierSiteEO" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="false" />
+      </DesignTime>
+   </EntityUsage>
+   <EntityUsage
+      Name="SupplierEO"
+      Entity="oracle.apps.fnd.framework.toolbox.schema.server.SupplierEO"
+      Association="oracle.apps.fnd.framework.toolbox.schema.server.SupplierToSiteAO"
+      AssociationEnd="oracle.apps.fnd.framework.toolbox.schema.server.SupplierToSiteAO.SupplierEO"
+      SourceUsage="oracle.apps.fnd.framework.toolbox.labsolutions.server.SupplierSitesSVO.SupplierSiteEO"
+      ReadOnly="true"
+      Reference="true" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="false" />
+         <AttrArray Name="_dstAttributes">
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.SupplierEO.SupplierId" />
+         </AttrArray>
+         <AttrArray Name="_srcAttributes">
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.SupplierSiteEO.SupplierId" />
+         </AttrArray>
+      </DesignTime>
+   </EntityUsage>
+   <ViewAttribute
+      Name="SupplierId"
+      EntityAttrName="SupplierId"
+      EntityUsage="SupplierSiteEO"
+      AliasName="SUPPLIER_ID" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSuppliers/SupplierId" />
+         <Property Name ="SVC_ALTERNATE_KEYS" Value ="Name" />
+         <Property Name ="SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+         <Property Name ="SVC_DESCRIPTION" Value ="The supplier id" />
+         <Property Name ="SVC_DISPLAY_NAME" Value ="Supplier Id" />
+         <Property Name ="SVC_DOCUMENTATION" Value ="This is the supplier id." />
+         <Property Name ="SVC_SIZE" Value ="0" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SupplierSiteId"
+      EntityAttrName="SupplierSiteId"
+      EntityUsage="SupplierSiteEO"
+      AliasName="SUPPLIER_SITE_ID" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSupplierSites/SupplierSiteId" />
+         <Property Name ="SVC_ALTERNATE_KEYS" Value ="SiteName" />
+         <Property Name ="SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+         <Property Name ="SVC_DESCRIPTION" Value ="The supplier site id" />
+         <Property Name ="SVC_DISPLAY_NAME" Value ="Supplier Site Id" />
+         <Property Name ="SVC_DOCUMENTATION" Value ="This is the supplier site id." />
+         <Property Name ="SVC_SIZE" Value ="0" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SiteName"
+      EntityAttrName="SiteName"
+      EntityUsage="SupplierSiteEO"
+      AliasName="SITE_NAME" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSupplierSites/SiteName_Site" />
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_DESCRIPTION" Value ="The supplier site name" />
+         <Property Name ="SVC_DISPLAY_NAME" Value ="Supplier Site Name" />
+         <Property Name ="SVC_DOCUMENTATION" Value ="This is the supplier site name." />
+         <Property Name ="SVC_IS_SORTABLE" Value ="true" />
+         <Property Name ="SVC_SIZE" Value ="80" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PurchasingSiteFlag"
+      IsQueriable="false"
+      EntityAttrName="PurchasingSiteFlag"
+      EntityUsage="SupplierSiteEO"
+      AliasName="PURCHASING_SITE_FLAG" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSupplierSites/PurchasingSiteFlag" />
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_SIZE" Value ="1" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PaymentTermsCode"
+      IsQueriable="false"
+      EntityAttrName="PaymentTermsCode"
+      EntityUsage="SupplierSiteEO"
+      AliasName="PAYMENT_TERMS_CODE" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSupplierSites/PaymentTermsCode" />
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_SIZE" Value ="30" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CarrierCode"
+      IsQueriable="false"
+      EntityAttrName="CarrierCode"
+      EntityUsage="SupplierSiteEO"
+      AliasName="CARRIER_CODE" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSupplierSites/CarrierCode" />
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_SIZE" Value ="30" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="AddressId"
+      IsQueriable="false"
+      EntityAttrName="AddressId"
+      EntityUsage="SupplierSiteEO"
+      AliasName="ADDRESS_ID" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSupplierSites/AddressId" />
+         <Property Name ="SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+         <Property Name ="SVC_SIZE" Value ="0" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StartDate"
+      EntityAttrName="StartDate"
+      EntityUsage="SupplierSiteEO"
+      AliasName="START_DATE" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSupplierSites/StartDate" />
+         <Property Name ="SVC_DATATYPE" Value ="oracle.jbo.domain.Date" />
+         <Property Name ="SVC_IS_SORTABLE" Value ="true" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="EndDate"
+      EntityAttrName="EndDate"
+      EntityUsage="SupplierSiteEO"
+      AliasName="END_DATE" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSupplierSites/EndDate" />
+         <Property Name ="SVC_DATATYPE" Value ="oracle.jbo.domain.Date" />
+         <Property Name ="SVC_IS_SORTABLE" Value ="true" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SupplierId1"
+      IsUpdateable="while_insert"
+      IsQueriable="false"
+      IsNotNull="true"
+      EntityAttrName="SupplierId"
+      EntityUsage="SupplierEO"
+      AliasName="SUPPLIER_ID1" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSuppliers/SupplierId" />
+         <Property Name ="SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+         <Property Name ="SVC_IS_PRIVATE" Value ="true" />
+         <Property Name ="SVC_SIZE" Value ="0" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Name"
+      IsNotNull="true"
+      EntityAttrName="Name"
+      EntityUsage="SupplierEO"
+      AliasName="NAME" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSuppliers/SupplierName" />
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_DOCUMENTATION" Value ="This is the supplier name." />
+         <Property Name ="SVC_SIZE" Value ="80" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewLinkAccessor
+      Name="Supplier"
+      ViewLink="oracle.apps.fnd.framework.toolbox.labsolutions.server.SupplierToSitesSVL"
+      Type="oracle.jbo.Row"
+      Reversed="true"
+      IsUpdateable="false" >
+   </ViewLinkAccessor>
+</ViewObject>

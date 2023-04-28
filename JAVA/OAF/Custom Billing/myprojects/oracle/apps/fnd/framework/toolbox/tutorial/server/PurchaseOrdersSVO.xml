@@ -1,0 +1,730 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+
+<ViewObject
+   Name="PurchaseOrdersSVO"
+   SelectList="PurchaseOrderHeaderEO.HEADER_ID, 
+       PurchaseOrderHeaderEO.DESCRIPTION, 
+       PurchaseOrderHeaderEO.STATUS_CODE, 
+       PurchaseOrderHeaderEO.SUPPLIER_ID, 
+       PurchaseOrderHeaderEO.SUPPLIER_SITE_ID, 
+       PurchaseOrderHeaderEO.CURRENCY_CODE, 
+       PurchaseOrderHeaderEO.BUYER_ID, 
+       PurchaseOrderHeaderEO.PAYMENT_TERMS_CODE, 
+       PurchaseOrderHeaderEO.CARRIER_CODE, 
+       PurchaseOrderHeaderEO.RATE, 
+       EmployeeEO.FULL_NAME, 
+       EmployeeEO.EMPLOYEE_ID, 
+       SupplierEO.NAME, 
+       SupplierEO.SUPPLIER_ID AS SUPPLIER_ID1, 
+       SupplierSiteEO.SITE_NAME, 
+       SupplierSiteEO.SUPPLIER_SITE_ID AS SUPPLIER_SITE_ID1,
+
+       PurchaseOrderHeaderEO.ATTRIBUTE_CATEGORY, 
+       PurchaseOrderHeaderEO.ATTRIBUTE1, 
+       PurchaseOrderHeaderEO.ATTRIBUTE2, 
+       PurchaseOrderHeaderEO.ATTRIBUTE3, 
+       PurchaseOrderHeaderEO.ATTRIBUTE4, 
+       PurchaseOrderHeaderEO.ATTRIBUTE5, 
+       PurchaseOrderHeaderEO.ATTRIBUTE6, 
+       PurchaseOrderHeaderEO.ATTRIBUTE7, 
+       PurchaseOrderHeaderEO.ATTRIBUTE8, 
+       PurchaseOrderHeaderEO.ATTRIBUTE9, 
+       PurchaseOrderHeaderEO.ATTRIBUTE10, 
+       PurchaseOrderHeaderEO.ATTRIBUTE11, 
+       PurchaseOrderHeaderEO.ATTRIBUTE12, 
+       PurchaseOrderHeaderEO.ATTRIBUTE13, 
+       PurchaseOrderHeaderEO.ATTRIBUTE14, 
+       PurchaseOrderHeaderEO.ATTRIBUTE15"
+   FromList="FWK_TBX_PO_HEADERS PurchaseOrderHeaderEO, FWK_TBX_EMPLOYEES EmployeeEO, FWK_TBX_SUPPLIERS SupplierEO, FWK_TBX_SUPPLIER_SITES SupplierSiteEO"
+   Where="((PurchaseOrderHeaderEO.BUYER_ID = EmployeeEO.EMPLOYEE_ID) AND (PurchaseOrderHeaderEO.SUPPLIER_ID = SupplierEO.SUPPLIER_ID)) AND (PurchaseOrderHeaderEO.SUPPLIER_SITE_ID = SupplierSiteEO.SUPPLIER_SITE_ID)"
+   BindingStyle="Oracle"
+   CustomQuery="false"
+   RowClass="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrdersSVORowImpl"
+   ComponentClass="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrdersSVOImpl"
+   FetchMode="FETCH_AS_NEEDED"
+   UseGlueCode="false" >
+   <Properties>
+      <Property Name ="BKFF1_CCID_ATTRIBUTE_NAME" Value ="PoNumber" />
+      <Property Name ="BKFF1_DAG_NAME" Value ="FWK_TBX_PO_HEADERS_KFF" />
+      <Property Name ="DFF1_CONTEXT_ATTRIBUTE_NAME" Value ="HeaderAttributeCategory" />
+      <Property Name ="DFF1_DAG_NAME" Value ="FwkTbxPoHeaders" />
+      <Property Name ="RCS_ID" Value ="$Header: PurchaseOrdersSVO.xml 120.31 2006/07/04 01:53:26 atgops1 noship $" />
+      <Property Name ="SVC_ATTACHMENT_SECURITY" Value ="3.SecurityVal" />
+      <Property Name ="SVC_ATTR.PurchaseOrderLine.SVC_DATATYPE" Value ="java.util.List" />
+      <Property Name ="SVC_ATTR.PurchaseOrderLine.SVC_INNERTYPE.0.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.tutorial.PurchaseOrderLine" />
+      <Property Name ="SVC_ATTR.PurchaseOrderLine.SVC_INNERTYPE.0.SVC_QUALIFIED_NAME" Value ="/oracle/apps/fnd/framework/toolbox/tutorial/PurchaseOrderLine" />
+      <Property Name ="SVC_ATTR.PurchaseOrderLine.SVC_QUALIFIED_NAME" Value ="/java/util/List" />
+      <Property Name ="SVC_COMPONENT_CLASS" Value ="oracle.apps.fnd.framework.toolbox.tutorial.PurchaseOrder" />
+      <Property Name ="SVC_DATA_OBJECT" Value ="PurchaseOrder" />
+      <Property Name ="SVC_DISPLAY_NAME" Value ="Purchase Orders Document" />
+      <Property Name ="SVC_DOCUMENTATION" Value ="The data object representing a purchase order document." />
+      <Property Name ="SVC_DOMAIN.BuyerDomain" Value ="oracle.apps.fnd.framework.toolbox.tutorial.server.BuyersDVO" />
+      <Property Name ="SVC_DOMAIN.BuyerDomain.SVC_ATTRIBUTES" Value ="BuyerId,BuyerName" />
+      <Property Name ="SVC_DOMAIN.BuyerDomain.SVC_DOMAIN_CRITERIA" Value ="EmployeeId=BuyerId,FullName=BuyerName" />
+      <Property Name ="SVC_DOMAIN.BuyerDomain.SVC_DOMAIN_RESULTS" Value ="BuyerId=EmployeeId,BuyerName=FullName" />
+      <Property Name ="SVC_DOMAIN.BuyerDomain.SVC_ENTITY_ALIAS" Value ="EmployeeEO" />
+      <Property Name ="SVC_DOMAIN.BuyerDomain.SVC_FILTER" Value ="BuyerFilter" />
+      <Property Name ="SVC_DOMAIN.CarrierDomain" Value ="oracle.apps.fnd.framework.toolbox.tutorial.server.CarriersDVO" />
+      <Property Name ="SVC_DOMAIN.CarrierDomain.SVC_ATTRIBUTES" Value ="CarrierCode" />
+      <Property Name ="SVC_DOMAIN.CarrierDomain.SVC_DOMAIN_CRITERIA" Value ="LookupCode=CarrierCode" />
+      <Property Name ="SVC_DOMAIN.CarrierDomain.SVC_DOMAIN_RESULTS" Value ="CarrierCode=LookupCode" />
+      <Property Name ="SVC_DOMAIN.CarrierDomain.SVC_FILTER" Value ="CarrierDomainFilter" />
+      <Property Name ="SVC_DOMAIN.CurrencyDomain" Value ="oracle.apps.fnd.framework.toolbox.tutorial.server.CurrenciesDVO" />
+      <Property Name ="SVC_DOMAIN.CurrencyDomain.SVC_ATTRIBUTES" Value ="CurrencyCode" />
+      <Property Name ="SVC_DOMAIN.CurrencyDomain.SVC_DOMAIN_CRITERIA" Value ="LookupCode=CurrencyCode" />
+      <Property Name ="SVC_DOMAIN.CurrencyDomain.SVC_DOMAIN_RESULTS" Value ="CurrencyCode=LookupCode" />
+      <Property Name ="SVC_DOMAIN.CurrencyDomain.SVC_FILTER" Value ="CurrencyDomainFilter" />
+      <Property Name ="SVC_DOMAIN.OrderStatusDomain" Value ="oracle.apps.fnd.framework.toolbox.tutorial.server.OrderStatusesDVO" />
+      <Property Name ="SVC_DOMAIN.OrderStatusDomain.SVC_ATTRIBUTES" Value ="StatusCode" />
+      <Property Name ="SVC_DOMAIN.OrderStatusDomain.SVC_DOMAIN_CRITERIA" Value ="LookupCode=StatusCode" />
+      <Property Name ="SVC_DOMAIN.OrderStatusDomain.SVC_DOMAIN_RESULTS" Value ="StatusCode=LookupCode" />
+      <Property Name ="SVC_DOMAIN.OrderStatusDomain.SVC_FILTER" Value ="OrderStatusDomainFilter" />
+      <Property Name ="SVC_DOMAIN.PaymentTermDomain" Value ="oracle.apps.fnd.framework.toolbox.tutorial.server.PaymentTermsDVO" />
+      <Property Name ="SVC_DOMAIN.PaymentTermDomain.SVC_ATTRIBUTES" Value ="PaymentTermsCode" />
+      <Property Name ="SVC_DOMAIN.PaymentTermDomain.SVC_DOMAIN_CRITERIA" Value ="LookupCode=PaymentTermsCode" />
+      <Property Name ="SVC_DOMAIN.PaymentTermDomain.SVC_DOMAIN_RESULTS" Value ="PaymentTermsCode=LookupCode" />
+      <Property Name ="SVC_DOMAIN.PaymentTermDomain.SVC_FILTER" Value ="PaymentTermDomainFilter" />
+      <Property Name ="SVC_DOMAIN.SupplierAndSiteDomain" Value ="oracle.apps.fnd.framework.toolbox.tutorial.server.SupplierAndSitesDVO" />
+      <Property Name ="SVC_DOMAIN.SupplierAndSiteDomain.SVC_ATTRIBUTES" Value ="SupplierId,SupplierSiteId,SupplierName,SupplierSiteName" />
+      <Property Name ="SVC_DOMAIN.SupplierAndSiteDomain.SVC_DOMAIN_CRITERIA" Value ="SupplierId=SupplierId,SupplierSiteId=SupplierSiteId,Name=SupplierName,SiteName=SupplierSiteName" />
+      <Property Name ="SVC_DOMAIN.SupplierAndSiteDomain.SVC_DOMAIN_RESULTS" Value ="SupplierId=SupplierId,SupplierSiteId=SupplierSiteId,SupplierName=Name,SupplierSiteName=SiteName" />
+      <Property Name ="SVC_DOMAIN.SupplierAndSiteDomain.SVC_ENTITY_ALIAS" Value ="SupplierSiteEO" />
+      <Property Name ="SVC_DOMAIN.SupplierAndSiteDomain.SVC_FILTER" Value ="SupplierAndSiteFilter" />
+      <Property Name ="SVC_DOMAINS" Value ="BuyerDomain,SupplierAndSiteDomain,CarrierDomain,CurrencyDomain,OrderStatusDomain,PaymentTermDomain" />
+      <Property Name ="SVC_FILTER_ATTR.PurchaseOrderFilter.POAttachments.SVC_INNERFILTER" Value ="/oracle/apps/fnd/framework/svc/AttachedDocumentFilter" />
+      <Property Name ="SVC_FILTER_ATTR.PurchaseOrderFilter.POAttachments.SVC_INNERFILTER.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.svc.AttachedDocumentFilter" />
+      <Property Name ="SVC_FILTER_ATTR.PurchaseOrderFilter.POAttachments.SVC_INNERFILTER.SVC_NAME" Value ="AttachedDocumentFilter" />
+      <Property Name ="SVC_FILTER_ATTR.PurchaseOrderFilter.POAttachments.SVC_INNERFILTER.SVC_NAMESPACE" Value ="/oracle/apps/fnd/framework/svc/" />
+      <Property Name ="SVC_FILTER_ATTR.PurchaseOrderFilter.PoNumber.SVC_DOCUMENTATION" Value ="Developer documentation goes here." />
+      <Property Name ="SVC_FILTER_ATTR.PurchaseOrderFilter.PurchaseOrderLine.OA_ATTRIBUTE_SET" Value ="oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/PurchaseOrderLines" />
+      <Property Name ="SVC_FILTER_ATTR.PurchaseOrderFilter.PurchaseOrderLine.SVC_INNERFILTER" Value ="/oracle/apps/fnd/framework/toolbox/tutorial/PurchaseOrderLineFilter" />
+      <Property Name ="SVC_FILTER_ATTR.PurchaseOrderFilter.PurchaseOrderLine.SVC_INNERFILTER.SVC_NAME" Value ="PurchaseOrderLineFilter" />
+      <Property Name ="SVC_FILTER_ATTR.PurchaseOrderFilter.SupplierAttachments.SVC_INNERFILTER" Value ="/oracle/apps/fnd/framework/svc/AttachedDocumentFilter" />
+      <Property Name ="SVC_FILTER_ATTR.PurchaseOrderFilter.SupplierAttachments.SVC_INNERFILTER.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.svc.AttachedDocumentFilter" />
+      <Property Name ="SVC_FILTER_ATTR.PurchaseOrderFilter.SupplierAttachments.SVC_INNERFILTER.SVC_NAME" Value ="AttachedDocumentFilter" />
+      <Property Name ="SVC_FILTER_ATTR.PurchaseOrderFilter.SupplierAttachments.SVC_INNERFILTER.SVC_NAMESPACE" Value ="/oracle/apps/fnd/framework/svc/" />
+      <Property Name ="SVC_FILTER_ATTR.PurchaseOrderFilter.SupplierStartDate.SVC_DATATYPE" Value ="oracle.jbo.domain.Date" />
+      <Property Name ="SVC_FILTER_ATTR.PurchaseOrderFilter.SupplierStartDate.SVC_DOCUMENTATION" Value ="The supplier start date. &#xa;This will allow us to query by the supplier start date even though&#xa;its not on the PurchaseOrder data object." />
+      <Property Name ="SVC_FILTER.PurchaseOrderFilter.SVC_ATTRIBUTES" Value ="PoNumber,Description,StatusCode,SupplierId,SupplierSiteId,BuyerId,BuyerName,SupplierName,SupplierSiteName,SupplierAttachments,POAttachments,PurchaseOrderLine,SupplierStartDate" />
+      <Property Name ="SVC_FILTER.PurchaseOrderFilter.SVC_COMPONENT_CLASS" Value ="oracle.apps.fnd.framework.toolbox.tutorial.PurchaseOrderFilter" />
+      <Property Name ="SVC_FILTER.PurchaseOrderFilter.SVC_DISPLAY_NAME" Value ="Purchase Order Filter" />
+      <Property Name ="SVC_FILTER.PurchaseOrderFilter.SVC_DOCUMENTATION" Value ="This is the Purchase Order Expression Filter. This is the default filter." />
+      <Property Name ="SVC_FILTER.PurchaseOrderFilter.SVC_EXPRESSION" Value ="true" />
+      <Property Name ="SVC_FILTER.PurchaseOrderFilter.SVC_NAMESPACE" Value ="/oracle/apps/fnd/framework/toolbox/tutorial/" />
+      <Property Name ="SVC_FILTER.PurchaseOrderFilter.SVC_NESTED_FILTERS" Value ="PurchaseOrderFilter" />
+      <Property Name ="SVC_FILTER.PurchaseOrderFilter.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_FILTER.PurchaseOrderFilter.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_FILTER.PurchaseOrderFilter.SVC_REP_PRODUCT" Value ="fnd" />
+      <Property Name ="SVC_FILTER.PurchaseOrderFilter.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_FILTER.PurchaseOrderFilter.SVC_SUPER_CLASS" Value ="oracle.svc.expression.ExpressionFilter" />
+      <Property Name ="SVC_FILTERS" Value ="PurchaseOrderFilter" />
+      <Property Name ="SVC_KEY_SET.ByDesc" Value ="PoNumber.1.Description" />
+      <Property Name ="SVC_KEY_SET.DescKeySet" Value ="PoNumber.1.Description" />
+      <Property Name ="SVC_KEY_SETS" Value ="ByDesc" />
+      <Property Name ="SVC_NAMESPACE" Value ="/oracle/apps/fnd/framework/toolbox/tutorial/" />
+      <Property Name ="SVC_OBJECT" Value ="SDO" />
+      <Property Name ="SVC_PARTIAL_FAILURE_ENABLED" Value ="true" />
+      <Property Name ="SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_REP_PRODUCT" Value ="fnd" />
+      <Property Name ="SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_SUPER_CLASS" Value ="oracle.svc.DataObjectImpl" />
+      <Property Name ="SVC_VO_DEF" Value ="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrdersSVO" />
+   </Properties>
+   <DesignTime>
+      <Attr Name="_rowSuperClassName" Value="oracle.apps.fnd.framework.server.OAViewRowImpl" />
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.38.51" />
+      <Attr Name="_objectSuperClassName" Value="oracle.apps.fnd.framework.server.OAViewObjectImpl" />
+      <Attr Name="_codeGenFlag2" Value="Access|Coll" />
+   </DesignTime>
+   <EntityUsage
+      Name="PurchaseOrderHeaderEO"
+      Entity="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderHeaderEO" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="false" />
+      </DesignTime>
+   </EntityUsage>
+   <EntityUsage
+      Name="EmployeeEO"
+      Entity="oracle.apps.fnd.framework.toolbox.schema.server.EmployeeEO"
+      Association="oracle.apps.fnd.framework.toolbox.schema.server.PoToBuyerAO"
+      AssociationEnd="oracle.apps.fnd.framework.toolbox.schema.server.PoToBuyerAO.EmployeeEO"
+      SourceUsage="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrdersSVO.PurchaseOrderHeaderEO"
+      Reference="true" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="false" />
+         <AttrArray Name="_dstAttributes">
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.EmployeeEO.EmployeeId" />
+         </AttrArray>
+         <AttrArray Name="_srcAttributes">
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderHeaderEO.BuyerId" />
+         </AttrArray>
+      </DesignTime>
+   </EntityUsage>
+   <EntityUsage
+      Name="SupplierEO"
+      Entity="oracle.apps.fnd.framework.toolbox.schema.server.SupplierEO"
+      Association="oracle.apps.fnd.framework.toolbox.schema.server.PoToSupplierAO"
+      AssociationEnd="oracle.apps.fnd.framework.toolbox.schema.server.PoToSupplierAO.SupplierEO"
+      SourceUsage="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrdersSVO.PurchaseOrderHeaderEO"
+      Reference="true" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="false" />
+         <AttrArray Name="_dstAttributes">
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.SupplierEO.SupplierId" />
+         </AttrArray>
+         <AttrArray Name="_srcAttributes">
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderHeaderEO.SupplierId" />
+         </AttrArray>
+      </DesignTime>
+   </EntityUsage>
+   <EntityUsage
+      Name="SupplierSiteEO"
+      Entity="oracle.apps.fnd.framework.toolbox.schema.server.SupplierSiteEO"
+      Association="oracle.apps.fnd.framework.toolbox.schema.server.PoToSupplierSiteAO"
+      AssociationEnd="oracle.apps.fnd.framework.toolbox.schema.server.PoToSupplierSiteAO.SupplierSiteEO"
+      SourceUsage="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrdersSVO.PurchaseOrderHeaderEO"
+      Reference="true" >
+      <DesignTime>
+         <Attr Name="_queryClause" Value="false" />
+         <AttrArray Name="_dstAttributes">
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.SupplierSiteEO.SupplierSiteId" />
+         </AttrArray>
+         <AttrArray Name="_srcAttributes">
+            <Item Value="oracle.apps.fnd.framework.toolbox.schema.server.PurchaseOrderHeaderEO.SupplierSiteId" />
+         </AttrArray>
+      </DesignTime>
+   </EntityUsage>
+   <ViewAttribute
+      Name="PoNumber"
+      IsUpdateable="while_insert"
+      IsNotNull="true"
+      EntityAttrName="HeaderId"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="HEADER_ID" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderId" />
+         <Property Name ="SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+         <Property Name ="SVC_DISPLAY_NAME" Value ="Purchase Order Number" />
+         <Property Name ="SVC_DOCUMENTATION" Value ="The Purchase Order Number." />
+         <Property Name ="SVC_IS_SORTABLE" Value ="true" />
+         <Property Name ="SVC_SIZE" Value ="0" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Description"
+      EntityAttrName="Description"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="DESCRIPTION" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/Description" />
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_DISPLAY_NAME" Value ="Description" />
+         <Property Name ="SVC_SIZE" Value ="240" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="StatusCode"
+      IsNotNull="true"
+      EntityAttrName="StatusCode"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="STATUS_CODE" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/StatusCode" />
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_SIZE" Value ="30" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SupplierId"
+      IsNotNull="true"
+      EntityAttrName="SupplierId"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="SUPPLIER_ID" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/SupplierId" />
+         <Property Name ="SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+         <Property Name ="SVC_SIZE" Value ="0" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SupplierSiteId"
+      IsNotNull="true"
+      EntityAttrName="SupplierSiteId"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="SUPPLIER_SITE_ID" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/SupplierSiteId" />
+         <Property Name ="SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+         <Property Name ="SVC_SIZE" Value ="0" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CurrencyCode"
+      IsUpdateable="while_insert"
+      IsNotNull="true"
+      EntityAttrName="CurrencyCode"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="CURRENCY_CODE" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/CurrencyCode" />
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_SIZE" Value ="30" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="BuyerId"
+      IsNotNull="true"
+      EntityAttrName="BuyerId"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="BUYER_ID" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/BuyerId" />
+         <Property Name ="SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+         <Property Name ="SVC_SIZE" Value ="0" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PaymentTermsCode"
+      IsNotNull="true"
+      EntityAttrName="PaymentTermsCode"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="PAYMENT_TERMS_CODE" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/PaymentTermsCode" />
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_SIZE" Value ="30" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CarrierCode"
+      IsNotNull="true"
+      EntityAttrName="CarrierCode"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="CARRIER_CODE" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/CarrierCode" />
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_SIZE" Value ="30" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Rate"
+      EntityAttrName="Rate"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="RATE" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/Rate" />
+         <Property Name ="SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+         <Property Name ="SVC_SIZE" Value ="0" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="BuyerName"
+      EntityAttrName="FullName"
+      EntityUsage="EmployeeEO"
+      AliasName="FULL_NAME" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/FullName_Buyer" />
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_SIZE" Value ="240" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="EmployeeId"
+      IsUpdateable="while_insert"
+      IsNotNull="true"
+      EntityAttrName="EmployeeId"
+      EntityUsage="EmployeeEO"
+      AliasName="EMPLOYEE_ID" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxEmployees/EmployeeId" />
+         <Property Name ="SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+         <Property Name ="SVC_IS_PRIVATE" Value ="true" />
+         <Property Name ="SVC_SIZE" Value ="0" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SupplierName"
+      IsNotNull="true"
+      EntityAttrName="Name"
+      EntityUsage="SupplierEO"
+      AliasName="NAME" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSuppliers/SupplierName" />
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_IS_EXERNAL_KEY" Value ="true" />
+         <Property Name ="SVC_SIZE" Value ="80" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SupplierId1"
+      IsUpdateable="while_insert"
+      IsQueriable="false"
+      IsNotNull="true"
+      EntityAttrName="SupplierId"
+      EntityUsage="SupplierEO"
+      AliasName="SUPPLIER_ID1" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSuppliers/SupplierId" />
+         <Property Name ="SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+         <Property Name ="SVC_IS_PRIVATE" Value ="true" />
+         <Property Name ="SVC_SIZE" Value ="0" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SupplierSiteName"
+      IsUpdateable="false"
+      EntityAttrName="SiteName"
+      EntityUsage="SupplierSiteEO"
+      AliasName="SITE_NAME" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSupplierSites/SupplierSiteId" />
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_IS_EXERNAL_KEY" Value ="true" />
+         <Property Name ="SVC_SIZE" Value ="80" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SupplierSiteId1"
+      IsQueriable="false"
+      EntityAttrName="SupplierSiteId"
+      EntityUsage="SupplierSiteEO"
+      AliasName="SUPPLIER_SITE_ID1" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxSupplierSites/SupplierSiteId" />
+         <Property Name ="SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+         <Property Name ="SVC_IS_PRIVATE" Value ="true" />
+         <Property Name ="SVC_SIZE" Value ="0" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SupplierAttachments"
+      IsPersistent="false"
+      Precision="255"
+      Type="java.util.List"
+      ColumnType="VARCHAR2"
+      AliasName="VIEW_ATTR"
+      SQLType="VARCHAR" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/Transient/SupplierAttachments" />
+         <Property Name ="SVC_ATTACHMENT_CATEGORY.FWK_TBX_SUPPLIERS" Value ="true" />
+         <Property Name ="SVC_ATTACHMENT.FWK_TBX_SUPPLIERS" Value ="SupplierId" />
+         <Property Name ="SVC_DATATYPE" Value ="java.util.List" />
+         <Property Name ="SVC_INNERTYPE.0.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.svc.AttachedDocument" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="POAttachments"
+      IsPersistent="false"
+      Precision="255"
+      Type="java.util.List"
+      ColumnType="VARCHAR2"
+      AliasName="VIEW_ATTR"
+      SQLType="VARCHAR" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/Transient/POAttachments" />
+         <Property Name ="SVC_ATTACHMENT_CATEGORY.FWK_TBX_PO_HEADERS" Value ="false,MISC,Payables" />
+         <Property Name ="SVC_ATTACHMENT_CATEGORY.FWK_TBX_POS" Value ="false,MISC,PO Internal" />
+         <Property Name ="SVC_ATTACHMENT.FWK_TBX_POS" Value ="PoNumber" />
+         <Property Name ="SVC_DATATYPE" Value ="java.util.List" />
+         <Property Name ="SVC_INNERTYPE.0.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.svc.AttachedDocument" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="HeaderAttributeCategory"
+      EntityAttrName="AttributeCategory"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="ATTRIBUTE_CATEGORY" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderAttributeCategory" />
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_IS_PRIVATE" Value ="true" />
+         <Property Name ="SVC_SIZE" Value ="30" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="HeaderAttribute1"
+      EntityAttrName="Attribute1"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="ATTRIBUTE1" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderAttribute1" />
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_IS_PRIVATE" Value ="true" />
+         <Property Name ="SVC_IS_SORTABLE" Value ="false" />
+         <Property Name ="SVC_SIZE" Value ="150" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="HeaderAttribute2"
+      EntityAttrName="Attribute2"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="ATTRIBUTE2" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderAttribute2" />
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_IS_PRIVATE" Value ="true" />
+         <Property Name ="SVC_SIZE" Value ="150" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="HeaderAttribute3"
+      EntityAttrName="Attribute3"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="ATTRIBUTE3" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderAttribute3" />
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_IS_PRIVATE" Value ="true" />
+         <Property Name ="SVC_IS_SORTABLE" Value ="false" />
+         <Property Name ="SVC_SIZE" Value ="150" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="HeaderAttribute4"
+      EntityAttrName="Attribute4"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="ATTRIBUTE4" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderAttribute4" />
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_IS_PRIVATE" Value ="true" />
+         <Property Name ="SVC_IS_SORTABLE" Value ="false" />
+         <Property Name ="SVC_SIZE" Value ="150" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="HeaderAttribute5"
+      EntityAttrName="Attribute5"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="ATTRIBUTE5" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderAttribute5" />
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_IS_PRIVATE" Value ="true" />
+         <Property Name ="SVC_IS_SORTABLE" Value ="false" />
+         <Property Name ="SVC_SIZE" Value ="150" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="HeaderAttribute6"
+      EntityAttrName="Attribute6"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="ATTRIBUTE6" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderAttribute6" />
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_IS_PRIVATE" Value ="true" />
+         <Property Name ="SVC_IS_SORTABLE" Value ="false" />
+         <Property Name ="SVC_SIZE" Value ="150" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="HeaderAttribute7"
+      EntityAttrName="Attribute7"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="ATTRIBUTE7" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderAttribute7" />
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_IS_PRIVATE" Value ="true" />
+         <Property Name ="SVC_IS_SORTABLE" Value ="false" />
+         <Property Name ="SVC_SIZE" Value ="150" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="HeaderAttribute8"
+      EntityAttrName="Attribute8"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="ATTRIBUTE8" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderAttribute8" />
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_IS_PRIVATE" Value ="true" />
+         <Property Name ="SVC_IS_SORTABLE" Value ="false" />
+         <Property Name ="SVC_SIZE" Value ="150" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="HeaderAttribute9"
+      EntityAttrName="Attribute9"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="ATTRIBUTE9" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderAttribute9" />
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_IS_PRIVATE" Value ="true" />
+         <Property Name ="SVC_IS_SORTABLE" Value ="false" />
+         <Property Name ="SVC_SIZE" Value ="150" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="HeaderAttribute10"
+      EntityAttrName="Attribute10"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="ATTRIBUTE10" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderAttribute10" />
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_IS_PRIVATE" Value ="true" />
+         <Property Name ="SVC_IS_SORTABLE" Value ="false" />
+         <Property Name ="SVC_SIZE" Value ="150" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="HeaderAttribute11"
+      EntityAttrName="Attribute11"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="ATTRIBUTE11" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderAttribute11" />
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_IS_PRIVATE" Value ="true" />
+         <Property Name ="SVC_IS_SORTABLE" Value ="false" />
+         <Property Name ="SVC_SIZE" Value ="150" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="HeaderAttribute12"
+      EntityAttrName="Attribute12"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="ATTRIBUTE12" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderAttribute12" />
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_IS_PRIVATE" Value ="true" />
+         <Property Name ="SVC_IS_SORTABLE" Value ="false" />
+         <Property Name ="SVC_SIZE" Value ="150" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="HeaderAttribute13"
+      EntityAttrName="Attribute13"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="ATTRIBUTE13" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderAttribute13" />
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_IS_PRIVATE" Value ="true" />
+         <Property Name ="SVC_IS_SORTABLE" Value ="false" />
+         <Property Name ="SVC_SIZE" Value ="150" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="HeaderAttribute14"
+      EntityAttrName="Attribute14"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="ATTRIBUTE14" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderAttribute14" />
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_IS_PRIVATE" Value ="true" />
+         <Property Name ="SVC_SIZE" Value ="150" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="HeaderAttribute15"
+      EntityAttrName="Attribute15"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="ATTRIBUTE15" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderAttribute15" />
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_IS_PRIVATE" Value ="true" />
+         <Property Name ="SVC_IS_SORTABLE" Value ="false" />
+         <Property Name ="SVC_SIZE" Value ="150" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="DynamicAttributeGroups"
+      IsPersistent="false"
+      Type="java.util.List"
+      ColumnType="$none$"
+      AliasName="VIEW_ATTR"
+      SQLType="VARCHAR" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/Transient/DynamicAttributeGroups" />
+         <Property Name ="SVC_DATATYPE" Value ="java.util.List" />
+         <Property Name ="SVC_INNERTYPE.0.SVC_DATATYPE" Value ="oracle.svc.dag.DynamicAttributeGroup" />
+         <Property Name ="SVC_INNERTYPE.0.SVC_NAME" Value ="DynamicAttributeGroup" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="SecurityVal"
+      IsPersistent="false"
+      DefaultValue="0"
+      Precision="255"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="VARCHAR2"
+      AliasName="VIEW_ATTR"
+      SQLType="NUMERIC" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/Transient/SecurityVal" />
+         <Property Name ="SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+         <Property Name ="SVC_IS_PRIVATE" Value ="true" />
+         <Property Name ="SVC_SIZE" Value ="255" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="KFF1_AnchorAttribute"
+      IsQueriable="false"
+      IsPersistent="false"
+      EntityAttrName="KFF1_AnchorAttribute"
+      EntityUsage="PurchaseOrderHeaderEO"
+      AliasName="KFF1_ANCHORATTRIBUTE" >
+      <Properties>
+         <Property Name ="OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/KFF1_ANCHORATTRIBUTE" />
+         <Property Name ="SVC_DATATYPE" Value ="java.lang.String" />
+         <Property Name ="SVC_SIZE" Value ="255" />
+         <Property Name ="SVC_TRANSLATABLE" Value ="false" />
+      </Properties>
+   </ViewAttribute>
+   <AttrArray Name="KeyAttributes">
+      <Item Value="PoNumber" />
+   </AttrArray>
+   <ViewLinkAccessor
+      Name="PurchaseOrderLine"
+      ViewLink="oracle.apps.fnd.framework.toolbox.tutorial.server.PoHeaderToLinesSVL"
+      Type="oracle.jbo.RowIterator"
+      IsUpdateable="false" >
+   </ViewLinkAccessor>
+</ViewObject>

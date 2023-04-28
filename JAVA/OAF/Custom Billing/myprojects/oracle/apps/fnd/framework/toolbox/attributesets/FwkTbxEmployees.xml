@@ -1,0 +1,24 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory  -->
+<!-- Following  attribute sets for the FWK_TBX_EMPLOYEES displayable columns. It would be nice if you add some message tips to some attribute sets -->
+<!-- Followed by region header attribute sets, add as many as you need -->
+<!-- Followed by UI standards, object specific button attribute sets, use Buttons.xml for shared, no object specific buttons. Add as many as you need -->
+<package xmlns="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:jrad="http://xmlns.oracle.com/jrad" version="9.0.3.8.3_752" xml:lang="en-US" file-version="$Header: FwkTbxEmployees.xml 120.9 2006/05/25 13:08:11 atgops1 noship $">
+   <jrad:attributeSet docName="EmployeeId" comment="An employee's identification number." prompt="Employee Number" columns="15"/>
+   <jrad:attributeSet docName="Title" comment="Used in the context of an employee's job title" prompt="Title" columns="20"/>
+   <jrad:attributeSet docName="FirstName" comment="Used in the context of an employee first name" prompt="First Name" columns="20"/>
+   <jrad:attributeSet docName="MiddleNames" comment="Used in the context of an employee middle name" prompt="Middle Name" columns="30"/>
+   <jrad:attributeSet docName="LastName" comment="Used in the context of an employee last name" prompt="Last Name" columns="40"/>
+   <jrad:attributeSet docName="FullName" comment="Used in the context of an employee full name" prompt="Employee Name" columns="40"/>
+   <jrad:attributeSet docName="EmailAddress" comment="Used for an employee Email address" prompt="Email Address" columns="80"/>
+   <jrad:attributeSet docName="Position" comment="Used in the context of an employee position" prompt="Position" columns="30"/>
+   <jrad:attributeSet docName="Salary" comment="Used in the context of an employee salary job title" prompt="Salary" columns="15"/>
+   <jrad:attributeSet docName="StartDate" comment="Used in the context of an employee job start date" prompt="Hire Date" columns="30"/>
+   <jrad:attributeSet docName="EndDate" comment="Used in the context of an employee job end date" prompt="End Date" columns="30"/>
+   <jrad:attributeSet docName="FwkTbxEmployees" comment="Used as a header for an employee details region." prompt="Employee Details"/>
+   <jrad:attributeSet docName="CreateEmployee" comment="UI Standards 'Create xxx' button or icon." prompt="Create Employee" shortDesc="Select to create an employee."/>
+   <jrad:attributeSet docName="UpdateEmployee" comment="UI Standards 'Update xxx' button or icon." prompt="Update Employee" shortDesc="Select to update this employee."/>
+   <jrad:attributeSet docName="EmployeeId_Number" prompt="Number" comment="Employee number used when Employee context is established." columns="15"/>
+   <attributeSet docName="FullName_Manager" comment="Used for name in Manager context." columns="40" prompt="Manager"/>
+   <attributeSet docName="FullName_Buyer" comment="Buyer Name." columns="40" prompt="Buyer Name"/>
+</package>

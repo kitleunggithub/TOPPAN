@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory  -->
+<!-- Following  attribute sets for the FWK_TBX_PO_SHIPMENTS displayable columns. It would be nice if you add some message tips to some attribute sets -->
+<!-- Followed by region header attribute sets, add as many as you need -->
+<!-- Followed by UI standards, object specific button attribute sets, use Buttons.xml for shared, no object specific buttons. Add as many as you need -->
+<package xmlns="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:jrad="http://xmlns.oracle.com/jrad" version="9.0.3.8.6_889" xml:lang="en-US" file-version="$Header: FwkTbxPoShipments.xml 120.5 2005/07/12 12:05:00 atgops1 noship $">
+   <jrad:attributeSet docName="ShipmentNumber" comment="Shipment number which is unique for this purchase order." prompt="Number" columns="15"/>
+   <jrad:attributeSet docName="NeedByDate" comment="Date by which line items are required." prompt="Need-By Date" columns="30"/>
+   <jrad:attributeSet docName="ReceiptQuantity" comment="Quantity of goods/services received for this shipment." prompt="Quantity Received" columns="15"/>
+   <jrad:attributeSet docName="OrderQuantity" comment="Number of items to be delivered on this shipment." prompt="Quantity" columns="15"/>
+   <attributeSet docName="ShipmentId" comment="Shipment unique identifier." columns="15" prompt="Shipment Id"/>
+   <attributeSet docName="PromiseDate" comment="Date on which supplier promises to deliver line items." columns="15" prompt="Promise Date"/>
+   <attributeSet docName="ReceiptDate" comment="Date on which line items were received." columns="15" prompt="Receipt Date"/>
+</package>

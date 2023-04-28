@@ -1,0 +1,188 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE JboPackage SYSTEM "jbo_03_01.dtd">
+<!-- $Header: server.xml 120.15.12010000.3 2008/10/14 06:23:40 sette ship $ -->
+
+<JboPackage
+   Name="server"
+   SeparateXMLFiles="true"
+   PackageName="oracle.apps.fnd.framework.toolbox.tutorial.server" >
+   <DesignTime>
+      <Attr Name="_ejbPackage" Value="false" />
+      <Attr Name="_version" Value="10.1.3.38.51" />
+   </DesignTime>
+   <Containee
+      Name="BuyersDVO"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.BuyersDVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="CarriersDVO"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.CarriersDVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="CreateAM"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.CreateAM"
+      ObjectType="AppModule" >
+   </Containee>
+   <Containee
+      Name="CurrenciesDVO"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.CurrenciesDVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="DeleteAM"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.DeleteAM"
+      ObjectType="AppModule" >
+   </Containee>
+   <Containee
+      Name="HelloWorldAM"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.HelloWorldAM"
+      ObjectType="AppModule" >
+   </Containee>
+   <Containee
+      Name="HomeAM"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.HomeAM"
+      ObjectType="AppModule" >
+   </Containee>
+   <Containee
+      Name="LookupCodesVO"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.LookupCodesVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="MultistepCreateAM"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.MultistepCreateAM"
+      ObjectType="AppModule" >
+   </Containee>
+   <Containee
+      Name="OrderStatusesDVO"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.OrderStatusesDVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="PaymentTermsDVO"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.PaymentTermsDVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="PoDetailsFullExpVO"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.PoDetailsFullExpVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="PoDetailsFullVO"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.PoDetailsFullVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="PoHeaderEOLineEOVL"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.PoHeaderEOLineEOVL"
+      ObjectType="ViewLink" >
+   </Containee>
+   <Containee
+      Name="PoHeaderToLinesSVL"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.PoHeaderToLinesSVL"
+      ObjectType="ViewLink" >
+   </Containee>
+   <Containee
+      Name="PoHeaderToLinesVL"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.PoHeaderToLinesVL"
+      ObjectType="ViewLink" >
+   </Containee>
+   <Containee
+      Name="PoLinesExpVO"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.PoLinesExpVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="PoLineShipFullVO"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.PoLineShipFullVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="PoLineToShipmentsSVL"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.PoLineToShipmentsSVL"
+      ObjectType="ViewLink" >
+   </Containee>
+   <Containee
+      Name="PoSimpleSummaryVO"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.PoSimpleSummaryVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="PoSummaryAM"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.PoSummaryAM"
+      ObjectType="AppModule" >
+   </Containee>
+   <Containee
+      Name="PoSummaryVO"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.PoSummaryVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="PurchaseOrderAcknowledgementsSVO"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrderAcknowledgementsSVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="PurchaseOrderLinesSVO"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrderLinesSVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="PurchaseOrderReceiptsSVO"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrderReceiptsSVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="PurchaseOrderSAM"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrderSAM"
+      ObjectType="AppModule" >
+   </Containee>
+   <Containee
+      Name="PurchaseOrderShipmentsSVO"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrderShipmentsSVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="PurchaseOrdersSVO"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrdersSVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="SearchAM"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.SearchAM"
+      ObjectType="AppModule" >
+   </Containee>
+   <Containee
+      Name="SupplierAndSitesDVO"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.SupplierAndSitesDVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="SuppliersDVO"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.SuppliersDVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="SupplierSummaryVO"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.SupplierSummaryVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="SuppliersVO"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.SuppliersVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="UnitOfMeasuresDVO"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.UnitOfMeasuresDVO"
+      ObjectType="ViewObject" >
+   </Containee>
+   <Containee
+      Name="UpdateAM"
+      FullName="oracle.apps.fnd.framework.toolbox.tutorial.server.UpdateAM"
+      ObjectType="AppModule" >
+   </Containee>
+</JboPackage>

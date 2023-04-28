@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!-- dbdrv: exec java oracle/jrad/tools/xml/importer XMLImporter.class java &phase=dat+24 checkfile:~PROD:~PATH:~FILE &fullpath_~PROD_~PATH_~FILE -username &un_apps -password &pw_apps -dbconnection &jdbc_db_addr  -userId "1" -rootPackage /oracle/apps/~PROD  -rootdir &fullpath_~PROD_mds_directory  -->
+<!-- Following  attribute sets for the FWK_TBX_SUPLIERS displayable columns. It would be nice if you add some message tips to some attribute sets -->
+<!-- Followed by region header attribute sets, add as many as you need -->
+<!-- Followed by UI standards, object specific button attribute sets, use Buttons.xml for shared, no object specific buttons. Add as many as you need -->
+<package xmlns="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" xmlns:jrad="http://xmlns.oracle.com/jrad" version="9.0.3.8.6_889" xml:lang="en-US" file-version="$Header: FwkTbxSuppliers.xml 120.5 2005/07/12 12:05:05 atgops1 noship $">
+   <jrad:attributeSet docName="SupplierId" comment="Supplier unique identifier." prompt="Supplier Number"/>
+   <jrad:attributeSet docName="SupplierName" comment="Supplier name." prompt="Supplier Name" columns="40"/>
+   <jrad:attributeSet docName="SupplierName_Name" comment="Supplier name." prompt="Name" columns="40"/>
+   <jrad:attributeSet docName="OnHoldFlag" comment="Flag indicating whether supplier is on hold." prompt="On Hold" columns="3"/>
+   <jrad:attributeSet docName="StartDate" comment="Supplier activation start date." prompt="Start Date" columns="30"/>
+   <jrad:attributeSet docName="EndDate" comment="Date after which supplier is disabled." prompt="End Date" columns="30"/>
+   <jrad:attributeSet docName="CreateSupplier" comment="UI Standards 'Create xxx' button or icon." prompt="Create Supplier" shortDesc="Select to create a supplier."/>
+   <jrad:attributeSet docName="UpdateSupplier" comment="UI Standards 'Update xxx' button or icon." prompt="Update Supplier" shortDesc="Select to update this supplier."/>
+   <jrad:attributeSet docName="SupplierId_Number" columns="15" comment="Supplier unique identifier." prompt="Number"/>
+   <jrad:attributeSet docName="SupplierName_Supplier" columns="40" comment="Supplier unique identifier." prompt="Supplier"/>
+</package>

@@ -1,0 +1,284 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+
+<AppModule
+   Name="PurchaseOrderSAM"
+   ComponentClass="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrderSAMImpl"
+   LoadComponentsLazily="true" >
+   <Properties>
+      <Property Name ="RCS_ID" Value ="$Header: PurchaseOrderSAM.xml 120.26 2006/07/04 01:17:32 atgops1 noship $" />
+      <Property Name ="SVC_AM_DEF" Value ="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrderSAM" />
+      <Property Name ="SVC_DATASOURCE.CarrierDomain.SVC_DATATYPE" Value ="oracle.svc.DataObjectImpl" />
+      <Property Name ="SVC_DATASOURCE.CarrierDomain.SVC_QUALIFIED_NAME" Value ="/oracle/apps/fnd/framework/toolbox/tutorial/CarrierDomain" />
+      <Property Name ="SVC_DATASOURCE.CarrierDomain.SVC_SINGULAR_NAME" Value ="CarrierDomain" />
+      <Property Name ="SVC_DATASOURCE.CurrenciesDomain.SVC_DATATYPE" Value ="oracle.svc.DataObjectImpl" />
+      <Property Name ="SVC_DATASOURCE.CurrenciesDomain.SVC_QUALIFIED_NAME" Value ="/oracle/apps/fnd/framework/toolbox/tutorial/CurrencyDomain" />
+      <Property Name ="SVC_DATASOURCE.CurrenciesDomain.SVC_SINGULAR_NAME" Value ="CurrencyDomain" />
+      <Property Name ="SVC_DATASOURCE.OrderStatusesDomain.SVC_DATATYPE" Value ="oracle.svc.DataObjectImpl" />
+      <Property Name ="SVC_DATASOURCE.OrderStatusesDomain.SVC_QUALIFIED_NAME" Value ="/oracle/apps/fnd/framework/toolbox/tutorial/OrderStatusDomain" />
+      <Property Name ="SVC_DATASOURCE.OrderStatusesDomain.SVC_SINGULAR_NAME" Value ="OrderStatusDomain" />
+      <Property Name ="SVC_DATASOURCE.PaymentTermsDomain.SVC_DATATYPE" Value ="oracle.svc.DataObjectImpl" />
+      <Property Name ="SVC_DATASOURCE.PaymentTermsDomain.SVC_QUALIFIED_NAME" Value ="/oracle/apps/fnd/framework/toolbox/tutorial/PaymentTermDomain" />
+      <Property Name ="SVC_DATASOURCE.PaymentTermsDomain.SVC_SINGULAR_NAME" Value ="PaymentTermDomain" />
+      <Property Name ="SVC_DATASOURCE.PurchaseOrder_BuyerDomain.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.tutorial.Buyer" />
+      <Property Name ="SVC_DATASOURCE.PurchaseOrder_BuyerDomain.SVC_QUALIFIED_NAME" Value ="/oracle/apps/fnd/framework/toolbox/tutorial/Buyer" />
+      <Property Name ="SVC_DATASOURCE.PurchaseOrder_BuyerDomain.SVC_SINGULAR_NAME" Value ="BuyerDomain" />
+      <Property Name ="SVC_DATASOURCE.PurchaseOrder_SupplierAndSiteDomain.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.tutorial.SupplierAndSite" />
+      <Property Name ="SVC_DATASOURCE.PurchaseOrder_SupplierAndSiteDomain.SVC_QUALIFIED_NAME" Value ="/oracle/apps/fnd/framework/toolbox/tutorial/SupplierAndSite" />
+      <Property Name ="SVC_DATASOURCE.PurchaseOrder_SupplierAndSiteDomain.SVC_SINGULAR_NAME" Value ="SupplierAndSiteDomain" />
+      <Property Name ="SVC_DATASOURCE.PurchaseOrder.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.tutorial.PurchaseOrder" />
+      <Property Name ="SVC_DATASOURCE.PurchaseOrder.SVC_DOCUMENTATION" Value ="The data source for purchase orders." />
+      <Property Name ="SVC_DATASOURCE.PurchaseOrder.SVC_METHODS_GENERATED" Value ="true" />
+      <Property Name ="SVC_DATASOURCE.PurchaseOrder.SVC_QUALIFIED_NAME" Value ="/oracle/apps/fnd/framework/toolbox/tutorial/PurchaseOrder" />
+      <Property Name ="SVC_DATASOURCE.PurchaseOrder.SVC_SINGULAR_NAME" Value ="PurchaseOrder" />
+      <Property Name ="SVC_DATASOURCE.PurchaseOrderLine.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.tutorial.PurchaseOrderLine" />
+      <Property Name ="SVC_DATASOURCE.PurchaseOrderLine.SVC_DOCUMENTATION" Value ="The datasource for purchase order lines." />
+      <Property Name ="SVC_DATASOURCE.PurchaseOrderLine.SVC_QUALIFIED_NAME" Value ="/oracle/apps/fnd/framework/toolbox/tutorial/PurchaseOrderLine" />
+      <Property Name ="SVC_DATASOURCE.PurchaseOrderLine.SVC_SINGULAR_NAME" Value ="PurchaseOrderLine" />
+      <Property Name ="SVC_DATASOURCE.PurchaseOrderShipment.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.tutorial.PurchaseOrderShipment" />
+      <Property Name ="SVC_DATASOURCE.PurchaseOrderShipment.SVC_DOCUMENTATION" Value ="The datasource for purchase order shipments" />
+      <Property Name ="SVC_DATASOURCE.PurchaseOrderShipment.SVC_QUALIFIED_NAME" Value ="/oracle/apps/fnd/framework/toolbox/tutorial/PurchaseOrderShipment" />
+      <Property Name ="SVC_DATASOURCE.PurchaseOrderShipment.SVC_SINGULAR_NAME" Value ="PurchaseOrderShipment" />
+      <Property Name ="SVC_DATASOURCE.UnitOfMeasuresDomain.SVC_DATATYPE" Value ="oracle.svc.DataObjectImpl" />
+      <Property Name ="SVC_DATASOURCE.UnitOfMeasuresDomain.SVC_QUALIFIED_NAME" Value ="/oracle/apps/fnd/framework/toolbox/tutorial/UnitOfMeasureDomain" />
+      <Property Name ="SVC_DATASOURCE.UnitOfMeasuresDomain.SVC_SINGULAR_NAME" Value ="UnitOfMeasureDomain" />
+      <Property Name ="SVC_DELETEABLE_DATA_SOURCES" Value ="PurchaseOrderShipment,PurchaseOrderLine,PurchaseOrder" />
+      <Property Name ="SVC_DISPLAY_NAME" Value ="Purchase Order Service" />
+      <Property Name ="SVC_DOCUMENTATION" Value ="Approves a list of purchase orders." />
+      <Property Name ="SVC_INSERTABLE_DATA_SOURCES" Value ="PurchaseOrderShipment,PurchaseOrderLine,PurchaseOrder" />
+      <Property Name ="SVC_MERGEABLE_DATA_SOURCES" Value ="PurchaseOrderShipment,PurchaseOrderLine,PurchaseOrder" />
+      <Property Name ="SVC_METHOD_PARAM.acknowledgePurchaseOrder.1.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.tutorial.PurchaseOrderAcknowledgement" />
+      <Property Name ="SVC_METHOD_PARAM.acknowledgePurchaseOrder.1.SVC_DOCUMENTATION" Value ="The PurchaseOrderAcknowledgement data object. " />
+      <Property Name ="SVC_METHOD_PARAM.acknowledgePurchaseOrder.1.SVC_NAME" Value ="acknowledgement" />
+      <Property Name ="SVC_METHOD_PARAM.approvePurchaseOrder.1.OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderId" />
+      <Property Name ="SVC_METHOD_PARAM.approvePurchaseOrder.1.SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+      <Property Name ="SVC_METHOD_PARAM.approvePurchaseOrder.1.SVC_DOCUMENTATION" Value ="Purchase order number." />
+      <Property Name ="SVC_METHOD_PARAM.approvePurchaseOrder.1.SVC_NAME" Value ="poNumber" />
+      <Property Name ="SVC_METHOD_PARAM.approvePurchaseOrders.1.SVC_DATATYPE" Value ="java.util.List" />
+      <Property Name ="SVC_METHOD_PARAM.approvePurchaseOrders.1.SVC_DOCUMENTATION" Value ="A list of purchase order numbers." />
+      <Property Name ="SVC_METHOD_PARAM.approvePurchaseOrders.1.SVC_INNERTYPE.0.SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+      <Property Name ="SVC_METHOD_PARAM.approvePurchaseOrders.1.SVC_INNERTYPE.0.SVC_NAME" Value ="Number" />
+      <Property Name ="SVC_METHOD_PARAM.approvePurchaseOrders.1.SVC_NAME" Value ="poNumbers" />
+      <Property Name ="SVC_METHOD_PARAM.createPurchaseOrder.0.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.tutorial.PurchaseOrder" />
+      <Property Name ="SVC_METHOD_PARAM.createPurchaseOrder.0.SVC_DOCUMENTATION" Value ="The created PurchaseOrder data object with the primary keys populated." />
+      <Property Name ="SVC_METHOD_PARAM.createPurchaseOrder.0.SVC_NAME" Value ="purchaseOrder" />
+      <Property Name ="SVC_METHOD_PARAM.createPurchaseOrder.1.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.tutorial.PurchaseOrder" />
+      <Property Name ="SVC_METHOD_PARAM.createPurchaseOrder.1.SVC_DOCUMENTATION" Value ="The PurchaseOrder data object." />
+      <Property Name ="SVC_METHOD_PARAM.createPurchaseOrder.1.SVC_NAME" Value ="purchaseOrder" />
+      <Property Name ="SVC_METHOD_PARAM.deletePurchaseOrder.1.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.tutorial.PurchaseOrder" />
+      <Property Name ="SVC_METHOD_PARAM.deletePurchaseOrder.1.SVC_DOCUMENTATION" Value ="The data object which identifies the PurchaseOrder." />
+      <Property Name ="SVC_METHOD_PARAM.deletePurchaseOrder.1.SVC_NAME" Value ="purchaseOrder" />
+      <Property Name ="SVC_METHOD_PARAM.getItemPrice.0.SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+      <Property Name ="SVC_METHOD_PARAM.getItemPrice.0.SVC_DOCUMENTATION" Value ="The item price." />
+      <Property Name ="SVC_METHOD_PARAM.getItemPrice.0.SVC_NAME" Value ="number" />
+      <Property Name ="SVC_METHOD_PARAM.getItemPrice.1.OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoHeaders/HeaderId" />
+      <Property Name ="SVC_METHOD_PARAM.getItemPrice.1.SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+      <Property Name ="SVC_METHOD_PARAM.getItemPrice.1.SVC_DOCUMENTATION" Value ="Purchase order number." />
+      <Property Name ="SVC_METHOD_PARAM.getItemPrice.1.SVC_NAME" Value ="poNumber" />
+      <Property Name ="SVC_METHOD_PARAM.getItemPrice.2.OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoLines/LineNumber" />
+      <Property Name ="SVC_METHOD_PARAM.getItemPrice.2.SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+      <Property Name ="SVC_METHOD_PARAM.getItemPrice.2.SVC_DOCUMENTATION" Value ="Purchase order line number." />
+      <Property Name ="SVC_METHOD_PARAM.getItemPrice.2.SVC_NAME" Value ="lineNumber" />
+      <Property Name ="SVC_METHOD_PARAM.getItemPrice.3.OA_ATTRIBUTE_SET" Value ="/oracle/apps/fnd/framework/toolbox/attributesets/FwkTbxPoLines/LineId" />
+      <Property Name ="SVC_METHOD_PARAM.getItemPrice.3.SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+      <Property Name ="SVC_METHOD_PARAM.getItemPrice.3.SVC_DOCUMENTATION" Value ="Purchase order Line id." />
+      <Property Name ="SVC_METHOD_PARAM.getItemPrice.3.SVC_NAME" Value ="lineId" />
+      <Property Name ="SVC_METHOD_PARAM.getPurchaseOrder.0.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.tutorial.PurchaseOrder" />
+      <Property Name ="SVC_METHOD_PARAM.getPurchaseOrder.0.SVC_DOCUMENTATION" Value ="The PurchaseOrder data object." />
+      <Property Name ="SVC_METHOD_PARAM.getPurchaseOrder.0.SVC_NAME" Value ="purchaseOrder" />
+      <Property Name ="SVC_METHOD_PARAM.getPurchaseOrder.1.SVC_DATATYPE" Value ="oracle.jbo.domain.Number" />
+      <Property Name ="SVC_METHOD_PARAM.getPurchaseOrder.1.SVC_DOCUMENTATION" Value ="Purchase order unique identifier.The Purchase Order Number." />
+      <Property Name ="SVC_METHOD_PARAM.getPurchaseOrder.1.SVC_NAME" Value ="poNumber" />
+      <Property Name ="SVC_METHOD_PARAM.mergePurchaseOrder.0.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.tutorial.PurchaseOrder" />
+      <Property Name ="SVC_METHOD_PARAM.mergePurchaseOrder.0.SVC_DOCUMENTATION" Value ="The created PurchaseOrder data object with the primary keys populated." />
+      <Property Name ="SVC_METHOD_PARAM.mergePurchaseOrder.0.SVC_NAME" Value ="purchaseOrder" />
+      <Property Name ="SVC_METHOD_PARAM.mergePurchaseOrder.1.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.tutorial.PurchaseOrder" />
+      <Property Name ="SVC_METHOD_PARAM.mergePurchaseOrder.1.SVC_DOCUMENTATION" Value ="The PurchaseOrder data object." />
+      <Property Name ="SVC_METHOD_PARAM.mergePurchaseOrder.1.SVC_NAME" Value ="purchaseOrder" />
+      <Property Name ="SVC_METHOD_PARAM.processDataSource.0.SVC_DATATYPE" Value ="oracle.svc.DataObject" />
+      <Property Name ="SVC_METHOD_PARAM.processDataSource.0.SVC_DOCUMENTATION" Value ="returns a root data object with one of the following:&#xa;&lt;ul&gt;&#xa;&lt;li&gt;a list of fully populated data objects if return mode in control is {@link ProcessControl#RETURN_FULL RETURN_FULL}&lt;/li&gt;&#xa;&lt;li&gt;a list of data objects with just primary keys if return mode in control is {@link ProcessControl#RETURN_KEY RETURN_KEY}&lt;/li&gt;&#xa;&lt;li&gt;an empty list if return mode in control is {@link ProcessControl#RETURN_NONE RETURN_NONE}&lt;/li&gt;&#xa;&lt;/ul&gt;" />
+      <Property Name ="SVC_METHOD_PARAM.processDataSource.0.SVC_NAME" Value ="purchaseOrderServiceRoot" />
+      <Property Name ="SVC_METHOD_PARAM.processDataSource.1.SVC_DATATYPE" Value ="java.lang.String" />
+      <Property Name ="SVC_METHOD_PARAM.processDataSource.1.SVC_DOCUMENTATION" Value ="The name of the data source to process." />
+      <Property Name ="SVC_METHOD_PARAM.processDataSource.1.SVC_NAME" Value ="dataSourceName" />
+      <Property Name ="SVC_METHOD_PARAM.processDataSource.2.SVC_DATATYPE" Value ="java.lang.String" />
+      <Property Name ="SVC_METHOD_PARAM.processDataSource.2.SVC_DOCUMENTATION" Value ="The opertion to perform. Can be one of the following:&#xa;&lt;ul&gt;&#xa;&lt;li&gt;{@link #OPERATION_CREATE Create}&#xa;&lt;li&gt;{@link #OPERATION_UPDATE Update}&#xa;&lt;li&gt;{@link #OPERATION_DELETE Delete}&#xa;&lt;li&gt;{@link #OPERATION_MERGE Merge}&#xa;&lt;/ul&gt;" />
+      <Property Name ="SVC_METHOD_PARAM.processDataSource.2.SVC_NAME" Value ="operation" />
+      <Property Name ="SVC_METHOD_PARAM.processDataSource.3.SVC_DATATYPE" Value ="oracle.svc.ProcessControl" />
+      <Property Name ="SVC_METHOD_PARAM.processDataSource.3.SVC_DOCUMENTATION" Value ="control the post control object. If null, a default control object&#xa;will be used with the following settings:&#xa;return mode set to {@link ProcessControl#RETURN_NONE RETURN_NONE} and&#xa;exeception return mode set to {@link ProcessControl#RETURN_KEY RETURN_KEY}" />
+      <Property Name ="SVC_METHOD_PARAM.processDataSource.3.SVC_NAME" Value ="processControl" />
+      <Property Name ="SVC_METHOD_PARAM.processDataSource.4.SVC_DATATYPE" Value ="oracle.svc.DataObject" />
+      <Property Name ="SVC_METHOD_PARAM.processDataSource.4.SVC_DOCUMENTATION" Value ="The root data object containing a list of data objects to be processed." />
+      <Property Name ="SVC_METHOD_PARAM.processDataSource.4.SVC_NAME" Value ="purchaseOrderServiceRoot" />
+      <Property Name ="SVC_METHOD_PARAM.queryDataSource.0.SVC_DATATYPE" Value ="oracle.svc.DataObject" />
+      <Property Name ="SVC_METHOD_PARAM.queryDataSource.0.SVC_DOCUMENTATION" Value ="A root data object containg a list of data objects that statisfy the criteria." />
+      <Property Name ="SVC_METHOD_PARAM.queryDataSource.0.SVC_NAME" Value ="purchaseOrderServiceRoot" />
+      <Property Name ="SVC_METHOD_PARAM.queryDataSource.1.SVC_DATATYPE" Value ="java.lang.String" />
+      <Property Name ="SVC_METHOD_PARAM.queryDataSource.1.SVC_DOCUMENTATION" Value ="The name of the data source to query." />
+      <Property Name ="SVC_METHOD_PARAM.queryDataSource.1.SVC_NAME" Value ="dataSourceName" />
+      <Property Name ="SVC_METHOD_PARAM.queryDataSource.2.SVC_DATATYPE" Value ="oracle.svc.DataCriteria" />
+      <Property Name ="SVC_METHOD_PARAM.queryDataSource.2.SVC_DOCUMENTATION" Value ="The {@link DataCriteria DataCriteria} for filtering, paging, and&#xa;sorting the returned data objects." />
+      <Property Name ="SVC_METHOD_PARAM.queryDataSource.2.SVC_NAME" Value ="dataCriteria" />
+      <Property Name ="SVC_METHOD_PARAM.queryDataSource.3.SVC_DATATYPE" Value ="oracle.svc.QueryControl" />
+      <Property Name ="SVC_METHOD_PARAM.queryDataSource.3.SVC_DOCUMENTATION" Value ="The {@link QueryControl QueryControl} object that contain the control switches for query." />
+      <Property Name ="SVC_METHOD_PARAM.queryDataSource.3.SVC_NAME" Value ="queryControl" />
+      <Property Name ="SVC_METHOD_PARAM.receiveItem.1.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.tutorial.PurchaseOrderReceipt" />
+      <Property Name ="SVC_METHOD_PARAM.receiveItem.1.SVC_DOCUMENTATION" Value ="The PurchaseOrder data object." />
+      <Property Name ="SVC_METHOD_PARAM.receiveItem.1.SVC_NAME" Value ="receipt" />
+      <Property Name ="SVC_METHOD_PARAM.receiveItems.1.SVC_DATATYPE" Value ="java.util.List" />
+      <Property Name ="SVC_METHOD_PARAM.receiveItems.1.SVC_DOCUMENTATION" Value ="List of PurchaseOrderItem data objects." />
+      <Property Name ="SVC_METHOD_PARAM.receiveItems.1.SVC_INNERTYPE.0.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.tutorial.PurchaseOrderReceipt" />
+      <Property Name ="SVC_METHOD_PARAM.receiveItems.1.SVC_INNERTYPE.0.SVC_NAME" Value ="purchaseOrderReceipt" />
+      <Property Name ="SVC_METHOD_PARAM.receiveItems.1.SVC_NAME" Value ="receipts" />
+      <Property Name ="SVC_METHOD_PARAM.updatePurchaseOrder.0.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.tutorial.PurchaseOrder" />
+      <Property Name ="SVC_METHOD_PARAM.updatePurchaseOrder.0.SVC_DOCUMENTATION" Value ="The updated PurchaseOrder data object with the primary keys populated." />
+      <Property Name ="SVC_METHOD_PARAM.updatePurchaseOrder.0.SVC_NAME" Value ="purchaseOrder" />
+      <Property Name ="SVC_METHOD_PARAM.updatePurchaseOrder.1.SVC_DATATYPE" Value ="oracle.apps.fnd.framework.toolbox.tutorial.PurchaseOrder" />
+      <Property Name ="SVC_METHOD_PARAM.updatePurchaseOrder.1.SVC_DOCUMENTATION" Value ="The PurchaseOrder data object." />
+      <Property Name ="SVC_METHOD_PARAM.updatePurchaseOrder.1.SVC_NAME" Value ="purchaseOrder" />
+      <Property Name ="SVC_METHOD.acknowledgePurchaseOrder.SVC_CONTEXT" Value ="RESP" />
+      <Property Name ="SVC_METHOD.acknowledgePurchaseOrder.SVC_DISPLAY_NAME" Value ="acknoledge Purchase order" />
+      <Property Name ="SVC_METHOD.acknowledgePurchaseOrder.SVC_DOCUMENTATION" Value ="Acknoledges a purchase order." />
+      <Property Name ="SVC_METHOD.acknowledgePurchaseOrder.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_METHOD.acknowledgePurchaseOrder.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_METHOD.acknowledgePurchaseOrder.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_METHOD.approvePurchaseOrder.SVC_CONTEXT" Value ="RESP" />
+      <Property Name ="SVC_METHOD.approvePurchaseOrder.SVC_DISPLAY_NAME" Value ="approve Purchase Order" />
+      <Property Name ="SVC_METHOD.approvePurchaseOrder.SVC_DOCUMENTATION" Value ="approves a single purchase order." />
+      <Property Name ="SVC_METHOD.approvePurchaseOrder.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_METHOD.approvePurchaseOrder.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_METHOD.approvePurchaseOrder.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_METHOD.approvePurchaseOrders.SVC_CONTEXT" Value ="RESP" />
+      <Property Name ="SVC_METHOD.approvePurchaseOrders.SVC_DISPLAY_NAME" Value ="approve Purchase orders" />
+      <Property Name ="SVC_METHOD.approvePurchaseOrders.SVC_DOCUMENTATION" Value ="Approves a list of purchase orders." />
+      <Property Name ="SVC_METHOD.approvePurchaseOrders.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_METHOD.approvePurchaseOrders.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_METHOD.approvePurchaseOrders.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_METHOD.createPurchaseOrder.SVC_CONTEXT" Value ="RESP" />
+      <Property Name ="SVC_METHOD.createPurchaseOrder.SVC_DISPLAY_NAME" Value ="create Purchase Order" />
+      <Property Name ="SVC_METHOD.createPurchaseOrder.SVC_DOCUMENTATION" Value ="Creates a new PurchaseOrder." />
+      <Property Name ="SVC_METHOD.createPurchaseOrder.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_METHOD.createPurchaseOrder.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_METHOD.createPurchaseOrder.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_METHOD.deletePurchaseOrder.SVC_CONTEXT" Value ="RESP" />
+      <Property Name ="SVC_METHOD.deletePurchaseOrder.SVC_DISPLAY_NAME" Value ="delete Purchase Order" />
+      <Property Name ="SVC_METHOD.deletePurchaseOrder.SVC_DOCUMENTATION" Value ="Deletes a PurchaseOrder.&#xa;The record is located using the primary key set on the passed data object.&#xa;If the primary key is not set, then the record is located using the&#xa;alternate key sets in the data object in sequence." />
+      <Property Name ="SVC_METHOD.deletePurchaseOrder.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_METHOD.deletePurchaseOrder.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_METHOD.deletePurchaseOrder.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_METHOD.getItemPrice.SVC_CONTEXT" Value ="RESP" />
+      <Property Name ="SVC_METHOD.getItemPrice.SVC_DISPLAY_NAME" Value ="get Item Price" />
+      <Property Name ="SVC_METHOD.getItemPrice.SVC_DOCUMENTATION" Value ="Returns the price of a specific item. &#xa;You can pass either the line number or the line id." />
+      <Property Name ="SVC_METHOD.getItemPrice.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_METHOD.getItemPrice.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_METHOD.getItemPrice.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_METHOD.getPurchaseOrder.SVC_CONTEXT" Value ="RESP" />
+      <Property Name ="SVC_METHOD.getPurchaseOrder.SVC_DISPLAY_NAME" Value ="get Purchase Order" />
+      <Property Name ="SVC_METHOD.getPurchaseOrder.SVC_DOCUMENTATION" Value ="Gets a PurchaseOrder based on its primary key attributes." />
+      <Property Name ="SVC_METHOD.getPurchaseOrder.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_METHOD.getPurchaseOrder.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_METHOD.getPurchaseOrder.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_METHOD.mergePurchaseOrder.SVC_CONTEXT" Value ="RESP" />
+      <Property Name ="SVC_METHOD.mergePurchaseOrder.SVC_DISPLAY_NAME" Value ="merge Purchase Order" />
+      <Property Name ="SVC_METHOD.mergePurchaseOrder.SVC_DOCUMENTATION" Value ="Updates or creates a PurchaseOrder.&#xa;If the passed PurchaseOrder exists, it will be updated,&#xa;otherwise a new one is created.&#xa;The record is located using the primary key of the PurchaseOrder.&#xa;If the primary key is not set, then the record is located using&#xa;the alternate key sets defined for this data object." />
+      <Property Name ="SVC_METHOD.mergePurchaseOrder.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_METHOD.mergePurchaseOrder.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_METHOD.mergePurchaseOrder.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_METHOD.processDataSource.SVC_CONTEXT" Value ="RESP" />
+      <Property Name ="SVC_METHOD.processDataSource.SVC_DISPLAY_NAME" Value ="process Data Source" />
+      <Property Name ="SVC_METHOD.processDataSource.SVC_DOCUMENTATION" Value ="Processes a root data object containing a list of data objects applied to a data source." />
+      <Property Name ="SVC_METHOD.processDataSource.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_METHOD.processDataSource.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_METHOD.processDataSource.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_METHOD.queryDataSource.SVC_CONTEXT" Value ="RESP" />
+      <Property Name ="SVC_METHOD.queryDataSource.SVC_DISPLAY_NAME" Value ="query Data Source" />
+      <Property Name ="SVC_METHOD.queryDataSource.SVC_DOCUMENTATION" Value ="Gets root data object containing a list of data objects from the data source based on criteria." />
+      <Property Name ="SVC_METHOD.queryDataSource.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_METHOD.queryDataSource.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_METHOD.queryDataSource.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_METHOD.receiveItem.SVC_CONTEXT" Value ="RESP" />
+      <Property Name ="SVC_METHOD.receiveItem.SVC_DISPLAY_NAME" Value ="receive Item" />
+      <Property Name ="SVC_METHOD.receiveItem.SVC_DOCUMENTATION" Value ="Receives a single purchaser order." />
+      <Property Name ="SVC_METHOD.receiveItem.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_METHOD.receiveItem.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_METHOD.receiveItem.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_METHOD.receiveItems.SVC_CONTEXT" Value ="RESP" />
+      <Property Name ="SVC_METHOD.receiveItems.SVC_DISPLAY_NAME" Value ="receive Items" />
+      <Property Name ="SVC_METHOD.receiveItems.SVC_DOCUMENTATION" Value ="Receives a list of items." />
+      <Property Name ="SVC_METHOD.receiveItems.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_METHOD.receiveItems.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_METHOD.receiveItems.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_METHOD.updatePurchaseOrder.SVC_CONTEXT" Value ="RESP" />
+      <Property Name ="SVC_METHOD.updatePurchaseOrder.SVC_DISPLAY_NAME" Value ="update Purchase Order" />
+      <Property Name ="SVC_METHOD.updatePurchaseOrder.SVC_DOCUMENTATION" Value ="Updates a PurchaseOrder.&#xa;The record is located using the primary key of the PurchaseOrder.&#xa;If the primary key is not set, then the record is located using&#xa;the alternate key sets defined for this data object." />
+      <Property Name ="SVC_METHOD.updatePurchaseOrder.SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_METHOD.updatePurchaseOrder.SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_METHOD.updatePurchaseOrder.SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_METHODS" Value ="approvePurchaseOrders,approvePurchaseOrder,receiveItems,receiveItem,getItemPrice,acknowledgePurchaseOrder,createPurchaseOrder,updatePurchaseOrder,mergePurchaseOrder,deletePurchaseOrder,getPurchaseOrder,queryDataSource,processDataSource" />
+      <Property Name ="SVC_NAME" Value ="PurchaseOrderService" />
+      <Property Name ="SVC_NAMESPACE" Value ="/oracle/apps/fnd/framework/toolbox/tutorial/" />
+      <Property Name ="SVC_OBJECT" Value ="SVC" />
+      <Property Name ="SVC_OBJECT_TYPE" Value ="SVC" />
+      <Property Name ="SVC_PARENTS" Value ="oracle.svc.DataProcessorService" />
+      <Property Name ="SVC_QUERYABLE_DATA_SOURCES" Value ="PurchaseOrderShipment,PurchaseOrder,PaymentTermsDomain,OrderStatusesDomain,CurrenciesDomain,PurchaseOrder_SupplierAndSiteDomain,PurchaseOrder_BuyerDomain,PurchaseOrderLine,CarrierDomain,UnitOfMeasuresDomain" />
+      <Property Name ="SVC_REP_COMPATIBILITY" Value ="S" />
+      <Property Name ="SVC_REP_LIFECYCLE" Value ="ACTIVE" />
+      <Property Name ="SVC_REP_PRODUCT" Value ="fnd" />
+      <Property Name ="SVC_REP_SCOPE" Value ="PUBLIC" />
+      <Property Name ="SVC_SERVICE_INTERFACE" Value ="oracle.apps.fnd.framework.toolbox.tutorial.PurchaseOrderService" />
+      <Property Name ="SVC_UPDATEABLE_DATA_SOURCES" Value ="PurchaseOrderShipment,PurchaseOrderLine,PurchaseOrder" />
+   </Properties>
+   <DesignTime>
+      <Attr Name="_isCodegen" Value="true" />
+      <Attr Name="_version" Value="10.1.3.38.51" />
+      <Attr Name="_deployType" Value="0" />
+   </DesignTime>
+   <ViewUsage
+      Name="PurchaseOrderLine"
+      ViewObjectName="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrderLinesSVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="PurchaseOrder"
+      ViewObjectName="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrdersSVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="PurchaseOrderShipment"
+      ViewObjectName="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrderShipmentsSVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="PurchaseOrderReceipt"
+      ViewObjectName="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrderReceiptsSVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="PurchaseOrderAcknowledgement"
+      ViewObjectName="oracle.apps.fnd.framework.toolbox.tutorial.server.PurchaseOrderAcknowledgementsSVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="PurchaseOrder_BuyerDomain"
+      ViewObjectName="oracle.apps.fnd.framework.toolbox.tutorial.server.BuyersDVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="PurchaseOrder_SupplierAndSiteDomain"
+      ViewObjectName="oracle.apps.fnd.framework.toolbox.tutorial.server.SupplierAndSitesDVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="CarrierDomain"
+      ViewObjectName="oracle.apps.fnd.framework.toolbox.tutorial.server.CarriersDVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="CurrenciesDomain"
+      ViewObjectName="oracle.apps.fnd.framework.toolbox.tutorial.server.CurrenciesDVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="OrderStatusesDomain"
+      ViewObjectName="oracle.apps.fnd.framework.toolbox.tutorial.server.OrderStatusesDVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="PaymentTermsDomain"
+      ViewObjectName="oracle.apps.fnd.framework.toolbox.tutorial.server.PaymentTermsDVO" >
+   </ViewUsage>
+   <ViewUsage
+      Name="UnitOfMeasuresDomain"
+      ViewObjectName="oracle.apps.fnd.framework.toolbox.tutorial.server.UnitOfMeasuresDVO" >
+   </ViewUsage>
+</AppModule>

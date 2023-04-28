@@ -1,0 +1,86 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <content>
+      <oa:pageLayout id="PageLayoutRN" amDefName="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.SearchInvoiceAM" windowTitle="Search Combine/Uncombine Request Window" title="Search Combine/Uncombine Request" controllerClass="toppanmerrill.oracle.apps.xxtm.cb.invoice.webui.SearchCombineReqCO" warnAboutChanges="false">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:messageComponentLayout id="QueryRN" columns="2" searchRegion="false" rows="2" adminCustomizable="false">
+               <ui:contents>
+                  <oa:messageTextInput id="RequestNumField" prompt="Request Number"/>
+                  <oa:messageTextInput id="ParentTransactionNumField" prompt="Parent Transaction Number"/>
+                  <oa:messageChoice id="RequestStatusField" prompt="Request Status" pickListViewDef="toppanmerrill.oracle.apps.xxtm.cb.invoice.server.InvoiceCombineReqStatusLovVO" pickListDispAttr="CombineReqStatusDesc" pickListValAttr="CombineReqStatus"/>
+                  <oa:messageTextInput id="ChildTransactionNumField" prompt="Child Transaction Number"/>
+               </ui:contents>
+            </oa:messageComponentLayout>
+            <oa:rowLayout id="ButtonRN">
+               <ui:contents>
+                  <oa:submitButton id="GoBN" use="/oracle/apps/fnd/attributesets/Buttons/Go"/>
+                  <oa:resetButton id="ClearBN" use="/oracle/apps/fnd/attributesets/Buttons/ClearAll" text="Clear"/>
+               </ui:contents>
+            </oa:rowLayout>
+            <oa:advancedTable id="SearchRequestResultTE" text="Result Listing" blockSize="20" viewName="SearchCombineReqVO1" width="90%" verticalGridlinesDisplayed="true" adminCustomizable="false" rowNavigationPolicy="page">
+               <ui:contents>
+                  <oa:column id="RequestTrxIdCN" rendered="false">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="RequestIdTH" prompt="Request Id"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageStyledText id="RequestTrxIdFD" viewAttr="CombineReqId"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="RequestNumberCN">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="RequestNumberTH" prompt="Request Number" sortState="yes"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:link id="RequestNumberLK" viewAttr="CombineReqNumber" destination="OA.jsp?page=/toppanmerrill/oracle/apps/xxtm/cb/invoice/webui/InvoiceCombinePG&amp;retainAM=Y&amp;addBreadCrumb=N&amp;CombineReqId={@CombineReqId}" text="Request Number"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="RequestTypeCN">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="RequestTypeTH" prompt="Request Type" sortState="yes"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageStyledText id="RequestTypeFD" viewAttr="ReqType"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="RequestCustomerNameCN">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="RequestCustomerNameTH" prompt="Customer Name" sortState="yes"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageStyledText id="RequestCustomerNameFD" viewAttr="CustomerName"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="ParentTransactionNumCN">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="ParentTransactionNumTH" prompt="Parent Transaction" sortState="yes"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageStyledText id="ParentTransactionNumFD" viewAttr="ParentTrxNumber"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="ChildTransactionNumCN">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="ChildTransactionNumTH" prompt="Child Transaction" sortState="yes"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageStyledText id="ChildTransactionNumFD" viewAttr="ChildTrxNumber"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="RequestStatusCN">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="RequestStatusTH" prompt="Status" sortState="yes"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageStyledText id="RequestStatusFD" viewAttr="Status"/>
+                     </ui:contents>
+                  </oa:column>
+               </ui:contents>
+            </oa:advancedTable>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>
