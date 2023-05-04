@@ -72,6 +72,8 @@ AND     REQ_PPF.PERSON_ID = REQ_PAF.PERSON_ID
 AND     REQ_PAF.DEFAULT_CODE_COMB_ID = REQ_GCC.CODE_COMBINATION_ID (+)
 AND     PHA.VENDOR_ID = AAS.VENDOR_ID
 AND     PDA.PROJECT_ID  = PPA.PROJECT_ID (+)
+AND     REQ_PPF.effective_end_date = '31-DEC-4712' -- 20230504 - bug fix for multiplue assignment record
+AND     PPF.effective_end_date = '31-DEC-4712' -- 20230504 - bug fix for multiplue assignment record
 --AND     ((PHA.CLOSED_CODE IS NULL) OR (PHA.CLOSED_CODE = 'OPEN' ))
 --AND     ((PLA.CLOSED_CODE IS NULL )OR PLA.CLOSED_CODE <> 'CLOSED')
 ;
